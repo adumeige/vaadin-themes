@@ -1,0 +1,8 @@
+/* Split layout — subtle splitter */
+[part="splitter"] {
+    background: var(--lumo-contrast-10pct);
+}
+
+[part="splitter"]:hover {
+    background: var(--lumo-primary-color-50pct);
+}

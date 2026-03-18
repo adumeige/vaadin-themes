@@ -1,0 +1,49 @@
+/* Buttons — pill-shaped, clean shadows */
+:host {
+    border-radius: var(--lumo-border-radius-m);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: all 0.15s ease;
+}
+
+/* Primary buttons get a subtle shadow */
+:host([theme~="primary"]) {
+    box-shadow: 0 1px 3px rgba(59, 130, 246, 0.3);
+}
+
+:host([theme~="primary"]:hover) {
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.35);
+    filter: brightness(1.05);
+}
+
+:host([theme~="primary"][theme~="success"]) {
+    box-shadow: 0 1px 3px rgba(34, 197, 94, 0.3);
+}
+
+:host([theme~="primary"][theme~="success"]:hover) {
+    box-shadow: 0 4px 8px rgba(34, 197, 94, 0.35);
+}
+
+:host([theme~="primary"][theme~="error"]) {
+    box-shadow: 0 1px 3px rgba(239, 68, 68, 0.3);
+}
+
+:host([theme~="primary"][theme~="error"]:hover) {
+    box-shadow: 0 4px 8px rgba(239, 68, 68, 0.35);
+}
+
+:host([theme~="primary"][theme~="contrast"]) {
+    box-shadow: 0 1px 3px rgba(30, 41, 59, 0.3);
+}
+
+/* Secondary (default) buttons — lighter border style */
+:host(:not([theme~="primary"]):not([theme~="tertiary"]):not([theme~="tertiary-inline"])) {
+    border: 1px solid var(--lumo-contrast-20pct);
+    background: var(--lumo-base-color);
+    color: var(--lumo-body-text-color);
+}
+
+:host(:not([theme~="primary"]):not([theme~="tertiary"]):not([theme~="tertiary-inline"]):hover) {
+    background: var(--lumo-contrast-5pct);
+    border-color: var(--lumo-contrast-30pct);
+}

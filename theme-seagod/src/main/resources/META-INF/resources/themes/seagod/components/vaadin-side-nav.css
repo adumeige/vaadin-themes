@@ -1,0 +1,4 @@
+/* SideNav — styled for dark sidebar */
+:host {
+    color: var(--seagod-sidebar-text);
+}

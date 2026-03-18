@@ -1,0 +1,24 @@
+/* Grid — clean table styling matching Poseidon */
+:host {
+    border: 1px solid var(--lumo-contrast-10pct);
+    border-radius: var(--lumo-border-radius-l);
+    overflow: hidden;
+}
+
+[part~="header-cell"] {
+    background: var(--lumo-contrast-5pct);
+    font-weight: 600;
+    font-size: var(--lumo-font-size-s);
+    color: var(--lumo-secondary-text-color);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+[part~="cell"] {
+    border-bottom: 1px solid var(--lumo-contrast-5pct);
+    font-size: var(--lumo-font-size-s);
+}
+
+[part~="row"]:hover [part~="body-cell"] {
+    background: var(--lumo-primary-color-10pct);
+}

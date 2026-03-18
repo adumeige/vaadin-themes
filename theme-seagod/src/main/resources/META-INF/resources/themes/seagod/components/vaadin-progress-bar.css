@@ -1,0 +1,12 @@
+/* Progress bar — rounded track and indicator */
+:host {
+    --vaadin-progress-border-radius: 999px;
+}
+
+[part="bar"] {
+    border-radius: 999px;
+}
+
+[part="value"] {
+    border-radius: 999px;
+}

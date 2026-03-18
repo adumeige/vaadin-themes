@@ -1,0 +1,14 @@
+/* Tabs — clean underline style */
+:host {
+    font-weight: 500;
+    color: var(--lumo-secondary-text-color);
+    padding: var(--lumo-space-s) var(--lumo-space-m);
+}
+
+:host([selected]) {
+    color: var(--lumo-primary-text-color);
+}
+
+:host(:hover:not([selected])) {
+    color: var(--lumo-body-text-color);
+}

@@ -1,0 +1,8 @@
+/* Menu bar — clean styling */
+:host {
+    --lumo-border-radius-m: 8px;
+}
+
+[part="overflow-button"] {
+    border-radius: var(--lumo-border-radius-m);
+}

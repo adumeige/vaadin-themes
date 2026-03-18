@@ -1,0 +1,23 @@
+/* TextArea — same styling as text fields */
+[part="input-field"] {
+    border-radius: var(--lumo-border-radius-m);
+    border: 1px solid var(--lumo-contrast-20pct);
+    background: var(--lumo-base-color);
+    box-shadow: var(--lumo-box-shadow-xs);
+}
+
+:host([focused]) [part="input-field"] {
+    border-color: var(--lumo-primary-color);
+    box-shadow: 0 0 0 2px var(--lumo-primary-color-10pct);
+}
+
+:host([invalid]) [part="input-field"] {
+    border-color: var(--lumo-error-color);
+    box-shadow: 0 0 0 2px var(--lumo-error-color-10pct);
+}
+
+[part="label"] {
+    font-weight: 500;
+    color: var(--lumo-body-text-color);
+    font-size: var(--lumo-font-size-s);
+}

@@ -1,0 +1,11 @@
+/* Accordion — bordered panels with rounded corners */
+:host {
+    border: 1px solid var(--lumo-contrast-10pct);
+    border-radius: var(--lumo-border-radius-m);
+    margin-bottom: var(--lumo-space-xs);
+    overflow: hidden;
+}
+
+[part="summary"] {
+    font-weight: 500;
+}

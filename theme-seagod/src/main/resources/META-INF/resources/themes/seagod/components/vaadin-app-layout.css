@@ -1,0 +1,22 @@
+/* AppLayout — dark navy sidebar, white navbar, slate page background */
+
+/* Drawer — dark navy */
+[part="drawer"] {
+    background: var(--seagod-sidebar-bg);
+    color: var(--seagod-sidebar-text);
+    border-right: none;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Navbar — always white, regardless of color scheme inheritance */
+[part="navbar"] {
+    background: #ffffff !important;
+    color: #1e293b !important;
+    border-bottom: 1px solid rgba(30, 41, 59, 0.1);
+    box-shadow: 0 1px 3px rgba(30, 41, 59, 0.06);
+}
+
+/* Content — slate background */
+[part="content"] {
+    background: #f1f5f9;
+}

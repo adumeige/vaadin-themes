@@ -1,0 +1,33 @@
+/* SideNavItem — dark sidebar with clear active/hover states */
+:host {
+    color: var(--seagod-sidebar-text);
+    border-radius: var(--lumo-border-radius-m);
+    margin: 1px var(--lumo-space-s);
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+/* All text inside */
+[part="content"] {
+    color: inherit;
+    font-size: var(--lumo-font-size-s);
+    font-weight: 500;
+}
+
+/* Icons */
+[part="prefix"] {
+    color: inherit;
+}
+
+/* Active state — blue left border + subtle blue bg */
+:host([active]) {
+    color: var(--seagod-sidebar-text-active) !important;
+    background: var(--seagod-sidebar-item-active-bg) !important;
+    border-left: 3px solid var(--seagod-sidebar-item-active-border) !important;
+    padding-left: calc(var(--lumo-space-m) - 3px) !important;
+}
+
+/* Hover state */
+:host(:hover:not([active])) {
+    color: var(--seagod-sidebar-text-active);
+    background: var(--seagod-sidebar-item-hover);
+}

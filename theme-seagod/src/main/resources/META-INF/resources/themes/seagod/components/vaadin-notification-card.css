@@ -1,0 +1,5 @@
+/* Notifications — rounded, shadowed */
+:host {
+    border-radius: var(--lumo-border-radius-m);
+    box-shadow: var(--lumo-box-shadow-l);
+}
