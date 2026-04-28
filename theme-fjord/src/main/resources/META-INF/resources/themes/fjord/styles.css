@@ -1,0 +1,588 @@
+/* ============================================================
+   Fjord — Vaadin application theme
+   Drop into  src/main/frontend/themes/fjord/
+   Activate with  @Theme("fjord")  on your AppShell.
+   ============================================================ */
+
+/* --- 1. Fonts ------------------------------------------------ */
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+/* --- 2. Fjord tokens ---------------------------------------- */
+/* These mirror the design-system tokens exactly. Keep in sync. */
+
+html {
+  /* Nord raw */
+  --nord0:#2E3440; --nord1:#3B4252; --nord2:#434C5E; --nord3:#4C566A; --nord3-bright:#616E88;
+  --nord4:#D8DEE9; --nord5:#E5E9F0; --nord6:#ECEFF4;
+  --nord7:#8FBCBB; --nord8:#88C0D0; --nord9:#81A1C1; --nord10:#5E81AC;
+  --nord11:#BF616A; --nord12:#D08770; --nord13:#EBCB8B; --nord14:#A3BE8C; --nord15:#B48EAD;
+
+  /* Typography */
+  --font-sans:"Inter Tight","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --font-mono:"JetBrains Mono","SF Mono",Menlo,Consolas,monospace;
+
+  /* Radius */
+  --radius-xs:2px; --radius-sm:4px; --radius-md:6px; --radius-lg:8px; --radius-xl:12px; --radius-pill:999px;
+
+  /* Spacing (4px base) */
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:24px; --s-8:32px; --s-10:40px; --s-12:48px;
+
+  /* Density — standard by default, overridden below */
+  --ctrl-h:32px;  --ctrl-px:10px;  --row-h:36px;  --row-px:12px;
+
+  /* Motion */
+  --dur-1:80ms; --dur-2:140ms; --dur-3:220ms;
+  --ease-out:cubic-bezier(.2,.6,.2,1);
+}
+
+/* Density variants — toggle by setting  theme="fjord compact"  or  theme="fjord comfy"  */
+html[theme~="comfy"]    { --ctrl-h:40px; --ctrl-px:14px; --row-h:48px; --row-px:16px; }
+html[theme~="standard"] { --ctrl-h:32px; --ctrl-px:10px; --row-h:36px; --row-px:12px; }
+html[theme~="compact"]  { --ctrl-h:26px; --ctrl-px:8px;  --row-h:28px; --row-px:10px; }
+
+/* --- 3. Light theme (default) ------------------------------- */
+html, html[theme~="light"] {
+  --bg-app:#F4F6FA; --bg-surface:#FFFFFF;
+  --bg-surface-2:var(--nord6); --bg-surface-3:var(--nord5); --bg-inset:var(--nord4);
+  --fg-strong:var(--nord0); --fg-default:var(--nord1); --fg-muted:var(--nord3); --fg-subtle:var(--nord3-bright);
+  --fg-on-accent:#FFFFFF;
+  --border-subtle:#E3E8EF; --border-default:#D1D8E1; --border-strong:#B9C2CF;
+  --accent:var(--nord10); --accent-hover:#4C6F95; --accent-pressed:#3F5E80;
+  --accent-soft:#E3EBF4; --accent-soft-fg:var(--nord10);
+  --danger:var(--nord11);   --danger-soft:#F4DDDF;
+  --warning:#B88A46;        --warning-soft:#F7EDD3;
+  --success:#6E8F5A;        --success-soft:#E3ECD7;
+  --info:var(--nord8);      --info-soft:#DDEDF3;
+  --shadow-1:0 1px 2px rgba(46,52,64,.06), 0 1px 1px rgba(46,52,64,.04);
+  --shadow-2:0 4px 10px rgba(46,52,64,.08), 0 1px 2px rgba(46,52,64,.05);
+  --shadow-3:0 12px 28px rgba(46,52,64,.12), 0 2px 6px rgba(46,52,64,.06);
+  color-scheme:light;
+}
+
+/* --- 4. Dark theme ----------------------------------------- */
+html[theme~="dark"] {
+  --bg-app:#252A33; --bg-surface:var(--nord0);
+  --bg-surface-2:var(--nord1); --bg-surface-3:var(--nord2); --bg-inset:#22262F;
+  --fg-strong:var(--nord6); --fg-default:var(--nord5); --fg-muted:var(--nord4); --fg-subtle:#8A94A7;
+  --fg-on-accent:var(--nord0);
+  --border-subtle:#363D4A; --border-default:#434C5E; --border-strong:#586579;
+  --accent:var(--nord8); --accent-hover:#9BCAD6; --accent-pressed:#ABD3DD;
+  --accent-soft:rgba(136,192,208,.15); --accent-soft-fg:var(--nord8);
+  --danger:var(--nord11);   --danger-soft:rgba(191,97,106,.18);
+  --warning:var(--nord13);  --warning-soft:rgba(235,203,139,.18);
+  --success:var(--nord14);  --success-soft:rgba(163,190,140,.18);
+  --info:var(--nord8);      --info-soft:rgba(136,192,208,.18);
+  --shadow-1:0 1px 2px rgba(0,0,0,.3), 0 1px 1px rgba(0,0,0,.2);
+  --shadow-2:0 4px 12px rgba(0,0,0,.4), 0 1px 2px rgba(0,0,0,.25);
+  --shadow-3:0 16px 32px rgba(0,0,0,.5), 0 2px 6px rgba(0,0,0,.3);
+  color-scheme:dark;
+}
+
+/* ============================================================
+   5. Lumo alias layer — maps Vaadin's Lumo properties to Fjord
+   Repeated on html[theme~="dark"] / html[theme~="light"] to
+   beat Lumo's own dark/light selectors which use [theme~="dark"].
+   ============================================================ */
+html,
+html[theme~="light"],
+html[theme~="dark"] {
+  /* Typography */
+  --lumo-font-family: var(--font-sans);
+  --lumo-font-size-xxs: 10px;
+  --lumo-font-size-xs:  11px;
+  --lumo-font-size-s:   12px;
+  --lumo-font-size-m:   13px;
+  --lumo-font-size-l:   16px;
+  --lumo-font-size-xl:  20px;
+  --lumo-font-size-xxl: 30px;
+  --lumo-font-size-xxxl:48px;
+  --lumo-line-height-xs: 1.15;
+  --lumo-line-height-s:  1.35;
+  --lumo-line-height-m:  1.5;
+
+  /* Sizing — tied to density */
+  --lumo-size-xs: calc(var(--ctrl-h) - 8px);
+  --lumo-size-s:  calc(var(--ctrl-h) - 4px);
+  --lumo-size-m:  var(--ctrl-h);
+  --lumo-size-l:  calc(var(--ctrl-h) + 8px);
+  --lumo-size-xl: calc(var(--ctrl-h) + 16px);
+
+  /* Spacing */
+  --lumo-space-xs: var(--s-1);
+  --lumo-space-s:  var(--s-2);
+  --lumo-space-m:  var(--s-4);
+  --lumo-space-l:  var(--s-6);
+  --lumo-space-xl: var(--s-8);
+
+  /* Border radius */
+  --lumo-border-radius-s: var(--radius-sm);
+  --lumo-border-radius-m: var(--radius-md);
+  --lumo-border-radius-l: var(--radius-lg);
+
+  /* Base / surface */
+  --lumo-base-color:  var(--bg-surface);
+  --lumo-tint:        var(--bg-surface);
+  --lumo-shade:       var(--fg-strong);
+
+  /* Contrast scale (used by Lumo for borders, muted text, hovers) */
+  --lumo-contrast-5pct:   var(--bg-surface-2);
+  --lumo-contrast-10pct:  var(--bg-surface-3);
+  --lumo-contrast-20pct:  var(--border-subtle);
+  --lumo-contrast-30pct:  var(--border-default);
+  --lumo-contrast-40pct:  var(--border-strong);
+  --lumo-contrast-50pct:  var(--fg-subtle);
+  --lumo-contrast-60pct:  var(--fg-muted);
+  --lumo-contrast-70pct:  var(--fg-muted);
+  --lumo-contrast-80pct:  var(--fg-default);
+  --lumo-contrast-90pct:  var(--fg-strong);
+  --lumo-contrast:        var(--fg-strong);
+
+  /* Body/header text */
+  --lumo-header-text-color:     var(--fg-strong);
+  --lumo-body-text-color:       var(--fg-default);
+  --lumo-secondary-text-color:  var(--fg-muted);
+  --lumo-tertiary-text-color:   var(--fg-subtle);
+  --lumo-disabled-text-color:   var(--fg-subtle);
+
+  /* Primary */
+  --lumo-primary-color:          var(--accent);
+  --lumo-primary-color-50pct:    var(--accent-soft);
+  --lumo-primary-color-10pct:    var(--accent-soft);
+  --lumo-primary-text-color:     var(--accent);
+  --lumo-primary-contrast-color: var(--fg-on-accent);
+
+  /* Semantic */
+  --lumo-error-color:          var(--danger);
+  --lumo-error-color-50pct:    var(--danger-soft);
+  --lumo-error-color-10pct:    var(--danger-soft);
+  --lumo-error-text-color:     var(--danger);
+  --lumo-error-contrast-color: #FFFFFF;
+
+  --lumo-success-color:          var(--success);
+  --lumo-success-color-50pct:    var(--success-soft);
+  --lumo-success-color-10pct:    var(--success-soft);
+  --lumo-success-text-color:     var(--success);
+  --lumo-success-contrast-color: #FFFFFF;
+
+  --lumo-warning-color:          var(--warning);
+  --lumo-warning-color-10pct:    var(--warning-soft);
+  --lumo-warning-text-color:     var(--warning);
+  --lumo-warning-contrast-color: #FFFFFF;
+
+  /* Shadows */
+  --lumo-box-shadow-xs: var(--shadow-1);
+  --lumo-box-shadow-s:  var(--shadow-1);
+  --lumo-box-shadow-m:  var(--shadow-2);
+  --lumo-box-shadow-l:  var(--shadow-3);
+  --lumo-box-shadow-xl: var(--shadow-3);
+
+  /* Contrast-based tints used by Lumo */
+  --lumo-clickable-cursor: pointer;
+}
+
+/* ============================================================
+   6. Component overrides — small tweaks for Fjord character
+   ============================================================ */
+
+/* Global body color / background */
+body {
+  background: var(--bg-app);
+  color: var(--fg-default);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv11","ss01","ss03";
+}
+
+/* Headings — tight, weighted, Fjord character */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  color: var(--fg-strong);
+  letter-spacing: -0.01em;
+  font-feature-settings: "cv11","ss01","ss03";
+}
+h1 { font-size: 30px; font-weight: 600; line-height: 1.15; letter-spacing: -0.015em; }
+h2 { font-size: 20px; font-weight: 600; line-height: 1.2; }
+h3 { font-size: 16px; font-weight: 600; line-height: 1.3; }
+h4 { font-size: 13px; font-weight: 600; line-height: 1.4; }
+
+/* TextField / PasswordField / NumberField / Select input slot */
+vaadin-text-field::part(input-field),
+vaadin-password-field::part(input-field),
+vaadin-email-field::part(input-field),
+vaadin-number-field::part(input-field),
+vaadin-integer-field::part(input-field),
+vaadin-big-decimal-field::part(input-field),
+vaadin-select::part(input-field),
+vaadin-combo-box::part(input-field),
+vaadin-date-picker::part(input-field),
+vaadin-time-picker::part(input-field),
+vaadin-date-time-picker::part(input-field),
+vaadin-multi-select-combo-box::part(input-field) {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  box-sizing: border-box;
+  height: var(--ctrl-h);
+  min-height: var(--ctrl-h);
+  padding: 0 var(--ctrl-px);
+  box-shadow: none;
+  transition: border-color var(--dur-2) var(--ease-out), box-shadow var(--dur-2) var(--ease-out);
+}
+vaadin-text-field[focused]::part(input-field),
+vaadin-password-field[focused]::part(input-field),
+vaadin-email-field[focused]::part(input-field),
+vaadin-number-field[focused]::part(input-field),
+vaadin-integer-field[focused]::part(input-field),
+vaadin-big-decimal-field[focused]::part(input-field),
+vaadin-select[focused]::part(input-field),
+vaadin-combo-box[focused]::part(input-field),
+vaadin-multi-select-combo-box[focused]::part(input-field),
+vaadin-date-picker[focused]::part(input-field),
+vaadin-time-picker[focused]::part(input-field) {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+vaadin-text-field[invalid]::part(input-field),
+vaadin-password-field[invalid]::part(input-field),
+vaadin-email-field[invalid]::part(input-field),
+vaadin-number-field[invalid]::part(input-field),
+vaadin-integer-field[invalid]::part(input-field),
+vaadin-select[invalid]::part(input-field),
+vaadin-combo-box[invalid]::part(input-field),
+vaadin-multi-select-combo-box[invalid]::part(input-field),
+vaadin-date-picker[invalid]::part(input-field),
+vaadin-time-picker[invalid]::part(input-field) {
+  border-color: var(--danger);
+}
+
+/* Labels — uppercase, spaced, like the design system */
+vaadin-text-field::part(label),
+vaadin-password-field::part(label),
+vaadin-email-field::part(label),
+vaadin-number-field::part(label),
+vaadin-integer-field::part(label),
+vaadin-big-decimal-field::part(label),
+vaadin-text-area::part(label),
+vaadin-select::part(label),
+vaadin-combo-box::part(label),
+vaadin-multi-select-combo-box::part(label),
+vaadin-date-picker::part(label),
+vaadin-time-picker::part(label),
+vaadin-date-time-picker::part(label),
+vaadin-upload::part(label),
+vaadin-checkbox-group::part(label),
+vaadin-radio-group::part(label) {
+  font-size: var(--lumo-font-size-xs);
+  font-weight: 500;
+  color: var(--fg-muted);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+/* Buttons */
+vaadin-button {
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+vaadin-button[theme~="primary"] {
+  background: var(--accent);
+  color: var(--fg-on-accent);
+}
+vaadin-button[theme~="primary"]:hover {
+  background: var(--accent-hover);
+}
+vaadin-button[theme~="tertiary"],
+vaadin-button[theme~="tertiary-inline"] {
+  background: transparent;
+  color: var(--fg-default);
+}
+vaadin-button[theme~="tertiary"]:hover {
+  background: var(--bg-surface-3);
+}
+vaadin-button[theme~="error"][theme~="primary"] {
+  background: var(--danger);
+  color: #FFFFFF;
+}
+
+/* Checkbox / Radio — sharper indicator */
+vaadin-checkbox::part(checkbox) {
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-strong);
+  background: var(--bg-surface);
+}
+vaadin-checkbox[checked]::part(checkbox) {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+vaadin-radio-button::part(radio) {
+  border: 1px solid var(--border-strong);
+  background: var(--bg-surface);
+}
+vaadin-radio-button[checked]::part(radio) {
+  border-color: var(--accent);
+}
+vaadin-radio-button[checked]::part(radio)::after {
+  background: var(--accent);
+}
+
+/* Grid — the star of a data-heavy app */
+vaadin-grid {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  font-size: var(--lumo-font-size-m);
+  color: var(--fg-default);
+  --_lumo-grid-row-hover-background-color: var(--bg-surface-2);
+  --_lumo-grid-row-selected-background-color: var(--accent-soft);
+  --_lumo-grid-border-color: var(--border-subtle);
+  --_lumo-grid-secondary-border-color: var(--border-subtle);
+}
+vaadin-grid::part(header-cell) {
+  background: var(--bg-surface-2);
+  color: var(--fg-muted);
+  font-size: var(--lumo-font-size-xs);
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border-default);
+  height: calc(var(--row-h) - 4px);
+}
+vaadin-grid::part(body-cell) {
+  height: var(--row-h);
+  padding: 0 var(--row-px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+vaadin-grid::part(even-row-cell) {
+  background: var(--bg-surface-2);
+}
+/* Numeric columns use mono + tabular-nums; apply via class 'num' */
+vaadin-grid-cell-content.num,
+vaadin-grid::part(body-cell) .num {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum";
+  text-align: right;
+}
+
+/* App Layout / navigation */
+vaadin-app-layout {
+  --vaadin-app-layout-navbar-background: var(--bg-surface);
+  --vaadin-app-layout-drawer-background: var(--bg-surface);
+}
+vaadin-app-layout::part(navbar) {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  min-height: var(--row-h);
+}
+vaadin-app-layout::part(drawer) {
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border-subtle);
+}
+
+/* Drawer toggle */
+vaadin-drawer-toggle {
+  color: var(--fg-muted);
+}
+vaadin-drawer-toggle:hover {
+  color: var(--fg-strong);
+}
+
+/* Dialog / Notification */
+vaadin-dialog-overlay::part(overlay),
+vaadin-confirm-dialog-overlay::part(overlay) {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+}
+vaadin-notification-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-2);
+  font-size: var(--lumo-font-size-m);
+  color: var(--fg-default);
+}
+
+/* Tabs */
+vaadin-tabs {
+  box-shadow: inset 0 -1px 0 var(--border-subtle);
+}
+vaadin-tab {
+  color: var(--fg-muted);
+  font-weight: 500;
+  font-size: var(--lumo-font-size-m);
+}
+vaadin-tab[selected] {
+  color: var(--fg-strong);
+}
+vaadin-tabs::part(bar)::after,
+vaadin-tab::part(selected-indicator),
+vaadin-tab[selected]::before {
+  background: var(--accent);
+}
+
+/* Badge (Lumo badge utility) */
+[theme~="badge"] {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  padding: 2px var(--s-2);
+  background: var(--bg-surface-3);
+  color: var(--fg-muted);
+}
+[theme~="badge"][theme~="primary"] { background: var(--accent-soft);  color: var(--accent-soft-fg); }
+[theme~="badge"][theme~="success"] { background: var(--success-soft); color: var(--success); }
+[theme~="badge"][theme~="error"]   { background: var(--danger-soft);  color: var(--danger); }
+[theme~="badge"][theme~="contrast"]{ background: var(--bg-surface-3); color: var(--fg-strong); }
+
+/* Text Area */
+vaadin-text-area::part(input-field) {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  box-shadow: none;
+  transition: border-color var(--dur-2) var(--ease-out), box-shadow var(--dur-2) var(--ease-out);
+}
+vaadin-text-area[focused]::part(input-field) {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+vaadin-text-area[invalid]::part(input-field) {
+  border-color: var(--danger);
+}
+/* Progress bar */
+vaadin-progress-bar {
+  --vaadin-progress-color: var(--accent);
+}
+vaadin-progress-bar::part(bar) {
+  border-radius: var(--radius-pill);
+  background: var(--bg-surface-3);
+}
+vaadin-progress-bar::part(value) {
+  border-radius: var(--radius-pill);
+}
+
+/* Accordion */
+vaadin-accordion-panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+vaadin-accordion-panel + vaadin-accordion-panel {
+  margin-top: var(--s-2);
+}
+vaadin-accordion-panel::part(summary) {
+  font-weight: 500;
+  color: var(--fg-strong);
+}
+vaadin-accordion-panel::part(content) {
+  border-top: 1px solid var(--border-subtle);
+  color: var(--fg-default);
+}
+
+/* Side nav */
+vaadin-side-nav {
+  font-size: var(--lumo-font-size-m);
+  padding: var(--s-2);
+}
+vaadin-side-nav-item {
+  border-radius: var(--radius-sm);
+  font-size: var(--lumo-font-size-m);
+  font-weight: 500;
+  color: var(--fg-muted);
+  margin-bottom: 2px;
+  transition: background var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out);
+}
+vaadin-side-nav-item::part(item) {
+  border-radius: var(--radius-sm);
+  padding: var(--s-2) var(--s-3);
+  margin: 0 var(--s-1);
+}
+vaadin-side-nav-item:hover::part(item) {
+  background: var(--bg-surface-3);
+  color: var(--fg-default);
+}
+vaadin-side-nav-item[active]::part(item) {
+  background: var(--accent-soft);
+  color: var(--accent-soft-fg);
+}
+
+/* Menu bar */
+vaadin-menu-bar-button {
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  color: var(--fg-default);
+  border: 1px solid var(--border-default);
+}
+vaadin-menu-bar-button:hover {
+  background: var(--bg-surface-3);
+}
+
+/* Split layout */
+vaadin-split-layout::part(splitter) {
+  background: var(--border-subtle);
+}
+
+/* Upload */
+vaadin-upload {
+  border: 1px dashed var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+}
+vaadin-upload[dragover] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* Message list / input */
+vaadin-message-list {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
+vaadin-message {
+  font-size: var(--lumo-font-size-m);
+}
+vaadin-message::part(name) {
+  font-weight: 500;
+  color: var(--fg-strong);
+}
+vaadin-message::part(time) {
+  font-family: var(--font-mono);
+  font-size: var(--lumo-font-size-xs);
+  color: var(--fg-subtle);
+}
+vaadin-message-input::part(input-field) {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+/* Details (standalone) */
+vaadin-details {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+vaadin-details::part(summary) {
+  font-weight: 500;
+  color: var(--fg-strong);
+}
+vaadin-details::part(content) {
+  border-top: 1px solid var(--border-subtle);
+  color: var(--fg-default);
+}
+
+/* Confirm dialog */
+vaadin-confirm-dialog-overlay::part(header) {
+  font-weight: 600;
+  color: var(--fg-strong);
+}
+vaadin-confirm-dialog-overlay::part(footer) {
+  background: var(--bg-surface-2);
+  border-top: 1px solid var(--border-subtle);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}

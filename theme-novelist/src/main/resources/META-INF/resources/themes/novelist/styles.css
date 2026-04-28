@@ -1,0 +1,709 @@
+/* ================================================================
+   Novelist — Literary Vaadin theme
+   Serif typography, manuscript feel, 3 palettes × light/dark
+   Activate with @Theme("novelist") or load dynamically
+   ================================================================ */
+
+/* --- 1. Fonts --------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+/* --- 2. Shared system tokens ------------------------------------ */
+html {
+  /* Type */
+  --nv-font-display: "EB Garamond", Garamond, serif;
+  --nv-font-body: "Lora", "EB Garamond", Georgia, serif;
+  --nv-font-ui: "Inter Tight", "Inter", system-ui, sans-serif;
+  --nv-font-mono: "JetBrains Mono", "Iosevka", ui-monospace, monospace;
+
+  /* Shape */
+  --nv-radius-sm: 3px;
+  --nv-radius-md: 5px;
+  --nv-radius-lg: 8px;
+  --nv-radius-pill: 999px;
+
+  /* Density */
+  --nv-row-sm: 28px;
+  --nv-row-md: 34px;
+  --nv-row-lg: 42px;
+}
+
+html[data-density="compact"]     { --nv-row-sm: 24px; --nv-row-md: 28px; --nv-row-lg: 34px; }
+html[data-density="comfortable"] { --nv-row-sm: 32px; --nv-row-md: 38px; --nv-row-lg: 48px; }
+
+/* --- 3. Palettes ------------------------------------------------ */
+
+/* === CODEX (default) · light === */
+html,
+html[data-palette="codex"],
+html[data-palette="codex"][data-mode="light"] {
+  --nv-bg: #f5f2ea;
+  --nv-surface: #fbf9f3;
+  --nv-surfaceAlt: #ece7d8;
+  --nv-border: #d4cdb8;
+  --nv-borderStrong: #a89e84;
+  --nv-ink: #1a1814;
+  --nv-text: #2a2620;
+  --nv-textSoft: #5a5448;
+  --nv-textMuted: #8a8474;
+  --nv-primary: #3a2f1f;
+  --nv-primaryHover: #1a1410;
+  --nv-onPrimary: #fbf9f3;
+  --nv-accent: #a85a2a;
+  --nv-accentSoft: #f0d4b8;
+  --nv-success: #4f6e2e;
+  --nv-warning: #b8763b;
+  --nv-danger: #a02a1f;
+  --nv-info: #2e5a6e;
+  --nv-rule: #a89e84;
+  --nv-shadow: 0 1px 0 rgba(255,252,245,.6) inset, 0 2px 8px rgba(60,50,30,.08), 0 12px 32px rgba(60,50,30,.12);
+  --nv-shadowSm: 0 1px 2px rgba(60,50,30,.12);
+  color-scheme: light;
+}
+
+/* === CODEX · dark === */
+html[data-mode="dark"],
+html[data-palette="codex"][data-mode="dark"] {
+  --nv-bg: #15130f;
+  --nv-surface: #1e1c17;
+  --nv-surfaceAlt: #28251e;
+  --nv-border: #3a352a;
+  --nv-borderStrong: #5a5448;
+  --nv-ink: #f5f2ea;
+  --nv-text: #e8e2d0;
+  --nv-textSoft: #a89e84;
+  --nv-textMuted: #6a6452;
+  --nv-primary: #e8c89a;
+  --nv-primaryHover: #f0d8b0;
+  --nv-onPrimary: #15130f;
+  --nv-accent: #d97550;
+  --nv-accentSoft: #3a2418;
+  --nv-success: #9bb56a;
+  --nv-warning: #e0a560;
+  --nv-danger: #d96050;
+  --nv-info: #7eb5c9;
+  --nv-rule: #3a352a;
+  --nv-shadow: 0 1px 0 rgba(255,240,200,.04) inset, 0 2px 8px rgba(0,0,0,.3), 0 12px 32px rgba(0,0,0,.5);
+  --nv-shadowSm: 0 1px 2px rgba(0,0,0,.3);
+  color-scheme: dark;
+}
+
+/* === SCRIPTORIUM · light === */
+html[data-palette="scriptorium"],
+html[data-palette="scriptorium"][data-mode="light"] {
+  --nv-bg: #f4ecd8;
+  --nv-surface: #fbf5e3;
+  --nv-surfaceAlt: #ede2c5;
+  --nv-border: #d9c89a;
+  --nv-borderStrong: #b89c5e;
+  --nv-ink: #2b1d10;
+  --nv-text: #3a2a18;
+  --nv-textSoft: #6b563a;
+  --nv-textMuted: #8b7754;
+  --nv-primary: #7a3b1d;
+  --nv-primaryHover: #5e2d15;
+  --nv-onPrimary: #fbf5e3;
+  --nv-accent: #b8893b;
+  --nv-accentSoft: #f0d99a;
+  --nv-success: #5e7a2e;
+  --nv-warning: #b8763b;
+  --nv-danger: #8b2a1f;
+  --nv-info: #3b6b7a;
+  --nv-rule: #b89c5e;
+  --nv-shadow: 0 1px 0 rgba(255,250,235,.6) inset, 0 2px 8px rgba(80,50,20,.08), 0 12px 32px rgba(80,50,20,.12);
+  --nv-shadowSm: 0 1px 2px rgba(80,50,20,.12);
+  color-scheme: light;
+}
+
+/* === SCRIPTORIUM · dark === */
+html[data-palette="scriptorium"][data-mode="dark"] {
+  --nv-bg: #1a130a;
+  --nv-surface: #241a0e;
+  --nv-surfaceAlt: #2e2210;
+  --nv-border: #3d2e15;
+  --nv-borderStrong: #5e4520;
+  --nv-ink: #f4ecd8;
+  --nv-text: #ebdfbf;
+  --nv-textSoft: #b89c70;
+  --nv-textMuted: #8b7754;
+  --nv-primary: #c9763b;
+  --nv-primaryHover: #e08f4d;
+  --nv-onPrimary: #1a130a;
+  --nv-accent: #e8b85c;
+  --nv-accentSoft: #3d2e15;
+  --nv-success: #9bb56a;
+  --nv-warning: #e8a85c;
+  --nv-danger: #d97560;
+  --nv-info: #7eb5c9;
+  --nv-rule: #5e4520;
+  --nv-shadow: 0 1px 0 rgba(255,220,150,.06) inset, 0 2px 8px rgba(0,0,0,.3), 0 12px 32px rgba(0,0,0,.5);
+  --nv-shadowSm: 0 1px 2px rgba(0,0,0,.3);
+  color-scheme: dark;
+}
+
+/* === SAGA · light === */
+html[data-palette="saga"],
+html[data-palette="saga"][data-mode="light"] {
+  --nv-bg: #e8e6df;
+  --nv-surface: #f3f1ea;
+  --nv-surfaceAlt: #dcd9d0;
+  --nv-border: #bdb8a8;
+  --nv-borderStrong: #8a8472;
+  --nv-ink: #15140f;
+  --nv-text: #26241c;
+  --nv-textSoft: #55503f;
+  --nv-textMuted: #7a7461;
+  --nv-primary: #2b3a3a;
+  --nv-primaryHover: #162424;
+  --nv-onPrimary: #f3f1ea;
+  --nv-accent: #8b6a3b;
+  --nv-accentSoft: #d9c89a;
+  --nv-success: #4a6b3e;
+  --nv-warning: #a87331;
+  --nv-danger: #7a3128;
+  --nv-info: #3b5a6b;
+  --nv-rule: #bdb8a8;
+  --nv-shadow: 0 1px 0 rgba(255,252,240,.5) inset, 0 2px 8px rgba(40,35,25,.08), 0 12px 32px rgba(40,35,25,.10);
+  --nv-shadowSm: 0 1px 2px rgba(40,35,25,.10);
+  color-scheme: light;
+}
+
+/* === SAGA · dark === */
+html[data-palette="saga"][data-mode="dark"] {
+  --nv-bg: #0f1112;
+  --nv-surface: #181a1c;
+  --nv-surfaceAlt: #22252a;
+  --nv-border: #2e3236;
+  --nv-borderStrong: #4a4f55;
+  --nv-ink: #eeeae0;
+  --nv-text: #dad5c8;
+  --nv-textSoft: #9a9484;
+  --nv-textMuted: #6a6558;
+  --nv-primary: #a8c4c4;
+  --nv-primaryHover: #c5dcdc;
+  --nv-onPrimary: #0f1112;
+  --nv-accent: #c9a266;
+  --nv-accentSoft: #2a2418;
+  --nv-success: #8ab57a;
+  --nv-warning: #d9a55c;
+  --nv-danger: #d97560;
+  --nv-info: #7eb5c9;
+  --nv-rule: #2e3236;
+  --nv-shadow: 0 1px 0 rgba(200,195,180,.04) inset, 0 2px 8px rgba(0,0,0,.35), 0 12px 32px rgba(0,0,0,.5);
+  --nv-shadowSm: 0 1px 2px rgba(0,0,0,.3);
+  color-scheme: dark;
+}
+
+/* ================================================================
+   4. Lumo alias layer
+   Must cover all palette × mode selectors for specificity
+   ================================================================ */
+html,
+html[data-palette="codex"],
+html[data-palette="scriptorium"],
+html[data-palette="saga"],
+html[data-mode="light"],
+html[data-mode="dark"],
+html[theme~="dark"],
+html[theme~="light"] {
+  /* Typography */
+  --lumo-font-family: var(--nv-font-ui);
+  --lumo-font-size-xxs: 10px;
+  --lumo-font-size-xs: 11px;
+  --lumo-font-size-s: 12px;
+  --lumo-font-size-m: 13.5px;
+  --lumo-font-size-l: 15px;
+  --lumo-font-size-xl: 18px;
+  --lumo-font-size-xxl: 24px;
+  --lumo-font-size-xxxl: 36px;
+  --lumo-line-height-xs: 1.15;
+  --lumo-line-height-s: 1.3;
+  --lumo-line-height-m: 1.55;
+
+  /* Sizing */
+  --lumo-size-xs: calc(var(--nv-row-md) - 8px);
+  --lumo-size-s: calc(var(--nv-row-md) - 4px);
+  --lumo-size-m: var(--nv-row-md);
+  --lumo-size-l: calc(var(--nv-row-md) + 8px);
+  --lumo-size-xl: calc(var(--nv-row-md) + 16px);
+
+  /* Spacing */
+  --lumo-space-xs: 4px;
+  --lumo-space-s: 8px;
+  --lumo-space-m: 16px;
+  --lumo-space-l: 24px;
+  --lumo-space-xl: 32px;
+
+  /* Border radius */
+  --lumo-border-radius-s: var(--nv-radius-sm);
+  --lumo-border-radius-m: var(--nv-radius-md);
+  --lumo-border-radius-l: var(--nv-radius-lg);
+
+  /* Base / surface */
+  --lumo-base-color: var(--nv-surface);
+  --lumo-tint: var(--nv-surface);
+  --lumo-shade: var(--nv-ink);
+
+  /* Contrast scale */
+  --lumo-contrast-5pct: var(--nv-surfaceAlt);
+  --lumo-contrast-10pct: var(--nv-border);
+  --lumo-contrast-20pct: var(--nv-border);
+  --lumo-contrast-30pct: var(--nv-borderStrong);
+  --lumo-contrast-40pct: var(--nv-borderStrong);
+  --lumo-contrast-50pct: var(--nv-textMuted);
+  --lumo-contrast-60pct: var(--nv-textSoft);
+  --lumo-contrast-70pct: var(--nv-textSoft);
+  --lumo-contrast-80pct: var(--nv-text);
+  --lumo-contrast-90pct: var(--nv-ink);
+  --lumo-contrast: var(--nv-ink);
+
+  /* Text */
+  --lumo-header-text-color: var(--nv-ink);
+  --lumo-body-text-color: var(--nv-text);
+  --lumo-secondary-text-color: var(--nv-textSoft);
+  --lumo-tertiary-text-color: var(--nv-textMuted);
+  --lumo-disabled-text-color: var(--nv-textMuted);
+
+  /* Primary */
+  --lumo-primary-color: var(--nv-primary);
+  --lumo-primary-color-50pct: color-mix(in oklab, var(--nv-primary) 50%, transparent);
+  --lumo-primary-color-10pct: color-mix(in oklab, var(--nv-primary) 10%, transparent);
+  --lumo-primary-text-color: var(--nv-primary);
+  --lumo-primary-contrast-color: var(--nv-onPrimary);
+
+  /* Semantic */
+  --lumo-error-color: var(--nv-danger);
+  --lumo-error-color-50pct: color-mix(in oklab, var(--nv-danger) 50%, transparent);
+  --lumo-error-color-10pct: color-mix(in oklab, var(--nv-danger) 10%, transparent);
+  --lumo-error-text-color: var(--nv-danger);
+  --lumo-error-contrast-color: var(--nv-onPrimary);
+
+  --lumo-success-color: var(--nv-success);
+  --lumo-success-color-50pct: color-mix(in oklab, var(--nv-success) 50%, transparent);
+  --lumo-success-color-10pct: color-mix(in oklab, var(--nv-success) 10%, transparent);
+  --lumo-success-text-color: var(--nv-success);
+  --lumo-success-contrast-color: var(--nv-onPrimary);
+
+  --lumo-warning-color: var(--nv-warning);
+  --lumo-warning-color-10pct: color-mix(in oklab, var(--nv-warning) 10%, transparent);
+  --lumo-warning-text-color: var(--nv-warning);
+  --lumo-warning-contrast-color: var(--nv-onPrimary);
+
+  /* Shadows */
+  --lumo-box-shadow-xs: var(--nv-shadowSm);
+  --lumo-box-shadow-s: var(--nv-shadowSm);
+  --lumo-box-shadow-m: var(--nv-shadow);
+  --lumo-box-shadow-l: var(--nv-shadow);
+  --lumo-box-shadow-xl: var(--nv-shadow);
+
+  --lumo-clickable-cursor: pointer;
+}
+
+/* ================================================================
+   5. Global styles
+   ================================================================ */
+
+body {
+  background: var(--nv-bg);
+  color: var(--nv-text);
+  font-family: var(--nv-font-ui);
+  font-size: 13.5px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings — display serif, italic signature */
+h1, h2, h3 {
+  font-family: var(--nv-font-display);
+  color: var(--nv-ink);
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -0.005em;
+  line-height: 1.15;
+  margin: 0;
+}
+h1 { font-size: 36px; }
+h2 { font-size: 24px; }
+h3 { font-size: 18px; }
+h4 {
+  font-family: var(--nv-font-ui);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--nv-textMuted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+/* ================================================================
+   6. Component overrides
+   ================================================================ */
+
+/* --- Input fields --- */
+vaadin-text-field::part(input-field),
+vaadin-password-field::part(input-field),
+vaadin-email-field::part(input-field),
+vaadin-number-field::part(input-field),
+vaadin-integer-field::part(input-field),
+vaadin-big-decimal-field::part(input-field),
+vaadin-text-area::part(input-field),
+vaadin-select::part(input-field),
+vaadin-combo-box::part(input-field),
+vaadin-multi-select-combo-box::part(input-field),
+vaadin-date-picker::part(input-field),
+vaadin-time-picker::part(input-field),
+vaadin-date-time-picker::part(input-field) {
+  border-radius: var(--nv-radius-md);
+  border: 1px solid var(--nv-border);
+  background: var(--nv-surface);
+  box-sizing: border-box;
+  height: var(--nv-row-md);
+  min-height: var(--nv-row-md);
+  padding: 0 12px;
+  box-shadow: none;
+  transition: border-color .12s, box-shadow .12s;
+}
+
+/* Focus */
+vaadin-text-field[focused]::part(input-field),
+vaadin-password-field[focused]::part(input-field),
+vaadin-email-field[focused]::part(input-field),
+vaadin-number-field[focused]::part(input-field),
+vaadin-integer-field[focused]::part(input-field),
+vaadin-big-decimal-field[focused]::part(input-field),
+vaadin-text-area[focused]::part(input-field),
+vaadin-select[focused]::part(input-field),
+vaadin-combo-box[focused]::part(input-field),
+vaadin-multi-select-combo-box[focused]::part(input-field),
+vaadin-date-picker[focused]::part(input-field),
+vaadin-time-picker[focused]::part(input-field) {
+  border-color: var(--nv-primary);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--nv-primary) 18%, transparent);
+}
+
+/* Invalid */
+vaadin-text-field[invalid]::part(input-field),
+vaadin-password-field[invalid]::part(input-field),
+vaadin-email-field[invalid]::part(input-field),
+vaadin-number-field[invalid]::part(input-field),
+vaadin-integer-field[invalid]::part(input-field),
+vaadin-text-area[invalid]::part(input-field),
+vaadin-select[invalid]::part(input-field),
+vaadin-combo-box[invalid]::part(input-field),
+vaadin-multi-select-combo-box[invalid]::part(input-field),
+vaadin-date-picker[invalid]::part(input-field),
+vaadin-time-picker[invalid]::part(input-field) {
+  border-color: var(--nv-danger);
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--nv-danger) 18%, transparent);
+}
+
+/* Labels — UI font, uppercase eyebrow */
+vaadin-text-field::part(label),
+vaadin-password-field::part(label),
+vaadin-email-field::part(label),
+vaadin-number-field::part(label),
+vaadin-integer-field::part(label),
+vaadin-big-decimal-field::part(label),
+vaadin-text-area::part(label),
+vaadin-select::part(label),
+vaadin-combo-box::part(label),
+vaadin-multi-select-combo-box::part(label),
+vaadin-date-picker::part(label),
+vaadin-time-picker::part(label),
+vaadin-date-time-picker::part(label),
+vaadin-upload::part(label),
+vaadin-checkbox-group::part(label),
+vaadin-radio-group::part(label) {
+  font-family: var(--nv-font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--nv-textMuted);
+}
+
+/* --- Buttons --- */
+vaadin-button {
+  border-radius: var(--nv-radius-md);
+  font-family: var(--nv-font-ui);
+  font-weight: 600;
+  font-size: 13.5px;
+  letter-spacing: 0.005em;
+  transition: background .12s, border-color .12s, color .12s, transform .04s;
+}
+vaadin-button[theme~="primary"] {
+  background: var(--nv-primary);
+  color: var(--nv-onPrimary);
+  box-shadow: var(--nv-shadowSm);
+}
+vaadin-button[theme~="primary"]:hover {
+  background: var(--nv-primaryHover);
+}
+vaadin-button[theme~="tertiary"],
+vaadin-button[theme~="tertiary-inline"] {
+  background: transparent;
+  color: var(--nv-text);
+}
+vaadin-button[theme~="tertiary"]:hover {
+  background: var(--nv-surfaceAlt);
+}
+vaadin-button[theme~="error"][theme~="primary"] {
+  background: var(--nv-danger);
+  color: var(--nv-onPrimary);
+}
+/* Secondary (default) — outline */
+vaadin-button:not([theme~="primary"]):not([theme~="tertiary"]):not([theme~="tertiary-inline"]) {
+  border: 1px solid var(--nv-borderStrong);
+  background: transparent;
+  color: var(--nv-text);
+}
+vaadin-button:not([theme~="primary"]):not([theme~="tertiary"]):not([theme~="tertiary-inline"]):hover {
+  background: var(--nv-surfaceAlt);
+  border-color: var(--nv-text);
+}
+
+/* --- Checkbox / Radio --- */
+vaadin-checkbox::part(checkbox) {
+  border-radius: var(--nv-radius-sm);
+  border: 1.5px solid var(--nv-borderStrong);
+  background: var(--nv-surface);
+}
+vaadin-checkbox[checked]::part(checkbox) {
+  background: var(--nv-primary);
+  border-color: var(--nv-primary);
+}
+vaadin-radio-button::part(radio) {
+  border: 1.5px solid var(--nv-borderStrong);
+  background: var(--nv-surface);
+}
+vaadin-radio-button[checked]::part(radio) {
+  border-color: var(--nv-primary);
+}
+vaadin-radio-button[checked]::part(radio)::after {
+  background: var(--nv-primary);
+}
+
+/* --- Grid --- */
+vaadin-grid {
+  background: var(--nv-surface);
+  border: 1px solid var(--nv-border);
+  border-radius: var(--nv-radius-lg);
+  font-family: var(--nv-font-ui);
+  font-size: 13.5px;
+  color: var(--nv-text);
+  --_lumo-grid-border-color: var(--nv-border);
+  --_lumo-grid-secondary-border-color: var(--nv-border);
+  --_lumo-grid-row-hover-background-color: var(--nv-surfaceAlt);
+  --_lumo-grid-row-selected-background-color: color-mix(in oklab, var(--nv-primary) 8%, var(--nv-surface));
+}
+vaadin-grid::part(header-cell) {
+  background: var(--nv-surfaceAlt);
+  color: var(--nv-textMuted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--nv-border);
+}
+vaadin-grid::part(body-cell) {
+  height: var(--nv-row-md);
+  padding: 0 14px;
+  border-bottom: 1px solid var(--nv-border);
+}
+
+/* --- App Layout --- */
+vaadin-app-layout::part(navbar) {
+  background: var(--nv-surface);
+  border-bottom: 1px solid var(--nv-border);
+}
+vaadin-app-layout::part(drawer) {
+  background: var(--nv-surface);
+  border-right: 1px solid var(--nv-border);
+}
+vaadin-drawer-toggle {
+  color: var(--nv-textSoft);
+}
+
+/* --- Side nav --- */
+vaadin-side-nav {
+  font-family: var(--nv-font-ui);
+  padding: 8px;
+}
+vaadin-side-nav-item {
+  font-family: var(--nv-font-ui);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--nv-textSoft);
+  border-radius: var(--nv-radius-md);
+  margin-bottom: 1px;
+  transition: background .12s, color .12s;
+}
+vaadin-side-nav-item::part(item) {
+  padding: 0 14px;
+  border-radius: var(--nv-radius-md);
+}
+vaadin-side-nav-item:hover::part(item) {
+  background: var(--nv-surfaceAlt);
+  color: var(--nv-text);
+}
+vaadin-side-nav-item[active]::part(item) {
+  background: color-mix(in oklab, var(--nv-primary) 12%, var(--nv-surface));
+  color: var(--nv-primary);
+  font-weight: 600;
+}
+
+/* --- Tabs --- */
+vaadin-tab {
+  font-family: var(--nv-font-ui);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--nv-textSoft);
+  transition: color .12s;
+}
+vaadin-tab[selected] {
+  color: var(--nv-text);
+}
+vaadin-tab[selected]::before,
+vaadin-tab::part(selected-indicator) {
+  background: var(--nv-accent);
+}
+vaadin-tabs {
+  box-shadow: inset 0 -1px 0 var(--nv-border);
+}
+
+/* --- Dialog --- */
+vaadin-dialog-overlay::part(overlay),
+vaadin-confirm-dialog-overlay::part(overlay) {
+  background: var(--nv-surface);
+  border: 1px solid var(--nv-border);
+  border-radius: var(--nv-radius-lg);
+  box-shadow: var(--nv-shadow);
+}
+vaadin-dialog-overlay::part(header),
+vaadin-confirm-dialog-overlay::part(header) {
+  font-family: var(--nv-font-display);
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* --- Notification --- */
+vaadin-notification-card {
+  background: var(--nv-ink);
+  color: var(--nv-onPrimary);
+  border-radius: var(--nv-radius-md);
+  box-shadow: var(--nv-shadow);
+  font-family: var(--nv-font-ui);
+  font-size: 13.5px;
+}
+
+/* --- Badge --- */
+[theme~="badge"] {
+  font-family: var(--nv-font-ui);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: var(--nv-radius-pill);
+  border: 1px solid var(--nv-border);
+  background: var(--nv-surface);
+  color: var(--nv-textSoft);
+}
+[theme~="badge"][theme~="primary"] { background: var(--nv-primary); color: var(--nv-onPrimary); border-color: var(--nv-primary); }
+[theme~="badge"][theme~="success"] { background: color-mix(in oklab, var(--nv-success) 18%, transparent); color: var(--nv-success); border-color: transparent; }
+[theme~="badge"][theme~="error"] { background: color-mix(in oklab, var(--nv-danger) 18%, transparent); color: var(--nv-danger); border-color: transparent; }
+[theme~="badge"][theme~="contrast"] { background: var(--nv-surfaceAlt); color: var(--nv-ink); border-color: var(--nv-border); }
+
+/* --- Progress bar --- */
+vaadin-progress-bar {
+  --vaadin-progress-color: var(--nv-accent);
+}
+vaadin-progress-bar::part(bar) {
+  border-radius: var(--nv-radius-pill);
+  background: var(--nv-surfaceAlt);
+}
+vaadin-progress-bar::part(value) {
+  border-radius: var(--nv-radius-pill);
+}
+
+/* --- Accordion / Details --- */
+vaadin-accordion-panel {
+  background: var(--nv-surface);
+  border: 1px solid var(--nv-border);
+  border-radius: var(--nv-radius-md);
+}
+vaadin-accordion-panel + vaadin-accordion-panel {
+  margin-top: 4px;
+}
+vaadin-accordion-panel::part(summary) {
+  font-family: var(--nv-font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--nv-ink);
+}
+vaadin-accordion-panel::part(content) {
+  border-top: 1px solid var(--nv-border);
+  color: var(--nv-text);
+}
+vaadin-details {
+  background: var(--nv-surface);
+  border: 1px solid var(--nv-border);
+  border-radius: var(--nv-radius-md);
+}
+vaadin-details::part(summary) {
+  font-family: var(--nv-font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--nv-ink);
+}
+vaadin-details::part(content) {
+  border-top: 1px solid var(--nv-border);
+  color: var(--nv-text);
+}
+
+/* --- Menu bar --- */
+vaadin-menu-bar-button {
+  border-radius: var(--nv-radius-md);
+  font-family: var(--nv-font-ui);
+  font-weight: 600;
+  color: var(--nv-text);
+}
+vaadin-menu-bar-button:hover {
+  background: var(--nv-surfaceAlt);
+}
+
+/* --- Upload --- */
+vaadin-upload {
+  border: 1px dashed var(--nv-borderStrong);
+  border-radius: var(--nv-radius-md);
+  background: var(--nv-surface);
+}
+
+/* --- Split layout --- */
+vaadin-split-layout::part(splitter) {
+  background: var(--nv-border);
+}
+
+/* --- Message list --- */
+vaadin-message-list {
+  background: var(--nv-surface);
+  border: 1px solid var(--nv-border);
+  border-radius: var(--nv-radius-lg);
+}
+vaadin-message::part(name) {
+  font-family: var(--nv-font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--nv-ink);
+}
+vaadin-message::part(time) {
+  font-family: var(--nv-font-ui);
+  font-size: 11px;
+  color: var(--nv-textMuted);
+}
+
+/* --- Confirm dialog --- */
+vaadin-confirm-dialog-overlay::part(header) {
+  font-family: var(--nv-font-display);
+  font-style: italic;
+}
+vaadin-confirm-dialog-overlay::part(footer) {
+  border-top: 1px solid var(--nv-border);
+}

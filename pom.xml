@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.antoined</groupId>
     <artifactId>vaadin-themes</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <vaadin.version>24.6.7</vaadin.version>
-        <spring-boot.version>3.4.3</spring-boot.version>
+        <java.version>21</java.version>
+        <vaadin.version>24.10.1</vaadin.version>
+        <spring-boot.version>3.5.0</spring-boot.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
 
     <modules>
         <module>theme-seagod</module>
+        <module>theme-fjord</module>
+        <module>theme-terminal-synth</module>
+        <module>theme-novelist</module>
         <module>test-app</module>
     </modules>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/adumeige/vaadin-themes</url>
+        </repository>
+    </distributionManagement>
 
     <dependencyManagement>
         <dependencies>

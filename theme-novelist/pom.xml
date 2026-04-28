@@ -10,9 +10,9 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>theme-seagod</artifactId>
-    <description>Vaadin theme inspired by the Poseidon UI kit — deep navy sidebar, ocean blue accents, clean modern
-        design.
+    <artifactId>theme-novelist</artifactId>
+    <description>Literary Vaadin theme — serif typography, manuscript feel, 3 palettes (Scriptorium/Saga/Codex), light +
+        dark modes.
     </description>
 
 </project>

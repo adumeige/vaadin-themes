@@ -10,9 +10,9 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>theme-seagod</artifactId>
-    <description>Vaadin theme inspired by the Poseidon UI kit — deep navy sidebar, ocean blue accents, clean modern
-        design.
+    <artifactId>theme-fjord</artifactId>
+    <description>Vaadin theme inspired by the Nord color palette — dense, productive, data-first with light/dark modes
+        and density toggling.
     </description>
 
 </project>

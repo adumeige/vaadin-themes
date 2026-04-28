@@ -1,8 +1,20 @@
-/* Split layout — subtle splitter */
+/* Split layout — rounded splitter handle */
 [part="splitter"] {
-    background: var(--lumo-contrast-10pct);
+    position: relative;
+    background: transparent;
+    min-width: 10px;
+    min-height: 10px;
 }
 
-[part="splitter"]:hover {
-    background: var(--lumo-primary-color-50pct);
+[part="splitter"]::after {
+    content: "";
+    position: absolute;
+    inset: 22% 35%;
+    border-radius: 999px;
+    background: rgba(149, 166, 199, 0.42);
+    transition: background-color 0.15s ease;
+}
+
+[part="splitter"]:hover::after {
+    background: rgba(59, 130, 246, 0.58);
 }

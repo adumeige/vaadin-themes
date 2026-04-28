@@ -1,0 +1,754 @@
+/* ================================================================
+   SynthTracker — Retro synthwave Vaadin theme
+   CRT terminal aesthetic, neon glows, box-drawing chrome
+   Activate with @Theme("terminal-synth")
+   ================================================================ */
+
+/* --- 1. Fonts --------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=VT323&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+
+/* --- 2. Palettes ------------------------------------------------ */
+
+html,
+html[data-palette="outrun"] {
+  /* Outrun — magenta, amber, electric blue on deep indigo (user's favorite) */
+  --st-bg-0: #0d0820;
+  --st-bg-1: #131333;
+  --st-bg-2: #1c1c4a;
+  --st-bg-3: #252a66;
+  --st-bg-4: #313884;
+
+  --st-fg-0: #fff3e6;
+  --st-fg-1: #d9c4ff;
+  --st-fg-2: #8c87c4;
+  --st-fg-3: #4a4880;
+
+  --st-primary: #ff4dd2;
+  --st-primary-soft: #ff8ce0;
+  --st-primary-deep: #b3008a;
+
+  --st-accent: #ffae3d;
+  --st-accent-soft: #ffd28a;
+  --st-accent-deep: #b06800;
+
+  --st-secondary: #4d8cff;
+  --st-secondary-soft: #8cb4ff;
+
+  --st-success: #6dff8a;
+  --st-warning: #ffae3d;
+  --st-danger:  #ff5566;
+  --st-info:    #4d8cff;
+
+  --st-grid:    rgba(77, 140, 255, 0.10);
+  --st-scan:    rgba(255, 174, 61, 0.04);
+}
+
+html[data-palette="miami"] {
+  --st-bg-0: #0a0612;
+  --st-bg-1: #14091f;
+  --st-bg-2: #1d0d2e;
+  --st-bg-3: #2a1342;
+  --st-bg-4: #3a1c5c;
+
+  --st-fg-0: #f5e9ff;
+  --st-fg-1: #c9a8e8;
+  --st-fg-2: #8a6db0;
+  --st-fg-3: #4a3868;
+
+  --st-primary: #ff2a92;
+  --st-primary-soft: #ff7ac0;
+  --st-primary-deep: #b00060;
+
+  --st-accent: #00f0ff;
+  --st-accent-soft: #6ef9ff;
+  --st-accent-deep: #008ea0;
+
+  --st-secondary: #b14cff;
+  --st-secondary-soft: #d28cff;
+
+  --st-success: #6dff8a;
+  --st-warning: #ffcc33;
+  --st-danger:  #ff3a3a;
+  --st-info:    #00f0ff;
+
+  --st-grid:    rgba(177, 76, 255, 0.08);
+  --st-scan:    rgba(255, 42, 146, 0.04);
+}
+
+html[data-palette="tokyo"] {
+  --st-bg-0: #07101e;
+  --st-bg-1: #0a1a2e;
+  --st-bg-2: #0f2640;
+  --st-bg-3: #163152;
+  --st-bg-4: #1f4470;
+
+  --st-fg-0: #e6faff;
+  --st-fg-1: #a8d3e8;
+  --st-fg-2: #6889a0;
+  --st-fg-3: #36546e;
+
+  --st-primary: #5dffaa;
+  --st-primary-soft: #99ffcb;
+  --st-primary-deep: #00a35a;
+
+  --st-accent: #ff48b9;
+  --st-accent-soft: #ff8ad2;
+  --st-accent-deep: #a3007a;
+
+  --st-secondary: #ffd23d;
+  --st-secondary-soft: #ffe48a;
+
+  --st-success: #5dffaa;
+  --st-warning: #ffd23d;
+  --st-danger:  #ff5566;
+  --st-info:    #4dc4ff;
+
+  --st-grid:    rgba(93, 255, 170, 0.08);
+  --st-scan:    rgba(255, 72, 185, 0.03);
+}
+
+html[data-palette="dusk"] {
+  --st-bg-0: #1c1830;
+  --st-bg-1: #25223e;
+  --st-bg-2: #2f2c4b;
+  --st-bg-3: #3d3960;
+  --st-bg-4: #524d7a;
+
+  --st-fg-0: #ece6f5;
+  --st-fg-1: #b8b0d0;
+  --st-fg-2: #847ea0;
+  --st-fg-3: #5a5478;
+
+  --st-primary: #ff7eb6;
+  --st-primary-soft: #ffadcd;
+  --st-primary-deep: #c44a87;
+
+  --st-accent: #7af0d4;
+  --st-accent-soft: #b3f7e6;
+  --st-accent-deep: #2a9e85;
+
+  --st-secondary: #c39bff;
+  --st-secondary-soft: #d9bfff;
+
+  --st-success: #8fe8b3;
+  --st-warning: #ffce7a;
+  --st-danger:  #ff8a8a;
+  --st-info:    #7ad0ff;
+
+  --st-grid:    rgba(195, 155, 255, 0.07);
+  --st-scan:    rgba(255, 126, 182, 0.025);
+}
+
+/* --- 3. Design tokens ------------------------------------------- */
+html {
+  /* Type */
+  --st-font-pixel: "VT323", "Courier New", monospace;
+  --st-font-mono:  "JetBrains Mono", "Fira Code", "Courier New", monospace;
+  --st-font-ui:    var(--st-font-mono);
+  --st-font-head:  var(--st-font-pixel);
+
+  --st-fs-xs:   11px;
+  --st-fs-sm:   12px;
+  --st-fs-md:   13px;
+  --st-fs-lg:   15px;
+  --st-fs-xl:   18px;
+  --st-fs-h3:   22px;
+  --st-fs-h2:   28px;
+  --st-fs-h1:   40px;
+
+  /* Spacing — 4px base */
+  --st-s-1: 4px;  --st-s-2: 8px;  --st-s-3: 12px; --st-s-4: 16px;
+  --st-s-5: 24px; --st-s-6: 32px; --st-s-7: 48px; --st-s-8: 64px;
+
+  /* Radii — sharp by default */
+  --st-r-0: 0px;
+  --st-r-1: 2px;
+  --st-r-2: 4px;
+  --st-r-soft: 0px;
+
+  /* Borders */
+  --st-bw: 1px;
+  --st-bw-2: 2px;
+
+  /* Glow intensity */
+  --st-glow: 0.55;
+
+  /* Shadows / glows */
+  --st-glow-primary:   0 0 calc(12px * var(--st-glow)) color-mix(in srgb, var(--st-primary) calc(60% * var(--st-glow)), transparent);
+  --st-glow-accent:    0 0 calc(12px * var(--st-glow)) color-mix(in srgb, var(--st-accent)  calc(60% * var(--st-glow)), transparent);
+  --st-text-glow-primary: 0 0 calc(8px * var(--st-glow)) color-mix(in srgb, var(--st-primary) calc(50% * var(--st-glow)), transparent);
+  --st-text-glow-accent:  0 0 calc(8px * var(--st-glow)) color-mix(in srgb, var(--st-accent)  calc(50% * var(--st-glow)), transparent);
+
+  /* Density */
+  --st-density: 1;
+  --st-row-h: calc(28px * var(--st-density));
+  --st-input-h: calc(32px * var(--st-density));
+  --st-btn-h:  calc(32px * var(--st-density));
+}
+
+html[data-density="comfortable"] { --st-density: 1.18; }
+html[data-density="compact"]     { --st-density: 0.85; }
+
+html[data-radius="rounded"] { --st-r-soft: 4px; }
+html[data-radius="sharp"]   { --st-r-soft: 0px; }
+
+/* Subtle flicker */
+@keyframes st-flicker {
+  0%, 96%, 100% { opacity: 1; }
+  97% { opacity: 0.92; }
+  98% { opacity: 0.97; }
+  99% { opacity: 0.88; }
+}
+
+/* Cursor blink */
+@keyframes st-blink { 50% { opacity: 0; } }
+
+/* Scanlines (opt-in via data-scanlines="on") */
+html[data-scanlines="on"] body::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, transparent 0, transparent 2px, rgba(0,0,0,0.18) 2px, rgba(0,0,0,0.18) 3px);
+  mix-blend-mode: multiply;
+  z-index: 9998;
+}
+
+/* ================================================================
+   4. Lumo alias layer
+   Repeated on html[theme~="dark"] to beat Lumo's specificity.
+   SynthTracker is dark-only, so we always force dark color-scheme.
+   ================================================================ */
+html,
+html[theme~="dark"],
+html[theme~="light"] {
+  /* Typography */
+  --lumo-font-family: var(--st-font-mono);
+  --lumo-font-size-xxs: var(--st-fs-xs);
+  --lumo-font-size-xs:  var(--st-fs-xs);
+  --lumo-font-size-s:   var(--st-fs-sm);
+  --lumo-font-size-m:   var(--st-fs-md);
+  --lumo-font-size-l:   var(--st-fs-lg);
+  --lumo-font-size-xl:  var(--st-fs-xl);
+  --lumo-font-size-xxl: var(--st-fs-h2);
+  --lumo-font-size-xxxl: var(--st-fs-h1);
+  --lumo-line-height-xs: 1.1;
+  --lumo-line-height-s:  1.3;
+  --lumo-line-height-m:  1.45;
+
+  /* Sizing — tied to density */
+  --lumo-size-xs: calc(var(--st-btn-h) - 8px);
+  --lumo-size-s:  calc(var(--st-btn-h) - 4px);
+  --lumo-size-m:  var(--st-btn-h);
+  --lumo-size-l:  calc(var(--st-btn-h) + 8px);
+  --lumo-size-xl: calc(var(--st-btn-h) + 16px);
+
+  /* Spacing */
+  --lumo-space-xs: var(--st-s-1);
+  --lumo-space-s:  var(--st-s-2);
+  --lumo-space-m:  var(--st-s-4);
+  --lumo-space-l:  var(--st-s-5);
+  --lumo-space-xl: var(--st-s-6);
+
+  /* Border radius */
+  --lumo-border-radius-s: var(--st-r-soft);
+  --lumo-border-radius-m: var(--st-r-soft);
+  --lumo-border-radius-l: var(--st-r-1);
+
+  /* Base / surface */
+  --lumo-base-color:  var(--st-bg-1);
+  --lumo-tint:        var(--st-bg-1);
+  --lumo-shade:       var(--st-fg-0);
+
+  /* Contrast scale */
+  --lumo-contrast-5pct:   var(--st-bg-2);
+  --lumo-contrast-10pct:  var(--st-bg-3);
+  --lumo-contrast-20pct:  var(--st-bg-3);
+  --lumo-contrast-30pct:  var(--st-bg-4);
+  --lumo-contrast-40pct:  var(--st-bg-4);
+  --lumo-contrast-50pct:  var(--st-fg-3);
+  --lumo-contrast-60pct:  var(--st-fg-2);
+  --lumo-contrast-70pct:  var(--st-fg-2);
+  --lumo-contrast-80pct:  var(--st-fg-1);
+  --lumo-contrast-90pct:  var(--st-fg-0);
+  --lumo-contrast:        var(--st-fg-0);
+
+  /* Body/header text */
+  --lumo-header-text-color:     var(--st-fg-0);
+  --lumo-body-text-color:       var(--st-fg-0);
+  --lumo-secondary-text-color:  var(--st-fg-1);
+  --lumo-tertiary-text-color:   var(--st-fg-2);
+  --lumo-disabled-text-color:   var(--st-fg-3);
+
+  /* Primary */
+  --lumo-primary-color:          var(--st-primary);
+  --lumo-primary-color-50pct:    color-mix(in srgb, var(--st-primary) 50%, transparent);
+  --lumo-primary-color-10pct:    color-mix(in srgb, var(--st-primary) 10%, transparent);
+  --lumo-primary-text-color:     var(--st-primary);
+  --lumo-primary-contrast-color: var(--st-bg-0);
+
+  /* Semantic */
+  --lumo-error-color:          var(--st-danger);
+  --lumo-error-color-50pct:    color-mix(in srgb, var(--st-danger) 50%, transparent);
+  --lumo-error-color-10pct:    color-mix(in srgb, var(--st-danger) 10%, transparent);
+  --lumo-error-text-color:     var(--st-danger);
+  --lumo-error-contrast-color: var(--st-bg-0);
+
+  --lumo-success-color:          var(--st-success);
+  --lumo-success-color-50pct:    color-mix(in srgb, var(--st-success) 50%, transparent);
+  --lumo-success-color-10pct:    color-mix(in srgb, var(--st-success) 10%, transparent);
+  --lumo-success-text-color:     var(--st-success);
+  --lumo-success-contrast-color: var(--st-bg-0);
+
+  --lumo-warning-color:          var(--st-warning);
+  --lumo-warning-color-10pct:    color-mix(in srgb, var(--st-warning) 10%, transparent);
+  --lumo-warning-text-color:     var(--st-warning);
+  --lumo-warning-contrast-color: var(--st-bg-0);
+
+  /* Shadows — neon glow */
+  --lumo-box-shadow-xs: 0 0 0 1px var(--st-bg-3) inset;
+  --lumo-box-shadow-s:  0 0 0 1px var(--st-bg-3) inset;
+  --lumo-box-shadow-m:  0 4px 0 0 var(--st-bg-0), 0 0 0 1px var(--st-bg-3);
+  --lumo-box-shadow-l:  var(--st-glow-primary);
+  --lumo-box-shadow-xl: var(--st-glow-primary);
+
+  --lumo-clickable-cursor: pointer;
+  color-scheme: dark;
+}
+
+/* ================================================================
+   5. Component overrides
+   ================================================================ */
+
+/* Global body */
+body {
+  background: var(--st-bg-0);
+  color: var(--st-fg-0);
+  font-family: var(--st-font-mono);
+  font-size: var(--st-fs-md);
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  font-family: var(--st-font-pixel);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  margin: 0;
+}
+h1 { font-size: var(--st-fs-h1); color: var(--st-primary); text-shadow: var(--st-text-glow-primary); animation: st-flicker 6s infinite steps(1, end); }
+h2 { font-size: var(--st-fs-h2); color: var(--st-accent); text-shadow: var(--st-text-glow-accent); animation: st-flicker 6s infinite steps(1, end); }
+h3 { font-size: var(--st-fs-h3); color: var(--st-fg-0); }
+h4 { font-size: var(--st-fs-xl); color: var(--st-fg-1); font-family: var(--st-font-mono); }
+
+/* Input fields — all types */
+vaadin-text-field::part(input-field),
+vaadin-password-field::part(input-field),
+vaadin-email-field::part(input-field),
+vaadin-number-field::part(input-field),
+vaadin-integer-field::part(input-field),
+vaadin-big-decimal-field::part(input-field),
+vaadin-text-area::part(input-field),
+vaadin-select::part(input-field),
+vaadin-combo-box::part(input-field),
+vaadin-multi-select-combo-box::part(input-field),
+vaadin-date-picker::part(input-field),
+vaadin-time-picker::part(input-field),
+vaadin-date-time-picker::part(input-field) {
+  background: var(--st-bg-0);
+  border: var(--st-bw) solid var(--st-bg-3);
+  border-radius: var(--st-r-soft);
+  box-sizing: border-box;
+  height: var(--st-input-h);
+  min-height: var(--st-input-h);
+  padding: 0 var(--st-s-3);
+  box-shadow: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+/* Focus state — accent glow */
+vaadin-text-field[focused]::part(input-field),
+vaadin-password-field[focused]::part(input-field),
+vaadin-email-field[focused]::part(input-field),
+vaadin-number-field[focused]::part(input-field),
+vaadin-integer-field[focused]::part(input-field),
+vaadin-big-decimal-field[focused]::part(input-field),
+vaadin-text-area[focused]::part(input-field),
+vaadin-select[focused]::part(input-field),
+vaadin-combo-box[focused]::part(input-field),
+vaadin-multi-select-combo-box[focused]::part(input-field),
+vaadin-date-picker[focused]::part(input-field),
+vaadin-time-picker[focused]::part(input-field) {
+  border-color: var(--st-accent);
+  box-shadow: var(--st-glow-accent), inset 0 0 0 1px var(--st-accent);
+}
+
+/* Invalid state — danger */
+vaadin-text-field[invalid]::part(input-field),
+vaadin-password-field[invalid]::part(input-field),
+vaadin-email-field[invalid]::part(input-field),
+vaadin-number-field[invalid]::part(input-field),
+vaadin-integer-field[invalid]::part(input-field),
+vaadin-big-decimal-field[invalid]::part(input-field),
+vaadin-text-area[invalid]::part(input-field),
+vaadin-select[invalid]::part(input-field),
+vaadin-combo-box[invalid]::part(input-field),
+vaadin-multi-select-combo-box[invalid]::part(input-field),
+vaadin-date-picker[invalid]::part(input-field),
+vaadin-time-picker[invalid]::part(input-field) {
+  border-color: var(--st-danger);
+}
+
+/* Labels — monospace, uppercase, tracked */
+vaadin-text-field::part(label),
+vaadin-password-field::part(label),
+vaadin-email-field::part(label),
+vaadin-number-field::part(label),
+vaadin-integer-field::part(label),
+vaadin-big-decimal-field::part(label),
+vaadin-text-area::part(label),
+vaadin-select::part(label),
+vaadin-combo-box::part(label),
+vaadin-multi-select-combo-box::part(label),
+vaadin-date-picker::part(label),
+vaadin-time-picker::part(label),
+vaadin-date-time-picker::part(label),
+vaadin-upload::part(label),
+vaadin-checkbox-group::part(label),
+vaadin-radio-group::part(label) {
+  font-family: var(--st-font-mono);
+  font-size: var(--st-fs-xs);
+  font-weight: 500;
+  color: var(--st-fg-1);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Buttons — beveled, uppercase, stepped active */
+vaadin-button {
+  border-radius: var(--st-r-soft);
+  font-family: var(--st-font-mono);
+  font-weight: 500;
+  font-size: var(--st-fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+vaadin-button[theme~="primary"] {
+  background: var(--st-primary);
+  color: var(--st-bg-0);
+  box-shadow: var(--st-glow-primary),
+    inset 1px 1px 0 0 var(--st-primary-soft),
+    inset -1px -1px 0 0 var(--st-primary-deep);
+}
+vaadin-button[theme~="primary"]:hover {
+  background: var(--st-primary-soft);
+}
+vaadin-button[theme~="tertiary"],
+vaadin-button[theme~="tertiary-inline"] {
+  background: transparent;
+  color: var(--st-fg-1);
+  border: var(--st-bw) solid var(--st-bg-3);
+}
+vaadin-button[theme~="tertiary"]:hover {
+  border-color: var(--st-accent);
+  color: var(--st-accent);
+}
+vaadin-button[theme~="error"][theme~="primary"] {
+  background: var(--st-danger);
+  color: var(--st-bg-0);
+}
+
+/* Checkbox — ✕ mark style */
+vaadin-checkbox::part(checkbox) {
+  border-radius: 0;
+  border: var(--st-bw) solid var(--st-bg-4);
+  background: var(--st-bg-0);
+}
+vaadin-checkbox[checked]::part(checkbox) {
+  background: var(--st-primary);
+  border-color: var(--st-primary);
+  box-shadow: var(--st-glow-primary);
+}
+
+/* Radio — square dot indicator */
+vaadin-radio-button::part(radio) {
+  border: var(--st-bw) solid var(--st-bg-4);
+  background: var(--st-bg-0);
+}
+vaadin-radio-button[checked]::part(radio) {
+  border-color: var(--st-primary);
+}
+vaadin-radio-button[checked]::part(radio)::after {
+  background: var(--st-primary);
+}
+
+/* Grid — tracker style */
+vaadin-grid {
+  background: var(--st-bg-1);
+  border: var(--st-bw) solid var(--st-bg-3);
+  border-radius: var(--st-r-soft);
+  font-family: var(--st-font-mono);
+  font-size: var(--st-fs-sm);
+  color: var(--st-fg-0);
+  --_lumo-grid-border-color: var(--st-bg-3);
+  --_lumo-grid-secondary-border-color: color-mix(in srgb, var(--st-bg-2) 70%, transparent);
+  --_lumo-grid-row-hover-background-color: color-mix(in srgb, var(--st-accent) 6%, transparent);
+  --_lumo-grid-row-selected-background-color: color-mix(in srgb, var(--st-primary) 12%, transparent);
+}
+vaadin-grid::part(header-cell) {
+  background: var(--st-bg-2);
+  color: var(--st-fg-2);
+  font-size: var(--st-fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: var(--st-bw) solid var(--st-bg-3);
+  height: var(--st-row-h);
+}
+vaadin-grid::part(body-cell) {
+  height: var(--st-row-h);
+  padding: 0 var(--st-s-3);
+  border-bottom: var(--st-bw) solid color-mix(in srgb, var(--st-bg-2) 70%, transparent);
+}
+
+/* App Layout */
+vaadin-app-layout {
+  --vaadin-app-layout-navbar-background: var(--st-bg-1);
+  --vaadin-app-layout-drawer-background: var(--st-bg-1);
+}
+vaadin-app-layout::part(navbar) {
+  background: var(--st-bg-1);
+  border-bottom: var(--st-bw) solid var(--st-bg-3);
+}
+vaadin-app-layout::part(drawer) {
+  background: var(--st-bg-1);
+  border-right: var(--st-bw) solid var(--st-bg-3);
+}
+
+/* Drawer toggle */
+vaadin-drawer-toggle {
+  color: var(--st-fg-2);
+}
+vaadin-drawer-toggle:hover {
+  color: var(--st-accent);
+}
+
+/* Side nav — terminal style */
+vaadin-side-nav {
+  font-family: var(--st-font-mono);
+  font-size: var(--st-fs-sm);
+  padding: var(--st-s-3);
+}
+vaadin-side-nav-item {
+  font-family: var(--st-font-mono);
+  font-size: var(--st-fs-sm);
+  font-weight: 500;
+  color: var(--st-fg-1);
+  border-radius: 0;
+  border-left: 2px solid transparent;
+  margin-bottom: 2px;
+  transition: background 120ms ease, color 120ms ease;
+}
+vaadin-side-nav-item::part(item) {
+  padding: 6px var(--st-s-2);
+}
+vaadin-side-nav-item:hover::part(item) {
+  background: var(--st-bg-2);
+  color: var(--st-fg-0);
+}
+vaadin-side-nav-item[active] {
+  border-left-color: var(--st-primary);
+}
+vaadin-side-nav-item[active]::part(item) {
+  background: color-mix(in srgb, var(--st-primary) 12%, var(--st-bg-2));
+  color: var(--st-primary-soft);
+}
+
+/* Tabs */
+vaadin-tabs {
+  box-shadow: inset 0 -1px 0 var(--st-bg-3);
+}
+vaadin-tab {
+  font-family: var(--st-font-mono);
+  font-size: var(--st-fs-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--st-fg-2);
+}
+vaadin-tab[selected] {
+  color: var(--st-accent);
+  text-shadow: var(--st-text-glow-accent);
+}
+vaadin-tabs::part(bar)::after,
+vaadin-tab::part(selected-indicator),
+vaadin-tab[selected]::before {
+  background: var(--st-accent);
+}
+
+/* Dialog */
+vaadin-dialog-overlay::part(overlay),
+vaadin-confirm-dialog-overlay::part(overlay) {
+  background: var(--st-bg-1);
+  border: var(--st-bw-2) solid var(--st-primary);
+  border-radius: var(--st-r-soft);
+  box-shadow: 0 0 0 1px var(--st-bg-0), var(--st-glow-primary);
+}
+
+/* Notification */
+vaadin-notification-card {
+  background: var(--st-bg-1);
+  border: var(--st-bw) solid var(--st-bg-3);
+  border-left: 3px solid var(--st-accent);
+  border-radius: var(--st-r-soft);
+  font-family: var(--st-font-mono);
+  font-size: var(--st-fs-sm);
+  color: var(--st-fg-0);
+}
+
+/* Badge */
+[theme~="badge"] {
+  font-family: var(--st-font-mono);
+  font-size: var(--st-fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--st-r-soft);
+  padding: 2px 8px;
+  background: var(--st-bg-2);
+  border: var(--st-bw) solid var(--st-bg-3);
+  color: var(--st-fg-1);
+}
+[theme~="badge"][theme~="primary"] {
+  background: color-mix(in srgb, var(--st-primary) 18%, var(--st-bg-2));
+  border-color: var(--st-primary);
+  color: var(--st-primary-soft);
+}
+[theme~="badge"][theme~="success"] {
+  background: color-mix(in srgb, var(--st-success) 18%, var(--st-bg-2));
+  border-color: var(--st-success);
+  color: var(--st-success);
+}
+[theme~="badge"][theme~="error"] {
+  background: color-mix(in srgb, var(--st-danger) 18%, var(--st-bg-2));
+  border-color: var(--st-danger);
+  color: var(--st-danger);
+}
+[theme~="badge"][theme~="contrast"] {
+  background: var(--st-bg-3);
+  color: var(--st-fg-0);
+}
+
+/* Progress bar */
+vaadin-progress-bar {
+  --vaadin-progress-color: var(--st-primary);
+}
+vaadin-progress-bar::part(bar) {
+  border-radius: 0;
+  background: var(--st-bg-0);
+  border: var(--st-bw) solid var(--st-bg-3);
+}
+vaadin-progress-bar::part(value) {
+  border-radius: 0;
+  box-shadow: var(--st-glow-primary);
+}
+
+/* Accordion */
+vaadin-accordion-panel {
+  background: var(--st-bg-1);
+  border: var(--st-bw) solid var(--st-bg-3);
+  border-radius: var(--st-r-soft);
+}
+vaadin-accordion-panel + vaadin-accordion-panel {
+  margin-top: var(--st-s-2);
+}
+vaadin-accordion-panel::part(summary) {
+  font-family: var(--st-font-mono);
+  font-weight: 500;
+  color: var(--st-fg-0);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+vaadin-accordion-panel::part(content) {
+  border-top: var(--st-bw) solid var(--st-bg-3);
+  color: var(--st-fg-1);
+}
+
+/* Menu bar */
+vaadin-menu-bar-button {
+  border-radius: var(--st-r-soft);
+  font-family: var(--st-font-mono);
+  font-weight: 500;
+  color: var(--st-fg-1);
+  border: var(--st-bw) solid var(--st-bg-3);
+}
+vaadin-menu-bar-button:hover {
+  background: var(--st-bg-2);
+  color: var(--st-accent);
+}
+
+/* Upload */
+vaadin-upload {
+  border: var(--st-bw) dashed var(--st-bg-4);
+  border-radius: var(--st-r-soft);
+  background: var(--st-bg-0);
+}
+vaadin-upload[dragover] {
+  border-color: var(--st-accent);
+  background: color-mix(in srgb, var(--st-accent) 8%, var(--st-bg-0));
+}
+
+/* Details */
+vaadin-details {
+  background: var(--st-bg-1);
+  border: var(--st-bw) solid var(--st-bg-3);
+  border-radius: var(--st-r-soft);
+}
+vaadin-details::part(summary) {
+  font-family: var(--st-font-mono);
+  font-weight: 500;
+  color: var(--st-fg-0);
+  text-transform: uppercase;
+}
+vaadin-details::part(content) {
+  border-top: var(--st-bw) solid var(--st-bg-3);
+  color: var(--st-fg-1);
+}
+
+/* Split layout */
+vaadin-split-layout::part(splitter) {
+  background: var(--st-bg-3);
+}
+
+/* Message list */
+vaadin-message-list {
+  background: var(--st-bg-1);
+  border: var(--st-bw) solid var(--st-bg-3);
+  border-radius: var(--st-r-soft);
+}
+vaadin-message::part(name) {
+  font-family: var(--st-font-mono);
+  font-weight: 600;
+  color: var(--st-accent);
+}
+vaadin-message::part(time) {
+  font-family: var(--st-font-mono);
+  font-size: var(--st-fs-xs);
+  color: var(--st-fg-3);
+}
+
+/* Confirm dialog */
+vaadin-confirm-dialog-overlay::part(header) {
+  font-family: var(--st-font-mono);
+  font-weight: 600;
+  color: var(--st-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+vaadin-confirm-dialog-overlay::part(footer) {
+  background: color-mix(in srgb, var(--st-bg-0) 50%, transparent);
+  border-top: var(--st-bw) solid var(--st-bg-3);
+}

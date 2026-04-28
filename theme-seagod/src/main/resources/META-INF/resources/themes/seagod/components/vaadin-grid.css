@@ -1,24 +1,27 @@
-/* Grid — clean table styling matching Poseidon */
+/* Grid — elevated card table */
 :host {
-    border: 1px solid var(--lumo-contrast-10pct);
-    border-radius: var(--lumo-border-radius-l);
+    border: 1px solid rgba(149, 166, 199, 0.32);
+    border-radius: 18px;
     overflow: hidden;
+    background: #ffffff;
+    box-shadow: var(--lumo-box-shadow-s);
 }
 
 [part~="header-cell"] {
-    background: var(--lumo-contrast-5pct);
-    font-weight: 600;
+    background: linear-gradient(180deg, #f7faff 0%, #f3f8ff 100%);
+    border-bottom: 1px solid rgba(149, 166, 199, 0.28);
+    font-weight: 700;
     font-size: var(--lumo-font-size-s);
     color: var(--lumo-secondary-text-color);
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
 }
 
 [part~="cell"] {
-    border-bottom: 1px solid var(--lumo-contrast-5pct);
-    font-size: var(--lumo-font-size-s);
+    border-bottom: 1px solid rgba(149, 166, 199, 0.2);
+    font-size: 0.845rem;
 }
 
 [part~="row"]:hover [part~="body-cell"] {
-    background: var(--lumo-primary-color-10pct);
+    background: rgba(59, 130, 246, 0.08);
 }

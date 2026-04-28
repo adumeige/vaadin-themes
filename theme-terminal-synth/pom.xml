@@ -10,9 +10,9 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>theme-seagod</artifactId>
-    <description>Vaadin theme inspired by the Poseidon UI kit — deep navy sidebar, ocean blue accents, clean modern
-        design.
+    <artifactId>theme-terminal-synth</artifactId>
+    <description>Retro synthwave Vaadin theme — CRT terminal aesthetic with neon glows, box-drawing borders, 4 palettes
+        (Miami/Outrun/Tokyo/Dusk), and density toggling.
     </description>
 
 </project>
