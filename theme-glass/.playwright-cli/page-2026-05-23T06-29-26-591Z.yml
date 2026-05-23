@@ -1,0 +1,392 @@
+- generic [ref=e1]:
+  - generic [ref=e6]:
+    - generic [ref=e8]:
+      - generic:
+        - button "Toggle navigation panel" [expanded] [ref=e9] [cursor=pointer]:
+          - generic [ref=e11]: 
+          - text: 
+        - heading "Theme Test App" [level=1] [ref=e12]
+        - generic [ref=e13]:
+          - generic:
+            - generic [ref=e14]:
+              - generic [ref=e16] [cursor=pointer]:
+                - button "Light" [ref=e17]:
+                  - generic [ref=e21]:
+                    - generic: Light
+                - generic [ref=e22]: 
+              - text:  
+            - generic [ref=e24]:
+              - generic [ref=e26] [cursor=pointer]:
+                - button "Glass" [active] [ref=e518]:
+                  - generic [ref=e520]:
+                    - generic: Glass
+                - generic [ref=e32]: 
+              - text:  
+            - generic [ref=e34]:
+              - generic [ref=e36] [cursor=pointer]:
+                - button "Standard" [ref=e37]:
+                  - generic [ref=e41]:
+                    - generic: Standard
+                - generic [ref=e42]: 
+              - text:   
+            - textbox "Background" [ref=e45] [cursor=pointer]: "#e9eef5"
+            - textbox "Primary" [ref=e47] [cursor=pointer]: "#4763e4"
+            - textbox "Secondary" [ref=e49] [cursor=pointer]: "#64748b"
+            - textbox "Accent" [ref=e51] [cursor=pointer]: "#f59e0b"
+        - generic [ref=e54]:
+          - combobox [ref=e55]: Glass
+          - generic:
+            - text: 
+            - generic [ref=e56] [cursor=pointer]: 
+    - generic [ref=e57]:
+      - generic:
+        - navigation "Workspace" [ref=e58]:
+          - generic [ref=e60]: Workspace
+          - list [ref=e61]:
+            - generic:
+              - listitem [ref=e62]:
+                - generic [ref=e63]:
+                  - link "Customers" [ref=e64] [cursor=pointer]:
+                    - /url: glass/customers
+                    - img [ref=e66]
+                    - generic [ref=e71]: Customers
+                  - text: 
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - link "Insights" [ref=e75] [cursor=pointer]:
+                    - /url: glass/insights
+                    - img [ref=e77]
+                    - generic [ref=e84]: Insights
+                  - text: 
+              - listitem [ref=e86]:
+                - generic [ref=e87]:
+                  - link "Settings" [ref=e88] [cursor=pointer]:
+                    - /url: glass/settings
+                    - img [ref=e90]
+                    - generic [ref=e95]: Settings
+                  - text: 
+        - navigation "Demos" [ref=e97]:
+          - generic [ref=e99]: Demos
+          - list [ref=e100]:
+            - generic:
+              - listitem [ref=e101]:
+                - generic [ref=e102]:
+                  - link "Signal Dashboard" [ref=e103] [cursor=pointer]:
+                    - /url: signal-dashboard
+                    - img [ref=e105]
+                    - generic [ref=e112]: Signal Dashboard
+                  - text: 
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - link "Terminal" [ref=e116] [cursor=pointer]:
+                    - /url: terminal
+                    - img [ref=e118]
+                    - generic [ref=e123]: Terminal
+                  - text: 
+              - listitem [ref=e125]:
+                - generic [ref=e126]:
+                  - link "AI Assistant" [ref=e127] [cursor=pointer]:
+                    - /url: chatbot
+                    - img [ref=e129]
+                    - generic [ref=e133]: AI Assistant
+                  - text: 
+        - navigation "Components" [ref=e135]:
+          - generic [ref=e137]: Components
+          - list [ref=e138]:
+            - generic:
+              - listitem [ref=e139]:
+                - generic [ref=e140]:
+                  - link "Buttons & Inputs" [ref=e141] [cursor=pointer]:
+                    - /url: ""
+                    - img [ref=e143]
+                    - generic [ref=e147]: Buttons & Inputs
+                  - text: 
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Data Display" [ref=e151] [cursor=pointer]:
+                    - /url: data-display
+                    - img [ref=e153]
+                    - generic [ref=e157]: Data Display
+                  - text: 
+              - listitem [ref=e159]:
+                - generic [ref=e160]:
+                  - link "Feedback & Overlay" [ref=e161] [cursor=pointer]:
+                    - /url: feedback-overlay
+                    - img [ref=e163]
+                    - generic [ref=e168]: Feedback & Overlay
+                  - text: 
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Layout & Navigation" [ref=e172] [cursor=pointer]:
+                    - /url: layout-navigation
+                    - img [ref=e174]
+                    - generic [ref=e178]: Layout & Navigation
+                  - text: 
+    - generic [ref=e181]:
+      - generic:
+        - generic [ref=e182]:
+          - generic:
+            - generic [ref=e183]:
+              - generic:
+                - heading "Insights" [level=1] [ref=e184]
+                - generic [ref=e185]: Performance and revenue across all customers · last sync 4 min ago
+            - generic [ref=e186]:
+              - generic:
+                - tablist [ref=e187]:
+                  - generic: 
+                  - generic [ref=e188]:
+                    - generic:
+                      - tab "7D" [ref=e189] [cursor=pointer]:
+                        - generic: 7D
+                      - tab "30D" [selected] [ref=e190] [cursor=pointer]:
+                        - generic: 30D
+                      - tab "90D" [ref=e191] [cursor=pointer]:
+                        - generic: 90D
+                      - tab "12M" [ref=e192] [cursor=pointer]:
+                        - generic: 12M
+                  - generic: 
+                - button "Apr 22 – May 22" [ref=e193] [cursor=pointer]:
+                  - generic [ref=e194]:
+                    - img [ref=e197]
+                    - generic [ref=e203]:
+                      - generic: Apr 22 – May 22
+                - button "Export" [ref=e204] [cursor=pointer]:
+                  - generic [ref=e205]:
+                    - img [ref=e208]
+                    - generic [ref=e213]:
+                      - generic: Export
+        - generic [ref=e214]:
+          - generic:
+            - generic [ref=e215]:
+              - generic:
+                - region [ref=e216]:
+                  - generic [ref=e219]:
+                    - generic:
+                      - generic [ref=e220]:
+                        - generic:
+                          - img [ref=e222]
+                          - generic [ref=e229]: Revenue
+                      - generic [ref=e230]: €512k
+                      - generic [ref=e231]:
+                        - generic:
+                          - generic [ref=e232]:
+                            - img [ref=e234]
+                            - generic [ref=e238]: +14.2%
+                          - generic [ref=e239]: vs prior 30d
+                - region [ref=e240]:
+                  - generic [ref=e243]:
+                    - generic:
+                      - generic [ref=e244]:
+                        - generic:
+                          - img [ref=e246]
+                          - generic [ref=e254]: Shipments
+                      - generic [ref=e255]: 2,418
+                      - generic [ref=e256]:
+                        - generic:
+                          - generic [ref=e257]:
+                            - img [ref=e259]
+                            - generic [ref=e263]: +8.4%
+                          - generic [ref=e264]: vs prior 30d
+                - region [ref=e265]:
+                  - generic [ref=e268]:
+                    - generic:
+                      - generic [ref=e269]:
+                        - generic:
+                          - img [ref=e271]
+                          - generic [ref=e282]: Avg margin
+                      - generic [ref=e283]: 23.4%
+                      - generic [ref=e284]:
+                        - generic:
+                          - generic [ref=e285]:
+                            - img [ref=e287]
+                            - generic [ref=e291]: "-0.8pp"
+                          - generic [ref=e292]: vs prior 30d
+                - region [ref=e293]:
+                  - generic [ref=e296]:
+                    - generic:
+                      - generic [ref=e297]:
+                        - generic:
+                          - img [ref=e299]
+                          - generic [ref=e304]: NPS
+                      - generic [ref=e305]: "72"
+                      - generic [ref=e306]:
+                        - generic:
+                          - generic [ref=e307]:
+                            - img [ref=e309]
+                            - generic [ref=e313]: "+4"
+                          - generic [ref=e314]: vs prior 30d
+            - generic [ref=e315]:
+              - generic:
+                - region "Revenue vs target" [ref=e316]:
+                  - generic [ref=e317]:
+                    - generic:
+                      - heading "Revenue vs target" [level=2] [ref=e318]
+                      - generic [ref=e319]: Daily, last 30 days
+                    - generic [ref=e320]:
+                      - generic [ref=e321]: Actual
+                      - generic [ref=e323]: Target
+                  - img [ref=e328]
+                - region "Shipment status" [ref=e332]:
+                  - generic [ref=e333]:
+                    - generic:
+                      - heading "Shipment status" [level=2] [ref=e334]
+                      - generic [ref=e335]: Last 30 days
+                  - generic [ref=e338]:
+                    - generic:
+                      - img [ref=e340]:
+                        - generic [ref=e345]: "626"
+                        - generic [ref=e346]: total
+                      - generic [ref=e347]:
+                        - generic [ref=e348]:
+                          - text: Delivered
+                          - generic [ref=e350]: 66%
+                        - generic [ref=e351]:
+                          - text: In transit
+                          - generic [ref=e353]: 29%
+                        - generic [ref=e354]:
+                          - text: Delayed
+                          - generic [ref=e356]: 4%
+                        - generic [ref=e357]:
+                          - text: Cancelled
+                          - generic [ref=e359]: 1%
+            - generic [ref=e360]:
+              - generic:
+                - region "Revenue by region" [ref=e361]:
+                  - generic [ref=e362]:
+                    - generic:
+                      - heading "Revenue by region" [level=2] [ref=e363]
+                      - generic [ref=e364]: Top 6 markets
+                    - tablist [ref=e365]:
+                      - generic: 
+                      - generic [ref=e366]:
+                        - generic:
+                          - tab "Revenue" [selected] [ref=e367] [cursor=pointer]:
+                            - generic: Revenue
+                          - tab "Volume" [ref=e368] [cursor=pointer]:
+                            - generic: Volume
+                      - generic: 
+                  - img [ref=e372]:
+                    - generic [ref=e374]: "142"
+                    - generic [ref=e375]: DE
+                    - generic [ref=e377]: "96"
+                    - generic [ref=e378]: NL
+                    - generic [ref=e380]: "78"
+                    - generic [ref=e381]: FR
+                    - generic [ref=e383]: "64"
+                    - generic [ref=e384]: IT
+                    - generic [ref=e386]: "51"
+                    - generic [ref=e387]: ES
+                    - generic [ref=e389]: "32"
+                    - generic [ref=e390]: PL
+                - region "Top customers" [ref=e391]:
+                  - generic [ref=e392]:
+                    - generic:
+                      - heading "Top customers" [level=2] [ref=e393]
+                      - generic [ref=e394]: By revenue, last 30 days
+                  - generic [ref=e397]:
+                    - generic:
+                      - generic [ref=e398]:
+                        - generic:
+                          - generic [ref=e399]:
+                            - generic:
+                              - generic [ref=e400]: "1"
+                              - img "Acme Industrial (AI)" [ref=e401]:
+                                - img [ref=e402]:
+                                  - generic [ref=e403]: AI
+                              - generic [ref=e404]: Acme Industrial
+                              - generic [ref=e405]: €184k
+                          - progressbar [ref=e406]
+                      - generic [ref=e409]:
+                        - generic:
+                          - generic [ref=e410]:
+                            - generic:
+                              - generic [ref=e411]: "2"
+                              - img "Northwind Traders (NT)" [ref=e412]:
+                                - img [ref=e413]:
+                                  - generic [ref=e414]: NT
+                              - generic [ref=e415]: Northwind Traders
+                              - generic [ref=e416]: €142k
+                          - progressbar [ref=e417]
+                      - generic [ref=e420]:
+                        - generic:
+                          - generic [ref=e421]:
+                            - generic:
+                              - generic [ref=e422]: "3"
+                              - img "Vertex Logistics (VL)" [ref=e423]:
+                                - img [ref=e424]:
+                                  - generic [ref=e425]: VL
+                              - generic [ref=e426]: Vertex Logistics
+                              - generic [ref=e427]: €98k
+                          - progressbar [ref=e428]
+                      - generic [ref=e431]:
+                        - generic:
+                          - generic [ref=e432]:
+                            - generic:
+                              - generic [ref=e433]: "4"
+                              - img "Globex Corporation (GC)" [ref=e434]:
+                                - img [ref=e435]:
+                                  - generic [ref=e436]: GC
+                              - generic [ref=e437]: Globex Corporation
+                              - generic [ref=e438]: €67k
+                          - progressbar [ref=e439]
+                      - generic [ref=e442]:
+                        - generic:
+                          - generic [ref=e443]:
+                            - generic:
+                              - generic [ref=e444]: "5"
+                              - img "Initech Systems (IS)" [ref=e445]:
+                                - img [ref=e446]:
+                                  - generic [ref=e447]: IS
+                              - generic [ref=e448]: Initech Systems
+                              - generic [ref=e449]: €58k
+                          - progressbar [ref=e450]
+            - region "Carrier capacity utilization" [ref=e453]:
+              - generic [ref=e454]:
+                - generic:
+                  - heading "Carrier capacity utilization" [level=2] [ref=e455]
+                  - generic [ref=e456]: Live · capacity assigned vs available
+              - generic [ref=e459]:
+                - generic:
+                  - generic [ref=e460]:
+                    - generic:
+                      - generic [ref=e461]:
+                        - generic:
+                          - generic [ref=e462]: DHL Express
+                          - generic [ref=e463]: 88%
+                      - progressbar [ref=e464]
+                  - generic [ref=e467]:
+                    - generic:
+                      - generic [ref=e468]:
+                        - generic:
+                          - generic [ref=e469]: DPD
+                          - generic [ref=e470]: 72%
+                      - progressbar [ref=e471]
+                  - generic [ref=e474]:
+                    - generic:
+                      - generic [ref=e475]:
+                        - generic:
+                          - generic [ref=e476]: GLS
+                          - generic [ref=e477]: 64%
+                      - progressbar [ref=e478]
+                  - generic [ref=e481]:
+                    - generic:
+                      - generic [ref=e482]:
+                        - generic:
+                          - generic [ref=e483]: FedEx Europe
+                          - generic [ref=e484]: 42%
+                      - progressbar [ref=e485]
+                  - generic [ref=e488]:
+                    - generic:
+                      - generic [ref=e489]:
+                        - generic:
+                          - generic [ref=e490]: UPS
+                          - generic [ref=e491]: 94%
+                      - progressbar [ref=e492]
+                  - generic [ref=e495]:
+                    - generic:
+                      - generic [ref=e496]:
+                        - generic:
+                          - generic [ref=e497]: Hermes
+                          - generic [ref=e498]: 31%
+                      - progressbar [ref=e499]
+  - generic [ref=e4]: Online

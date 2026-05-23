@@ -1,0 +1,521 @@
+- generic [ref=e1]:
+  - generic [ref=e6]:
+    - generic [ref=e8]:
+      - generic:
+        - button "Toggle navigation panel" [expanded] [ref=e9] [cursor=pointer]:
+          - generic [ref=e11]: 
+          - text: 
+        - heading "Theme Test App" [level=1] [ref=e12]
+        - generic [ref=e13]:
+          - generic:
+            - generic [ref=e623]:
+              - generic [ref=e625] [cursor=pointer]:
+                - button "Light" [ref=e626]:
+                  - generic [ref=e630]:
+                    - generic: Light
+                - generic [ref=e631]: 
+              - text:  
+            - generic [ref=e633]:
+              - generic [ref=e635] [cursor=pointer]:
+                - button "Flat" [ref=e636]:
+                  - generic [ref=e640]:
+                    - generic: Flat
+                - generic [ref=e641]: 
+              - text:  
+            - generic [ref=e643]:
+              - generic [ref=e645] [cursor=pointer]:
+                - button "Standard" [ref=e646]:
+                  - generic [ref=e650]:
+                    - generic: Standard
+                - generic [ref=e651]: 
+              - text:   
+            - textbox "Background" [ref=e654] [cursor=pointer]: "#e9eef5"
+            - textbox "Primary" [ref=e656] [cursor=pointer]: "#4763e4"
+            - textbox "Secondary" [ref=e658] [cursor=pointer]: "#64748b"
+            - textbox "Accent" [ref=e660] [cursor=pointer]: "#f59e0b"
+        - generic [ref=e37]:
+          - generic [ref=e39]:
+            - combobox [active] [ref=e40]: Glass
+            - generic:
+              - text: 
+              - generic [ref=e41] [cursor=pointer]: 
+          - text:      
+    - generic [ref=e42]:
+      - generic:
+        - navigation "Workspace" [ref=e43]:
+          - generic [ref=e45]: Workspace
+          - list [ref=e46]:
+            - generic:
+              - listitem [ref=e47]:
+                - generic [ref=e48]:
+                  - link "Customers" [ref=e49] [cursor=pointer]:
+                    - /url: glass/customers
+                    - img [ref=e51]
+                    - generic [ref=e56]: Customers
+                  - text: 
+              - listitem [ref=e58]:
+                - generic [ref=e59]:
+                  - link "Insights" [ref=e60] [cursor=pointer]:
+                    - /url: glass/insights
+                    - img [ref=e62]
+                    - generic [ref=e69]: Insights
+                  - text: 
+              - listitem [ref=e71]:
+                - generic [ref=e72]:
+                  - link "Settings" [ref=e73] [cursor=pointer]:
+                    - /url: glass/settings
+                    - img [ref=e75]
+                    - generic [ref=e80]: Settings
+                  - text: 
+        - navigation "Demos" [ref=e82]:
+          - generic [ref=e84]: Demos
+          - list [ref=e85]:
+            - generic:
+              - listitem [ref=e86]:
+                - generic [ref=e87]:
+                  - link "Signal Dashboard" [ref=e88] [cursor=pointer]:
+                    - /url: signal-dashboard
+                    - img [ref=e90]
+                    - generic [ref=e97]: Signal Dashboard
+                  - text: 
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Terminal" [ref=e101] [cursor=pointer]:
+                    - /url: terminal
+                    - img [ref=e103]
+                    - generic [ref=e108]: Terminal
+                  - text: 
+              - listitem [ref=e110]:
+                - generic [ref=e111]:
+                  - link "AI Assistant" [ref=e112] [cursor=pointer]:
+                    - /url: chatbot
+                    - img [ref=e114]
+                    - generic [ref=e118]: AI Assistant
+                  - text: 
+        - navigation "Components" [ref=e120]:
+          - generic [ref=e122]: Components
+          - list [ref=e123]:
+            - generic:
+              - listitem [ref=e124]:
+                - generic [ref=e125]:
+                  - link "Buttons & Inputs" [ref=e126] [cursor=pointer]:
+                    - /url: ""
+                    - img [ref=e128]
+                    - generic [ref=e132]: Buttons & Inputs
+                  - text: 
+              - listitem [ref=e134]:
+                - generic [ref=e135]:
+                  - link "Data Display" [ref=e136] [cursor=pointer]:
+                    - /url: data-display
+                    - img [ref=e138]
+                    - generic [ref=e142]: Data Display
+                  - text: 
+              - listitem [ref=e144]:
+                - generic [ref=e145]:
+                  - link "Feedback & Overlay" [ref=e146] [cursor=pointer]:
+                    - /url: feedback-overlay
+                    - img [ref=e148]
+                    - generic [ref=e153]: Feedback & Overlay
+                  - text: 
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - link "Layout & Navigation" [ref=e157] [cursor=pointer]:
+                    - /url: layout-navigation
+                    - img [ref=e159]
+                    - generic [ref=e163]: Layout & Navigation
+                  - text: 
+    - generic [ref=e166]:
+      - generic:
+        - generic [ref=e167]:
+          - generic:
+            - generic [ref=e168]:
+              - generic:
+                - heading "Customers" [level=1] [ref=e169]
+                - generic [ref=e170]: 10 accounts · €722k MTD revenue
+            - generic [ref=e171]:
+              - generic:
+                - button "Export" [ref=e172] [cursor=pointer]:
+                  - generic [ref=e173]:
+                    - img [ref=e176]
+                    - generic [ref=e181]:
+                      - generic: Export
+                - button "New customer" [ref=e182] [cursor=pointer]:
+                  - generic [ref=e183]:
+                    - img [ref=e186]
+                    - generic [ref=e190]:
+                      - generic: New customer
+        - generic [ref=e191]:
+          - generic [ref=e192]:
+            - generic:
+              - generic [ref=e193]:
+                - generic:
+                  - generic [ref=e196]:
+                    - img [ref=e198]
+                    - textbox [ref=e202]:
+                      - /placeholder: Search customers…
+                    - generic: 
+                  - button [ref=e203] [cursor=pointer]:
+                    - img [ref=e207]
+              - generic [ref=e213]:
+                - generic:
+                  - generic [ref=e214] [cursor=pointer]:
+                    - generic:
+                      - img "Acme Industrial (AI)" [ref=e215]:
+                        - img [ref=e216]:
+                          - generic [ref=e217]: AI
+                      - generic [ref=e218]:
+                        - generic:
+                          - generic [ref=e219]: Acme Industrial
+                          - generic [ref=e220]: ops@acme.co
+                      - generic [ref=e221]: €184k
+                  - generic [ref=e222] [cursor=pointer]:
+                    - generic:
+                      - img "Northwind Traders (NT)" [ref=e223]:
+                        - img [ref=e224]:
+                          - generic [ref=e225]: NT
+                      - generic [ref=e226]:
+                        - generic:
+                          - generic [ref=e227]: Northwind Traders
+                          - generic [ref=e228]: logistics@nw.io
+                      - generic [ref=e229]: €142k
+                  - generic [ref=e230] [cursor=pointer]:
+                    - generic:
+                      - img "Vertex Logistics (VL)" [ref=e231]:
+                        - img [ref=e232]:
+                          - generic [ref=e233]: VL
+                      - generic [ref=e234]:
+                        - generic:
+                          - generic [ref=e235]: Vertex Logistics
+                          - generic [ref=e236]: billing@vertex.eu
+                      - generic [ref=e237]: €98k
+                  - generic [ref=e238] [cursor=pointer]:
+                    - generic:
+                      - img "Globex Corporation (GC)" [ref=e239]:
+                        - img [ref=e240]:
+                          - generic [ref=e241]: GC
+                      - generic [ref=e242]:
+                        - generic:
+                          - generic [ref=e243]: Globex Corporation
+                          - generic [ref=e244]: ops@globex.com
+                      - generic [ref=e245]: €67k
+                  - generic [ref=e246] [cursor=pointer]:
+                    - generic:
+                      - img "Initech Systems (IS)" [ref=e247]:
+                        - img [ref=e248]:
+                          - generic [ref=e249]: IS
+                      - generic [ref=e250]:
+                        - generic:
+                          - generic [ref=e251]: Initech Systems
+                          - generic [ref=e252]: hello@initech.io
+                      - generic [ref=e253]: €58k
+                  - generic [ref=e254] [cursor=pointer]:
+                    - generic:
+                      - img "Hooli Inc. (HI)" [ref=e255]:
+                        - img [ref=e256]:
+                          - generic [ref=e257]: HI
+                      - generic [ref=e258]:
+                        - generic:
+                          - generic [ref=e259]: Hooli Inc.
+                          - generic [ref=e260]: ops@hooli.xyz
+                      - generic [ref=e261]: €44k
+                  - generic [ref=e262] [cursor=pointer]:
+                    - generic:
+                      - img "Pied Piper (PP)" [ref=e263]:
+                        - img [ref=e264]:
+                          - generic [ref=e265]: PP
+                      - generic [ref=e266]:
+                        - generic:
+                          - generic [ref=e267]: Pied Piper
+                          - generic [ref=e268]: logistics@pp.com
+                      - generic [ref=e269]: €41k
+                  - generic [ref=e270] [cursor=pointer]:
+                    - generic:
+                      - img "Massive Dynamic (MD)" [ref=e271]:
+                        - img [ref=e272]:
+                          - generic [ref=e273]: MD
+                      - generic [ref=e274]:
+                        - generic:
+                          - generic [ref=e275]: Massive Dynamic
+                          - generic [ref=e276]: billing@md.com
+                      - generic [ref=e277]: €32k
+                  - generic [ref=e278] [cursor=pointer]:
+                    - generic:
+                      - img "Wonka Industries (WI)" [ref=e279]:
+                        - img [ref=e280]:
+                          - generic [ref=e281]: WI
+                      - generic [ref=e282]:
+                        - generic:
+                          - generic [ref=e283]: Wonka Industries
+                          - generic [ref=e284]: ops@wonka.co
+                      - generic [ref=e285]: €28k
+                  - generic [ref=e286] [cursor=pointer]:
+                    - generic:
+                      - img "Stark Industries (SI)" [ref=e287]:
+                        - img [ref=e288]:
+                          - generic [ref=e289]: SI
+                      - generic [ref=e290]:
+                        - generic:
+                          - generic [ref=e291]: Stark Industries
+                          - generic [ref=e292]: hello@stark.com
+                      - generic [ref=e293]: €24k
+          - generic [ref=e296]:
+            - generic:
+              - generic [ref=e298]:
+                - generic:
+                  - generic [ref=e299]:
+                    - generic:
+                      - img "Acme Industrial (AI)" [ref=e300]:
+                        - img [ref=e301]:
+                          - generic [ref=e302]: AI
+                      - generic [ref=e303]:
+                        - generic:
+                          - generic [ref=e304]:
+                            - generic:
+                              - heading "Acme Industrial" [level=2] [ref=e305]
+                              - generic [ref=e306]: Premium
+                          - generic [ref=e307]:
+                            - generic:
+                              - generic [ref=e308]: ID · ACME
+                              - generic [ref=e309]: ·
+                              - generic [ref=e310]: Customer since 2019
+                              - generic [ref=e311]: ·
+                              - generic [ref=e312]: €184 500 MTD
+                  - generic [ref=e313]:
+                    - generic:
+                      - button [ref=e314] [cursor=pointer]:
+                        - img [ref=e318]
+                      - button [ref=e325] [cursor=pointer]:
+                        - img [ref=e329]
+                      - button [ref=e334] [cursor=pointer]:
+                        - img [ref=e338]
+              - tablist [ref=e345]:
+                - generic: 
+                - generic [ref=e346]:
+                  - generic:
+                    - tab "Profile" [selected] [ref=e347] [cursor=pointer]:
+                      - generic: Profile
+                    - tab "Contracts 3" [ref=e348] [cursor=pointer]:
+                      - generic:
+                        - text: Contracts
+                        - generic [ref=e349]: "3"
+                    - tab "Activity 28" [ref=e350] [cursor=pointer]:
+                      - generic:
+                        - text: Activity
+                        - generic [ref=e351]: "28"
+                    - tab "Billing" [ref=e352] [cursor=pointer]:
+                      - generic: Billing
+                - generic: 
+              - generic [ref=e354]:
+                - generic:
+                  - generic [ref=e355]:
+                    - generic:
+                      - img [ref=e357]
+                      - generic [ref=e363]: Profile auto-sync enabled. Contact details are kept in sync with the CRM record.
+                  - generic [ref=e364]:
+                    - generic:
+                      - generic [ref=e365]:
+                        - generic:
+                          - generic [ref=e366]:
+                            - generic:
+                              - generic [ref=e367]: Company
+                              - generic [ref=e368]: Legal entity and account ownership.
+                          - generic [ref=e369]: Auto-saved
+                      - generic [ref=e371]:
+                        - generic:
+                          - generic [ref=e373]:
+                            - generic [ref=e374]:
+                              - generic: Company name
+                            - generic [ref=e375]:
+                              - textbox "Company name" [ref=e376]: Acme Industrial
+                              - generic: 
+                          - generic [ref=e378]:
+                            - generic [ref=e379]:
+                              - generic: Tax / VAT ID
+                            - generic [ref=e380]:
+                              - textbox "Tax / VAT ID" [ref=e381]: DE 814 583 901
+                              - generic: 
+                            - generic [ref=e383]: Used on invoices and shipping documents.
+                          - generic [ref=e384]:
+                            - generic [ref=e385]:
+                              - generic [ref=e386]:
+                                - generic: Industry
+                              - generic [ref=e387] [cursor=pointer]:
+                                - button "Industry Logistics & Freight" [ref=e388]:
+                                  - generic [ref=e392]:
+                                    - generic: Logistics & Freight
+                                - generic [ref=e393]: 
+                            - text:     
+                          - generic [ref=e396]:
+                            - generic [ref=e397]:
+                              - generic: Founded
+                            - generic [ref=e398]:
+                              - img [ref=e400]
+                              - textbox "Founded" [ref=e406]: Mar 14, 2008
+                              - generic: 
+                          - generic [ref=e408]:
+                            - generic [ref=e409]:
+                              - generic: Employees
+                            - generic [ref=e410]:
+                              - generic [ref=e411] [cursor=pointer]: 
+                              - spinbutton "Employees" [ref=e412]: "240"
+                              - generic:
+                                - text: 
+                                - generic [ref=e413] [cursor=pointer]: 
+                          - generic [ref=e414]:
+                            - generic [ref=e415]:
+                              - generic [ref=e416]:
+                                - generic: Account manager
+                              - generic [ref=e417] [cursor=pointer]:
+                                - button "Account manager Rosa Castillo" [ref=e418]:
+                                  - generic [ref=e422]:
+                                    - generic: Rosa Castillo
+                                - generic [ref=e423]: 
+                            - text:    
+                  - generic [ref=e425]:
+                    - generic:
+                      - generic [ref=e427]:
+                        - generic:
+                          - generic [ref=e428]: Primary contact
+                          - generic [ref=e429]: Who we reach for dispatch confirmations.
+                      - generic [ref=e431]:
+                        - generic:
+                          - generic [ref=e433]:
+                            - generic [ref=e434]:
+                              - generic: Full name
+                            - generic [ref=e435]:
+                              - img [ref=e437]
+                              - textbox "Full name" [ref=e441]: Marco Brenner
+                              - generic: 
+                          - generic [ref=e443]:
+                            - generic [ref=e444]:
+                              - generic: Email
+                            - generic [ref=e445]:
+                              - img [ref=e447]
+                              - textbox "Email" [ref=e452]: ops@acme.co
+                              - generic: 
+                          - generic [ref=e454]:
+                            - generic [ref=e455]:
+                              - generic: Phone
+                            - generic [ref=e456]:
+                              - textbox "Phone" [ref=e457]: +49 30 5588 4421
+                              - generic: 
+                            - generic [ref=e459]: Include country code
+                          - radiogroup "Preferred channel" [ref=e460]:
+                            - generic [ref=e461]:
+                              - generic [ref=e462]:
+                                - generic: Preferred channel
+                              - generic [ref=e463]:
+                                - generic:
+                                  - generic [ref=e465]:
+                                    - radio "Email" [checked] [ref=e467]
+                                    - generic [ref=e468]: Email
+                                  - generic [ref=e470]:
+                                    - radio "Phone" [ref=e472]
+                                    - generic [ref=e473]: Phone
+                                  - generic [ref=e475]:
+                                    - radio "SMS" [ref=e477]
+                                    - generic [ref=e478]: SMS
+                  - generic [ref=e479]:
+                    - generic:
+                      - generic [ref=e481]:
+                        - generic:
+                          - generic [ref=e482]: Service preferences
+                          - generic [ref=e483]: How shipments are scheduled and handled.
+                      - generic [ref=e485]:
+                        - generic:
+                          - radiogroup "Delivery window" [ref=e486]:
+                            - generic [ref=e487]:
+                              - generic [ref=e488]:
+                                - generic: Delivery window
+                              - generic [ref=e489]:
+                                - generic:
+                                  - generic [ref=e491]:
+                                    - radio "Morning (08:00 – 12:00)" [checked] [ref=e493]
+                                    - generic [ref=e494]: Morning (08:00 – 12:00)
+                                  - generic [ref=e496]:
+                                    - radio "Afternoon (12:00 – 17:00)" [ref=e498]
+                                    - generic [ref=e499]: Afternoon (12:00 – 17:00)
+                                  - generic [ref=e501]:
+                                    - radio "Any time (next business day)" [ref=e503]
+                                    - generic [ref=e504]: Any time (next business day)
+                          - group "Notification channels" [ref=e505]:
+                            - generic [ref=e506]:
+                              - generic [ref=e507]:
+                                - generic: Notification channels
+                              - generic [ref=e508]:
+                                - generic:
+                                  - generic [ref=e510]:
+                                    - generic [ref=e511] [cursor=pointer]: 
+                                    - checkbox "Email" [checked] [ref=e512]
+                                    - generic [ref=e514]: Email
+                                  - generic [ref=e516]:
+                                    - generic [ref=e517] [cursor=pointer]: 
+                                    - checkbox "SMS" [ref=e518]
+                                    - generic [ref=e520]: SMS
+                                  - generic [ref=e522]:
+                                    - generic [ref=e523] [cursor=pointer]: 
+                                    - checkbox "Webhook" [checked] [ref=e524]
+                                    - generic [ref=e526]: Webhook
+                                  - generic [ref=e528]:
+                                    - generic [ref=e529] [cursor=pointer]: 
+                                    - checkbox "Push" [ref=e530]
+                                    - generic [ref=e532]: Push
+                          - generic [ref=e534]:
+                            - generic [ref=e535]:
+                              - generic: Special handling
+                            - generic [ref=e537]:
+                              - generic [ref=e538]:
+                                - generic:
+                                  - generic: 
+                                  - generic [ref=e539]:
+                                    - generic:
+                                      - generic "Hazardous" [ref=e661] [cursor=pointer]:
+                                        - generic [ref=e662]: Hazardous
+                                        - generic [ref=e663]: 
+                                      - generic "Cold chain" [ref=e664] [cursor=pointer]:
+                                        - generic [ref=e665]: Cold chain
+                                        - generic [ref=e666]: 
+                                - combobox "Special handling" [ref=e546]
+                              - generic:
+                                - text: 
+                                - generic [ref=e547] [cursor=pointer]: 
+                            - generic [ref=e549]: Tags applied to every shipment for this customer.
+                          - radiogroup "Priority" [ref=e550]:
+                            - generic [ref=e551]:
+                              - generic [ref=e552]:
+                                - generic: Priority
+                              - generic [ref=e553]:
+                                - generic:
+                                  - generic [ref=e555]:
+                                    - radio "Standard" [checked] [ref=e557]
+                                    - generic [ref=e558]: Standard
+                                  - generic [ref=e560]:
+                                    - radio "High" [ref=e562]
+                                    - generic [ref=e563]: High
+                                  - generic [ref=e565]:
+                                    - radio "Critical" [ref=e567]
+                                    - generic [ref=e568]: Critical
+                  - generic [ref=e571]:
+                    - generic [ref=e572]:
+                      - generic: Notes
+                    - generic [ref=e573]:
+                      - textbox "Notes" [ref=e574]: Customer prefers consolidated weekly invoices. Carrier preference DHL. Receiving hours Mon–Fri 7:00–15:00.
+                      - generic: 
+                    - generic [ref=e576]: Visible to dispatch team only.
+              - generic [ref=e578]:
+                - generic:
+                  - generic [ref=e579]:
+                    - generic:
+                      - img [ref=e581]
+                      - generic [ref=e587]: Last saved 2 min ago by Jana Müller
+                  - generic [ref=e588]:
+                    - generic:
+                      - button "Discard changes" [ref=e589] [cursor=pointer]:
+                        - generic [ref=e591]:
+                          - generic: Discard changes
+                      - button "Save changes" [ref=e592] [cursor=pointer]:
+                        - generic [ref=e593]:
+                          - img [ref=e596]
+                          - generic [ref=e600]:
+                            - generic: Save changes
+  - generic [ref=e4]: Online

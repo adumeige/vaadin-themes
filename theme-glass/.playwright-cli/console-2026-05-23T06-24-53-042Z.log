@@ -1,0 +1,23 @@
+[      95ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:10002/VAADIN/build/indexhtml-3ADZPd14.js:71107
+[     131ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:10002/favicon.ico:0
+[     348ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:10002/VL:0
+[     349ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:10002/HI:0
+[     349ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:10002/AI:0
+[     349ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:10002/NT:0
+[     349ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:10002/GC:0
+[     349ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:10002/IS:0
+[     355ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:10002/PP:0
+[     357ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:10002/SI:0
+[     357ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:10002/WI:0
+[     357ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:10002/MD:0
+[     357ms] [WARNING] <vaadin-avatar> The specified image could not be loaded: VL @ http://localhost:10002/VAADIN/build/generated-flow-imports-BU-JsDwT.js:3105
+[     357ms] [WARNING] <vaadin-avatar> The specified image could not be loaded: HI @ http://localhost:10002/VAADIN/build/generated-flow-imports-BU-JsDwT.js:3105
+[     357ms] [WARNING] <vaadin-avatar> The specified image could not be loaded: AI @ http://localhost:10002/VAADIN/build/generated-flow-imports-BU-JsDwT.js:3105
+[     357ms] [WARNING] <vaadin-avatar> The specified image could not be loaded: AI @ http://localhost:10002/VAADIN/build/generated-flow-imports-BU-JsDwT.js:3105
+[     357ms] [WARNING] <vaadin-avatar> The specified image could not be loaded: NT @ http://localhost:10002/VAADIN/build/generated-flow-imports-BU-JsDwT.js:3105
+[     357ms] [WARNING] <vaadin-avatar> The specified image could not be loaded: GC @ http://localhost:10002/VAADIN/build/generated-flow-imports-BU-JsDwT.js:3105
+[     357ms] [WARNING] <vaadin-avatar> The specified image could not be loaded: IS @ http://localhost:10002/VAADIN/build/generated-flow-imports-BU-JsDwT.js:3105
+[     357ms] [WARNING] <vaadin-avatar> The specified image could not be loaded: PP @ http://localhost:10002/VAADIN/build/generated-flow-imports-BU-JsDwT.js:3105
+[     370ms] [WARNING] <vaadin-avatar> The specified image could not be loaded: SI @ http://localhost:10002/VAADIN/build/generated-flow-imports-BU-JsDwT.js:3105
+[     370ms] [WARNING] <vaadin-avatar> The specified image could not be loaded: WI @ http://localhost:10002/VAADIN/build/generated-flow-imports-BU-JsDwT.js:3105
+[     370ms] [WARNING] <vaadin-avatar> The specified image could not be loaded: MD @ http://localhost:10002/VAADIN/build/generated-flow-imports-BU-JsDwT.js:3105

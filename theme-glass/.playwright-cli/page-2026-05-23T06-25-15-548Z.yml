@@ -1,0 +1,743 @@
+- generic:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - button "Toggle navigation panel" [expanded]:
+                  - generic:
+                    - generic: 
+                  - text: 
+                - heading "Theme Test App" [level=1]
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - button "Outrun":
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic: Outrun
+                          - generic:
+                            - generic: 
+                      - text:    
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - button "Default":
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic: Default
+                          - generic:
+                            - generic: 
+                      - text:   
+                    - button "CRT":
+                      - generic:
+                        - generic:
+                          - generic: CRT
+                - generic [ref=e39]:
+                  - combobox [expanded] [active] [ref=e40]: Terminal Synth
+                  - generic:
+                    - text: 
+                    - generic [ref=e41] [cursor=pointer]: 
+        - generic:
+          - generic:
+            - navigation "Workspace":
+              - generic:
+                - generic:
+                  - generic: Workspace
+              - list:
+                - generic:
+                  - listitem:
+                    - generic:
+                      - link "Customers":
+                        - /url: glass/customers
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Customers
+                      - text: 
+                  - listitem:
+                    - generic:
+                      - link "Insights":
+                        - /url: glass/insights
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Insights
+                      - text: 
+                  - listitem:
+                    - generic:
+                      - link "Settings":
+                        - /url: glass/settings
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Settings
+                      - text: 
+            - navigation "Demos":
+              - generic:
+                - generic:
+                  - generic: Demos
+              - list:
+                - generic:
+                  - listitem:
+                    - generic:
+                      - link "Signal Dashboard":
+                        - /url: signal-dashboard
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Signal Dashboard
+                      - text: 
+                  - listitem:
+                    - generic:
+                      - link "Terminal":
+                        - /url: terminal
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Terminal
+                      - text: 
+                  - listitem:
+                    - generic:
+                      - link "AI Assistant":
+                        - /url: chatbot
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: AI Assistant
+                      - text: 
+            - navigation "Components":
+              - generic:
+                - generic:
+                  - generic: Components
+              - list:
+                - generic:
+                  - listitem:
+                    - generic:
+                      - link "Buttons & Inputs":
+                        - /url: ""
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Buttons & Inputs
+                      - text: 
+                  - listitem:
+                    - generic:
+                      - link "Data Display":
+                        - /url: data-display
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Data Display
+                      - text: 
+                  - listitem:
+                    - generic:
+                      - link "Feedback & Overlay":
+                        - /url: feedback-overlay
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Feedback & Overlay
+                      - text: 
+                  - listitem:
+                    - generic:
+                      - link "Layout & Navigation":
+                        - /url: layout-navigation
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Layout & Navigation
+                      - text: 
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - heading "Customers" [level=1]
+                        - generic: 10 accounts · €722k MTD revenue
+                    - generic:
+                      - generic:
+                        - button "Export":
+                          - generic:
+                            - generic:
+                              - generic:
+                                - img
+                            - generic:
+                              - generic: Export
+                        - button "New customer":
+                          - generic:
+                            - generic:
+                              - generic:
+                                - img
+                            - generic:
+                              - generic: New customer
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - img
+                                  - generic:
+                                    - generic:
+                                      - textbox:
+                                        - /placeholder: Search customers…
+                                  - generic: 
+                            - button:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img "Acme Industrial (AI)":
+                                      - img:
+                                        - generic: AI
+                                    - generic:
+                                      - generic:
+                                        - generic: Acme Industrial
+                                        - generic: ops@acme.co
+                                    - generic: €184k
+                                - generic:
+                                  - generic:
+                                    - img "Northwind Traders (NT)":
+                                      - img:
+                                        - generic: NT
+                                    - generic:
+                                      - generic:
+                                        - generic: Northwind Traders
+                                        - generic: logistics@nw.io
+                                    - generic: €142k
+                                - generic:
+                                  - generic:
+                                    - img "Vertex Logistics (VL)":
+                                      - img:
+                                        - generic: VL
+                                    - generic:
+                                      - generic:
+                                        - generic: Vertex Logistics
+                                        - generic: billing@vertex.eu
+                                    - generic: €98k
+                                - generic:
+                                  - generic:
+                                    - img "Globex Corporation (GC)":
+                                      - img:
+                                        - generic: GC
+                                    - generic:
+                                      - generic:
+                                        - generic: Globex Corporation
+                                        - generic: ops@globex.com
+                                    - generic: €67k
+                                - generic:
+                                  - generic:
+                                    - img "Initech Systems (IS)":
+                                      - img:
+                                        - generic: IS
+                                    - generic:
+                                      - generic:
+                                        - generic: Initech Systems
+                                        - generic: hello@initech.io
+                                    - generic: €58k
+                                - generic:
+                                  - generic:
+                                    - img "Hooli Inc. (HI)":
+                                      - img:
+                                        - generic: HI
+                                    - generic:
+                                      - generic:
+                                        - generic: Hooli Inc.
+                                        - generic: ops@hooli.xyz
+                                    - generic: €44k
+                                - generic:
+                                  - generic:
+                                    - img "Pied Piper (PP)":
+                                      - img:
+                                        - generic: PP
+                                    - generic:
+                                      - generic:
+                                        - generic: Pied Piper
+                                        - generic: logistics@pp.com
+                                    - generic: €41k
+                                - generic:
+                                  - generic:
+                                    - img "Massive Dynamic (MD)":
+                                      - img:
+                                        - generic: MD
+                                    - generic:
+                                      - generic:
+                                        - generic: Massive Dynamic
+                                        - generic: billing@md.com
+                                    - generic: €32k
+                                - generic:
+                                  - generic:
+                                    - img "Wonka Industries (WI)":
+                                      - img:
+                                        - generic: WI
+                                    - generic:
+                                      - generic:
+                                        - generic: Wonka Industries
+                                        - generic: ops@wonka.co
+                                    - generic: €28k
+                                - generic:
+                                  - generic:
+                                    - img "Stark Industries (SI)":
+                                      - img:
+                                        - generic: SI
+                                    - generic:
+                                      - generic:
+                                        - generic: Stark Industries
+                                        - generic: hello@stark.com
+                                    - generic: €24k
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img "Acme Industrial (AI)":
+                                      - img:
+                                        - generic: AI
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - heading "Acme Industrial" [level=2]
+                                            - generic: Premium
+                                        - generic:
+                                          - generic:
+                                            - generic: ID · ACME
+                                            - generic: ·
+                                            - generic: Customer since 2019
+                                            - generic: ·
+                                            - generic: €184 500 MTD
+                                - generic:
+                                  - generic:
+                                    - button:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - img
+                                    - button:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - img
+                                    - button:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - img
+                        - generic:
+                          - generic:
+                            - tablist:
+                              - generic: 
+                              - generic:
+                                - generic:
+                                  - tab "Profile" [selected]:
+                                    - generic: Profile
+                                  - tab "Contracts 3":
+                                    - generic:
+                                      - text: Contracts
+                                      - generic: "3"
+                                  - tab "Activity 28":
+                                    - generic:
+                                      - text: Activity
+                                      - generic: "28"
+                                  - tab "Billing":
+                                    - generic: Billing
+                              - generic: 
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - img
+                                    - generic: Profile auto-sync enabled. Contact details are kept in sync with the CRM record.
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - generic: Company
+                                            - generic: Legal entity and account ownership.
+                                        - generic: Auto-saved
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - generic:
+                                              - generic:
+                                                - generic: Company name
+                                              - generic:
+                                                - generic:
+                                                  - generic:
+                                                    - textbox "Company name": Acme Industrial
+                                                - generic: 
+                                          - generic:
+                                            - generic:
+                                              - generic:
+                                                - generic: Tax / VAT ID
+                                              - generic:
+                                                - generic:
+                                                  - generic:
+                                                    - textbox "Tax / VAT ID": DE 814 583 901
+                                                - generic: 
+                                              - generic:
+                                                - generic:
+                                                  - generic: Used on invoices and shipping documents.
+                                          - generic:
+                                            - generic:
+                                              - generic:
+                                                - generic: Industry
+                                              - generic:
+                                                - generic:
+                                                  - generic:
+                                                    - button "Industry Logistics & Freight":
+                                                      - generic:
+                                                        - generic:
+                                                          - generic:
+                                                            - generic:
+                                                              - generic:
+                                                                - generic: Logistics & Freight
+                                                - generic:
+                                                  - generic: 
+                                            - text:     
+                                          - generic:
+                                            - generic:
+                                              - generic:
+                                                - generic: Founded
+                                              - generic:
+                                                - generic:
+                                                  - generic:
+                                                    - generic:
+                                                      - img
+                                                - generic:
+                                                  - generic:
+                                                    - textbox "Founded": Mar 14, 2008
+                                                - generic: 
+                                          - generic:
+                                            - generic:
+                                              - generic:
+                                                - generic: Employees
+                                              - generic:
+                                                - generic:
+                                                  - generic: 
+                                                - generic:
+                                                  - generic:
+                                                    - spinbutton "Employees": "240"
+                                                - generic:
+                                                  - text: 
+                                                  - generic: 
+                                          - generic:
+                                            - generic:
+                                              - generic:
+                                                - generic: Account manager
+                                              - generic:
+                                                - generic:
+                                                  - generic:
+                                                    - button "Account manager Rosa Castillo":
+                                                      - generic:
+                                                        - generic:
+                                                          - generic:
+                                                            - generic:
+                                                              - generic:
+                                                                - generic: Rosa Castillo
+                                                - generic:
+                                                  - generic: 
+                                            - text:    
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - generic: Primary contact
+                                            - generic: Who we reach for dispatch confirmations.
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - generic:
+                                              - generic:
+                                                - generic: Full name
+                                              - generic:
+                                                - generic:
+                                                  - generic:
+                                                    - generic:
+                                                      - img
+                                                - generic:
+                                                  - generic:
+                                                    - textbox "Full name": Marco Brenner
+                                                - generic: 
+                                          - generic:
+                                            - generic:
+                                              - generic:
+                                                - generic: Email
+                                              - generic:
+                                                - generic:
+                                                  - generic:
+                                                    - generic:
+                                                      - img
+                                                - generic:
+                                                  - generic:
+                                                    - textbox "Email": ops@acme.co
+                                                - generic: 
+                                          - generic:
+                                            - generic:
+                                              - generic:
+                                                - generic: Phone
+                                              - generic:
+                                                - generic:
+                                                  - generic:
+                                                    - textbox "Phone": +49 30 5588 4421
+                                                - generic: 
+                                              - generic:
+                                                - generic:
+                                                  - generic: Include country code
+                                          - radiogroup "Preferred channel":
+                                            - generic:
+                                              - generic:
+                                                - generic: Preferred channel
+                                              - generic:
+                                                - generic:
+                                                  - generic:
+                                                    - generic:
+                                                      - generic:
+                                                        - radio "Email" [checked]
+                                                      - generic:
+                                                        - generic: Email
+                                                  - generic:
+                                                    - generic:
+                                                      - generic:
+                                                        - radio "Phone"
+                                                      - generic:
+                                                        - generic: Phone
+                                                  - generic:
+                                                    - generic:
+                                                      - generic:
+                                                        - radio "SMS"
+                                                      - generic:
+                                                        - generic: SMS
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - generic: Service preferences
+                                            - generic: How shipments are scheduled and handled.
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - radiogroup "Delivery window":
+                                            - generic:
+                                              - generic:
+                                                - generic: Delivery window
+                                              - generic:
+                                                - generic:
+                                                  - generic:
+                                                    - generic:
+                                                      - generic:
+                                                        - radio "Morning (08:00 – 12:00)" [checked]
+                                                      - generic:
+                                                        - generic: Morning (08:00 – 12:00)
+                                                  - generic:
+                                                    - generic:
+                                                      - generic:
+                                                        - radio "Afternoon (12:00 – 17:00)"
+                                                      - generic:
+                                                        - generic: Afternoon (12:00 – 17:00)
+                                                  - generic:
+                                                    - generic:
+                                                      - generic:
+                                                        - radio "Any time (next business day)"
+                                                      - generic:
+                                                        - generic: Any time (next business day)
+                                          - group "Notification channels":
+                                            - generic:
+                                              - generic:
+                                                - generic: Notification channels
+                                              - generic:
+                                                - generic:
+                                                  - generic:
+                                                    - generic:
+                                                      - generic: 
+                                                      - generic:
+                                                        - checkbox "Email" [checked]
+                                                      - generic:
+                                                        - generic:
+                                                          - generic: Email
+                                                  - generic:
+                                                    - generic:
+                                                      - generic: 
+                                                      - generic:
+                                                        - checkbox "SMS"
+                                                      - generic:
+                                                        - generic:
+                                                          - generic: SMS
+                                                  - generic:
+                                                    - generic:
+                                                      - generic: 
+                                                      - generic:
+                                                        - checkbox "Webhook" [checked]
+                                                      - generic:
+                                                        - generic:
+                                                          - generic: Webhook
+                                                  - generic:
+                                                    - generic:
+                                                      - generic: 
+                                                      - generic:
+                                                        - checkbox "Push"
+                                                      - generic:
+                                                        - generic:
+                                                          - generic: Push
+                                          - generic:
+                                            - generic:
+                                              - generic:
+                                                - generic: Special handling
+                                              - generic:
+                                                - generic:
+                                                  - generic:
+                                                    - generic:
+                                                      - generic:
+                                                        - generic: 
+                                                        - generic:
+                                                          - generic:
+                                                            - generic "Hazardous":
+                                                              - generic: Hazardous
+                                                              - generic: 
+                                                            - generic "Cold chain":
+                                                              - generic: Cold chain
+                                                              - generic: 
+                                                      - generic:
+                                                        - generic:
+                                                          - combobox "Special handling"
+                                                    - generic:
+                                                      - text: 
+                                                      - generic: 
+                                              - generic:
+                                                - generic:
+                                                  - generic: Tags applied to every shipment for this customer.
+                                          - radiogroup "Priority":
+                                            - generic:
+                                              - generic:
+                                                - generic: Priority
+                                              - generic:
+                                                - generic:
+                                                  - generic:
+                                                    - generic:
+                                                      - generic:
+                                                        - radio "Standard" [checked]
+                                                      - generic:
+                                                        - generic: Standard
+                                                  - generic:
+                                                    - generic:
+                                                      - generic:
+                                                        - radio "High"
+                                                      - generic:
+                                                        - generic: High
+                                                  - generic:
+                                                    - generic:
+                                                      - generic:
+                                                        - radio "Critical"
+                                                      - generic:
+                                                        - generic: Critical
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic: Notes
+                                        - generic:
+                                          - generic:
+                                            - generic:
+                                              - textbox "Notes": Customer prefers consolidated weekly invoices. Carrier preference DHL. Receiving hours Mon–Fri 7:00–15:00.
+                                          - generic: 
+                                        - generic:
+                                          - generic:
+                                            - generic: Visible to dispatch team only.
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - img
+                                    - generic: Last saved 2 min ago by Jana Müller
+                                - generic:
+                                  - generic:
+                                    - button "Discard changes":
+                                      - generic:
+                                        - generic:
+                                          - generic: Discard changes
+                                    - button "Save changes":
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - img
+                                        - generic:
+                                          - generic: Save changes
+  - generic:
+    - generic:
+      - generic: Online
+  - listbox [ref=e603]:
+    - generic [ref=e604]:
+      - generic:
+        - option "Lumo" [ref=e605] [cursor=pointer]:
+          - generic [ref=e606]: 
+          - generic [ref=e607]:
+            - generic: Lumo
+        - option "Seagod" [ref=e608] [cursor=pointer]:
+          - generic [ref=e609]: 
+          - generic [ref=e610]:
+            - generic: Seagod
+        - option "Fjord" [ref=e611] [cursor=pointer]:
+          - generic [ref=e612]: 
+          - generic [ref=e613]:
+            - generic: Fjord
+        - option "Terminal Synth" [selected] [ref=e614] [cursor=pointer]:
+          - generic [ref=e615]: 
+          - generic [ref=e616]:
+            - generic: Terminal Synth
+        - option "Novelist" [ref=e617] [cursor=pointer]:
+          - generic [ref=e618]: 
+          - generic [ref=e619]:
+            - generic: Novelist
+        - option "Glass" [ref=e620] [cursor=pointer]:
+          - generic [ref=e621]: 
+          - generic [ref=e622]:
+            - generic: Glass

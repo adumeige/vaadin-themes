@@ -1,0 +1,523 @@
+- generic:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - button "Toggle navigation panel" [expanded]:
+                  - generic:
+                    - generic: 
+                  - text: 
+                - heading "Theme Test App" [level=1]
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - button "Light":
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic: Light
+                          - generic:
+                            - generic: 
+                      - text:  
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - button "Glass" [expanded]:
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic: Glass
+                          - generic:
+                            - generic: 
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - button "Standard":
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic: Standard
+                          - generic:
+                            - generic: 
+                      - text:   
+                    - generic:
+                      - textbox "Background": "#e9eef5"
+                    - generic:
+                      - textbox "Primary": "#4763e4"
+                    - generic:
+                      - textbox "Secondary": "#64748b"
+                    - generic:
+                      - textbox "Accent": "#f59e0b"
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - combobox: Glass
+                      - generic:
+                        - text: 
+                        - generic: 
+        - generic:
+          - generic:
+            - navigation "Workspace":
+              - generic:
+                - generic:
+                  - generic: Workspace
+              - list:
+                - generic:
+                  - listitem:
+                    - generic:
+                      - link "Customers":
+                        - /url: glass/customers
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Customers
+                      - text: 
+                  - listitem:
+                    - generic:
+                      - link "Insights":
+                        - /url: glass/insights
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Insights
+                      - text: 
+                  - listitem:
+                    - generic:
+                      - link "Settings":
+                        - /url: glass/settings
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Settings
+                      - text: 
+            - navigation "Demos":
+              - generic:
+                - generic:
+                  - generic: Demos
+              - list:
+                - generic:
+                  - listitem:
+                    - generic:
+                      - link "Signal Dashboard":
+                        - /url: signal-dashboard
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Signal Dashboard
+                      - text: 
+                  - listitem:
+                    - generic:
+                      - link "Terminal":
+                        - /url: terminal
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Terminal
+                      - text: 
+                  - listitem:
+                    - generic:
+                      - link "AI Assistant":
+                        - /url: chatbot
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: AI Assistant
+                      - text: 
+            - navigation "Components":
+              - generic:
+                - generic:
+                  - generic: Components
+              - list:
+                - generic:
+                  - listitem:
+                    - generic:
+                      - link "Buttons & Inputs":
+                        - /url: ""
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Buttons & Inputs
+                      - text: 
+                  - listitem:
+                    - generic:
+                      - link "Data Display":
+                        - /url: data-display
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Data Display
+                      - text: 
+                  - listitem:
+                    - generic:
+                      - link "Feedback & Overlay":
+                        - /url: feedback-overlay
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Feedback & Overlay
+                      - text: 
+                  - listitem:
+                    - generic:
+                      - link "Layout & Navigation":
+                        - /url: layout-navigation
+                        - generic:
+                          - generic:
+                            - img
+                        - generic: Layout & Navigation
+                      - text: 
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - heading "Insights" [level=1]
+                        - generic: Performance and revenue across all customers · last sync 4 min ago
+                    - generic:
+                      - generic:
+                        - tablist:
+                          - generic: 
+                          - generic:
+                            - generic:
+                              - tab "7D":
+                                - generic: 7D
+                              - tab "30D" [selected]:
+                                - generic: 30D
+                              - tab "90D":
+                                - generic: 90D
+                              - tab "12M":
+                                - generic: 12M
+                          - generic: 
+                        - button "Apr 22 – May 22":
+                          - generic:
+                            - generic:
+                              - generic:
+                                - img
+                            - generic:
+                              - generic: Apr 22 – May 22
+                        - button "Export":
+                          - generic:
+                            - generic:
+                              - generic:
+                                - img
+                            - generic:
+                              - generic: Export
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - region:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                        - generic: Revenue
+                                    - generic: €512k
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - img
+                                          - generic: +14.2%
+                                        - generic: vs prior 30d
+                        - region:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                        - generic: Shipments
+                                    - generic: 2,418
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - img
+                                          - generic: +8.4%
+                                        - generic: vs prior 30d
+                        - region:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                        - generic: Avg margin
+                                    - generic: 23.4%
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - img
+                                          - generic: "-0.8pp"
+                                        - generic: vs prior 30d
+                        - region:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                        - generic: NPS
+                                    - generic: "72"
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - img
+                                          - generic: "+4"
+                                        - generic: vs prior 30d
+                    - generic:
+                      - generic:
+                        - region "Revenue vs target":
+                          - generic:
+                            - generic:
+                              - generic:
+                                - heading "Revenue vs target" [level=2]
+                              - generic:
+                                - generic: Daily, last 30 days
+                            - generic:
+                              - generic:
+                                - generic: Actual
+                                - generic: Target
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                        - region "Shipment status":
+                          - generic:
+                            - generic:
+                              - generic:
+                                - heading "Shipment status" [level=2]
+                              - generic:
+                                - generic: Last 30 days
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - img:
+                                        - generic: "626"
+                                        - generic: total
+                                    - generic:
+                                      - generic:
+                                        - text: Delivered
+                                        - generic: 66%
+                                      - generic:
+                                        - text: In transit
+                                        - generic: 29%
+                                      - generic:
+                                        - text: Delayed
+                                        - generic: 4%
+                                      - generic:
+                                        - text: Cancelled
+                                        - generic: 1%
+                    - generic:
+                      - generic:
+                        - region "Revenue by region":
+                          - generic:
+                            - generic:
+                              - generic:
+                                - heading "Revenue by region" [level=2]
+                              - generic:
+                                - generic: Top 6 markets
+                            - generic:
+                              - tablist:
+                                - generic: 
+                                - generic:
+                                  - generic:
+                                    - tab "Revenue" [selected]:
+                                      - generic: Revenue
+                                    - tab "Volume":
+                                      - generic: Volume
+                                - generic: 
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img:
+                                    - generic: "142"
+                                    - generic: DE
+                                    - generic: "96"
+                                    - generic: NL
+                                    - generic: "78"
+                                    - generic: FR
+                                    - generic: "64"
+                                    - generic: IT
+                                    - generic: "51"
+                                    - generic: ES
+                                    - generic: "32"
+                                    - generic: PL
+                        - region "Top customers":
+                          - generic:
+                            - generic:
+                              - generic:
+                                - heading "Top customers" [level=2]
+                              - generic:
+                                - generic: By revenue, last 30 days
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - generic: "1"
+                                            - img "Acme Industrial (AI)":
+                                              - img:
+                                                - generic: AI
+                                            - generic: Acme Industrial
+                                            - generic: €184k
+                                        - progressbar
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - generic: "2"
+                                            - img "Northwind Traders (NT)":
+                                              - img:
+                                                - generic: NT
+                                            - generic: Northwind Traders
+                                            - generic: €142k
+                                        - progressbar
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - generic: "3"
+                                            - img "Vertex Logistics (VL)":
+                                              - img:
+                                                - generic: VL
+                                            - generic: Vertex Logistics
+                                            - generic: €98k
+                                        - progressbar
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - generic: "4"
+                                            - img "Globex Corporation (GC)":
+                                              - img:
+                                                - generic: GC
+                                            - generic: Globex Corporation
+                                            - generic: €67k
+                                        - progressbar
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - generic: "5"
+                                            - img "Initech Systems (IS)":
+                                              - img:
+                                                - generic: IS
+                                            - generic: Initech Systems
+                                            - generic: €58k
+                                        - progressbar
+                    - region "Carrier capacity utilization":
+                      - generic:
+                        - generic:
+                          - generic:
+                            - heading "Carrier capacity utilization" [level=2]
+                          - generic:
+                            - generic: Live · capacity assigned vs available
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic: DHL Express
+                                        - generic: 88%
+                                    - progressbar
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic: DPD
+                                        - generic: 72%
+                                    - progressbar
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic: GLS
+                                        - generic: 64%
+                                    - progressbar
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic: FedEx Europe
+                                        - generic: 42%
+                                    - progressbar
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic: UPS
+                                        - generic: 94%
+                                    - progressbar
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic: Hermes
+                                        - generic: 31%
+                                    - progressbar
+  - generic:
+    - generic:
+      - generic: Online
+  - listbox [ref=e504]:
+    - generic [ref=e505]:
+      - generic:
+        - option "Flat" [ref=e506] [cursor=pointer]:
+          - generic [ref=e507]: 
+          - generic [ref=e508]:
+            - generic: Flat
+        - option "Glass" [active] [selected] [ref=e509] [cursor=pointer]:
+          - generic [ref=e510]: 
+          - generic [ref=e511]:
+            - generic: Glass

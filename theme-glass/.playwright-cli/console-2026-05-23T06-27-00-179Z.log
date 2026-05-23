@@ -1,0 +1,11 @@
+[      81ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:10002/VAADIN/build/indexhtml-3ADZPd14.js:71107
+[     270ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:10002/GC:0
+[     270ms] [WARNING] <vaadin-avatar> The specified image could not be loaded: GC @ http://localhost:10002/VAADIN/build/generated-flow-imports-BU-JsDwT.js:3105
+[     282ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:10002/IS:0
+[     282ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:10002/VL:0
+[     282ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:10002/AI:0
+[     282ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:10002/NT:0
+[     290ms] [WARNING] <vaadin-avatar> The specified image could not be loaded: IS @ http://localhost:10002/VAADIN/build/generated-flow-imports-BU-JsDwT.js:3105
+[     290ms] [WARNING] <vaadin-avatar> The specified image could not be loaded: VL @ http://localhost:10002/VAADIN/build/generated-flow-imports-BU-JsDwT.js:3105
+[     290ms] [WARNING] <vaadin-avatar> The specified image could not be loaded: AI @ http://localhost:10002/VAADIN/build/generated-flow-imports-BU-JsDwT.js:3105
+[     290ms] [WARNING] <vaadin-avatar> The specified image could not be loaded: NT @ http://localhost:10002/VAADIN/build/generated-flow-imports-BU-JsDwT.js:3105

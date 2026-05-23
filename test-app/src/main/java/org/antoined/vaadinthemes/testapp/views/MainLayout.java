@@ -24,7 +24,7 @@ public class MainLayout extends AppLayout {
 
         // Theme switcher
         var themeCombo = new ComboBox<String>();
-        themeCombo.setItems("Lumo", "Seagod", "Fjord", "Terminal Synth", "Novelist");
+        themeCombo.setItems("Lumo", "Seagod", "Fjord", "Terminal Synth", "Novelist", "Glass");
         themeCombo.setWidth("160px");
         themeCombo.setPlaceholder("Theme...");
         themeCombo.setClearButtonVisible(false);
@@ -56,29 +56,47 @@ public class MainLayout extends AppLayout {
 
         addToNavbar(navbar);
 
-        var nav = new SideNav();
-        nav.addItem(new SideNavItem("Signal Dashboard", SignalDashboardView.class, VaadinIcon.SIGNAL.create()));
-        nav.addItem(new SideNavItem("Terminal", TerminalView.class, VaadinIcon.TERMINAL.create()));
-        nav.addItem(new SideNavItem("AI Assistant", ChatbotView.class, VaadinIcon.CHAT.create()));
-        nav.addItem(new SideNavItem("Buttons & Inputs", ButtonsAndInputsView.class, VaadinIcon.EDIT.create()));
-        nav.addItem(new SideNavItem("Data Display", DataDisplayView.class, VaadinIcon.TABLE.create()));
-        nav.addItem(new SideNavItem("Feedback & Overlay", FeedbackAndOverlayView.class, VaadinIcon.BELL.create()));
-        nav.addItem(new SideNavItem("Layout & Navigation", LayoutAndNavigationView.class, VaadinIcon.LAYOUT.create()));
-        addToDrawer(nav);
+        var workspace = new SideNav();
+        workspace.setLabel("Workspace");
+        workspace.addItem(new SideNavItem("Customers", org.antoined.vaadinthemes.testapp.views.glass.CustomersView.class, VaadinIcon.USERS.create()));
+        workspace.addItem(new SideNavItem("Insights",  org.antoined.vaadinthemes.testapp.views.glass.InsightsView.class,  VaadinIcon.BAR_CHART_V.create()));
+        workspace.addItem(new SideNavItem("Settings",  org.antoined.vaadinthemes.testapp.views.glass.SettingsView.class,  VaadinIcon.COG.create()));
+
+        var demos = new SideNav();
+        demos.setLabel("Demos");
+        demos.addItem(new SideNavItem("Signal Dashboard", SignalDashboardView.class, VaadinIcon.SIGNAL.create()));
+        demos.addItem(new SideNavItem("Terminal", TerminalView.class, VaadinIcon.TERMINAL.create()));
+        demos.addItem(new SideNavItem("AI Assistant", ChatbotView.class, VaadinIcon.CHAT.create()));
+
+        var components = new SideNav();
+        components.setLabel("Components");
+        components.addItem(new SideNavItem("Buttons & Inputs", ButtonsAndInputsView.class, VaadinIcon.EDIT.create()));
+        components.addItem(new SideNavItem("Data Display", DataDisplayView.class, VaadinIcon.TABLE.create()));
+        components.addItem(new SideNavItem("Feedback & Overlay", FeedbackAndOverlayView.class, VaadinIcon.BELL.create()));
+        components.addItem(new SideNavItem("Layout & Navigation", LayoutAndNavigationView.class, VaadinIcon.LAYOUT.create()));
+
+        addToDrawer(workspace, demos, components);
+
+
     }
 
     private void applyTheme(String themeName) {
+        // Clear any AppLayout-level variant from a previous theme.
+        getElement().removeAttribute("theme");
+
         String cssPath = switch (themeName) {
             case "Seagod" -> "/themes/seagod/styles.css";
             case "Fjord" -> "/themes/fjord/styles.css";
             case "Terminal Synth" -> "/themes/terminal-synth/styles.css";
             case "Novelist" -> "/themes/novelist/styles.css";
+            case "Glass" -> "/themes/glass/styles.css";
             default -> null;
         };
 
         String themeAttr = switch (themeName) {
             case "Fjord" -> "dark compact";
             case "Terminal Synth" -> "dark";
+            case "Glass" -> "light";
             default -> "";
         };
 
@@ -94,6 +112,7 @@ public class MainLayout extends AppLayout {
                 "h.removeAttribute('data-mode');" +
                 "h.removeAttribute('data-scanlines');" +
                 "h.removeAttribute('data-radius');" +
+                "h.removeAttribute('data-glass');" +
 
                 "if ($2) { h.setAttribute('theme', $2); } else { h.removeAttribute('theme'); }" +
 
@@ -177,6 +196,78 @@ public class MainLayout extends AppLayout {
         // Seagod is light-only — no tweaks
     }
 
+    private void buildGlassTweaks() {
+        var mode = new Select<String>();
+        mode.setItems("Light", "Dark");
+        mode.setValue("Light");
+        mode.setWidth("90px");
+        mode.addValueChangeListener(e -> setAttr("theme", "Dark".equals(e.getValue()) ? "dark" : "light"));
+
+        var bgVariant = new Select<String>();
+        bgVariant.setItems("Flat", "Glass");
+        bgVariant.setValue("Flat");
+        bgVariant.setWidth("90px");
+        bgVariant.addValueChangeListener(e -> {
+            if ("Glass".equals(e.getValue())) {
+                getElement().setAttribute("theme", "glass-bg");
+            } else {
+                getElement().removeAttribute("theme");
+            }
+        });
+
+        var glass = new Select<String>();
+        glass.setItems("Subtle", "Standard", "Heavy");
+        glass.setValue("Standard");
+        glass.setWidth("110px");
+        glass.addValueChangeListener(e -> {
+            String v = e.getValue();
+            if ("Standard".equals(v)) {
+                UI.getCurrent().getPage().executeJs("document.documentElement.removeAttribute('data-glass')");
+            } else {
+                setData("glass", v.toLowerCase());
+            }
+        });
+
+        var bg        = colorSwatch("--vg-bg",        "#e9eef5", "Background");
+        var primary   = colorSwatch("--vg-primary",   "#4763e4", "Primary");
+        var secondary = colorSwatch("--vg-secondary", "#64748b", "Secondary");
+        var accent    = colorSwatch("--vg-accent",    "#f59e0b", "Accent");
+
+        // Restore any previously saved color tweaks so reloading the page
+        // (or switching back to Glass) keeps the user's palette.
+        UI.getCurrent().getPage().executeJs(
+                "const tokens = ['--vg-bg','--vg-primary','--vg-secondary','--vg-accent'];" +
+                "tokens.forEach(t => {" +
+                "  const v = localStorage.getItem('glass-' + t);" +
+                "  if (v) document.documentElement.style.setProperty(t, v);" +
+                "});");
+
+        tweaksArea.add(mode, bgVariant, glass, bg, primary, secondary, accent);
+    }
+
+    /** Small <input type="color"> swatch that writes the chosen value
+     *  straight to the matching --vg-* token and persists it. */
+    private com.vaadin.flow.component.html.Span colorSwatch(String token, String defaultHex, String tooltip) {
+        com.vaadin.flow.dom.Element input = new com.vaadin.flow.dom.Element("input");
+        input.setAttribute("type", "color");
+        input.setAttribute("value", defaultHex);
+        input.setAttribute("title", tooltip);
+        input.getStyle().set("width", "28px").set("height", "28px").set("padding", "0")
+                .set("border", "1px solid var(--lumo-contrast-30pct)")
+                .set("border-radius", "6px").set("cursor", "pointer")
+                .set("background", "transparent");
+        input.addEventListener("input", e -> {
+            String v = e.getEventData().getString("event.target.value");
+            UI.getCurrent().getPage().executeJs(
+                    "document.documentElement.style.setProperty($0, $1);" +
+                    "localStorage.setItem('glass-' + $0, $1);",
+                    token, v);
+        }).addEventData("event.target.value");
+        com.vaadin.flow.component.html.Span wrap = new com.vaadin.flow.component.html.Span();
+        wrap.getElement().appendChild(input);
+        return wrap;
+    }
+
     private void buildTerminalSynthTweaks() {
         var palette = new Select<String>();
         palette.setItems("Outrun", "Miami", "Tokyo", "Dusk");
@@ -212,6 +303,7 @@ public class MainLayout extends AppLayout {
             case "Fjord" -> buildFjordTweaks();
             case "Terminal Synth" -> buildTerminalSynthTweaks();
             case "Novelist" -> buildNovelistTweaks();
+            case "Glass" -> buildGlassTweaks();
         }
     }
 
