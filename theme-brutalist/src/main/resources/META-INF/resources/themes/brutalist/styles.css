@@ -1,0 +1,792 @@
+/* ================================================================
+   Brutalist — extracted from version-tracker.html + tweaks-panel.jsx
+   Paper, rules, mono type, hard edges, sparse accent color.
+   ================================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+html,
+html[data-palette="paper"] {
+    --bt-bg: #f4f1ea;
+    --bt-bg-2: #ebe7dc;
+    --bt-surface: #f4f1ea;
+    --bt-surface-2: #ebe7dc;
+    --bt-ink: #15130f;
+    --bt-ink-2: #3a352c;
+    --bt-muted: #7d7768;
+    --bt-rule: #15130f;
+    --bt-accent: #c8412c;
+    --bt-accent-2: #1f5a3a;
+    --bt-warn: #b3851a;
+    --bt-hi: #fff7a8;
+}
+
+html[data-palette="moss"] {
+    --bt-bg: #f0f2e8;
+    --bt-bg-2: #e2e7d6;
+    --bt-surface: #f6f7ef;
+    --bt-surface-2: #e8edde;
+    --bt-ink: #10150f;
+    --bt-ink-2: #2d3829;
+    --bt-muted: #68725d;
+    --bt-rule: #10150f;
+    --bt-accent: #1f5a3a;
+    --bt-accent-2: #c8412c;
+    --bt-warn: #9a7415;
+    --bt-hi: #e3f59f;
+}
+
+html[data-palette="brick"] {
+    --bt-bg: #f5ede7;
+    --bt-bg-2: #ead9cf;
+    --bt-surface: #f9f1ec;
+    --bt-surface-2: #eedfd7;
+    --bt-ink: #1b100c;
+    --bt-ink-2: #4a2f26;
+    --bt-muted: #836c61;
+    --bt-rule: #1b100c;
+    --bt-accent: #b83224;
+    --bt-accent-2: #255f4b;
+    --bt-warn: #b3851a;
+    --bt-hi: #ffe08a;
+}
+
+html[data-palette="blueprint"] {
+    --bt-bg: #eef3f8;
+    --bt-bg-2: #dce7f0;
+    --bt-surface: #f7fafc;
+    --bt-surface-2: #e5edf5;
+    --bt-ink: #0f172a;
+    --bt-ink-2: #25324a;
+    --bt-muted: #64748b;
+    --bt-rule: #0f172a;
+    --bt-accent: #1d4ed8;
+    --bt-accent-2: #0f766e;
+    --bt-warn: #b45309;
+    --bt-hi: #dbeafe;
+}
+
+html[data-mode="dark"] {
+    --bt-bg: #0e0e0c;
+    --bt-bg-2: #181815;
+    --bt-surface: #11110f;
+    --bt-surface-2: #1c1b18;
+    --bt-ink: #ece7d8;
+    --bt-ink-2: #b8b3a4;
+    --bt-muted: #868071;
+    --bt-rule: #ece7d8;
+    --bt-accent: #ff6a4d;
+    --bt-accent-2: #6cd49a;
+    --bt-warn: #ffd56a;
+    --bt-hi: #4a4516;
+}
+
+html {
+    --bt-font: "JetBrains Mono", "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --bt-rule-w: 1.5px;
+    --bt-radius: 0;
+    --bt-shadow: 4px 4px 0 0 var(--bt-ink);
+    --bt-grid: 8px;
+    --bt-s-xs: 4px;
+    --bt-s-s: 8px;
+    --bt-s-m: 12px;
+    --bt-s-l: 16px;
+    --bt-s-xl: 24px;
+    --bt-ctrl-h: 34px;
+    --bt-fs-xs: 10px;
+    --bt-fs-s: 12px;
+    --bt-fs-m: 13px;
+    --bt-fs-l: 16px;
+    --bt-fs-xl: 22px;
+
+    --lumo-primary-color: var(--bt-accent);
+    --lumo-primary-text-color: var(--bt-accent);
+    --lumo-success-color: var(--bt-accent-2);
+    --lumo-success-text-color: var(--bt-accent-2);
+    --lumo-error-color: var(--bt-accent);
+    --lumo-error-text-color: var(--bt-accent);
+    --lumo-warning-color: var(--bt-warn);
+    --lumo-warning-text-color: var(--bt-warn);
+    --lumo-body-text-color: var(--bt-ink);
+    --lumo-secondary-text-color: var(--bt-muted);
+    --lumo-base-color: var(--bt-bg);
+    --lumo-contrast-5pct: color-mix(in oklab, var(--bt-ink) 5%, transparent);
+    --lumo-contrast-10pct: color-mix(in oklab, var(--bt-ink) 10%, transparent);
+    --lumo-contrast-20pct: color-mix(in oklab, var(--bt-ink) 20%, transparent);
+    --lumo-border-radius-s: 0;
+    --lumo-border-radius-m: 0;
+    --lumo-border-radius-l: 0;
+    --lumo-font-family: var(--bt-font);
+}
+
+html[data-density="compact"] {
+    --bt-s-s: 6px;
+    --bt-s-m: 10px;
+    --bt-s-l: 14px;
+    --bt-s-xl: 20px;
+    --bt-ctrl-h: 30px;
+    --bt-fs-m: 12px;
+}
+
+html[data-density="comfortable"] {
+    --bt-s-s: 10px;
+    --bt-s-m: 14px;
+    --bt-s-l: 20px;
+    --bt-s-xl: 28px;
+    --bt-ctrl-h: 40px;
+    --bt-fs-m: 14px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: var(--bt-ink);
+    background:
+        repeating-linear-gradient(0deg, transparent 0 23px, color-mix(in oklab, var(--bt-ink) 5%, transparent) 23px 24px),
+        repeating-linear-gradient(90deg, transparent 0 23px, color-mix(in oklab, var(--bt-ink) 5%, transparent) 23px 24px),
+        var(--bt-bg);
+    font-family: var(--bt-font);
+    font-size: var(--bt-fs-m);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    background: var(--bt-hi);
+    color: var(--bt-ink);
+}
+
+a {
+    color: var(--bt-ink);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+
+a:hover {
+    background: var(--bt-hi);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+    color: var(--bt-ink);
+    font-family: var(--bt-font);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: 0;
+}
+
+h1 {
+    font-size: var(--bt-fs-xl);
+}
+
+h2 {
+    font-size: var(--bt-fs-l);
+}
+
+p {
+    color: var(--bt-muted);
+}
+
+/* App shell */
+vaadin-app-layout {
+    --vaadin-app-layout-navbar-background: var(--bt-bg);
+    --vaadin-app-layout-drawer-background: var(--bt-bg);
+    background: transparent;
+}
+
+vaadin-app-layout::part(navbar) {
+    min-height: 44px;
+    border-bottom: var(--bt-rule-w) solid var(--bt-rule);
+    background: var(--bt-bg);
+    color: var(--bt-ink);
+    box-shadow: none;
+}
+
+vaadin-app-layout::part(drawer) {
+    border-right: var(--bt-rule-w) solid var(--bt-rule);
+    background: var(--bt-bg);
+    color: var(--bt-ink);
+    padding: var(--bt-s-m) 0;
+    box-shadow: none;
+}
+
+vaadin-app-layout vaadin-horizontal-layout[slot="navbar"] {
+    min-height: 44px;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    gap: var(--bt-s-m);
+}
+
+vaadin-app-layout [slot="navbar"] h1 {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 !important;
+    color: var(--bt-ink);
+    font-size: var(--bt-fs-m);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+vaadin-app-layout [slot="navbar"] h1::before {
+    content: "BT";
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border: var(--bt-rule-w) solid var(--bt-rule);
+    background: var(--bt-ink);
+    color: var(--bt-bg);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+vaadin-app-layout > :not([slot]) {
+    min-height: 100%;
+    background: var(--bt-bg);
+    color: var(--bt-ink);
+}
+
+vaadin-app-layout > :not([slot]) > * {
+    flex-shrink: 0;
+}
+
+vaadin-drawer-toggle {
+    width: 30px;
+    height: 30px;
+    color: var(--bt-ink);
+    border: var(--bt-rule-w) solid transparent;
+    border-radius: 0;
+}
+
+vaadin-drawer-toggle:hover {
+    border-color: var(--bt-rule);
+    background: var(--bt-ink);
+    color: var(--bt-bg);
+}
+
+/* Demo top links + theme popover */
+.app-top-nav {
+    gap: var(--bt-s-xs);
+    flex-shrink: 0;
+}
+
+.app-top-nav-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0 10px;
+    border: var(--bt-rule-w) solid transparent;
+    color: var(--bt-ink);
+    font-size: var(--bt-fs-s);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.app-top-nav-link:hover,
+.app-top-nav-link[highlight] {
+    border-color: var(--bt-rule);
+    background: var(--bt-ink);
+    color: var(--bt-bg);
+}
+
+.theme-switcher-popover-trigger {
+    height: var(--bt-ctrl-h);
+    border: var(--bt-rule-w) solid var(--bt-rule);
+    border-radius: 0;
+    background: var(--bt-bg);
+    color: var(--bt-ink);
+    font: 700 var(--bt-fs-s) / 1 var(--bt-font);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    box-shadow: 2px 2px 0 0 var(--bt-ink);
+}
+
+.theme-switcher-popover-trigger:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 0 var(--bt-ink);
+}
+
+vaadin-popover-overlay::part(overlay),
+vaadin-dialog-overlay::part(overlay) {
+    border: var(--bt-rule-w) solid var(--bt-rule);
+    border-radius: 0;
+    background: var(--bt-bg);
+    color: var(--bt-ink);
+    box-shadow: var(--bt-shadow);
+}
+
+.theme-switcher--panel {
+    width: 304px;
+    max-width: calc(100vw - 32px);
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: var(--bt-s-m);
+    padding: var(--bt-s-m);
+}
+
+.theme-switcher--panel .theme-switcher-theme-selector,
+.theme-switcher--panel .theme-switcher-options {
+    width: 100%;
+}
+
+.theme-switcher--panel .theme-switcher-options {
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: var(--bt-s-s);
+}
+
+.theme-switcher-option {
+    width: 100%;
+    gap: var(--bt-s-m);
+}
+
+.theme-switcher-option-label {
+    flex: 1;
+    color: var(--bt-muted);
+    font-size: var(--bt-fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.theme-switcher-option-control {
+    width: 150px;
+}
+
+.theme-switcher-color-input {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: var(--bt-rule-w) solid var(--bt-rule);
+    border-radius: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Side nav */
+vaadin-side-nav {
+    padding: 0;
+}
+
+vaadin-side-nav::part(label) {
+    padding: var(--bt-s-m) 14px var(--bt-s-s);
+    color: var(--bt-muted);
+    font-size: var(--bt-fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+vaadin-side-nav-item {
+    margin: 0;
+}
+
+vaadin-side-nav-item::part(link) {
+    min-height: 34px;
+    padding: 0 14px 0 11px;
+    border-left: 3px solid transparent;
+    color: var(--bt-ink);
+    font-size: var(--bt-fs-m);
+}
+
+vaadin-side-nav-item::part(link):hover {
+    background: var(--bt-bg-2);
+}
+
+vaadin-side-nav-item[current]::part(link) {
+    border-left-color: var(--bt-accent);
+    background: var(--bt-bg-2);
+    font-weight: 700;
+}
+
+vaadin-side-nav-item vaadin-icon {
+    color: var(--bt-muted);
+}
+
+vaadin-side-nav-item[current] vaadin-icon {
+    color: var(--bt-accent);
+}
+
+/* Buttons and controls */
+vaadin-button {
+    min-height: var(--bt-ctrl-h);
+    border: var(--bt-rule-w) solid var(--bt-rule);
+    border-radius: 0;
+    background: var(--bt-bg);
+    color: var(--bt-ink);
+    font: 600 var(--bt-fs-s) / 1 var(--bt-font);
+    letter-spacing: 0.02em;
+    box-shadow: 2px 2px 0 0 var(--bt-ink);
+}
+
+vaadin-button:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 0 var(--bt-ink);
+}
+
+vaadin-button[theme~="primary"] {
+    background: var(--bt-ink);
+    color: var(--bt-bg);
+}
+
+vaadin-button[theme~="tertiary"],
+vaadin-button[theme~="icon"] {
+    border-color: transparent;
+    box-shadow: none;
+}
+
+vaadin-button[theme~="tertiary"]:hover,
+vaadin-button[theme~="icon"]:hover {
+    border-color: var(--bt-rule);
+    background: var(--bt-bg-2);
+    transform: none;
+    box-shadow: none;
+}
+
+vaadin-text-field,
+vaadin-text-area,
+vaadin-email-field,
+vaadin-password-field,
+vaadin-number-field,
+vaadin-combo-box,
+vaadin-select,
+vaadin-date-picker {
+    --vaadin-input-field-border-width: 0;
+    --vaadin-input-field-border-radius: 0;
+    --vaadin-input-field-background: var(--bt-bg);
+    --vaadin-input-field-value-color: var(--bt-ink);
+    --vaadin-input-field-label-color: var(--bt-muted);
+    --vaadin-input-field-hover-highlight: transparent;
+    --vaadin-input-field-focus-highlight: transparent;
+    color: var(--bt-ink);
+    font-family: var(--bt-font);
+}
+
+vaadin-text-field::part(input-field),
+vaadin-text-area::part(input-field),
+vaadin-email-field::part(input-field),
+vaadin-password-field::part(input-field),
+vaadin-number-field::part(input-field),
+vaadin-combo-box::part(input-field),
+vaadin-select::part(input-field),
+vaadin-date-picker::part(input-field) {
+    min-height: var(--bt-ctrl-h);
+    border: var(--bt-rule-w) solid var(--bt-rule);
+    border-radius: 0;
+    background: var(--bt-bg);
+    color: var(--bt-ink);
+    box-shadow: none;
+}
+
+vaadin-text-field[focused]::part(input-field),
+vaadin-text-area[focused]::part(input-field),
+vaadin-email-field[focused]::part(input-field),
+vaadin-password-field[focused]::part(input-field),
+vaadin-number-field[focused]::part(input-field),
+vaadin-combo-box[focused]::part(input-field),
+vaadin-select[focused]::part(input-field),
+vaadin-date-picker[focused]::part(input-field) {
+    background: var(--bt-bg-2);
+    box-shadow: 2px 2px 0 0 var(--bt-ink);
+}
+
+vaadin-checkbox::part(checkbox),
+vaadin-radio-button::part(radio) {
+    border: var(--bt-rule-w) solid var(--bt-rule);
+    border-radius: 0;
+    background: var(--bt-bg);
+}
+
+vaadin-checkbox[checked]::part(checkbox),
+vaadin-radio-button[checked]::part(radio) {
+    background: var(--bt-ink);
+    color: var(--bt-bg);
+}
+
+vaadin-checkbox::part(label),
+vaadin-radio-button::part(label) {
+    color: var(--bt-ink);
+}
+
+/* Cards and app-local surfaces */
+.view-card,
+.card,
+section,
+article {
+    border-radius: 0;
+}
+
+vaadin-details,
+vaadin-accordion-panel,
+.demo-card,
+.metric-card,
+.settings-card,
+.chat-card,
+.panel,
+.surface-card {
+    border: var(--bt-rule-w) solid var(--bt-rule);
+    border-radius: 0;
+    background: var(--bt-surface);
+    color: var(--bt-ink);
+    box-shadow: none;
+}
+
+vaadin-details::part(summary),
+vaadin-accordion-panel::part(summary),
+vaadin-accordion-heading::part(content) {
+    min-height: var(--bt-ctrl-h);
+    padding: var(--bt-s-m) var(--bt-s-l);
+    border-bottom: var(--bt-rule-w) solid var(--bt-rule);
+    background: var(--bt-bg-2);
+    color: var(--bt-ink);
+    font-weight: 700;
+}
+
+vaadin-details::part(content),
+vaadin-accordion-panel::part(content) {
+    padding: var(--bt-s-l);
+    color: var(--bt-ink);
+}
+
+/* Grids and tables */
+vaadin-grid {
+    border: var(--bt-rule-w) solid var(--bt-rule);
+    border-radius: 0;
+    background: var(--bt-bg);
+    color: var(--bt-ink);
+    font-family: var(--bt-font);
+}
+
+vaadin-grid::part(header-cell) {
+    border-bottom: var(--bt-rule-w) solid var(--bt-rule);
+    background: var(--bt-bg-2);
+    color: var(--bt-ink);
+    font-size: var(--bt-fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+vaadin-grid::part(body-cell) {
+    border-bottom: 1px solid var(--bt-rule);
+    background: var(--bt-bg);
+    color: var(--bt-ink);
+}
+
+vaadin-grid::part(row):hover vaadin-grid-cell-content {
+    background: var(--bt-bg-2);
+}
+
+vaadin-grid-cell-content {
+    padding: var(--bt-s-s) var(--bt-s-m);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: var(--bt-rule-w) solid var(--bt-rule);
+    background: var(--bt-bg);
+    color: var(--bt-ink);
+    font-family: var(--bt-font);
+}
+
+th,
+td {
+    border-bottom: 1px solid var(--bt-rule);
+    padding: var(--bt-s-s) var(--bt-s-m);
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    border-bottom: var(--bt-rule-w) solid var(--bt-rule);
+    background: var(--bt-bg-2);
+    font-size: var(--bt-fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+/* Tabs, menus, overlays */
+vaadin-tabs {
+    border-bottom: var(--bt-rule-w) solid var(--bt-rule);
+}
+
+vaadin-tab {
+    color: var(--bt-muted);
+    font-family: var(--bt-font);
+    font-size: var(--bt-fs-s);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+vaadin-tab[selected] {
+    background: var(--bt-ink);
+    color: var(--bt-bg);
+}
+
+vaadin-menu-bar-button {
+    border-radius: 0;
+    color: var(--bt-ink);
+    font-family: var(--bt-font);
+}
+
+vaadin-combo-box-overlay::part(overlay),
+vaadin-select-overlay::part(overlay),
+vaadin-date-picker-overlay::part(overlay),
+vaadin-context-menu-overlay::part(overlay),
+vaadin-menu-bar-overlay::part(overlay),
+vaadin-tooltip-overlay::part(overlay) {
+    border: var(--bt-rule-w) solid var(--bt-rule);
+    border-radius: 0;
+    background: var(--bt-bg);
+    color: var(--bt-ink);
+    box-shadow: var(--bt-shadow);
+}
+
+vaadin-item {
+    color: var(--bt-ink);
+    font-family: var(--bt-font);
+}
+
+vaadin-item:hover,
+vaadin-item[selected] {
+    background: var(--bt-bg-2);
+}
+
+/* Status and data chips */
+vaadin-message,
+vaadin-notification-card {
+    border: var(--bt-rule-w) solid var(--bt-rule);
+    border-radius: 0;
+    background: var(--bt-bg);
+    color: var(--bt-ink);
+    box-shadow: var(--bt-shadow);
+    font-family: var(--bt-font);
+}
+
+vaadin-progress-bar {
+    --lumo-primary-color: var(--bt-ink);
+    height: 12px;
+    border: var(--bt-rule-w) solid var(--bt-rule);
+    background: var(--bt-bg);
+}
+
+vaadin-progress-bar::part(bar) {
+    background: var(--bt-bg);
+}
+
+vaadin-progress-bar::part(value) {
+    background: var(--bt-ink);
+}
+
+vaadin-avatar {
+    border: var(--bt-rule-w) solid var(--bt-rule);
+    border-radius: 0;
+    background: var(--bt-ink);
+    color: var(--bt-bg);
+    font-family: var(--bt-font);
+    font-weight: 700;
+}
+
+vaadin-icon {
+    color: currentColor;
+}
+
+/* App utility classes used by the demo and the source prototype */
+.pill,
+[theme~="badge"] {
+    display: inline-flex;
+    align-items: center;
+    min-height: 20px;
+    padding: 1px 8px;
+    border: 1.25px solid var(--bt-rule);
+    border-radius: 0;
+    background: var(--bt-bg);
+    color: var(--bt-ink);
+    font-size: var(--bt-fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+[theme~="badge"][theme~="success"],
+.pill.ok {
+    background: var(--bt-accent-2);
+    border-color: var(--bt-accent-2);
+    color: var(--bt-bg);
+}
+
+[theme~="badge"][theme~="error"],
+.pill.bad {
+    background: var(--bt-accent);
+    border-color: var(--bt-accent);
+    color: #fff;
+}
+
+[theme~="badge"][theme~="warning"],
+.pill.warn {
+    background: var(--bt-warn);
+    border-color: var(--bt-warn);
+    color: var(--bt-ink);
+}
+
+.kbd {
+    border: 1.25px solid var(--bt-rule);
+    border-bottom-width: 2px;
+    padding: 0 5px;
+    background: var(--bt-bg);
+    color: var(--bt-ink-2);
+    font-size: var(--bt-fs-xs);
+}
+
+.hi {
+    background: var(--bt-hi);
+    color: var(--bt-ink);
+    padding: 0 4px;
+}
+
+.ascii,
+pre,
+code {
+    font-family: var(--bt-font);
+}
+
+pre {
+    border: var(--bt-rule-w) solid var(--bt-rule);
+    background: var(--bt-bg);
+    color: var(--bt-ink-2);
+    padding: var(--bt-s-l);
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    vaadin-app-layout::part(navbar) {
+        min-height: 52px;
+    }
+
+    vaadin-app-layout [slot="navbar"] h1 {
+        font-size: 0;
+    }
+
+    .app-top-nav {
+        display: none !important;
+    }
+
+    .theme-switcher-popover-trigger {
+        min-width: 40px;
+        padding-inline: 8px;
+    }
+}

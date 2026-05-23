@@ -25,6 +25,7 @@
         <module>theme-terminal-synth</module>
         <module>theme-novelist</module>
         <module>theme-glass</module>
+        <module>theme-brutalist</module>
         <module>test-app</module>
     </modules>
 
