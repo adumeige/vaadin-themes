@@ -28,7 +28,10 @@ import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import org.antoined.vaadinthemes.glass.GlassTheme;
+import org.antoined.vaadinthemes.glass.GlassThemeVariant;
 import org.antoined.vaadinthemes.testapp.views.MainLayout;
+import org.antoined.vaadinthemes.theme.ThemeVariants;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -37,11 +40,6 @@ import java.util.Map;
 @Route(value = "glass/settings", layout = MainLayout.class)
 @PageTitle("Settings — Glass")
 public class SettingsView extends VerticalLayout {
-
-    private record Notif(String label, String sub, boolean email, boolean push, boolean sms) {}
-    private record Integration(String id, String name, String desc, boolean connected) {}
-    private record Session(String device, String location, String when, boolean current) {}
-    private record ApiKey(String name, String fingerprint, String lastUsed) {}
 
     public SettingsView() {
         setPadding(false);
@@ -65,6 +63,7 @@ public class SettingsView extends VerticalLayout {
                 advancedCard(),
                 dangerCard()
         );
+        ThemeVariants.add(body, GlassThemeVariant.FLAT);
         body.setPadding(true);
         body.setSpacing(true);
         body.setMaxWidth("880px");
@@ -95,8 +94,6 @@ public class SettingsView extends VerticalLayout {
                 .set("flex", "0 0 auto");
         return head;
     }
-
-    // ── Profile ─────────────────────────────────────────────────────────
 
     private Card profileCard() {
         Card card = new Card();
@@ -136,8 +133,10 @@ public class SettingsView extends VerticalLayout {
         Select<String> lang = new Select<>();
         lang.setLabel("Language");
         Map<String, String> langs = new LinkedHashMap<>();
-        langs.put("en", "English (US)"); langs.put("de", "Deutsch");
-        langs.put("fr", "Français");     langs.put("es", "Español");
+        langs.put("en", "English (US)");
+        langs.put("de", "Deutsch");
+        langs.put("fr", "Français");
+        langs.put("es", "Español");
         lang.setItems(langs.keySet());
         lang.setItemLabelGenerator(langs::get);
         lang.setValue("en");
@@ -147,7 +146,7 @@ public class SettingsView extends VerticalLayout {
         Map<String, String> tzs = new LinkedHashMap<>();
         tzs.put("berlin", "Europe/Berlin (UTC+1)");
         tzs.put("london", "Europe/London (UTC+0)");
-        tzs.put("ny",     "America/New_York (UTC-5)");
+        tzs.put("ny", "America/New_York (UTC-5)");
         tz.setItems(tzs.keySet());
         tz.setItemLabelGenerator(tzs::get);
         tz.setValue("berlin");
@@ -167,12 +166,11 @@ public class SettingsView extends VerticalLayout {
         return card;
     }
 
-    // ── Notifications matrix ────────────────────────────────────────────
-
     private Card notificationsCard() {
         Card card = new Card();
         card.setWidthFull();
         card.setTitle("Notifications");
+        GlassTheme.applyVariant(card, GlassThemeVariant.FLAT);
         Span sub = new Span("Choose how you'd like to be reached.");
         sub.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
         card.setSubtitle(sub);
@@ -180,11 +178,11 @@ public class SettingsView extends VerticalLayout {
         Grid<Notif> grid = new Grid<>(Notif.class, false);
         grid.setAllRowsVisible(true);
         grid.setItems(
-                new Notif("Critical incidents", "Delays, exceptions, cancellations", true,  true,  true),
-                new Notif("Daily digest",       "Summary of shipments and revenue",  true,  false, false),
-                new Notif("Weekly report",      "Performance and KPIs vs last week", true,  false, false),
-                new Notif("Status updates",     "Every shipment status change",      false, false, false),
-                new Notif("Mentions & comments","When someone @mentions you",        true,  true,  false));
+                new Notif("Critical incidents", "Delays, exceptions, cancellations", true, true, true),
+                new Notif("Daily digest", "Summary of shipments and revenue", true, false, false),
+                new Notif("Weekly report", "Performance and KPIs vs last week", true, false, false),
+                new Notif("Status updates", "Every shipment status change", false, false, false),
+                new Notif("Mentions & comments", "When someone @mentions you", true, true, false));
 
         grid.addColumn(new ComponentRenderer<>(n -> {
             Span lbl = new Span(n.label());
@@ -198,8 +196,8 @@ public class SettingsView extends VerticalLayout {
         })).setHeader("Event").setFlexGrow(1);
 
         grid.addComponentColumn(n -> centeredCheckbox(n.email())).setHeader("Email").setAutoWidth(true).setFlexGrow(0).setTextAlign(com.vaadin.flow.component.grid.ColumnTextAlign.CENTER);
-        grid.addComponentColumn(n -> centeredCheckbox(n.push())) .setHeader("Push") .setAutoWidth(true).setFlexGrow(0).setTextAlign(com.vaadin.flow.component.grid.ColumnTextAlign.CENTER);
-        grid.addComponentColumn(n -> centeredCheckbox(n.sms()))  .setHeader("SMS")  .setAutoWidth(true).setFlexGrow(0).setTextAlign(com.vaadin.flow.component.grid.ColumnTextAlign.CENTER);
+        grid.addComponentColumn(n -> centeredCheckbox(n.push())).setHeader("Push").setAutoWidth(true).setFlexGrow(0).setTextAlign(com.vaadin.flow.component.grid.ColumnTextAlign.CENTER);
+        grid.addComponentColumn(n -> centeredCheckbox(n.sms())).setHeader("SMS").setAutoWidth(true).setFlexGrow(0).setTextAlign(com.vaadin.flow.component.grid.ColumnTextAlign.CENTER);
 
         card.add(grid);
         return card;
@@ -209,8 +207,6 @@ public class SettingsView extends VerticalLayout {
         Checkbox c = new Checkbox(checked);
         return c;
     }
-
-    // ── Security ────────────────────────────────────────────────────────
 
     private Card securityCard() {
         Card card = new Card();
@@ -248,9 +244,9 @@ public class SettingsView extends VerticalLayout {
         sessHead.addClassNames(LumoUtility.FontWeight.MEDIUM);
         VerticalLayout sessions = new VerticalLayout(
                 sessHead,
-                sessionRow(new Session("MacBook Pro · Safari",   "Berlin, DE", "Active now",  true)),
+                sessionRow(new Session("MacBook Pro · Safari", "Berlin, DE", "Active now", true)),
                 sessionRow(new Session("iPhone 15 · Vaadin App", "Berlin, DE", "3 hours ago", false)),
-                sessionRow(new Session("Chrome · Windows",       "Munich, DE", "2 days ago",  false))
+                sessionRow(new Session("Chrome · Windows", "Munich, DE", "2 days ago", false))
         );
         sessions.setPadding(false);
         sessions.setSpacing(true);
@@ -262,6 +258,8 @@ public class SettingsView extends VerticalLayout {
         card.add(body);
         return card;
     }
+
+    // ── Profile ─────────────────────────────────────────────────────────
 
     private Component sessionRow(Session s) {
         Avatar a = new Avatar(s.device());
@@ -301,15 +299,15 @@ public class SettingsView extends VerticalLayout {
         return row;
     }
 
-    // ── Integrations ────────────────────────────────────────────────────
+    // ── Notifications matrix ────────────────────────────────────────────
 
     private Card integrationsCard() {
         List<Integration> integrations = List.of(
-                new Integration("slack",   "Slack",   "Post dispatch alerts to a channel.",    true),
-                new Integration("sap",     "SAP",     "Sync customer + invoice records.",      true),
+                new Integration("slack", "Slack", "Post dispatch alerts to a channel.", true),
+                new Integration("sap", "SAP", "Sync customer + invoice records.", true),
                 new Integration("shopify", "Shopify", "Fulfill orders directly from Shopify.", false),
-                new Integration("stripe",  "Stripe",  "Auto-reconcile incoming payments.",     true),
-                new Integration("hubspot", "HubSpot", "Mirror accounts to your CRM.",          false));
+                new Integration("stripe", "Stripe", "Auto-reconcile incoming payments.", true),
+                new Integration("hubspot", "HubSpot", "Mirror accounts to your CRM.", false));
         long connected = integrations.stream().filter(Integration::connected).count();
 
         Card card = new Card();
@@ -363,7 +361,7 @@ public class SettingsView extends VerticalLayout {
         return row;
     }
 
-    // ── Advanced ────────────────────────────────────────────────────────
+    // ── Security ────────────────────────────────────────────────────────
 
     private Card advancedCard() {
         Card card = new Card();
@@ -373,11 +371,11 @@ public class SettingsView extends VerticalLayout {
         VerticalLayout list = new VerticalLayout(
                 detail("API access", "2 keys",
                         keyRow(new ApiKey("Production key", "vk_…7c2a", "2 min ago")),
-                        keyRow(new ApiKey("Staging key",    "vk_…f019", "Yesterday")),
+                        keyRow(new ApiKey("Staging key", "vk_…f019", "Yesterday")),
                         genKeyButton()),
-                detail("Webhooks",      "3 endpoints", secondaryText("Configure HTTP endpoints to receive shipment events.")),
-                detail("Audit log",     "Last 90 days", secondaryText("Download a CSV of every action taken on this account.")),
-                detail("Data residency","EU",           secondaryText("All data is stored in Frankfurt (eu-central-1) per GDPR requirements."))
+                detail("Webhooks", "3 endpoints", secondaryText("Configure HTTP endpoints to receive shipment events.")),
+                detail("Audit log", "Last 90 days", secondaryText("Download a CSV of every action taken on this account.")),
+                detail("Data residency", "EU", secondaryText("All data is stored in Frankfurt (eu-central-1) per GDPR requirements."))
         );
         list.setPadding(false);
         list.setSpacing(false);
@@ -390,6 +388,8 @@ public class SettingsView extends VerticalLayout {
         s.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
         return s;
     }
+
+    // ── Integrations ────────────────────────────────────────────────────
 
     private Button genKeyButton() {
         Button b = new Button("Generate new key", new Icon(VaadinIcon.PLUS));
@@ -412,6 +412,8 @@ public class SettingsView extends VerticalLayout {
         return d;
     }
 
+    // ── Advanced ────────────────────────────────────────────────────────
+
     private Component keyRow(ApiKey k) {
         Span name = new Span(k.name());
         name.addClassNames(LumoUtility.FontSize.MEDIUM, LumoUtility.FontWeight.MEDIUM);
@@ -422,7 +424,7 @@ public class SettingsView extends VerticalLayout {
         text.setPadding(false);
         text.setSpacing(false);
 
-        Button copy  = new Button(new Icon(VaadinIcon.COPY));
+        Button copy = new Button(new Icon(VaadinIcon.COPY));
         copy.addThemeVariants(ButtonVariant.LUMO_TERTIARY, ButtonVariant.LUMO_ICON, ButtonVariant.LUMO_SMALL);
         Button trash = new Button(new Icon(VaadinIcon.TRASH));
         trash.addThemeVariants(ButtonVariant.LUMO_TERTIARY, ButtonVariant.LUMO_ICON, ButtonVariant.LUMO_SMALL);
@@ -437,8 +439,6 @@ public class SettingsView extends VerticalLayout {
                 .set("background", "var(--lumo-base-color)");
         return row;
     }
-
-    // ── Danger zone ─────────────────────────────────────────────────────
 
     private Card dangerCard() {
         Card card = new Card();
@@ -477,5 +477,19 @@ public class SettingsView extends VerticalLayout {
         row.expand(text);
         card.add(row);
         return card;
+    }
+
+    private record Notif(String label, String sub, boolean email, boolean push, boolean sms) {
+    }
+
+    private record Integration(String id, String name, String desc, boolean connected) {
+    }
+
+    private record Session(String device, String location, String when, boolean current) {
+    }
+
+    // ── Danger zone ─────────────────────────────────────────────────────
+
+    private record ApiKey(String name, String fingerprint, String lastUsed) {
     }
 }

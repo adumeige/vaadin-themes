@@ -15,4 +15,12 @@
         design.
     </description>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.antoined</groupId>
+            <artifactId>theme</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>

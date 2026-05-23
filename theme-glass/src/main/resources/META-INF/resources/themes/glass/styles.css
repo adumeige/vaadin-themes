@@ -17,144 +17,146 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 
 html {
-  /* Configurable */
-  --vg-bg: #e9eef5;
-  --vg-primary: #4763e4;
-  --vg-secondary: #64748b;
-  --vg-accent: #f59e0b;
+    /* Configurable */
+    --vg-bg: #e9eef5;
+    --vg-primary: #4763e4;
+    --vg-secondary: #64748b;
+    --vg-accent: #f59e0b;
 
-  /* Foreground & opaque surfaces (light) */
-  --vg-fg:           #0b1220;
-  --vg-fg-secondary: #475569;
-  --vg-fg-tertiary:  #94a3b8;
-  --vg-surface:      #ffffff;
-  --vg-surface-2:    #f8fafc;
-  --vg-surface-3:    rgba(15, 23, 42, 0.04);
-  --vg-divider:      rgba(15, 23, 42, 0.07);
-  --vg-border:       rgba(15, 23, 42, 0.10);
-  --vg-border-strong:rgba(15, 23, 42, 0.18);
-  --vg-fg-on-primary:#ffffff;
+    /* Foreground & opaque surfaces (light) */
+    --vg-fg: #0b1220;
+    --vg-fg-secondary: #475569;
+    --vg-fg-tertiary: #94a3b8;
+    --vg-surface: #ffffff;
+    --vg-surface-2: #f8fafc;
+    --vg-surface-3: rgba(15, 23, 42, 0.04);
+    --vg-divider: rgba(15, 23, 42, 0.07);
+    --vg-border: rgba(15, 23, 42, 0.10);
+    --vg-border-strong: rgba(15, 23, 42, 0.18);
+    --vg-fg-on-primary: #ffffff;
 
-  /* Glass tokens */
-  --vg-glass-fill:        rgba(255, 255, 255, 0.55);
-  --vg-glass-fill-strong: rgba(255, 255, 255, 0.72);
-  --vg-glass-tint:        color-mix(in oklab, var(--vg-primary) 6%, transparent);
-  --vg-glass-blur:        blur(24px) saturate(180%);
-  --vg-glass-border:      0.5px solid rgba(255, 255, 255, 0.65);
-  --vg-glass-edge:
-    inset 0 0.5px 0 rgba(255, 255, 255, 0.9),
+    /* Glass tokens */
+    --vg-glass-fill: rgba(255, 255, 255, 0.55);
+    --vg-glass-fill-strong: rgba(255, 255, 255, 0.72);
+    --vg-glass-tint: color-mix(in oklab, var(--vg-primary) 6%, transparent);
+    --vg-glass-blur: blur(24px) saturate(180%);
+    --vg-glass-border: 0.5px solid rgba(255, 255, 255, 0.65);
+    --vg-glass-edge: inset 0 0.5px 0 rgba(255, 255, 255, 0.9),
     inset 0 -0.5px 0 rgba(15, 23, 42, 0.04),
     inset 0.5px 0 0 rgba(255, 255, 255, 0.4);
-  --vg-glass-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.4) inset,
+    --vg-glass-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset,
     0 12px 36px rgba(15, 23, 42, 0.14),
     0 2px 6px rgba(15, 23, 42, 0.06);
 
-  /* Geometry */
-  --vg-radius-xs: 4px;
-  --vg-radius-s:  6px;
-  --vg-radius-m:  10px;
-  --vg-radius-l:  16px;
-  --vg-radius-xl: 22px;
+    /* Geometry */
+    --vg-radius-xs: 4px;
+    --vg-radius-s: 6px;
+    --vg-radius-m: 10px;
+    --vg-radius-l: 16px;
+    --vg-radius-xl: 22px;
 
-  /* Opaque shadows */
-  --vg-shadow-s: 0 1px 2px rgba(15, 23, 42, 0.06), 0 0 0 0.5px rgba(15, 23, 42, 0.04);
-  --vg-shadow-m: 0 4px 14px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
-  --vg-shadow-l: 0 24px 64px rgba(15, 23, 42, 0.22), 0 6px 16px rgba(15, 23, 42, 0.10);
+    /* Opaque shadows */
+    --vg-shadow-s: 0 1px 2px rgba(15, 23, 42, 0.06), 0 0 0 0.5px rgba(15, 23, 42, 0.04);
+    --vg-shadow-m: 0 4px 14px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
+    --vg-shadow-l: 0 24px 64px rgba(15, 23, 42, 0.22), 0 6px 16px rgba(15, 23, 42, 0.10);
 
-  /* Type scale */
-  --vg-font:      "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --vg-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --vg-fs-xs:   11px;
-  --vg-fs-s:    12px;
-  --vg-fs-base: 13px;
-  --vg-fs-m:    14px;
-  --vg-fs-l:    16px;
-  --vg-fs-xl:   20px;
-  --vg-fs-2xl:  28px;
-  --vg-fs-3xl:  40px;
+    /* Type scale */
+    --vg-font: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --vg-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --vg-fs-xs: 11px;
+    --vg-fs-s: 12px;
+    --vg-fs-base: 13px;
+    --vg-fs-m: 14px;
+    --vg-fs-l: 16px;
+    --vg-fs-xl: 20px;
+    --vg-fs-2xl: 28px;
+    --vg-fs-3xl: 40px;
 
-  /* Spacing */
-  --vg-s-xs: 4px;
-  --vg-s-s:  8px;
-  --vg-s-m:  12px;
-  --vg-s-l:  16px;
-  --vg-s-xl: 24px;
+    /* Spacing */
+    --vg-s-xs: 4px;
+    --vg-s-s: 8px;
+    --vg-s-m: 12px;
+    --vg-s-l: 16px;
+    --vg-s-xl: 24px;
 
-  /* Derived state colors */
-  --vg-primary-hover:       color-mix(in oklab, var(--vg-primary), black 10%);
-  --vg-primary-tint:        color-mix(in oklab, var(--vg-primary) 12%, transparent);
-  --vg-primary-tint-strong: color-mix(in oklab, var(--vg-primary) 20%, transparent);
-  --vg-accent-tint:         color-mix(in oklab, var(--vg-accent) 16%, transparent);
-  --vg-success: #10b981;
-  --vg-warning: #f59e0b;
-  --vg-error:   #ef4444;
-  --vg-success-tint: color-mix(in oklab, var(--vg-success) 14%, transparent);
-  --vg-warning-tint: color-mix(in oklab, var(--vg-warning) 18%, transparent);
-  --vg-error-tint:   color-mix(in oklab, var(--vg-error) 14%, transparent);
+    /* Derived state colors */
+    --vg-primary-hover: color-mix(in oklab, var(--vg-primary), black 10%);
+    --vg-primary-tint: color-mix(in oklab, var(--vg-primary) 12%, transparent);
+    --vg-primary-tint-strong: color-mix(in oklab, var(--vg-primary) 20%, transparent);
+    --vg-accent-tint: color-mix(in oklab, var(--vg-accent) 16%, transparent);
+    --vg-success: #10b981;
+    --vg-warning: #f59e0b;
+    --vg-error: #ef4444;
+    --vg-success-tint: color-mix(in oklab, var(--vg-success) 14%, transparent);
+    --vg-warning-tint: color-mix(in oklab, var(--vg-warning) 18%, transparent);
+    --vg-error-tint: color-mix(in oklab, var(--vg-error) 14%, transparent);
 
-  /* Control sizing — Vaadin Lumo controls land on 32/36 */
-  --vg-ctrl-h: 32px;
+    /* Control sizing — Vaadin Lumo controls land on 32/36 */
+    --vg-ctrl-h: 32px;
 }
 
 /* ── Glass strength variants ──────────────────────────────────────────── */
 html[data-glass="subtle"] {
-  --vg-glass-fill:        rgba(255, 255, 255, 0.30);
-  --vg-glass-fill-strong: rgba(255, 255, 255, 0.52);
-  --vg-glass-blur:        blur(12px) saturate(150%);
+    --vg-glass-fill: rgba(255, 255, 255, 0.30);
+    --vg-glass-fill-strong: rgba(255, 255, 255, 0.52);
+    --vg-glass-blur: blur(12px) saturate(150%);
 }
+
 html[data-glass="heavy"] {
-  --vg-glass-fill:        rgba(255, 255, 255, 0.72);
-  --vg-glass-fill-strong: rgba(255, 255, 255, 0.86);
-  --vg-glass-blur:        blur(40px) saturate(200%);
-  --vg-glass-tint:        color-mix(in oklab, var(--vg-primary) 10%, transparent);
+    --vg-glass-fill: rgba(255, 255, 255, 0.72);
+    --vg-glass-fill-strong: rgba(255, 255, 255, 0.86);
+    --vg-glass-blur: blur(40px) saturate(200%);
+    --vg-glass-tint: color-mix(in oklab, var(--vg-primary) 10%, transparent);
 }
 
 /* ── Dark ────────────────────────────────────────────────────────────── */
 html[theme~="dark"] {
-  --vg-fg:           #f1f5f9;
-  --vg-fg-secondary: #cbd5e1;
-  --vg-fg-tertiary:  #94a3b8;
-  --vg-surface:      #161b27;
-  --vg-surface-2:    #1c2230;
-  --vg-surface-3:    rgba(255, 255, 255, 0.04);
-  --vg-divider:      rgba(255, 255, 255, 0.07);
-  --vg-border:       rgba(255, 255, 255, 0.10);
-  --vg-border-strong:rgba(255, 255, 255, 0.20);
+    --vg-fg: #f1f5f9;
+    --vg-fg-secondary: #cbd5e1;
+    --vg-fg-tertiary: #94a3b8;
+    --vg-surface: #161b27;
+    --vg-surface-2: #1c2230;
+    --vg-surface-3: rgba(255, 255, 255, 0.04);
+    --vg-divider: rgba(255, 255, 255, 0.07);
+    --vg-border: rgba(255, 255, 255, 0.10);
+    --vg-border-strong: rgba(255, 255, 255, 0.20);
 
-  --vg-glass-fill:        rgba(22, 27, 39, 0.55);
-  --vg-glass-fill-strong: rgba(22, 27, 39, 0.78);
-  --vg-glass-tint:        color-mix(in oklab, var(--vg-primary) 10%, transparent);
-  --vg-glass-border:      0.5px solid rgba(255, 255, 255, 0.14);
-  --vg-glass-edge:
-    inset 0 0.5px 0 rgba(255, 255, 255, 0.18),
+    --vg-glass-fill: rgba(22, 27, 39, 0.55);
+    --vg-glass-fill-strong: rgba(22, 27, 39, 0.78);
+    --vg-glass-tint: color-mix(in oklab, var(--vg-primary) 10%, transparent);
+    --vg-glass-border: 0.5px solid rgba(255, 255, 255, 0.14);
+    --vg-glass-edge: inset 0 0.5px 0 rgba(255, 255, 255, 0.18),
     inset 0 -0.5px 0 rgba(0, 0, 0, 0.4),
     inset 0.5px 0 0 rgba(255, 255, 255, 0.08);
-  --vg-glass-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    --vg-glass-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset,
     0 16px 48px rgba(0, 0, 0, 0.5),
     0 2px 8px rgba(0, 0, 0, 0.3);
 
-  --vg-shadow-s: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 0 0.5px rgba(255, 255, 255, 0.06);
-  --vg-shadow-m: 0 4px 14px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
-  --vg-shadow-l: 0 24px 64px rgba(0, 0, 0, 0.6), 0 6px 16px rgba(0, 0, 0, 0.3);
+    --vg-shadow-s: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 0 0.5px rgba(255, 255, 255, 0.06);
+    --vg-shadow-m: 0 4px 14px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
+    --vg-shadow-l: 0 24px 64px rgba(0, 0, 0, 0.6), 0 6px 16px rgba(0, 0, 0, 0.3);
 
-  --vg-bg: #0c111d;
+    --vg-bg: #0c111d;
 
-  color-scheme: dark;
+    color-scheme: dark;
 }
+
 html[theme~="dark"][data-glass="subtle"] {
-  --vg-glass-fill:        rgba(22, 27, 39, 0.38);
-  --vg-glass-fill-strong: rgba(22, 27, 39, 0.62);
-  --vg-glass-blur:        blur(12px) saturate(150%);
+    --vg-glass-fill: rgba(22, 27, 39, 0.38);
+    --vg-glass-fill-strong: rgba(22, 27, 39, 0.62);
+    --vg-glass-blur: blur(12px) saturate(150%);
 }
+
 html[theme~="dark"][data-glass="heavy"] {
-  --vg-glass-fill:        rgba(22, 27, 39, 0.74);
-  --vg-glass-fill-strong: rgba(22, 27, 39, 0.90);
-  --vg-glass-blur:        blur(40px) saturate(200%);
-  --vg-glass-tint:        color-mix(in oklab, var(--vg-primary) 16%, transparent);
+    --vg-glass-fill: rgba(22, 27, 39, 0.74);
+    --vg-glass-fill-strong: rgba(22, 27, 39, 0.90);
+    --vg-glass-blur: blur(40px) saturate(200%);
+    --vg-glass-tint: color-mix(in oklab, var(--vg-primary) 16%, transparent);
 }
-html, html[theme~="light"] { color-scheme: light; }
+
+html, html[theme~="light"] {
+    color-scheme: light;
+}
 
 /* ============================================================
    Lumo alias layer — derive Lumo's tokens from --vg-*
@@ -162,180 +164,353 @@ html, html[theme~="light"] { color-scheme: light; }
 html,
 html[theme~="light"],
 html[theme~="dark"] {
-  /* Type */
-  --lumo-font-family:    var(--vg-font);
-  --lumo-font-size-xxs:  10px;
-  --lumo-font-size-xs:   var(--vg-fs-xs);
-  --lumo-font-size-s:    var(--vg-fs-s);
-  --lumo-font-size-m:    var(--vg-fs-base);
-  --lumo-font-size-l:    var(--vg-fs-l);
-  --lumo-font-size-xl:   var(--vg-fs-xl);
-  --lumo-font-size-xxl:  var(--vg-fs-2xl);
-  --lumo-font-size-xxxl: var(--vg-fs-3xl);
-  --lumo-line-height-xs: 1.2;
-  --lumo-line-height-s:  1.4;
-  --lumo-line-height-m:  1.55;
+    /* Type */
+    --lumo-font-family: var(--vg-font);
+    --lumo-font-size-xxs: 10px;
+    --lumo-font-size-xs: var(--vg-fs-xs);
+    --lumo-font-size-s: var(--vg-fs-s);
+    --lumo-font-size-m: var(--vg-fs-base);
+    --lumo-font-size-l: var(--vg-fs-l);
+    --lumo-font-size-xl: var(--vg-fs-xl);
+    --lumo-font-size-xxl: var(--vg-fs-2xl);
+    --lumo-font-size-xxxl: var(--vg-fs-3xl);
+    --lumo-line-height-xs: 1.2;
+    --lumo-line-height-s: 1.4;
+    --lumo-line-height-m: 1.55;
 
-  /* Size — tied to 32px control */
-  --lumo-size-xs: calc(var(--vg-ctrl-h) - 8px);
-  --lumo-size-s:  calc(var(--vg-ctrl-h) - 4px);
-  --lumo-size-m:  var(--vg-ctrl-h);
-  --lumo-size-l:  calc(var(--vg-ctrl-h) + 8px);
-  --lumo-size-xl: calc(var(--vg-ctrl-h) + 16px);
+    /* Size — tied to 32px control */
+    --lumo-size-xs: calc(var(--vg-ctrl-h) - 8px);
+    --lumo-size-s: calc(var(--vg-ctrl-h) - 4px);
+    --lumo-size-m: var(--vg-ctrl-h);
+    --lumo-size-l: calc(var(--vg-ctrl-h) + 8px);
+    --lumo-size-xl: calc(var(--vg-ctrl-h) + 16px);
 
-  /* Spacing */
-  --lumo-space-xs: var(--vg-s-xs);
-  --lumo-space-s:  var(--vg-s-s);
-  --lumo-space-m:  var(--vg-s-l);
-  --lumo-space-l:  var(--vg-s-xl);
-  --lumo-space-xl: 32px;
+    /* Spacing */
+    --lumo-space-xs: var(--vg-s-xs);
+    --lumo-space-s: var(--vg-s-s);
+    --lumo-space-m: var(--vg-s-l);
+    --lumo-space-l: var(--vg-s-xl);
+    --lumo-space-xl: 32px;
 
-  /* Radius */
-  --lumo-border-radius-s: var(--vg-radius-xs);
-  --lumo-border-radius-m: var(--vg-radius-s);
-  --lumo-border-radius-l: var(--vg-radius-m);
+    /* Radius */
+    --lumo-border-radius-s: var(--vg-radius-xs);
+    --lumo-border-radius-m: var(--vg-radius-s);
+    --lumo-border-radius-l: var(--vg-radius-m);
 
-  /* Base / surface — opaque content */
-  --lumo-base-color: var(--vg-surface);
-  --lumo-tint:       var(--vg-surface);
-  --lumo-shade:      var(--vg-fg);
+    /* Base / surface — opaque content */
+    --lumo-base-color: var(--vg-surface);
+    --lumo-tint: var(--vg-surface);
+    --lumo-shade: var(--vg-fg);
 
-  /* Contrast scale */
-  --lumo-contrast-5pct:   var(--vg-surface-3);
-  --lumo-contrast-10pct:  var(--vg-surface-3);
-  --lumo-contrast-20pct:  var(--vg-divider);
-  --lumo-contrast-30pct:  var(--vg-border);
-  --lumo-contrast-40pct:  var(--vg-border-strong);
-  --lumo-contrast-50pct:  var(--vg-fg-tertiary);
-  --lumo-contrast-60pct:  var(--vg-fg-secondary);
-  --lumo-contrast-70pct:  var(--vg-fg-secondary);
-  --lumo-contrast-80pct:  var(--vg-fg);
-  --lumo-contrast-90pct:  var(--vg-fg);
-  --lumo-contrast:        var(--vg-fg);
+    /* Contrast scale */
+    --lumo-contrast-5pct: var(--vg-surface-3);
+    --lumo-contrast-10pct: var(--vg-surface-3);
+    --lumo-contrast-20pct: var(--vg-divider);
+    --lumo-contrast-30pct: var(--vg-border);
+    --lumo-contrast-40pct: var(--vg-border-strong);
+    --lumo-contrast-50pct: var(--vg-fg-tertiary);
+    --lumo-contrast-60pct: var(--vg-fg-secondary);
+    --lumo-contrast-70pct: var(--vg-fg-secondary);
+    --lumo-contrast-80pct: var(--vg-fg);
+    --lumo-contrast-90pct: var(--vg-fg);
+    --lumo-contrast: var(--vg-fg);
 
-  /* Body / header */
-  --lumo-header-text-color:    var(--vg-fg);
-  --lumo-body-text-color:      var(--vg-fg);
-  --lumo-secondary-text-color: var(--vg-fg-secondary);
-  --lumo-tertiary-text-color:  var(--vg-fg-tertiary);
-  --lumo-disabled-text-color:  var(--vg-fg-tertiary);
+    /* Body / header */
+    --lumo-header-text-color: var(--vg-fg);
+    --lumo-body-text-color: var(--vg-fg);
+    --lumo-secondary-text-color: var(--vg-fg-secondary);
+    --lumo-tertiary-text-color: var(--vg-fg-tertiary);
+    --lumo-disabled-text-color: var(--vg-fg-tertiary);
 
-  /* Primary */
-  --lumo-primary-color:          var(--vg-primary);
-  --lumo-primary-color-50pct:    var(--vg-primary-tint-strong);
-  --lumo-primary-color-10pct:    var(--vg-primary-tint);
-  --lumo-primary-text-color:     var(--vg-primary);
-  --lumo-primary-contrast-color: var(--vg-fg-on-primary);
+    /* Primary */
+    --lumo-primary-color: var(--vg-primary);
+    --lumo-primary-color-50pct: var(--vg-primary-tint-strong);
+    --lumo-primary-color-10pct: var(--vg-primary-tint);
+    --lumo-primary-text-color: var(--vg-primary);
+    --lumo-primary-contrast-color: var(--vg-fg-on-primary);
 
-  /* Semantic */
-  --lumo-error-color:          var(--vg-error);
-  --lumo-error-color-50pct:    var(--vg-error-tint);
-  --lumo-error-color-10pct:    var(--vg-error-tint);
-  --lumo-error-text-color:     var(--vg-error);
-  --lumo-error-contrast-color: #FFFFFF;
+    /* Semantic */
+    --lumo-error-color: var(--vg-error);
+    --lumo-error-color-50pct: var(--vg-error-tint);
+    --lumo-error-color-10pct: var(--vg-error-tint);
+    --lumo-error-text-color: var(--vg-error);
+    --lumo-error-contrast-color: #FFFFFF;
 
-  --lumo-success-color:          var(--vg-success);
-  --lumo-success-color-50pct:    var(--vg-success-tint);
-  --lumo-success-color-10pct:    var(--vg-success-tint);
-  --lumo-success-text-color:     var(--vg-success);
-  --lumo-success-contrast-color: #FFFFFF;
+    --lumo-success-color: var(--vg-success);
+    --lumo-success-color-50pct: var(--vg-success-tint);
+    --lumo-success-color-10pct: var(--vg-success-tint);
+    --lumo-success-text-color: var(--vg-success);
+    --lumo-success-contrast-color: #FFFFFF;
 
-  --lumo-warning-color:          var(--vg-warning);
-  --lumo-warning-color-10pct:    var(--vg-warning-tint);
-  --lumo-warning-text-color:     var(--vg-warning);
-  --lumo-warning-contrast-color: #1a1206;
+    --lumo-warning-color: var(--vg-warning);
+    --lumo-warning-color-10pct: var(--vg-warning-tint);
+    --lumo-warning-text-color: var(--vg-warning);
+    --lumo-warning-contrast-color: #1a1206;
 
-  /* Shadows */
-  --lumo-box-shadow-xs: var(--vg-shadow-s);
-  --lumo-box-shadow-s:  var(--vg-shadow-s);
-  --lumo-box-shadow-m:  var(--vg-shadow-m);
-  --lumo-box-shadow-l:  var(--vg-shadow-l);
-  --lumo-box-shadow-xl: var(--vg-shadow-l);
+    /* Shadows */
+    --lumo-box-shadow-xs: var(--vg-shadow-s);
+    --lumo-box-shadow-s: var(--vg-shadow-s);
+    --lumo-box-shadow-m: var(--vg-shadow-m);
+    --lumo-box-shadow-l: var(--vg-shadow-l);
+    --lumo-box-shadow-xl: var(--vg-shadow-l);
 
-  --lumo-clickable-cursor: pointer;
+    --lumo-clickable-cursor: pointer;
 }
 
 /* ============================================================
-   Base — flat surface by default. The colorful orb scene and floating
-   glass panels are opt-in via `theme="glass-bg"` on vaadin-app-layout
-   (see the "Glass background variant" section further down).
+   Base — the Glass theme's signature backdrop is a smooth animated
+   aurora field; the chrome (navbar, drawer) and the slotted view all
+   float over it as rounded glass cards. Set theme="flat-layout" on
+   vaadin-app-layout for an edge-to-edge variant (no margins/corners
+   on the chrome); the aurora field stays.
    ============================================================ */
 html, body {
-  height: 100%;
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  font-feature-settings: "cv11", "ss01", "ss03";
+    height: 100%;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "cv11", "ss01", "ss03";
 }
 
 body {
-  position: relative;
-  background: var(--vg-surface);
-  color: var(--vg-fg);
-  font-family: var(--vg-font);
-  font-size: var(--vg-fs-base);
-  overflow: hidden;
+    position: relative;
+    background:
+        linear-gradient(180deg,
+            color-mix(in oklab, var(--vg-bg) 88%, white 12%) 0%,
+            var(--vg-bg) 45%,
+            color-mix(in oklab, var(--vg-bg) 86%, var(--vg-secondary) 14%) 100%);
+    color: var(--vg-fg);
+    font-family: var(--vg-font);
+    font-size: var(--vg-fs-base);
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: -24vmax -18vmax;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(112deg,
+            transparent 6%,
+            color-mix(in oklab, var(--vg-primary) 34%, transparent) 21%,
+            transparent 42%),
+        linear-gradient(64deg,
+            transparent 10%,
+            color-mix(in oklab, var(--vg-accent) 30%, transparent) 34%,
+            transparent 61%),
+        linear-gradient(142deg,
+            transparent 14%,
+            color-mix(in oklab, var(--vg-secondary) 28%, transparent) 46%,
+            transparent 76%),
+        conic-gradient(from 215deg at 50% 54%,
+            color-mix(in oklab, var(--vg-primary) 16%, transparent),
+            transparent 22%,
+            color-mix(in oklab, var(--vg-accent) 18%, transparent) 38%,
+            transparent 56%,
+            color-mix(in oklab, var(--vg-secondary) 14%, transparent) 70%,
+            transparent 86%,
+            color-mix(in oklab, var(--vg-primary) 16%, transparent));
+    background-size: 142% 118%, 128% 146%, 166% 124%, 126% 126%;
+    background-position: 6% 18%, 88% 76%, 48% 8%, 50% 50%;
+    filter: blur(34px) saturate(155%);
+    opacity: 0.78;
+    transform: translate3d(0, 0, 0) rotate(-4deg) scale(1.04);
+    animation: vg-aurora-drift 28s ease-in-out infinite alternate;
+}
+
+html[theme~="dark"] body::before {
+    opacity: 0.54;
+    filter: blur(38px) saturate(175%);
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg,
+            color-mix(in oklab, white 24%, transparent) 0%,
+            transparent 30%,
+            color-mix(in oklab, var(--vg-bg) 45%, transparent) 100%),
+        radial-gradient(ellipse 120% 90% at 50% 46%,
+            transparent 40%,
+            color-mix(in oklab, var(--vg-bg) 70%, black 12%) 100%),
+        repeating-linear-gradient(90deg,
+            color-mix(in oklab, white 8%, transparent) 0 1px,
+            transparent 1px 5px);
+    opacity: 0.18;
+    mix-blend-mode: soft-light;
+}
+
+html[theme~="dark"] body::after {
+    opacity: 0.12;
+    mix-blend-mode: screen;
+}
+
+html[data-background-mode="flat-color"] body::before,
+html[data-background-mode="flat-color"] body::after {
+    display: none;
+}
+
+html[data-background-mode="flat-color"] body {
+    background: var(--vg-bg);
+}
+
+@keyframes vg-aurora-drift {
+    0% {
+        background-position: 6% 18%, 88% 76%, 48% 8%, 50% 50%;
+        transform: translate3d(-2%, -1%, 0) rotate(-5deg) scale(1.04);
+    }
+    45% {
+        background-position: 18% 26%, 74% 62%, 58% 20%, 44% 58%;
+        transform: translate3d(1%, 2%, 0) rotate(3deg) scale(1.08);
+    }
+    100% {
+        background-position: 30% 14%, 64% 86%, 36% 30%, 58% 44%;
+        transform: translate3d(3%, -2%, 0) rotate(7deg) scale(1.06);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body::before {
+        animation: none;
+    }
 }
 
 /* ============================================================
    Headings
    ============================================================ */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--vg-font);
-  color: var(--vg-fg);
-  letter-spacing: -0.015em;
-  margin: 0;
+    font-family: var(--vg-font);
+    color: var(--vg-fg);
+    letter-spacing: -0.015em;
+    margin: 0;
 }
-h1 { font-size: var(--vg-fs-2xl); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; }
-h2 { font-size: var(--vg-fs-xl);  font-weight: 600; line-height: 1.2; }
-h3 { font-size: var(--vg-fs-l);   font-weight: 600; line-height: 1.3; }
-h4 { font-size: var(--vg-fs-m);   font-weight: 600; line-height: 1.4; }
+
+h1 {
+    font-size: var(--vg-fs-2xl);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: var(--vg-fs-xl);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+h3 {
+    font-size: var(--vg-fs-l);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+h4 {
+    font-size: var(--vg-fs-m);
+    font-weight: 600;
+    line-height: 1.4;
+}
 
 /* ============================================================
-   App shell — flat surface by default
+   App shell — floating-panel layout by default. The navbar, drawer,
+   and slotted view sit as three separate rounded glass cards over
+   the body's aurora field. AppLayout's own surface is transparent so
+   the chrome's backdrop-filter refracts the color underneath. For an
+   edge-to-edge flush variant, see [theme~="flat-layout"] below.
    ============================================================ */
 vaadin-app-layout {
-  --vaadin-app-layout-navbar-background: transparent;
-  --vaadin-app-layout-drawer-background: transparent;
-  background: var(--vg-surface);
+    --vaadin-app-layout-navbar-background: transparent;
+    --vaadin-app-layout-drawer-background: transparent;
+    background: transparent;
 }
 
-/* Navbar — flush at top, glass frosting over the flat surface */
+/* Navbar — floats at the top with 10px gaps, glass-frosted, rounded. */
 vaadin-app-layout::part(navbar) {
-  min-height: 56px;
-  border-bottom: 0.5px solid var(--vg-border);
-  background:
-    linear-gradient(180deg, var(--vg-glass-tint), transparent 70%),
+    min-height: 56px;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    width: auto;
+    border-radius: var(--vg-radius-l);
+    border: var(--vg-glass-border);
+    background: linear-gradient(180deg, var(--vg-glass-tint), transparent 70%),
     var(--vg-glass-fill);
-  -webkit-backdrop-filter: var(--vg-glass-blur);
-  backdrop-filter: var(--vg-glass-blur);
+    -webkit-backdrop-filter: var(--vg-glass-blur);
+    backdrop-filter: var(--vg-glass-blur);
+    box-shadow: var(--vg-glass-edge), 0 4px 14px rgba(15, 23, 42, 0.06);
 }
 
-/* Drawer — flush at left, glass frosting */
+html[theme~="dark"] vaadin-app-layout::part(navbar) {
+    box-shadow: var(--vg-glass-edge), 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+/* Bottom navbar (if used) stays flush. */
+vaadin-app-layout [part="navbar"][id="navbarBottom"] {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0;
+    border: 0;
+}
+
+/* Drawer — floats at the left, glass-frosted, rounded. */
 vaadin-app-layout::part(drawer) {
-  border-right: 0.5px solid var(--vg-border);
-  background:
-    linear-gradient(180deg, var(--vg-glass-tint), transparent 70%),
+    top: 78px;
+    left: 10px;
+    bottom: 10px;
+    height: auto;
+    border-radius: var(--vg-radius-l);
+    border: var(--vg-glass-border);
+    background: linear-gradient(180deg, var(--vg-glass-tint), transparent 70%),
     var(--vg-glass-fill);
-  -webkit-backdrop-filter: var(--vg-glass-blur);
-  backdrop-filter: var(--vg-glass-blur);
-  padding: var(--vg-s-l) var(--vg-s-m);
+    -webkit-backdrop-filter: var(--vg-glass-blur);
+    backdrop-filter: var(--vg-glass-blur);
+    box-shadow: var(--vg-glass-edge);
+    padding: var(--vg-s-l) var(--vg-s-m);
 }
 
-/* Content slot — flat surface, fills the area edge-to-edge by default */
+/* Slotted view — opaque rounded panel aligned with the drawer shell. */
 vaadin-app-layout > :not([slot]) {
-  background: var(--vg-surface);
+    margin: 20px 10px 10px 10px;
+    width: calc(100% - 20px) !important;
+    height: calc(100% - 30px) !important;
+    box-sizing: border-box;
+    background: var(--vg-surface);
+    border-radius: var(--vg-radius-l);
+    border: 0.5px solid var(--vg-border);
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: var(--vg-shadow-s);
+}
+
+vaadin-app-layout[drawer-opened]:not([overlay]) > :not([slot]) {
+    margin-left: 20px;
+    width: calc(100% - 30px) !important;
+}
+
+/* Pin direct children to their natural height so explicit setHeight
+   values are honored and overflow scrolls on the panel. */
+vaadin-app-layout > :not([slot]) > * {
+    flex-shrink: 0;
 }
 
 vaadin-drawer-toggle {
-  color: var(--vg-fg-secondary);
-  border-radius: var(--vg-radius-s);
-  width: 32px; height: 32px;
-  transition: background 0.12s, color 0.12s;
+    color: var(--vg-fg-secondary);
+    border-radius: var(--vg-radius-s);
+    width: 32px;
+    height: 32px;
+    transition: background 0.12s, color 0.12s;
 }
+
 vaadin-drawer-toggle:hover {
-  color: var(--vg-fg);
-  background: color-mix(in oklab, var(--vg-fg) 7%, transparent);
+    color: var(--vg-fg);
+    background: color-mix(in oklab, var(--vg-fg) 7%, transparent);
 }
 
 /* Tighten the navbar toolbar and brand. The MainLayout slots a
@@ -343,165 +518,178 @@ vaadin-drawer-toggle:hover {
    brand title, the tweaks area, and the theme combo. We make the H1
    look like a brand (smaller, with a gradient mark before it). */
 vaadin-app-layout vaadin-horizontal-layout[slot="navbar"] {
-  padding-left: 14px !important;
-  padding-right: 14px !important;
-  gap: 10px;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    gap: 10px;
 }
+
 vaadin-app-layout [slot="navbar"] h1 {
-  font-size: var(--vg-fs-m) !important;
-  font-weight: 600 !important;
-  letter-spacing: -0.01em;
-  line-height: 1;
-  margin: 0 !important;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding-left: 4px;
-  padding-right: var(--vg-s-l);
-  border-right: 0.5px solid var(--vg-border);
+    font-size: var(--vg-fs-m) !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    margin: 0 !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding-left: 4px;
+    padding-right: var(--vg-s-l);
+    border-right: 0.5px solid var(--vg-border);
 }
+
 vaadin-app-layout [slot="navbar"] h1::before {
-  content: "";
-  display: inline-block;
-  width: 26px; height: 26px;
-  border-radius: 7px;
-  background:
-    linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0)) padding-box,
+    content: "";
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0)) padding-box,
     linear-gradient(135deg, var(--vg-primary), color-mix(in oklab, var(--vg-primary), var(--vg-accent) 50%)) border-box;
-  border: 0.5px solid rgba(255,255,255,0.4);
-  box-shadow:
-    0 1px 2px rgba(0,0,0,0.15),
-    inset 0 0.5px 0 rgba(255,255,255,0.5);
-  background-blend-mode: overlay, normal;
-  flex-shrink: 0;
+    border: 0.5px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.5);
+    background-blend-mode: overlay, normal;
+    flex-shrink: 0;
 }
 
 /* The four color swatches the Glass tweaks add to the navbar — give
    them a frosted-glass surround so they look like part of the toolbar. */
 vaadin-app-layout [slot="navbar"] vaadin-horizontal-layout > span > input[type="color"] {
-  border-radius: 6px;
-  border: 0.5px solid var(--vg-border-strong);
-  box-shadow: var(--vg-shadow-s);
+    border-radius: 6px;
+    border: 0.5px solid var(--vg-border-strong);
+    box-shadow: var(--vg-shadow-s);
 }
 
 /* ============================================================
    Side nav — drawer styled per the Glass design's rail aesthetic
    ============================================================ */
 vaadin-side-nav {
-  font-size: var(--vg-fs-base);
-  padding: 0;
+    font-size: var(--vg-fs-base);
+    padding: 0;
 }
+
 vaadin-side-nav::part(label) {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--vg-fg-tertiary);
-  padding: 14px 10px 6px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--vg-fg-tertiary);
+    padding: 14px 10px 6px;
 }
+
 vaadin-side-nav-item {
-  color: var(--vg-fg-secondary);
-  --_vaadin-side-nav-item-icon-color: var(--vg-fg-secondary);
+    color: var(--vg-fg-secondary);
+    --_vaadin-side-nav-item-icon-color: var(--vg-fg-secondary);
 }
+
 vaadin-side-nav-item::part(item) {
-  border-radius: var(--vg-radius-s);
-  padding: 0 10px;
-  margin: 2px 0;
-  min-height: 32px;
-  font-size: var(--vg-fs-base);
-  font-weight: 500;
-  gap: 10px;
-  transition: background 0.12s, color 0.12s;
+    border-radius: var(--vg-radius-s);
+    padding: 0 10px;
+    margin: 2px 0;
+    min-height: 32px;
+    font-size: var(--vg-fs-base);
+    font-weight: 500;
+    gap: 10px;
+    transition: background 0.12s, color 0.12s;
 }
+
 vaadin-side-nav-item:hover::part(item) {
-  background: color-mix(in oklab, var(--vg-fg) 6%, transparent);
-  color: var(--vg-fg);
+    background: color-mix(in oklab, var(--vg-fg) 6%, transparent);
+    color: var(--vg-fg);
 }
+
 vaadin-side-nav-item[active]::part(item) {
-  background: var(--vg-primary-tint);
-  color: var(--vg-primary);
-  font-weight: 600;
-  box-shadow: inset 0 0 0 0.5px color-mix(in oklab, var(--vg-primary) 30%, transparent);
+    background: var(--vg-primary-tint);
+    color: var(--vg-primary);
+    font-weight: 600;
+    box-shadow: inset 0 0 0 0.5px color-mix(in oklab, var(--vg-primary) 30%, transparent);
 }
+
 /* Icons inside nav items — match the design's slight de-emphasis */
 vaadin-side-nav-item svg,
 vaadin-side-nav-item vaadin-icon {
-  width: 16px;
-  height: 16px;
-  opacity: 0.8;
+    width: 16px;
+    height: 16px;
+    opacity: 0.8;
 }
+
 vaadin-side-nav-item[active] svg,
 vaadin-side-nav-item[active] vaadin-icon {
-  opacity: 1;
+    opacity: 1;
 }
 
 /* ============================================================
    Buttons — primary / secondary / tertiary
    ============================================================ */
 vaadin-button {
-  border-radius: var(--vg-radius-s);
-  font-family: var(--vg-font);
-  font-size: var(--vg-fs-base);
-  font-weight: 500;
-  letter-spacing: -0.005em;
-  height: var(--vg-ctrl-h);
-  min-height: var(--vg-ctrl-h);
-  padding: 0 14px;
-  background: var(--vg-surface);
-  color: var(--vg-fg);
-  border: 0.5px solid var(--vg-border-strong);
-  box-shadow: var(--vg-shadow-s);
-  transition: background 0.12s, color 0.12s, box-shadow 0.12s, transform 0.04s;
+    border-radius: var(--vg-radius-s);
+    font-family: var(--vg-font);
+    font-size: var(--vg-fs-base);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    height: var(--vg-ctrl-h);
+    min-height: var(--vg-ctrl-h);
+    padding: 0 14px;
+    background: var(--vg-surface);
+    color: var(--vg-fg);
+    border: 0.5px solid var(--vg-border-strong);
+    box-shadow: var(--vg-shadow-s);
+    transition: background 0.12s, color 0.12s, box-shadow 0.12s, transform 0.04s;
 }
+
 vaadin-button:hover {
-  background: var(--vg-surface-2);
-  border-color: var(--vg-fg-tertiary);
+    background: var(--vg-surface-2);
+    border-color: var(--vg-fg-tertiary);
 }
-vaadin-button:active { transform: translateY(0.5px); }
+
+vaadin-button:active {
+    transform: translateY(0.5px);
+}
 
 vaadin-button[theme~="primary"] {
-  background: var(--vg-primary);
-  color: var(--vg-fg-on-primary);
-  border-color: transparent;
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.18) inset,
-    0 -1px 0 rgba(0,0,0,0.08) inset,
-    0 1px 2px rgba(15,23,42,0.18),
+    background: var(--vg-primary);
+    color: var(--vg-fg-on-primary);
+    border-color: transparent;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.08) inset,
+    0 1px 2px rgba(15, 23, 42, 0.18),
     0 2px 6px color-mix(in oklab, var(--vg-primary) 30%, transparent);
 }
+
 vaadin-button[theme~="primary"]:hover {
-  background: var(--vg-primary-hover);
+    background: var(--vg-primary-hover);
 }
 
 vaadin-button[theme~="tertiary"],
 vaadin-button[theme~="tertiary-inline"] {
-  background: transparent;
-  border-color: transparent;
-  box-shadow: none;
-  color: var(--vg-fg-secondary);
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    color: var(--vg-fg-secondary);
 }
+
 vaadin-button[theme~="tertiary"]:hover {
-  background: color-mix(in oklab, var(--vg-fg) 8%, transparent);
-  color: var(--vg-fg);
+    background: color-mix(in oklab, var(--vg-fg) 8%, transparent);
+    color: var(--vg-fg);
 }
 
 vaadin-button[theme~="error"][theme~="primary"] {
-  background: var(--vg-error);
-  color: #FFFFFF;
-  border-color: transparent;
+    background: var(--vg-error);
+    color: #FFFFFF;
+    border-color: transparent;
 }
 
 vaadin-button[theme~="small"] {
-  height: 26px;
-  min-height: 26px;
-  padding: 0 10px;
-  font-size: var(--vg-fs-s);
+    height: 26px;
+    min-height: 26px;
+    padding: 0 10px;
+    font-size: var(--vg-fs-s);
 }
 
 /* Icon-only buttons in the navbar */
 vaadin-button[theme~="icon"][theme~="tertiary"] {
-  width: var(--vg-ctrl-h);
-  padding: 0;
+    width: var(--vg-ctrl-h);
+    padding: 0;
 }
 
 /* ============================================================
@@ -519,16 +707,17 @@ vaadin-date-picker::part(input-field),
 vaadin-time-picker::part(input-field),
 vaadin-date-time-picker::part(input-field),
 vaadin-multi-select-combo-box::part(input-field) {
-  background: var(--vg-surface);
-  border: 0.5px solid var(--vg-border-strong);
-  border-radius: var(--vg-radius-s);
-  box-sizing: border-box;
-  height: var(--vg-ctrl-h);
-  min-height: var(--vg-ctrl-h);
-  padding: 0 10px;
-  box-shadow: none;
-  transition: border-color 0.12s, box-shadow 0.12s;
+    background: var(--vg-surface);
+    border: 0.5px solid var(--vg-border-strong);
+    border-radius: var(--vg-radius-s);
+    box-sizing: border-box;
+    height: var(--vg-ctrl-h);
+    min-height: var(--vg-ctrl-h);
+    padding: 0 10px;
+    box-shadow: none;
+    transition: border-color 0.12s, box-shadow 0.12s;
 }
+
 vaadin-text-field:hover::part(input-field),
 vaadin-password-field:hover::part(input-field),
 vaadin-email-field:hover::part(input-field),
@@ -540,8 +729,9 @@ vaadin-combo-box:hover::part(input-field),
 vaadin-multi-select-combo-box:hover::part(input-field),
 vaadin-date-picker:hover::part(input-field),
 vaadin-time-picker:hover::part(input-field) {
-  border-color: var(--vg-fg-tertiary);
+    border-color: var(--vg-fg-tertiary);
 }
+
 vaadin-text-field[focused]::part(input-field),
 vaadin-password-field[focused]::part(input-field),
 vaadin-email-field[focused]::part(input-field),
@@ -553,9 +743,10 @@ vaadin-combo-box[focused]::part(input-field),
 vaadin-multi-select-combo-box[focused]::part(input-field),
 vaadin-date-picker[focused]::part(input-field),
 vaadin-time-picker[focused]::part(input-field) {
-  border-color: var(--vg-primary);
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--vg-primary) 22%, transparent);
+    border-color: var(--vg-primary);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--vg-primary) 22%, transparent);
 }
+
 vaadin-text-field[invalid]::part(input-field),
 vaadin-password-field[invalid]::part(input-field),
 vaadin-email-field[invalid]::part(input-field),
@@ -565,7 +756,7 @@ vaadin-combo-box[invalid]::part(input-field),
 vaadin-multi-select-combo-box[invalid]::part(input-field),
 vaadin-date-picker[invalid]::part(input-field),
 vaadin-time-picker[invalid]::part(input-field) {
-  border-color: var(--vg-error);
+    border-color: var(--vg-error);
 }
 
 /* Labels */
@@ -584,116 +775,142 @@ vaadin-time-picker::part(label),
 vaadin-date-time-picker::part(label),
 vaadin-checkbox-group::part(label),
 vaadin-radio-group::part(label) {
-  font-size: var(--vg-fs-s);
-  font-weight: 500;
-  color: var(--vg-fg-secondary);
+    font-size: var(--vg-fs-s);
+    font-weight: 500;
+    color: var(--vg-fg-secondary);
 }
 
 /* Text area */
 vaadin-text-area::part(input-field) {
-  background: var(--vg-surface);
-  border: 0.5px solid var(--vg-border-strong);
-  border-radius: var(--vg-radius-s);
-  box-shadow: none;
-  padding: 10px 12px;
-  transition: border-color 0.12s, box-shadow 0.12s;
+    background: var(--vg-surface);
+    border: 0.5px solid var(--vg-border-strong);
+    border-radius: var(--vg-radius-s);
+    box-shadow: none;
+    padding: 10px 12px;
+    transition: border-color 0.12s, box-shadow 0.12s;
 }
+
 vaadin-text-area[focused]::part(input-field) {
-  border-color: var(--vg-primary);
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--vg-primary) 22%, transparent);
+    border-color: var(--vg-primary);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--vg-primary) 22%, transparent);
 }
 
 /* ============================================================
    Checkbox / radio
    ============================================================ */
 vaadin-checkbox::part(checkbox) {
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
-  border: 0.5px solid var(--vg-border-strong);
-  background: var(--vg-surface);
-  transition: background 0.12s, border-color 0.12s;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 0.5px solid var(--vg-border-strong);
+    background: var(--vg-surface);
+    transition: background 0.12s, border-color 0.12s;
 }
+
 vaadin-checkbox[checked]::part(checkbox),
 vaadin-checkbox[indeterminate]::part(checkbox) {
-  background: var(--vg-primary);
-  border-color: var(--vg-primary);
+    background: var(--vg-primary);
+    border-color: var(--vg-primary);
 }
 
 vaadin-radio-button::part(radio) {
-  width: 16px;
-  height: 16px;
-  border: 1px solid var(--vg-border-strong);
-  background: var(--vg-surface);
-  border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--vg-border-strong);
+    background: var(--vg-surface);
+    border-radius: 50%;
 }
+
 vaadin-radio-button[checked]::part(radio) {
-  border-color: var(--vg-primary);
+    border-color: var(--vg-primary);
 }
+
 vaadin-radio-button[checked]::part(radio)::after {
-  background: var(--vg-primary);
+    background: var(--vg-primary);
 }
 
 /* ============================================================
    Grid — opaque content surface
    ============================================================ */
 vaadin-grid {
-  background: var(--vg-surface);
-  border: 0.5px solid var(--vg-border);
-  border-radius: var(--vg-radius-m);
-  box-shadow: var(--vg-shadow-s);
-  font-size: var(--vg-fs-base);
-  color: var(--vg-fg);
-  --_lumo-grid-row-hover-background-color: var(--vg-surface-2);
-  --_lumo-grid-row-selected-background-color: var(--vg-primary-tint);
-  --_lumo-grid-border-color: var(--vg-divider);
-  --_lumo-grid-secondary-border-color: var(--vg-divider);
+    background: var(--vg-surface);
+    border: 0.5px solid var(--vg-border);
+    border-radius: var(--vg-radius-m);
+    box-shadow: var(--vg-shadow-s);
+    font-size: var(--vg-fs-base);
+    color: var(--vg-fg);
+    --_lumo-grid-row-hover-background-color: var(--vg-surface-2);
+    --_lumo-grid-row-selected-background-color: var(--vg-primary-tint);
+    --_lumo-grid-border-color: var(--vg-divider);
+    --_lumo-grid-secondary-border-color: var(--vg-divider);
 }
+
 vaadin-grid::part(header-cell) {
-  background: var(--vg-surface);
-  color: var(--vg-fg-secondary);
-  font-size: var(--vg-fs-s);
-  font-weight: 600;
-  border-bottom: 0.5px solid var(--vg-border-strong);
-  padding: 10px 16px;
-  white-space: nowrap;
+    background: var(--vg-surface);
+    color: var(--vg-fg-secondary);
+    font-size: var(--vg-fs-s);
+    font-weight: 600;
+    border-bottom: 0.5px solid var(--vg-border-strong);
+    padding: 10px 16px;
+    white-space: nowrap;
 }
-vaadin-grid::part(first-header-row-cell) { padding-left: 28px; }
+
+vaadin-grid::part(first-header-row-cell) {
+    padding-left: 28px;
+}
+
 vaadin-grid::part(body-cell) {
-  border-bottom: 0.5px solid var(--vg-divider);
-  padding: 12px 16px;
+    border-bottom: 0.5px solid var(--vg-divider);
+    padding: 12px 16px;
 }
-vaadin-grid::part(first-column-cell) { padding-left: 28px; }
-vaadin-grid::part(last-column-cell)  { padding-right: 28px; }
-vaadin-grid::part(selected-row) { background: var(--vg-primary-tint); }
+
+vaadin-grid::part(first-column-cell) {
+    padding-left: 28px;
+}
+
+vaadin-grid::part(last-column-cell) {
+    padding-right: 28px;
+}
+
+vaadin-grid::part(selected-row) {
+    background: var(--vg-primary-tint);
+}
 
 vaadin-grid-cell-content.num,
 vaadin-grid::part(body-cell) .num {
-  font-family: var(--vg-font-mono);
-  font-variant-numeric: tabular-nums;
-  text-align: right;
+    font-family: var(--vg-font-mono);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
 }
 
 /* ============================================================
    Tabs (tabsheet style — underline indicator)
    ============================================================ */
 vaadin-tabs {
-  box-shadow: inset 0 -0.5px 0 var(--vg-border);
+    box-shadow: inset 0 -0.5px 0 var(--vg-border);
 }
+
 vaadin-tab {
-  color: var(--vg-fg-secondary);
-  font-weight: 500;
-  font-size: var(--vg-fs-base);
-  padding: 12px 16px;
-  transition: color 0.12s;
+    color: var(--vg-fg-secondary);
+    font-weight: 500;
+    font-size: var(--vg-fs-base);
+    padding: 12px 16px;
+    transition: color 0.12s;
 }
-vaadin-tab:hover { color: var(--vg-fg); }
-vaadin-tab[selected] { color: var(--vg-primary); }
+
+vaadin-tab:hover {
+    color: var(--vg-fg);
+}
+
+vaadin-tab[selected] {
+    color: var(--vg-primary);
+}
+
 vaadin-tabs::part(bar)::after,
 vaadin-tab::part(selected-indicator),
 vaadin-tab[selected]::before {
-  background: var(--vg-primary);
-  height: 2px;
+    background: var(--vg-primary);
+    height: 2px;
 }
 
 /* ============================================================
@@ -701,48 +918,50 @@ vaadin-tab[selected]::before {
    ============================================================ */
 vaadin-dialog-overlay::part(backdrop),
 vaadin-confirm-dialog-overlay::part(backdrop) {
-  background: color-mix(in oklab, var(--vg-bg) 60%, black 20%);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+    background: color-mix(in oklab, var(--vg-bg) 60%, black 20%);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
 }
+
 vaadin-dialog-overlay::part(overlay),
 vaadin-confirm-dialog-overlay::part(overlay) {
-  background:
-    linear-gradient(180deg, var(--vg-glass-tint), transparent 70%),
+    background: linear-gradient(180deg, var(--vg-glass-tint), transparent 70%),
     var(--vg-glass-fill-strong);
-  -webkit-backdrop-filter: var(--vg-glass-blur);
-  backdrop-filter: var(--vg-glass-blur);
-  border: var(--vg-glass-border);
-  border-radius: var(--vg-radius-l);
-  box-shadow: var(--vg-glass-edge), var(--vg-shadow-l);
-  color: var(--vg-fg);
+    -webkit-backdrop-filter: var(--vg-glass-blur);
+    backdrop-filter: var(--vg-glass-blur);
+    border: var(--vg-glass-border);
+    border-radius: var(--vg-radius-l);
+    box-shadow: var(--vg-glass-edge), var(--vg-shadow-l);
+    color: var(--vg-fg);
 }
+
 vaadin-confirm-dialog-overlay::part(header) {
-  font-size: var(--vg-fs-l);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--vg-fg);
+    font-size: var(--vg-fs-l);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--vg-fg);
 }
+
 vaadin-confirm-dialog-overlay::part(footer) {
-  background: linear-gradient(180deg, transparent, rgba(255,255,255,0.18));
-  border-top: 0.5px solid rgba(255,255,255,0.3);
+    background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.18));
+    border-top: 0.5px solid rgba(255, 255, 255, 0.3);
 }
+
 html[theme~="dark"] vaadin-confirm-dialog-overlay::part(footer) {
-  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.18));
-  border-top-color: rgba(255,255,255,0.06);
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.18));
+    border-top-color: rgba(255, 255, 255, 0.06);
 }
 
 vaadin-notification-card {
-  background:
-    linear-gradient(180deg, var(--vg-glass-tint), transparent 70%),
+    background: linear-gradient(180deg, var(--vg-glass-tint), transparent 70%),
     var(--vg-glass-fill-strong);
-  -webkit-backdrop-filter: var(--vg-glass-blur);
-  backdrop-filter: var(--vg-glass-blur);
-  border: var(--vg-glass-border);
-  border-radius: var(--vg-radius-m);
-  box-shadow: var(--vg-glass-edge), var(--vg-glass-shadow);
-  color: var(--vg-fg);
-  font-size: var(--vg-fs-base);
+    -webkit-backdrop-filter: var(--vg-glass-blur);
+    backdrop-filter: var(--vg-glass-blur);
+    border: var(--vg-glass-border);
+    border-radius: var(--vg-radius-m);
+    box-shadow: var(--vg-glass-edge), var(--vg-glass-shadow);
+    color: var(--vg-fg);
+    font-size: var(--vg-fs-base);
 }
 
 /* ============================================================
@@ -759,15 +978,14 @@ vaadin-menu-bar-overlay::part(overlay),
 vaadin-context-menu-overlay::part(overlay),
 vaadin-list-box::part(overlay),
 vaadin-tooltip-overlay::part(overlay) {
-  background:
-    linear-gradient(180deg, var(--vg-glass-tint), transparent 70%),
+    background: linear-gradient(180deg, var(--vg-glass-tint), transparent 70%),
     var(--vg-glass-fill-strong);
-  -webkit-backdrop-filter: var(--vg-glass-blur);
-  backdrop-filter: var(--vg-glass-blur);
-  border: var(--vg-glass-border);
-  border-radius: var(--vg-radius-m);
-  box-shadow: var(--vg-glass-edge), var(--vg-glass-shadow);
-  color: var(--vg-fg);
+    -webkit-backdrop-filter: var(--vg-glass-blur);
+    backdrop-filter: var(--vg-glass-blur);
+    border: var(--vg-glass-border);
+    border-radius: var(--vg-radius-m);
+    box-shadow: var(--vg-glass-edge), var(--vg-glass-shadow);
+    color: var(--vg-fg);
 }
 
 /* Items inside overlays */
@@ -778,190 +996,240 @@ vaadin-combo-box-item,
 vaadin-multi-select-combo-box-item,
 vaadin-date-picker-item,
 vaadin-select-item {
-  border-radius: var(--vg-radius-xs);
-  padding: 0 10px;
-  min-height: 30px;
-  font-size: var(--vg-fs-base);
-  color: var(--vg-fg);
+    border-radius: var(--vg-radius-xs);
+    padding: 0 10px;
+    min-height: 30px;
+    font-size: var(--vg-fs-base);
+    color: var(--vg-fg);
 }
+
 vaadin-item:hover,
 vaadin-context-menu-item:hover,
 vaadin-menu-bar-item:hover,
 vaadin-combo-box-item:hover,
 vaadin-multi-select-combo-box-item:hover {
-  background: color-mix(in oklab, var(--vg-fg) 7%, transparent);
+    background: color-mix(in oklab, var(--vg-fg) 7%, transparent);
 }
+
 vaadin-item[selected],
 vaadin-combo-box-item[selected],
 vaadin-multi-select-combo-box-item[selected] {
-  color: var(--vg-primary);
-  background: var(--vg-primary-tint);
+    color: var(--vg-primary);
+    background: var(--vg-primary-tint);
 }
 
 vaadin-tooltip-overlay::part(overlay) {
-  font-size: var(--vg-fs-s);
-  font-weight: 500;
-  padding: 5px 9px;
-  border-radius: 6px;
+    font-size: var(--vg-fs-s);
+    font-weight: 500;
+    padding: 5px 9px;
+    border-radius: 6px;
 }
 
 /* ============================================================
    Menu bar buttons
    ============================================================ */
 vaadin-menu-bar-button {
-  border-radius: var(--vg-radius-s);
-  font-weight: 500;
-  font-size: var(--vg-fs-base);
-  color: var(--vg-fg);
-  background: var(--vg-surface);
-  border: 0.5px solid var(--vg-border-strong);
-  box-shadow: var(--vg-shadow-s);
-  height: var(--vg-ctrl-h);
+    border-radius: var(--vg-radius-s);
+    font-weight: 500;
+    font-size: var(--vg-fs-base);
+    color: var(--vg-fg);
+    background: var(--vg-surface);
+    border: 0.5px solid var(--vg-border-strong);
+    box-shadow: var(--vg-shadow-s);
+    height: var(--vg-ctrl-h);
 }
+
 vaadin-menu-bar-button:hover {
-  background: var(--vg-surface-2);
-  border-color: var(--vg-fg-tertiary);
+    background: var(--vg-surface-2);
+    border-color: var(--vg-fg-tertiary);
 }
 
 /* ============================================================
    Badge utility — pill + status indicator
    ============================================================ */
 [theme~="badge"] {
-  font-size: var(--vg-fs-s);
-  font-weight: 500;
-  height: 22px;
-  padding: 0 9px 0 8px;
-  border-radius: 999px;
-  background: var(--vg-surface-3);
-  color: var(--vg-fg-secondary);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  white-space: nowrap;
+    font-size: var(--vg-fs-s);
+    font-weight: 500;
+    height: 22px;
+    padding: 0 9px 0 8px;
+    border-radius: 999px;
+    background: var(--vg-surface-3);
+    color: var(--vg-fg-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
 }
+
 [theme~="badge"]::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: currentColor;
-  box-shadow: 0 0 0 2px color-mix(in srgb, currentColor 15%, transparent);
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 2px color-mix(in srgb, currentColor 15%, transparent);
 }
-[theme~="badge"][theme~="primary"] { background: var(--vg-primary-tint); color: var(--vg-primary); }
-[theme~="badge"][theme~="success"] { background: var(--vg-success-tint); color: var(--vg-success); }
-[theme~="badge"][theme~="warning"] { background: var(--vg-warning-tint); color: var(--vg-warning); }
-[theme~="badge"][theme~="error"]   { background: var(--vg-error-tint);   color: var(--vg-error); }
-[theme~="badge"][theme~="contrast"]{ background: var(--vg-surface-3);    color: var(--vg-fg); }
+
+[theme~="badge"][theme~="primary"] {
+    background: var(--vg-primary-tint);
+    color: var(--vg-primary);
+}
+
+[theme~="badge"][theme~="success"] {
+    background: var(--vg-success-tint);
+    color: var(--vg-success);
+}
+
+[theme~="badge"][theme~="warning"] {
+    background: var(--vg-warning-tint);
+    color: var(--vg-warning);
+}
+
+[theme~="badge"][theme~="error"] {
+    background: var(--vg-error-tint);
+    color: var(--vg-error);
+}
+
+[theme~="badge"][theme~="contrast"] {
+    background: var(--vg-surface-3);
+    color: var(--vg-fg);
+}
+
 /* `small` badges drop the dot — useful inside tight cells */
-[theme~="badge"][theme~="small"] { height: 18px; font-size: 10px; padding: 0 6px; }
-[theme~="badge"][theme~="small"]::before { display: none; }
+[theme~="badge"][theme~="small"] {
+    height: 18px;
+    font-size: 10px;
+    padding: 0 6px;
+}
+
+[theme~="badge"][theme~="small"]::before {
+    display: none;
+}
 
 /* ============================================================
    Progress bar
    ============================================================ */
 vaadin-progress-bar {
-  --vaadin-progress-color: var(--vg-primary);
-  height: 6px;
+    --vaadin-progress-color: var(--vg-primary);
+    height: 6px;
 }
+
 vaadin-progress-bar::part(bar) {
-  background: var(--vg-surface-3);
-  border-radius: 999px;
+    background: var(--vg-surface-3);
+    border-radius: 999px;
 }
+
 vaadin-progress-bar::part(value) {
-  border-radius: 999px;
-  transition: width 0.3s cubic-bezier(0.3, 0.7, 0.4, 1);
+    border-radius: 999px;
+    transition: width 0.3s cubic-bezier(0.3, 0.7, 0.4, 1);
 }
-vaadin-progress-bar[theme~="success"] { --vaadin-progress-color: var(--vg-success); }
-vaadin-progress-bar[theme~="error"]   { --vaadin-progress-color: var(--vg-error); }
+
+vaadin-progress-bar[theme~="success"] {
+    --vaadin-progress-color: var(--vg-success);
+}
+
+vaadin-progress-bar[theme~="error"] {
+    --vaadin-progress-color: var(--vg-error);
+}
 
 /* ============================================================
    Accordion / Details
    ============================================================ */
 vaadin-accordion-panel {
-  background: var(--vg-surface);
-  border: 0.5px solid var(--vg-border);
-  border-radius: var(--vg-radius-m);
-  margin-bottom: var(--vg-s-s);
+    background: var(--vg-surface);
+    border: 0.5px solid var(--vg-border);
+    border-radius: var(--vg-radius-m);
+    margin-bottom: var(--vg-s-s);
 }
+
 vaadin-accordion-panel::part(summary) {
-  font-weight: 600;
-  font-size: var(--vg-fs-m);
-  color: var(--vg-fg);
-  padding: 14px 16px;
+    font-weight: 600;
+    font-size: var(--vg-fs-m);
+    color: var(--vg-fg);
+    padding: 14px 16px;
 }
+
 vaadin-accordion-panel::part(content) {
-  border-top: 0.5px solid var(--vg-divider);
-  padding: 14px 16px;
-  color: var(--vg-fg);
+    border-top: 0.5px solid var(--vg-divider);
+    padding: 14px 16px;
+    color: var(--vg-fg);
 }
 
 vaadin-details {
-  background: var(--vg-surface);
-  border: 0.5px solid var(--vg-border);
-  border-radius: var(--vg-radius-m);
+    background: var(--vg-surface);
+    border: 0.5px solid var(--vg-border);
+    border-radius: var(--vg-radius-m);
 }
+
 vaadin-details::part(summary) {
-  font-weight: 600;
-  color: var(--vg-fg);
+    font-weight: 600;
+    color: var(--vg-fg);
 }
+
 vaadin-details::part(content) {
-  border-top: 0.5px solid var(--vg-divider);
-  color: var(--vg-fg);
+    border-top: 0.5px solid var(--vg-divider);
+    color: var(--vg-fg);
 }
 
 /* ============================================================
    Split layout
    ============================================================ */
 vaadin-split-layout {
-  background: var(--vg-surface);
-  border: 0.5px solid var(--vg-border);
-  border-radius: var(--vg-radius-m);
-  overflow: hidden;
+    background: var(--vg-surface);
+    border: 0.5px solid var(--vg-border);
+    border-radius: var(--vg-radius-m);
+    overflow: hidden;
 }
+
 vaadin-split-layout::part(splitter) {
-  background: var(--vg-divider);
+    background: var(--vg-divider);
 }
 
 /* ============================================================
    Upload — dashed drop zone
    ============================================================ */
 vaadin-upload {
-  border: 1px dashed var(--vg-border-strong);
-  border-radius: var(--vg-radius-m);
-  background: var(--vg-surface-3);
-  padding: 16px 18px;
-  transition: border-color 0.12s, background 0.12s;
+    border: 1px dashed var(--vg-border-strong);
+    border-radius: var(--vg-radius-m);
+    background: var(--vg-surface-3);
+    padding: 16px 18px;
+    transition: border-color 0.12s, background 0.12s;
 }
+
 vaadin-upload:hover,
 vaadin-upload[dragover] {
-  border-color: var(--vg-primary);
-  background: color-mix(in oklab, var(--vg-primary) 4%, transparent);
+    border-color: var(--vg-primary);
+    background: color-mix(in oklab, var(--vg-primary) 4%, transparent);
 }
 
 /* ============================================================
    Message list / input
    ============================================================ */
 vaadin-message-list {
-  background: var(--vg-surface);
-  border: 0.5px solid var(--vg-border);
-  border-radius: var(--vg-radius-m);
+    background: var(--vg-surface);
+    border: 0.5px solid var(--vg-border);
+    border-radius: var(--vg-radius-m);
 }
+
 vaadin-message {
-  font-size: var(--vg-fs-base);
+    font-size: var(--vg-fs-base);
 }
+
 vaadin-message::part(name) {
-  font-weight: 600;
-  color: var(--vg-fg);
+    font-weight: 600;
+    color: var(--vg-fg);
 }
+
 vaadin-message::part(time) {
-  font-family: var(--vg-font-mono);
-  font-size: var(--vg-fs-xs);
-  color: var(--vg-fg-tertiary);
+    font-family: var(--vg-font-mono);
+    font-size: var(--vg-fs-xs);
+    color: var(--vg-fg-tertiary);
 }
+
 vaadin-message-input::part(input-field) {
-  background: var(--vg-surface);
-  border: 0.5px solid var(--vg-border-strong);
-  border-radius: var(--vg-radius-s);
+    background: var(--vg-surface);
+    border: 0.5px solid var(--vg-border-strong);
+    border-radius: var(--vg-radius-s);
 }
 
 /* ============================================================
@@ -980,323 +1248,547 @@ vaadin-message-input::part(input-field) {
 
 /* Typography helpers */
 .vg-page-title {
-  font-size: var(--vg-fs-2xl);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+    font-size: var(--vg-fs-2xl);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
 }
+
 .vg-page-sub {
-  font-size: var(--vg-fs-m);
-  color: var(--vg-fg-secondary);
+    font-size: var(--vg-fs-m);
+    color: var(--vg-fg-secondary);
 }
+
 .vg-card-title {
-  font-size: var(--vg-fs-m);
-  font-weight: 600;
-  letter-spacing: -0.005em;
+    font-size: var(--vg-fs-m);
+    font-weight: 600;
+    letter-spacing: -0.005em;
 }
-.vg-card-sub { font-size: var(--vg-fs-s); color: var(--vg-fg-secondary); }
-.vg-form-section-title { font-size: var(--vg-fs-m); font-weight: 600; letter-spacing: -0.005em; }
-.vg-form-section-sub   { font-size: var(--vg-fs-s); color: var(--vg-fg-secondary); }
-.vg-form-section-side  { font-size: var(--vg-fs-s); color: var(--vg-fg-tertiary); }
-.vg-list-trail         { font-size: var(--vg-fs-xs); color: var(--vg-fg-tertiary); font-variant-numeric: tabular-nums; }
-.vg-stat-label         { font-size: var(--vg-fs-s); color: var(--vg-fg-secondary); font-weight: 500; }
-.vg-stat-value         { font-size: var(--vg-fs-2xl); font-weight: 600; letter-spacing: -0.025em; font-variant-numeric: tabular-nums; }
-.vg-stat-meta          { font-size: var(--vg-fs-s); color: var(--vg-fg-secondary); }
-.vg-top-row-rank       { font-size: var(--vg-fs-s); color: var(--vg-fg-tertiary); font-variant-numeric: tabular-nums; text-align: center; }
-.vg-top-row-amount     { font-weight: 600; font-variant-numeric: tabular-nums; }
-.vg-stat-row-label     { font-size: var(--vg-fs-base); font-weight: 500; }
-.vg-stat-row-value     { font-size: var(--vg-fs-s); color: var(--vg-fg-secondary); font-variant-numeric: tabular-nums; }
+
+.vg-card-sub {
+    font-size: var(--vg-fs-s);
+    color: var(--vg-fg-secondary);
+}
+
+.vg-form-section-title {
+    font-size: var(--vg-fs-m);
+    font-weight: 600;
+    letter-spacing: -0.005em;
+}
+
+.vg-form-section-sub {
+    font-size: var(--vg-fs-s);
+    color: var(--vg-fg-secondary);
+}
+
+.vg-form-section-side {
+    font-size: var(--vg-fs-s);
+    color: var(--vg-fg-tertiary);
+}
+
+.vg-list-trail {
+    font-size: var(--vg-fs-xs);
+    color: var(--vg-fg-tertiary);
+    font-variant-numeric: tabular-nums;
+}
+
+.vg-stat-label {
+    font-size: var(--vg-fs-s);
+    color: var(--vg-fg-secondary);
+    font-weight: 500;
+}
+
+.vg-stat-value {
+    font-size: var(--vg-fs-2xl);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    font-variant-numeric: tabular-nums;
+}
+
+.vg-stat-meta {
+    font-size: var(--vg-fs-s);
+    color: var(--vg-fg-secondary);
+}
+
+.vg-top-row-rank {
+    font-size: var(--vg-fs-s);
+    color: var(--vg-fg-tertiary);
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.vg-top-row-amount {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.vg-stat-row-label {
+    font-size: var(--vg-fs-base);
+    font-weight: 500;
+}
+
+.vg-stat-row-value {
+    font-size: var(--vg-fs-s);
+    color: var(--vg-fg-secondary);
+    font-variant-numeric: tabular-nums;
+}
 
 /* Card surface — bg/border/radius/shadow only. The view controls
    padding for the head and body. */
 .vg-card {
-  background: var(--vg-surface);
-  border: 0.5px solid var(--vg-border);
-  border-radius: var(--vg-radius-m);
-  box-shadow: var(--vg-shadow-s);
-  overflow: hidden;
+    background: var(--vg-surface);
+    border: 0.5px solid var(--vg-border);
+    border-radius: var(--vg-radius-m);
+    box-shadow: var(--vg-shadow-s);
+    overflow: hidden;
 }
-.vg-card-head { border-bottom: 0.5px solid var(--vg-divider); }
+
+.vg-card-head {
+    border-bottom: 0.5px solid var(--vg-divider);
+}
 
 /* KPI stat surface — same idea: surface styling only. */
 .vg-stat {
-  background: var(--vg-surface);
-  border: 0.5px solid var(--vg-border);
-  border-radius: var(--vg-radius-m);
-  overflow: hidden;
+    background: var(--vg-surface);
+    border: 0.5px solid var(--vg-border);
+    border-radius: var(--vg-radius-m);
+    overflow: hidden;
 }
 
 /* Trend pill — self-contained component (like a button). */
 .vg-trend {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  padding: 1px 6px;
-  border-radius: 999px;
-  font-size: var(--vg-fs-s);
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 1px 6px;
+    border-radius: 999px;
+    font-size: var(--vg-fs-s);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
 }
-.vg-trend svg { width: 11px; height: 11px; }
-.vg-trend-up   { background: var(--vg-success-tint); color: var(--vg-success); }
-.vg-trend-down { background: var(--vg-error-tint);   color: var(--vg-error); }
+
+.vg-trend svg {
+    width: 11px;
+    height: 11px;
+}
+
+.vg-trend-up {
+    background: var(--vg-success-tint);
+    color: var(--vg-success);
+}
+
+.vg-trend-down {
+    background: var(--vg-error-tint);
+    color: var(--vg-error);
+}
 
 /* Status pill — self-contained. */
 .vg-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  height: 22px;
-  padding: 0 9px 0 8px;
-  border-radius: 999px;
-  font-size: var(--vg-fs-s);
-  font-weight: 500;
-  white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 22px;
+    padding: 0 9px 0 8px;
+    border-radius: 999px;
+    font-size: var(--vg-fs-s);
+    font-weight: 500;
+    white-space: nowrap;
 }
+
 .vg-status::before {
-  content: "";
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: currentColor;
-  box-shadow: 0 0 0 2px color-mix(in srgb, currentColor 15%, transparent);
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 2px color-mix(in srgb, currentColor 15%, transparent);
 }
-.vg-status-in-transit { background: var(--vg-primary-tint); color: var(--vg-primary); }
-.vg-status-delivered  { background: var(--vg-success-tint); color: var(--vg-success); }
-.vg-status-delayed    { background: var(--vg-warning-tint); color: var(--vg-warning); }
-.vg-status-cancelled  { background: var(--vg-error-tint);   color: var(--vg-error); }
-.vg-status-pending    { background: var(--vg-surface-3);    color: var(--vg-fg-secondary); }
+
+.vg-status-in-transit {
+    background: var(--vg-primary-tint);
+    color: var(--vg-primary);
+}
+
+.vg-status-delivered {
+    background: var(--vg-success-tint);
+    color: var(--vg-success);
+}
+
+.vg-status-delayed {
+    background: var(--vg-warning-tint);
+    color: var(--vg-warning);
+}
+
+.vg-status-cancelled {
+    background: var(--vg-error-tint);
+    color: var(--vg-error);
+}
+
+.vg-status-pending {
+    background: var(--vg-surface-3);
+    color: var(--vg-fg-secondary);
+}
 
 /* Avatar disc — self-contained tiny component. */
 .vg-customer-avatar {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  color: white;
-  font-weight: 600;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.12);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
 }
 
 /* Chip / dashed-bordered chip — self-contained. */
 .vg-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  height: 26px;
-  padding: 0 10px;
-  border: 0.5px solid var(--vg-border-strong);
-  border-radius: 999px;
-  background: var(--vg-surface);
-  color: var(--vg-fg-secondary);
-  font-size: var(--vg-fs-s);
-  font-weight: 500;
-  white-space: nowrap;
-  cursor: default;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    height: 26px;
+    padding: 0 10px;
+    border: 0.5px solid var(--vg-border-strong);
+    border-radius: 999px;
+    background: var(--vg-surface);
+    color: var(--vg-fg-secondary);
+    font-size: var(--vg-fs-s);
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: default;
 }
-.vg-chip:hover { background: var(--vg-surface-2); }
-.vg-chip b { color: var(--vg-fg); font-weight: 600; }
+
+.vg-chip:hover {
+    background: var(--vg-surface-2);
+}
+
+.vg-chip b {
+    color: var(--vg-fg);
+    font-weight: 600;
+}
 
 /* Segmented control (pill-style). Internal sizing/padding stays
    here because it's a self-contained component. */
 .vg-tabs {
-  display: inline-flex;
-  align-items: center;
-  padding: 3px;
-  border-radius: var(--vg-radius-s);
-  background: var(--vg-surface-3);
-  border: 0.5px solid var(--vg-border);
+    display: inline-flex;
+    align-items: center;
+    padding: 3px;
+    border-radius: var(--vg-radius-s);
+    background: var(--vg-surface-3);
+    border: 0.5px solid var(--vg-border);
 }
+
 .vg-tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  height: 26px;
-  padding: 0 12px;
-  border-radius: 4px;
-  color: var(--vg-fg-secondary);
-  font-size: var(--vg-fs-s);
-  font-weight: 500;
-  cursor: default;
-  user-select: none;
-  transition: background 0.12s, color 0.12s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 26px;
+    padding: 0 12px;
+    border-radius: 4px;
+    color: var(--vg-fg-secondary);
+    font-size: var(--vg-fs-s);
+    font-weight: 500;
+    cursor: default;
+    user-select: none;
+    transition: background 0.12s, color 0.12s;
 }
-.vg-tab:hover { color: var(--vg-fg); }
+
+.vg-tab:hover {
+    color: var(--vg-fg);
+}
+
 .vg-tab.is-active {
-  background: var(--vg-surface);
-  color: var(--vg-fg);
-  box-shadow: var(--vg-shadow-s);
+    background: var(--vg-surface);
+    color: var(--vg-fg);
+    box-shadow: var(--vg-shadow-s);
 }
+
 .vg-tab .vg-count {
-  font-size: 10px;
-  padding: 0 5px;
-  border-radius: 999px;
-  background: var(--vg-surface-3);
-  color: var(--vg-fg-secondary);
-  font-variant-numeric: tabular-nums;
+    font-size: 10px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: var(--vg-surface-3);
+    color: var(--vg-fg-secondary);
+    font-variant-numeric: tabular-nums;
 }
-.vg-tab.is-active .vg-count { background: var(--vg-primary-tint); color: var(--vg-primary); }
+
+.vg-tab.is-active .vg-count {
+    background: var(--vg-primary-tint);
+    color: var(--vg-primary);
+}
 
 /* Master-detail list row — hover/active visual states.
    The view controls padding/flex inside the row. */
 .vg-list-item {
-  border-radius: var(--vg-radius-s);
-  cursor: default;
-  transition: background 0.08s, color 0.08s;
+    border-radius: var(--vg-radius-s);
+    cursor: default;
+    transition: background 0.08s, color 0.08s;
 }
-.vg-list-item:hover { background: var(--vg-surface-3); }
+
+.vg-list-item:hover {
+    background: var(--vg-surface-3);
+}
+
 .vg-list-item.is-active {
-  background: var(--vg-primary-tint);
-  color: var(--vg-primary);
+    background: var(--vg-primary-tint);
+    color: var(--vg-primary);
 }
 
 /* Banner — bg/border/font/color visual. Layout (display/padding)
    is the view's responsibility. */
 .vg-banner {
-  background: var(--vg-primary-tint);
-  color: var(--vg-fg);
-  border: 0.5px solid color-mix(in oklab, var(--vg-primary) 30%, transparent);
-  border-radius: var(--vg-radius-s);
-  font-size: var(--vg-fs-s);
+    background: var(--vg-primary-tint);
+    color: var(--vg-fg);
+    border: 0.5px solid color-mix(in oklab, var(--vg-primary) 30%, transparent);
+    border-radius: var(--vg-radius-s);
+    font-size: var(--vg-fs-s);
 }
-.vg-banner b { font-weight: 600; }
-.vg-banner.is-warning { background: var(--vg-warning-tint); border-color: color-mix(in oklab, var(--vg-warning) 30%, transparent); }
+
+.vg-banner b {
+    font-weight: 600;
+}
+
+.vg-banner.is-warning {
+    background: var(--vg-warning-tint);
+    border-color: color-mix(in oklab, var(--vg-warning) 30%, transparent);
+}
 
 /* Action bar — visual only: top border, subtle gradient + blur
    when sticky. Whether/where to make it sticky is the view's call. */
 .vg-action-bar {
-  border-top: 0.5px solid var(--vg-divider);
-  background: linear-gradient(180deg, transparent, var(--vg-surface-3));
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+    border-top: 0.5px solid var(--vg-divider);
+    background: linear-gradient(180deg, transparent, var(--vg-surface-3));
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
 }
 
 /* Chart legend dots — internal sizing of a tiny visual primitive. */
 .vg-chart-legend i {
-  display: inline-block;
-  width: 8px; height: 8px;
-  border-radius: 2px;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
 }
 
 /* Notification matrix — plain HTML <table> visual styling. Cell
    padding is "table cell padding" (theme territory, like Lumo's
    grid cell padding); the view controls outer arrangement. */
 .vg-grid-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: var(--vg-fs-base);
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--vg-fs-base);
 }
+
 .vg-grid-table thead th {
-  text-align: left;
-  font-weight: 600;
-  font-size: var(--vg-fs-s);
-  color: var(--vg-fg-secondary);
-  padding: 10px 16px;
-  background: var(--vg-surface);
-  border-bottom: 0.5px solid var(--vg-border-strong);
-  white-space: nowrap;
+    text-align: left;
+    font-weight: 600;
+    font-size: var(--vg-fs-s);
+    color: var(--vg-fg-secondary);
+    padding: 10px 16px;
+    background: var(--vg-surface);
+    border-bottom: 0.5px solid var(--vg-border-strong);
+    white-space: nowrap;
 }
-.vg-grid-table thead th:first-child { padding-left: 22px; }
-.vg-grid-table thead th:last-child  { padding-right: 22px; }
+
+.vg-grid-table thead th:first-child {
+    padding-left: 22px;
+}
+
+.vg-grid-table thead th:last-child {
+    padding-right: 22px;
+}
+
 .vg-grid-table tbody td {
-  padding: 12px 16px;
-  border-bottom: 0.5px solid var(--vg-divider);
-  vertical-align: middle;
+    padding: 12px 16px;
+    border-bottom: 0.5px solid var(--vg-divider);
+    vertical-align: middle;
 }
-.vg-grid-table tbody td:first-child { padding-left: 22px; }
-.vg-grid-table tbody td:last-child  { padding-right: 22px; }
-.vg-grid-table tbody tr:last-child td { border-bottom: 0; }
+
+.vg-grid-table tbody td:first-child {
+    padding-left: 22px;
+}
+
+.vg-grid-table tbody td:last-child {
+    padding-right: 22px;
+}
+
+.vg-grid-table tbody tr:last-child td {
+    border-bottom: 0;
+}
 
 /* Switch toggle — self-contained component (like a checkbox). */
 .vg-switch {
-  appearance: none;
-  position: relative;
-  width: 34px; height: 20px;
-  border: 0; padding: 0; margin: 0;
-  border-radius: 999px;
-  background: var(--vg-border-strong);
-  transition: background 0.15s;
-  cursor: pointer;
-  flex-shrink: 0;
-  vertical-align: middle;
+    appearance: none;
+    position: relative;
+    width: 34px;
+    height: 20px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    border-radius: 999px;
+    background: var(--vg-border-strong);
+    transition: background 0.15s;
+    cursor: pointer;
+    flex-shrink: 0;
+    vertical-align: middle;
 }
+
 .vg-switch::after {
-  content: "";
-  position: absolute;
-  top: 2px; left: 2px;
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  background: white;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.25);
-  transition: transform 0.15s cubic-bezier(0.3, 0.7, 0.4, 1);
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s cubic-bezier(0.3, 0.7, 0.4, 1);
 }
-.vg-switch:checked { background: var(--vg-primary); }
-.vg-switch:checked::after { transform: translateX(14px); }
+
+.vg-switch:checked {
+    background: var(--vg-primary);
+}
+
+.vg-switch:checked::after {
+    transform: translateX(14px);
+}
 
 /* ============================================================
-   Glass background variant — opt-in via theme="glass-bg" on
-   vaadin-app-layout. Switches the shell from flat to the floating
-   panels + colored orbs scene. Use when you want the dramatic
-   marketing-render look; leave it off for everyday data screens.
+   Flat-layout variant — opt-in via theme="flat-layout" on
+   vaadin-app-layout. Strips the floating margins/corners/borders so
+   the navbar, drawer, and slotted view all sit flush edge-to-edge.
+   The body's aurora backdrop is unchanged; it just gets covered
+   by the chrome instead of peeking around it.
    ============================================================ */
-
-/* Scene backdrop — orbs + fine grain, only when the variant is set. */
-body:has(vaadin-app-layout[theme~="glass-bg"]) {
-  background: var(--vg-bg);
-}
-body:has(vaadin-app-layout[theme~="glass-bg"])::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle 700px at 12% 8%,  color-mix(in oklab, var(--vg-primary)   90%, transparent), transparent 60%),
-    radial-gradient(circle 600px at 88% 92%, color-mix(in oklab, var(--vg-accent)    90%, transparent), transparent 60%),
-    radial-gradient(circle 500px at 60% 30%, color-mix(in oklab, var(--vg-secondary) 65%, transparent), transparent 65%),
-    radial-gradient(circle 480px at 25% 70%, color-mix(in oklab, var(--vg-accent)    80%, transparent), transparent 65%);
-  filter: blur(40px) saturate(180%);
-  opacity: 0.85;
-}
-html[theme~="dark"] body:has(vaadin-app-layout[theme~="glass-bg"])::before { opacity: 0.6; }
-
-body:has(vaadin-app-layout[theme~="glass-bg"])::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  background-size: 160px 160px;
-  opacity: 0.05;
-  mix-blend-mode: overlay;
+vaadin-app-layout[theme~="flat-layout"]::part(navbar) {
+    top: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    border-radius: 0;
+    border: 0;
+    border-bottom: 0.5px solid var(--vg-border);
+    box-shadow: none;
 }
 
-/* AppLayout's own surface becomes transparent so the navbar/drawer's
-   backdrop-filter refracts the body orbs instead of the AppLayout's
-   own fill. The slotted view (content) stays opaque — see below — so
-   the orb scene only shows through the chrome, not through content. */
-vaadin-app-layout[theme~="glass-bg"] {
-  background: transparent !important;
+html[theme~="dark"] vaadin-app-layout[theme~="flat-layout"]::part(navbar) {
+    box-shadow: none;
 }
-/* Keep the content area on a flat opaque surface — the toggle only
-   swaps the body backdrop, never the slotted view's layout/look. */
-vaadin-app-layout[theme~="glass-bg"] > :not([slot]) {
-  background: var(--vg-surface);
+
+vaadin-app-layout[theme~="flat-layout"]::part(drawer) {
+    top: 57px;
+    left: 0;
+    bottom: 0;
+    height: auto;
+    border-radius: 0;
+    border: 0;
+    border-right: 0.5px solid var(--vg-border);
+    box-shadow: none;
+}
+
+vaadin-app-layout[theme~="flat-layout"] > :not([slot]) {
+    margin: 0;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0;
+    border: 0;
+    box-shadow: none;
+}
+
+vaadin-app-layout[theme~="flat-layout"][drawer-opened]:not([overlay]) > :not([slot]) {
+    margin-left: 0;
+    width: 100% !important;
+}
+
+/* ============================================================
+   Per-component glass variant — opt-in via theme="glass" on a
+   surface container or layout. Gives the
+   element the same frosted refraction as the chrome so it pops when
+   sat next to flat siblings. Stacking glass over glass washes out;
+   use sparingly, and only over a backdrop with something to refract.
+   ============================================================ */
+vaadin-card[theme~="glass"],
+vaadin-vertical-layout[theme~="glass"],
+vaadin-horizontal-layout[theme~="glass"],
+vaadin-form-layout[theme~="glass"],
+vaadin-scroller[theme~="glass"],
+.vg-card[theme~="glass"],
+.vg-stat[theme~="glass"] {
+    background: linear-gradient(180deg, var(--vg-glass-tint), transparent 70%),
+    var(--vg-glass-fill) !important;
+    -webkit-backdrop-filter: var(--vg-glass-blur);
+    backdrop-filter: var(--vg-glass-blur);
+    border: var(--vg-glass-border) !important;
+    box-shadow: var(--vg-glass-edge), var(--vg-shadow-s) !important;
+}
+
+html[theme~="dark"] vaadin-card[theme~="glass"],
+html[theme~="dark"] vaadin-vertical-layout[theme~="glass"],
+html[theme~="dark"] vaadin-horizontal-layout[theme~="glass"],
+html[theme~="dark"] vaadin-form-layout[theme~="glass"],
+html[theme~="dark"] vaadin-scroller[theme~="glass"],
+html[theme~="dark"] .vg-card[theme~="glass"],
+html[theme~="dark"] .vg-stat[theme~="glass"] {
+    box-shadow: var(--vg-glass-edge), 0 4px 14px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ============================================================
+   Per-component flat variant — opt-in via theme="flat" on a
+   surface container. Keeps the component solid and low-emphasis,
+   removing the frosted/elevated treatment while preserving the
+   component's internal layout.
+   ============================================================ */
+vaadin-card[theme~="flat"],
+vaadin-vertical-layout[theme~="flat"],
+vaadin-horizontal-layout[theme~="flat"],
+vaadin-form-layout[theme~="flat"],
+vaadin-scroller[theme~="flat"],
+.vg-card[theme~="flat"],
+.vg-stat[theme~="flat"] {
+    background: var(--vg-surface-2) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    border: 0.5px solid var(--vg-divider) !important;
+    border-radius: var(--vg-radius-s) !important;
+    box-shadow: none !important;
+}
+
+html[theme~="dark"] vaadin-card[theme~="flat"],
+html[theme~="dark"] vaadin-vertical-layout[theme~="flat"],
+html[theme~="dark"] vaadin-horizontal-layout[theme~="flat"],
+html[theme~="dark"] vaadin-form-layout[theme~="flat"],
+html[theme~="dark"] vaadin-scroller[theme~="flat"],
+html[theme~="dark"] .vg-card[theme~="flat"],
+html[theme~="dark"] .vg-stat[theme~="flat"] {
+    background: var(--vg-surface-2) !important;
+    border-color: var(--vg-divider) !important;
+    box-shadow: none !important;
 }
 
 /* ============================================================
    Misc — selection, scrollbar
    ============================================================ */
-::selection { background: color-mix(in oklab, var(--vg-primary) 35%, transparent); }
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb {
-  background: color-mix(in oklab, var(--vg-fg) 18%, transparent);
-  border: 2px solid transparent;
-  background-clip: content-box;
-  border-radius: 6px;
+::selection {
+    background: color-mix(in oklab, var(--vg-primary) 35%, transparent);
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--vg-fg) 18%, transparent);
+    border: 2px solid transparent;
+    background-clip: content-box;
+    border-radius: 6px;
+}
+
 ::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in oklab, var(--vg-fg) 30%, transparent);
-  background-clip: content-box;
+    background: color-mix(in oklab, var(--vg-fg) 30%, transparent);
+    background-clip: content-box;
 }

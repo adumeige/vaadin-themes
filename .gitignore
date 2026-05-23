@@ -48,3 +48,6 @@ build/
 .DS_Store
 /test-app/src/main/bundles/
 /test-app/src/main/frontend/generated/
+.idea
+.playwright-cli
+.claude

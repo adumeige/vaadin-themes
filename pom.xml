@@ -19,6 +19,7 @@
     </properties>
 
     <modules>
+        <module>theme</module>
         <module>theme-seagod</module>
         <module>theme-fjord</module>
         <module>theme-terminal-synth</module>

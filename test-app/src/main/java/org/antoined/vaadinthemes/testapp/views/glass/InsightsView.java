@@ -104,6 +104,7 @@ public class InsightsView extends VerticalLayout {
         for (int i = 0; i < row.getComponentCount(); i++) {
             ((Card) row.getComponentAt(i)).getStyle().set("flex", "1 1 0");
         }
+        ((Card) row.getComponentAt(0)).getElement().getThemeList().add("glass");
         return row;
     }
 

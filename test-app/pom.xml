@@ -23,6 +23,11 @@
         </dependency>
         <dependency>
             <groupId>org.antoined</groupId>
+            <artifactId>theme</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.antoined</groupId>
             <artifactId>theme-seagod</artifactId>
             <version>${project.version}</version>
         </dependency>
