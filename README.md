@@ -1,6 +1,7 @@
 # Vaadin Themes
 
-A small collection of packaged Vaadin 24 Lumo-based themes, each published as a Maven module and previewable in the included test app.
+A small collection of packaged Vaadin 24 Lumo-based themes, each published as a Maven module and previewable in the
+included test app.
 
 ## Themes
 
@@ -13,7 +14,8 @@ A small collection of packaged Vaadin 24 Lumo-based themes, each published as a 
 ![Fjord theme screenshot 1](resources/fjord-00.png)
 ![Fjord theme screenshot 2](resources/fjord-01.png)
 
-Fjord's palette names and raw color scale are based on the open-source [Nord theme](https://www.nordtheme.com/). Thanks to the Nord maintainers for publishing such a clear, reusable color system.
+Fjord's palette names and raw color scale are based on the open-source [Nord theme](https://www.nordtheme.com/). Thanks
+to the Nord maintainers for publishing such a clear, reusable color system.
 
 ### Terminal Synth
 
@@ -25,27 +27,135 @@ Fjord's palette names and raw color scale are based on the open-source [Nord the
 ![Novelist theme screenshot 1](resources/novelist-00.png)
 ![Novelist theme screenshot 2](resources/novelist-01.png)
 
+### Glass
+
+![Glass theme screenshot 1](resources/glass-00.png)
+![Glass theme screenshot 2](resources/glass-01.png)
+
+### Brutalist
+
+![Brutalist theme screenshot 1](resources/brutalist-00.png)
+![Brutalist theme screenshot 2](resources/brutalist-01.png)
+
+## The `theme` submodule
+
+The `theme` submodule provides the runtime theme model and ready-made Vaadin components for choosing a theme. It
+deliberately does not ship a global catalog or initial value. Each theme module exposes its own `ThemeDefinition`, and
+each application decides which definitions to expose and in which order.
+
+Add the shared module, plus whichever theme modules your app wants to offer:
+
+```xml
+
+<dependency>
+    <groupId>org.antoined</groupId>
+    <artifactId>theme</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+</dependency>
+<dependency>
+<groupId>org.antoined</groupId>
+<artifactId>theme-glass</artifactId>
+<version>1.0.0-SNAPSHOT</version>
+</dependency>
+```
+
+Build the catalog in your app by picking the definitions you want:
+
+```java
+private List<ThemeDefinition> themeDefinitions() {
+    return List.of(
+            SeagodTheme.definition(),
+            FjordTheme.definition(),
+            GlassTheme.definition(),
+            BrutalistTheme.definition());
+}
+```
+
+External themes integrate the same way. A theme module only needs to provide a stylesheet and a `ThemeDefinition`
+implementation or factory:
+
+```java
+public final class AcmeTheme {
+    public static final String ID = "acme";
+    public static final String STYLESHEET = "/themes/acme/styles.css";
+
+    public static ThemeDefinition definition() {
+        return BasicThemeDefinition.of(ID, "Acme", STYLESHEET, List.of(
+                BasicThemeOption.builder("mode", "Mode")
+                        .control(ThemeOptionControl.SELECT)
+                        .target(ThemeOptionTarget.ROOT_THEME_TOKEN)
+                        .values(
+                                ThemeOptionValue.of("light", "Light", ""),
+                                ThemeOptionValue.of("dark", "Dark", "dark"))
+                        .build()));
+    }
+}
+```
+
+Theme options can target root theme tokens, root `data-*` attributes, root CSS variables, `AppLayout` theme tokens, or a
+custom action. This lets a theme expose tweaks such as palette, density, mode, background mode, glass strength, or
+custom color variables without the app knowing the CSS details.
+
+Use `ThemeSwitcherPopover` when the switcher belongs in a top bar and should stay compact:
+
+```java
+public class MainLayout extends AppLayout {
+    public MainLayout() {
+        var themeSwitcher = new ThemeSwitcherPopover(themeDefinitions(), this);
+        themeSwitcher.setSelectedThemeStorageKey("selected-theme");
+        themeSwitcher.setSelectedTheme(GlassTheme.ID);
+        themeSwitcher.setPersistenceEnabled(true);
+
+        addToNavbar(themeSwitcher);
+    }
+}
+```
+
+Pass the current `AppLayout` when a theme has options that target the shell layout. Enable persistence to store the
+selected theme in `localStorage`; persistent options are stored under `vaadin-theme:<theme-id>:<option-key>` unless the
+option declares a custom storage key.
+
+For an always-visible control surface, use `ThemeSwitcher` directly:
+
+```java
+var switcher = new ThemeSwitcher(themeDefinitions(), this);
+switcher.
+
+setPresentation(ThemeSwitcher.Presentation.TOOLBAR);
+switcher.
+
+setSelectedTheme(FjordTheme.ID);
+switcher.
+
+setPersistenceEnabled(true);
+```
+
+Both switcher components support `addThemeChangeListener(...)` and `setOptionValue(...)`, which is useful for applying
+app-specific preview defaults after a theme is selected.
+
 ## Use a theme
 
 Add the theme module as a dependency:
 
 ```xml
+
 <dependency>
-  <groupId>org.antoined</groupId>
-  <artifactId>theme-fjord</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+    <groupId>org.antoined</groupId>
+    <artifactId>theme-fjord</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
 
-Then select it in your Vaadin app:
+Then either use the theme switcher or use it directly as any other Vaadin theme.
 
 ```java
+
 @Theme("fjord")
 public class AppShell implements AppShellConfigurator {
 }
 ```
 
-Available theme names: `seagod`, `fjord`, `terminal-synth`, `novelist`.
+Available theme names: `seagod`, `fjord`, `terminal-synth`, `novelist`, `glass`, `brutalist`.
 
 ## Build
 
