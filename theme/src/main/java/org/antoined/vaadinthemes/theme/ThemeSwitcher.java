@@ -24,6 +24,11 @@ import java.util.Optional;
 
 public final class ThemeSwitcher extends Composite<HorizontalLayout> {
 
+    public enum Presentation {
+        TOOLBAR,
+        PANEL
+    }
+
     private final HorizontalLayout root = new HorizontalLayout();
     private final ComboBox<ThemeDefinition> themeSelector = new ComboBox<>();
     private final HorizontalLayout optionsBar = new HorizontalLayout();
@@ -36,6 +41,7 @@ public final class ThemeSwitcher extends Composite<HorizontalLayout> {
     private boolean persistenceEnabled;
     private String selectedThemeStorageKey = "vaadin-theme:selected";
     private boolean suppressOptionPersistence;
+    private Presentation presentation = Presentation.TOOLBAR;
 
     public ThemeSwitcher(List<ThemeDefinition> themes) {
         this(themes, null);
@@ -98,6 +104,18 @@ public final class ThemeSwitcher extends Composite<HorizontalLayout> {
         return optionsBar;
     }
 
+    public Presentation getPresentation() {
+        return presentation;
+    }
+
+    public void setPresentation(Presentation presentation) {
+        this.presentation = Objects.requireNonNull(presentation, "presentation must not be null");
+        configurePresentation();
+        if (selectedTheme != null) {
+            rebuildOptions(selectedTheme);
+        }
+    }
+
     public void setOptionValue(String optionKey, String value) {
         setOptionValue(optionKey, value, true);
     }
@@ -120,11 +138,21 @@ public final class ThemeSwitcher extends Composite<HorizontalLayout> {
     }
 
     private void configureLayout() {
+        root.addClassName("theme-switcher");
+        themeSelector.addClassName("theme-switcher-theme-selector");
+        optionsBar.addClassName("theme-switcher-options");
         root.setAlignItems(FlexComponent.Alignment.CENTER);
         root.setSpacing(true);
         optionsBar.setAlignItems(FlexComponent.Alignment.CENTER);
         optionsBar.setSpacing(true);
         root.add(themeSelector, optionsBar);
+        configurePresentation();
+    }
+
+    private void configurePresentation() {
+        root.removeClassName("theme-switcher--toolbar");
+        root.removeClassName("theme-switcher--panel");
+        root.addClassName(presentation == Presentation.PANEL ? "theme-switcher--panel" : "theme-switcher--toolbar");
     }
 
     private void configureThemeSelector() {
@@ -132,7 +160,6 @@ public final class ThemeSwitcher extends Composite<HorizontalLayout> {
         themeSelector.setItemLabelGenerator(ThemeDefinition::label);
         themeSelector.setPlaceholder("Theme...");
         themeSelector.setClearButtonVisible(false);
-        themeSelector.setWidth("160px");
         themeSelector.addValueChangeListener(event -> {
             if (event.isFromClient() && event.getValue() != null) {
                 setSelectedTheme(event.getValue(), true);
@@ -156,11 +183,25 @@ public final class ThemeSwitcher extends Composite<HorizontalLayout> {
         for (ThemeOption option : theme.options()) {
             OptionBinding binding = createOptionBinding(theme, option);
             optionBindings.put(option.key(), binding);
-            optionsBar.add(binding.component());
+            optionsBar.add(renderOption(option, binding.component()));
             if (persistenceEnabled && option.persistent()) {
                 restoreOptionValue(theme, option, binding);
             }
         }
+    }
+
+    private Component renderOption(ThemeOption option, Component component) {
+        if (presentation == Presentation.TOOLBAR) {
+            return component;
+        }
+
+        Span label = new Span(option.label());
+        label.addClassName("theme-switcher-option-label");
+
+        HorizontalLayout row = new HorizontalLayout(label, component);
+        row.addClassName("theme-switcher-option");
+        row.setAlignItems(FlexComponent.Alignment.CENTER);
+        return row;
     }
 
     private OptionBinding createOptionBinding(ThemeDefinition theme, ThemeOption option) {
@@ -174,6 +215,7 @@ public final class ThemeSwitcher extends Composite<HorizontalLayout> {
 
     private OptionBinding createSelectBinding(ThemeDefinition theme, ThemeOption option) {
         Select<ThemeOptionValue> select = new Select<>();
+        select.addClassName("theme-switcher-option-control");
         select.setItems(option.values());
         select.setItemLabelGenerator(ThemeOptionValue::label);
         select.setPlaceholder(option.label());
@@ -184,16 +226,19 @@ public final class ThemeSwitcher extends Composite<HorizontalLayout> {
             applyOption(theme, option, value);
         });
         return new OptionBinding(select, storedValue -> {
-            option.values().stream()
+            Optional<ThemeOptionValue> matchedValue = option.values().stream()
                     .filter(value -> value.id().equals(storedValue))
-                    .findFirst()
-                    .ifPresent(select::setValue);
-            applyOption(theme, option, storedValue);
+                    .findFirst();
+            matchedValue.ifPresent(value -> {
+                select.setValue(value);
+                applyOption(theme, option, storedValue);
+            });
         });
     }
 
     private OptionBinding createToggleBinding(ThemeDefinition theme, ThemeOption option) {
         Checkbox checkbox = new Checkbox(option.label());
+        checkbox.addClassName("theme-switcher-option-control");
         checkbox.addValueChangeListener(event -> {
             String value = Boolean.TRUE.equals(event.getValue()) ? firstValue(option) : secondValue(option);
             applyOption(theme, option, value);
@@ -208,20 +253,14 @@ public final class ThemeSwitcher extends Composite<HorizontalLayout> {
         Element input = new Element("input");
         input.setAttribute("type", "color");
         input.setAttribute("title", option.label());
-        input.getStyle()
-                .set("width", "28px")
-                .set("height", "28px")
-                .set("padding", "0")
-                .set("border", "1px solid var(--lumo-contrast-30pct)")
-                .set("border-radius", "6px")
-                .set("cursor", "pointer")
-                .set("background", "transparent");
+        input.getClassList().add("theme-switcher-color-input");
         input.addEventListener("input", event -> {
             String value = event.getEventData().getString("event.target.value");
             applyOption(theme, option, value);
         }).addEventData("event.target.value");
 
         Span wrapper = new Span();
+        wrapper.addClassName("theme-switcher-color-control");
         wrapper.getElement().appendChild(input);
         return new OptionBinding(wrapper, storedValue -> {
             input.setAttribute("value", storedValue);
@@ -231,6 +270,7 @@ public final class ThemeSwitcher extends Composite<HorizontalLayout> {
 
     private OptionBinding createActionBinding(ThemeDefinition theme, ThemeOption option) {
         Button button = new Button(option.label());
+        button.addClassName("theme-switcher-option-control");
         button.addClickListener(event -> applyOption(theme, option, "action"));
         return new OptionBinding(button, storedValue -> applyOption(theme, option, storedValue));
     }

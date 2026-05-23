@@ -27,7 +27,7 @@ html {
   /* Spacing (4px base) */
   --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:24px; --s-8:32px; --s-10:40px; --s-12:48px;
 
-  /* Density — standard by default, overridden below */
+  /* Density — regular by default, overridden below */
   --ctrl-h:32px;  --ctrl-px:10px;  --row-h:36px;  --row-px:12px;
 
   /* Motion */
@@ -35,13 +35,17 @@ html {
   --ease-out:cubic-bezier(.2,.6,.2,1);
 }
 
-/* Density variants — toggle by setting  theme="fjord compact"  or  theme="fjord comfy"  */
+/* Density variants */
+html[data-density="comfortable"],
 html[theme~="comfy"]    { --ctrl-h:40px; --ctrl-px:14px; --row-h:48px; --row-px:16px; }
+html[data-density="regular"],
 html[theme~="standard"] { --ctrl-h:32px; --ctrl-px:10px; --row-h:36px; --row-px:12px; }
+html[data-density="compact"],
 html[theme~="compact"]  { --ctrl-h:26px; --ctrl-px:8px;  --row-h:28px; --row-px:10px; }
 
-/* --- 3. Light theme (default) ------------------------------- */
-html, html[theme~="light"] {
+/* --- 3. Light palette (default) ----------------------------- */
+html,
+html[theme~="light"] {
   --bg-app:#F4F6FA; --bg-surface:#FFFFFF;
   --bg-surface-2:var(--nord6); --bg-surface-3:var(--nord5); --bg-inset:var(--nord4);
   --fg-strong:var(--nord0); --fg-default:var(--nord1); --fg-muted:var(--nord3); --fg-subtle:var(--nord3-bright);
@@ -59,7 +63,8 @@ html, html[theme~="light"] {
   color-scheme:light;
 }
 
-/* --- 4. Dark theme ----------------------------------------- */
+/* --- 4. Nord palettes -------------------------------------- */
+html[data-palette="polar-night"],
 html[theme~="dark"] {
   --bg-app:#252A33; --bg-surface:var(--nord0);
   --bg-surface-2:var(--nord1); --bg-surface-3:var(--nord2); --bg-inset:#22262F;
@@ -78,10 +83,64 @@ html[theme~="dark"] {
   color-scheme:dark;
 }
 
+html[data-palette="snow-storm"] {
+  --bg-app:#ECEFF4; --bg-surface:#FFFFFF;
+  --bg-surface-2:var(--nord6); --bg-surface-3:var(--nord5); --bg-inset:var(--nord4);
+  --fg-strong:var(--nord0); --fg-default:var(--nord1); --fg-muted:var(--nord3); --fg-subtle:var(--nord3-bright);
+  --fg-on-accent:#FFFFFF;
+  --border-subtle:#D8DEE9; --border-default:#C7D0DC; --border-strong:#AEB9C7;
+  --accent:var(--nord9); --accent-hover:var(--nord10); --accent-pressed:#4D6F97;
+  --accent-soft:#DDE7F1; --accent-soft-fg:var(--nord10);
+  --danger:var(--nord11);   --danger-soft:#F4DDDF;
+  --warning:#B88A46;        --warning-soft:#F7EDD3;
+  --success:#6E8F5A;        --success-soft:#E3ECD7;
+  --info:var(--nord8);      --info-soft:#DDEDF3;
+  --shadow-1:0 1px 2px rgba(46,52,64,.05), 0 1px 1px rgba(46,52,64,.03);
+  --shadow-2:0 4px 10px rgba(46,52,64,.07), 0 1px 2px rgba(46,52,64,.04);
+  --shadow-3:0 12px 28px rgba(46,52,64,.10), 0 2px 6px rgba(46,52,64,.05);
+  color-scheme:light;
+}
+
+html[data-palette="frost"] {
+  --bg-app:#E8F2F6; --bg-surface:#F8FCFD;
+  --bg-surface-2:#E7F0F4; --bg-surface-3:#D9E8EE; --bg-inset:#CDDEE7;
+  --fg-strong:var(--nord0); --fg-default:var(--nord1); --fg-muted:var(--nord3); --fg-subtle:var(--nord3-bright);
+  --fg-on-accent:#FFFFFF;
+  --border-subtle:#C9DEE7; --border-default:#B8D2DE; --border-strong:#93B8C9;
+  --accent:var(--nord8); --accent-hover:#6FAFC3; --accent-pressed:var(--nord10);
+  --accent-soft:#D5EBF2; --accent-soft-fg:#4F789B;
+  --danger:var(--nord11);   --danger-soft:#F1DDE2;
+  --warning:var(--nord12);  --warning-soft:#F4E2D8;
+  --success:var(--nord14);  --success-soft:#E1EBD9;
+  --info:var(--nord7);      --info-soft:#D8EDF1;
+  --shadow-1:0 1px 2px rgba(46,52,64,.05), 0 1px 1px rgba(46,52,64,.03);
+  --shadow-2:0 4px 10px rgba(66,100,118,.10), 0 1px 2px rgba(46,52,64,.04);
+  --shadow-3:0 12px 28px rgba(66,100,118,.14), 0 2px 6px rgba(46,52,64,.05);
+  color-scheme:light;
+}
+
+html[data-palette="aurora"] {
+  --bg-app:#F7EFF0; --bg-surface:#FFF9F7;
+  --bg-surface-2:#F3E7E8; --bg-surface-3:#EBDADD; --bg-inset:#DEC9D0;
+  --fg-strong:var(--nord0); --fg-default:var(--nord1); --fg-muted:#6B5967; --fg-subtle:#8C7684;
+  --fg-on-accent:#FFFFFF;
+  --border-subtle:#E6D2D6; --border-default:#D5BAC3; --border-strong:#B99DAE;
+  --accent:var(--nord15); --accent-hover:#A67D9F; --accent-pressed:#916A8B;
+  --accent-soft:#EBDDDE; --accent-soft-fg:#8C617F;
+  --danger:var(--nord11);   --danger-soft:#F0D8DB;
+  --warning:var(--nord13);  --warning-soft:#F5E9CB;
+  --success:var(--nord14);  --success-soft:#E4EBD8;
+  --info:var(--nord8);      --info-soft:#DDEDF3;
+  --shadow-1:0 1px 2px rgba(46,52,64,.05), 0 1px 1px rgba(46,52,64,.03);
+  --shadow-2:0 4px 10px rgba(95,64,85,.10), 0 1px 2px rgba(46,52,64,.04);
+  --shadow-3:0 12px 28px rgba(95,64,85,.14), 0 2px 6px rgba(46,52,64,.05);
+  color-scheme:light;
+}
+
 /* ============================================================
    5. Lumo alias layer — maps Vaadin's Lumo properties to Fjord
-   Repeated on html[theme~="dark"] / html[theme~="light"] to
-   beat Lumo's own dark/light selectors which use [theme~="dark"].
+   Repeated on compatibility theme tokens to beat Lumo's own
+   dark/light selectors when apps still use those tokens directly.
    ============================================================ */
 html,
 html[theme~="light"],
@@ -386,6 +445,99 @@ vaadin-drawer-toggle:hover {
   color: var(--fg-strong);
 }
 
+/* Top router links */
+.app-top-nav {
+  gap: var(--s-1);
+  flex-shrink: 0;
+}
+.app-top-nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: calc(var(--ctrl-h) - 4px);
+  padding: 0 var(--s-3);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  color: var(--fg-muted);
+  font-size: var(--lumo-font-size-s);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out);
+}
+.app-top-nav-link:hover {
+  background: var(--bg-surface-2);
+  border-color: var(--border-subtle);
+  color: var(--fg-strong);
+}
+.app-top-nav-link[highlight] {
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  color: var(--accent-soft-fg);
+}
+
+/* Theme settings popover */
+.theme-switcher-popover-trigger {
+  height: var(--ctrl-h);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface-2);
+  color: var(--fg-default);
+  font-size: var(--lumo-font-size-s);
+  font-weight: 700;
+}
+.theme-switcher-popover-trigger:hover {
+  border-color: var(--border-default);
+  color: var(--fg-strong);
+}
+vaadin-popover-overlay::part(overlay) {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-3);
+}
+.theme-switcher--panel {
+  width: 304px;
+  max-width: calc(100vw - 32px);
+  flex-direction: column;
+  align-items: stretch !important;
+  gap: var(--s-3);
+  padding: var(--s-3);
+}
+.theme-switcher--toolbar .theme-switcher-theme-selector {
+  width: 160px;
+}
+.theme-switcher--panel .theme-switcher-theme-selector {
+  width: 100%;
+}
+.theme-switcher--panel .theme-switcher-options {
+  width: 100%;
+  flex-direction: column;
+  align-items: stretch !important;
+  gap: var(--s-2);
+}
+.theme-switcher-option {
+  width: 100%;
+  gap: var(--s-3);
+}
+.theme-switcher-option-label {
+  flex: 1;
+  color: var(--fg-muted);
+  font-size: var(--lumo-font-size-s);
+  font-weight: 600;
+}
+.theme-switcher-option-control {
+  width: 150px;
+}
+.theme-switcher-color-input {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: transparent;
+  cursor: pointer;
+}
+
 /* Dialog / Notification */
 vaadin-dialog-overlay::part(overlay),
 vaadin-confirm-dialog-overlay::part(overlay) {
@@ -477,10 +629,19 @@ vaadin-accordion-panel + vaadin-accordion-panel {
 vaadin-accordion-panel::part(summary) {
   font-weight: 500;
   color: var(--fg-strong);
+  min-height: var(--ctrl-h);
+  padding: var(--s-3) var(--s-4) var(--s-3) var(--s-5);
+}
+vaadin-accordion-heading::part(content) {
+  font-weight: 500;
+  color: var(--fg-strong);
+  min-height: var(--ctrl-h);
+  padding: var(--s-3) var(--s-4) var(--s-3) var(--s-5);
 }
 vaadin-accordion-panel::part(content) {
   border-top: 1px solid var(--border-subtle);
   color: var(--fg-default);
+  padding: var(--s-4) var(--s-5);
 }
 
 /* Side nav */
@@ -570,10 +731,19 @@ vaadin-details {
 vaadin-details::part(summary) {
   font-weight: 500;
   color: var(--fg-strong);
+  min-height: var(--ctrl-h);
+  padding: var(--s-3) var(--s-4) var(--s-3) var(--s-5);
+}
+vaadin-details-summary {
+  font-weight: 500;
+  color: var(--fg-strong);
+  min-height: var(--ctrl-h);
+  padding: var(--s-3) var(--s-4) var(--s-3) var(--s-5);
 }
 vaadin-details::part(content) {
   border-top: 1px solid var(--border-subtle);
   color: var(--fg-default);
+  padding: var(--s-4) var(--s-5);
 }
 
 /* Confirm dialog */

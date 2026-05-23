@@ -1,14 +1,14 @@
 /* TextArea — same visual language as text fields */
 [part="input-field"] {
     border-radius: var(--lumo-border-radius-m);
-    border: 1px solid rgba(146, 166, 204, 0.45);
-    background: #f9fbff;
+    border: 1px solid var(--seagod-input-border);
+    background: var(--seagod-input-bg);
     box-shadow: var(--lumo-box-shadow-xs);
 }
 
 :host([focused]) [part="input-field"] {
-    border-color: rgba(59, 130, 246, 0.8);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.16);
+    border-color: var(--seagod-input-focus-border);
+    box-shadow: var(--seagod-input-focus-glow);
 }
 
 :host([invalid]) [part="input-field"] {

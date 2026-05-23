@@ -11,10 +11,10 @@
     position: absolute;
     inset: 22% 35%;
     border-radius: 999px;
-    background: rgba(149, 166, 199, 0.42);
+    background: color-mix(in srgb, var(--seagod-surface-border) 85%, transparent);
     transition: background-color 0.15s ease;
 }
 
 [part="splitter"]:hover::after {
-    background: rgba(59, 130, 246, 0.58);
+    background: color-mix(in srgb, var(--lumo-primary-color) 58%, transparent);
 }

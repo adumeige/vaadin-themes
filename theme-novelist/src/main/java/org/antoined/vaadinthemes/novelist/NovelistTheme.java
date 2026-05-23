@@ -38,9 +38,9 @@ public final class NovelistTheme {
                         .control(ThemeOptionControl.SELECT)
                         .target(ThemeOptionTarget.ROOT_DATA_ATTRIBUTE)
                         .values(
-                                ThemeOptionValue.of("compact", "Compact"),
+                                ThemeOptionValue.of("comfortable", "Comfortable"),
                                 ThemeOptionValue.of("regular", "Regular", ""),
-                                ThemeOptionValue.of("comfortable", "Comfortable"))
+                                ThemeOptionValue.of("compact", "Compact"))
                         .build()));
     }
 }

@@ -3,16 +3,16 @@
 [part="drawer"] {
     background: var(--seagod-sidebar-bg);
     color: var(--seagod-sidebar-text);
-    border-right: 1px solid rgba(131, 151, 188, 0.24);
+    border-right: 1px solid color-mix(in srgb, var(--seagod-surface-border) 72%, transparent);
     box-shadow: none;
 }
 
 [part="navbar"] {
     background: var(--seagod-navbar-bg);
     color: var(--lumo-body-text-color);
-    border-bottom: 1px solid rgba(131, 151, 188, 0.3);
+    border-bottom: 1px solid var(--seagod-surface-border);
     backdrop-filter: blur(10px);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+    box-shadow: 0 1px 0 color-mix(in srgb, var(--lumo-tint) 75%, transparent);
 }
 
 [part="content"] {
@@ -20,5 +20,5 @@
 }
 
 :host([overlay]) [part="drawer"] {
-    box-shadow: 8px 0 18px rgba(75, 98, 143, 0.18);
+    box-shadow: 8px 0 18px color-mix(in srgb, var(--lumo-contrast) 18%, transparent);
 }

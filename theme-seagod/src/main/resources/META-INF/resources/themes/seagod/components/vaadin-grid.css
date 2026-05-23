@@ -1,15 +1,15 @@
 /* Grid — elevated card table */
 :host {
-    border: 1px solid rgba(149, 166, 199, 0.32);
+    border: 1px solid var(--seagod-surface-border);
     border-radius: 18px;
     overflow: hidden;
-    background: #ffffff;
+    background: var(--seagod-surface-color);
     box-shadow: var(--lumo-box-shadow-s);
 }
 
 [part~="header-cell"] {
-    background: linear-gradient(180deg, #f7faff 0%, #f3f8ff 100%);
-    border-bottom: 1px solid rgba(149, 166, 199, 0.28);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--lumo-tint) 68%, var(--seagod-surface-color)) 0%, color-mix(in srgb, var(--lumo-tint) 48%, var(--seagod-surface-color)) 100%);
+    border-bottom: 1px solid var(--seagod-surface-border);
     font-weight: 700;
     font-size: var(--lumo-font-size-s);
     color: var(--lumo-secondary-text-color);
@@ -18,10 +18,10 @@
 }
 
 [part~="cell"] {
-    border-bottom: 1px solid rgba(149, 166, 199, 0.2);
+    border-bottom: 1px solid color-mix(in srgb, var(--seagod-surface-border) 70%, transparent);
     font-size: 0.845rem;
 }
 
 [part~="row"]:hover [part~="body-cell"] {
-    background: rgba(59, 130, 246, 0.08);
+    background: color-mix(in srgb, var(--lumo-primary-color) 8%, transparent);
 }

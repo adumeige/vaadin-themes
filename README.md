@@ -13,6 +13,8 @@ A small collection of packaged Vaadin 24 Lumo-based themes, each published as a 
 ![Fjord theme screenshot 1](resources/fjord-00.png)
 ![Fjord theme screenshot 2](resources/fjord-01.png)
 
+Fjord's palette names and raw color scale are based on the open-source [Nord theme](https://www.nordtheme.com/). Thanks to the Nord maintainers for publishing such a clear, reusable color system.
+
 ### Terminal Synth
 
 ![Terminal Synth theme screenshot 1](resources/terminal-synth-00.png)

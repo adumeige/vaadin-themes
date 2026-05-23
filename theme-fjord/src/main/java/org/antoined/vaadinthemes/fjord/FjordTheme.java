@@ -19,20 +19,23 @@ public final class FjordTheme {
 
     public static ThemeDefinition definition() {
         return BasicThemeDefinition.of(ID, "Fjord", STYLESHEET, List.of(
-                BasicThemeOption.builder("mode", "Mode")
+                BasicThemeOption.builder("palette", "Palette")
                         .control(ThemeOptionControl.SELECT)
-                        .target(ThemeOptionTarget.ROOT_THEME_TOKEN)
+                        .target(ThemeOptionTarget.ROOT_DATA_ATTRIBUTE)
                         .values(
-                                ThemeOptionValue.of("light", "Light", "light"),
-                                ThemeOptionValue.of("dark", "Dark", "dark"))
+                                ThemeOptionValue.of("light", "Light", ""),
+                                ThemeOptionValue.of("polar-night", "Polar Night"),
+                                ThemeOptionValue.of("snow-storm", "Snow Storm"),
+                                ThemeOptionValue.of("frost", "Frost"),
+                                ThemeOptionValue.of("aurora", "Aurora"))
                         .build(),
                 BasicThemeOption.builder("density", "Density")
                         .control(ThemeOptionControl.SELECT)
-                        .target(ThemeOptionTarget.ROOT_THEME_TOKEN)
+                        .target(ThemeOptionTarget.ROOT_DATA_ATTRIBUTE)
                         .values(
-                                ThemeOptionValue.of("comfy", "Comfy", "comfy"),
-                                ThemeOptionValue.of("standard", "Standard", "standard"),
-                                ThemeOptionValue.of("compact", "Compact", "compact"))
+                                ThemeOptionValue.of("comfortable", "Comfortable"),
+                                ThemeOptionValue.of("regular", "Regular", ""),
+                                ThemeOptionValue.of("compact", "Compact"))
                         .build()));
     }
 }

@@ -28,6 +28,7 @@ html {
 }
 
 html[data-density="compact"]     { --nv-row-sm: 24px; --nv-row-md: 28px; --nv-row-lg: 34px; }
+html[data-density="regular"]     { --nv-row-sm: 28px; --nv-row-md: 34px; --nv-row-lg: 42px; }
 html[data-density="comfortable"] { --nv-row-sm: 32px; --nv-row-md: 38px; --nv-row-lg: 48px; }
 
 /* --- 3. Palettes ------------------------------------------------ */
@@ -523,6 +524,102 @@ vaadin-drawer-toggle {
   color: var(--nv-textSoft);
 }
 
+/* Top router links */
+.app-top-nav {
+  gap: 4px;
+  flex-shrink: 0;
+}
+.app-top-nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: calc(var(--nv-row-sm) - 4px);
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: var(--nv-radius-sm);
+  color: var(--nv-textSoft);
+  font-family: var(--nv-font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .12s, border-color .12s, color .12s;
+}
+.app-top-nav-link:hover {
+  background: var(--nv-surfaceAlt);
+  border-color: var(--nv-border);
+  color: var(--nv-text);
+}
+.app-top-nav-link[highlight] {
+  background: var(--nv-accentSoft);
+  border-color: color-mix(in srgb, var(--nv-accent) 30%, var(--nv-border));
+  color: var(--nv-accent);
+}
+
+/* Theme settings popover */
+.theme-switcher-popover-trigger {
+  height: var(--nv-row-md);
+  border: 1px solid var(--nv-border);
+  border-radius: var(--nv-radius-md);
+  background: var(--nv-surfaceAlt);
+  color: var(--nv-textSoft);
+  font-family: var(--nv-font-ui);
+  font-size: 13px;
+  font-weight: 700;
+}
+.theme-switcher-popover-trigger:hover {
+  color: var(--nv-text);
+  border-color: var(--nv-borderStrong);
+}
+vaadin-popover-overlay::part(overlay) {
+  border: 1px solid var(--nv-border);
+  border-radius: var(--nv-radius-lg);
+  background: var(--nv-surface);
+  box-shadow: var(--nv-shadow);
+}
+.theme-switcher--panel {
+  width: 304px;
+  max-width: calc(100vw - 32px);
+  flex-direction: column;
+  align-items: stretch !important;
+  gap: 12px;
+  padding: 12px;
+}
+.theme-switcher--toolbar .theme-switcher-theme-selector {
+  width: 160px;
+}
+.theme-switcher--panel .theme-switcher-theme-selector {
+  width: 100%;
+}
+.theme-switcher--panel .theme-switcher-options {
+  width: 100%;
+  flex-direction: column;
+  align-items: stretch !important;
+  gap: 8px;
+}
+.theme-switcher-option {
+  width: 100%;
+  gap: 12px;
+}
+.theme-switcher-option-label {
+  flex: 1;
+  color: var(--nv-textSoft);
+  font-family: var(--nv-font-ui);
+  font-size: 13px;
+  font-weight: 600;
+}
+.theme-switcher-option-control {
+  width: 150px;
+}
+.theme-switcher-color-input {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid var(--nv-borderStrong);
+  border-radius: var(--nv-radius-sm);
+  background: transparent;
+  cursor: pointer;
+}
+
 /* --- Side nav --- */
 vaadin-side-nav {
   font-family: var(--nv-font-ui);
@@ -637,10 +734,21 @@ vaadin-accordion-panel::part(summary) {
   font-style: italic;
   font-weight: 500;
   color: var(--nv-ink);
+  min-height: var(--nv-row-md);
+  padding: 10px 14px 10px 20px;
+}
+vaadin-accordion-heading::part(content) {
+  font-family: var(--nv-font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--nv-ink);
+  min-height: var(--nv-row-md);
+  padding: 10px 14px 10px 20px;
 }
 vaadin-accordion-panel::part(content) {
   border-top: 1px solid var(--nv-border);
   color: var(--nv-text);
+  padding: 14px 20px 16px;
 }
 vaadin-details {
   background: var(--nv-surface);
@@ -652,10 +760,21 @@ vaadin-details::part(summary) {
   font-style: italic;
   font-weight: 500;
   color: var(--nv-ink);
+  min-height: var(--nv-row-md);
+  padding: 10px 14px 10px 20px;
+}
+vaadin-details-summary {
+  font-family: var(--nv-font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--nv-ink);
+  min-height: var(--nv-row-md);
+  padding: 10px 14px 10px 20px;
 }
 vaadin-details::part(content) {
   border-top: 1px solid var(--nv-border);
   color: var(--nv-text);
+  padding: 14px 20px 16px;
 }
 
 /* --- Menu bar --- */

@@ -2,31 +2,27 @@ package org.antoined.vaadinthemes.testapp.views;
 
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
+import com.vaadin.flow.router.RouterLink;
 import org.antoined.vaadinthemes.fjord.FjordTheme;
 import org.antoined.vaadinthemes.glass.GlassTheme;
 import org.antoined.vaadinthemes.novelist.NovelistTheme;
 import org.antoined.vaadinthemes.seagod.SeagodTheme;
 import org.antoined.vaadinthemes.terminalsynth.TerminalSynthTheme;
-import org.antoined.vaadinthemes.theme.BasicThemeDefinition;
-import org.antoined.vaadinthemes.theme.BasicThemeOption;
-import org.antoined.vaadinthemes.theme.ThemeDefinition;
-import org.antoined.vaadinthemes.theme.ThemeOptionControl;
-import org.antoined.vaadinthemes.theme.ThemeOptionTarget;
-import org.antoined.vaadinthemes.theme.ThemeOptionValue;
-import org.antoined.vaadinthemes.theme.ThemeSwitcher;
+import org.antoined.vaadinthemes.theme.*;
 
 import java.util.List;
 
 public class MainLayout extends AppLayout {
 
     public MainLayout() {
-        var themeSwitcher = new ThemeSwitcher(themeDefinitions(), this);
+        var themeSwitcher = new ThemeSwitcherPopover(themeDefinitions(), this);
         themeSwitcher.setSelectedThemeStorageKey("selected-theme");
         themeSwitcher.addThemeChangeListener(e -> applyPreviewDefaults(themeSwitcher, e.getTheme().id()));
         themeSwitcher.setSelectedTheme(TerminalSynthTheme.ID);
@@ -34,8 +30,14 @@ public class MainLayout extends AppLayout {
 
         var toggle = new DrawerToggle();
         var title = new H1("Theme Test App");
+        var topLinks = new HorizontalLayout(
+                topNavLink("Customers", org.antoined.vaadinthemes.testapp.views.glass.CustomersView.class),
+                topNavLink("Settings", org.antoined.vaadinthemes.testapp.views.glass.SettingsView.class));
+        topLinks.addClassName("app-top-nav");
+        topLinks.setAlignItems(FlexComponent.Alignment.CENTER);
+        topLinks.setSpacing(false);
 
-        var navbar = new HorizontalLayout(toggle, title, themeSwitcher);
+        var navbar = new HorizontalLayout(toggle, title, topLinks, themeSwitcher);
         navbar.setWidthFull();
         navbar.setAlignItems(FlexComponent.Alignment.CENTER);
         navbar.expand(title);
@@ -46,8 +48,8 @@ public class MainLayout extends AppLayout {
         var workspace = new SideNav();
         workspace.setLabel("Workspace");
         workspace.addItem(new SideNavItem("Customers", org.antoined.vaadinthemes.testapp.views.glass.CustomersView.class, VaadinIcon.USERS.create()));
-        workspace.addItem(new SideNavItem("Insights",  org.antoined.vaadinthemes.testapp.views.glass.InsightsView.class,  VaadinIcon.BAR_CHART_V.create()));
-        workspace.addItem(new SideNavItem("Settings",  org.antoined.vaadinthemes.testapp.views.glass.SettingsView.class,  VaadinIcon.COG.create()));
+        workspace.addItem(new SideNavItem("Insights", org.antoined.vaadinthemes.testapp.views.glass.InsightsView.class, VaadinIcon.BAR_CHART_V.create()));
+        workspace.addItem(new SideNavItem("Settings", org.antoined.vaadinthemes.testapp.views.glass.SettingsView.class, VaadinIcon.COG.create()));
 
         var demos = new SideNav();
         demos.setLabel("Demos");
@@ -63,6 +65,12 @@ public class MainLayout extends AppLayout {
         components.addItem(new SideNavItem("Layout & Navigation", LayoutAndNavigationView.class, VaadinIcon.LAYOUT.create()));
 
         addToDrawer(workspace, demos, components);
+    }
+
+    private RouterLink topNavLink(String label, Class<? extends Component> target) {
+        var link = new RouterLink(label, target);
+        link.addClassName("app-top-nav-link");
+        return link;
     }
 
     private List<ThemeDefinition> themeDefinitions() {
@@ -86,16 +94,20 @@ public class MainLayout extends AppLayout {
                         .build()));
     }
 
-    private void applyPreviewDefaults(ThemeSwitcher switcher, String themeId) {
+    private void applyPreviewDefaults(ThemeSwitcherPopover switcher, String themeId) {
         switch (themeId) {
             case "lumo" -> switcher.setOptionValue("mode", "light", false);
+            case SeagodTheme.ID -> {
+                switcher.setOptionValue("palette", "poseidon", false);
+                switcher.setOptionValue("density", "regular", false);
+            }
             case FjordTheme.ID -> {
-                switcher.setOptionValue("mode", "dark", false);
+                switcher.setOptionValue("palette", "polar-night", false);
                 switcher.setOptionValue("density", "compact", false);
             }
             case TerminalSynthTheme.ID -> {
                 switcher.setOptionValue("palette", "outrun", false);
-                switcher.setOptionValue("density", "default", false);
+                switcher.setOptionValue("density", "regular", false);
                 switcher.setOptionValue("scanlines", "off", false);
             }
             case NovelistTheme.ID -> {
@@ -106,6 +118,7 @@ public class MainLayout extends AppLayout {
             case GlassTheme.ID -> {
                 switcher.setOptionValue("mode", "light", false);
                 switcher.setOptionValue("layout", "rounded", false);
+                switcher.setOptionValue("density", "regular", false);
                 switcher.setOptionValue("glass", "standard", false);
                 switcher.setOptionValue("backgroundMode", "aurora", false);
                 switcher.setOptionValue("bg", "#e9eef5", false);

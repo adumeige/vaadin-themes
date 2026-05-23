@@ -95,6 +95,27 @@ html {
     --vg-ctrl-h: 32px;
 }
 
+html[data-density="compact"] {
+    --vg-ctrl-h: 28px;
+    --vg-s-m: 10px;
+    --vg-s-l: 14px;
+    --vg-s-xl: 20px;
+}
+
+html[data-density="regular"] {
+    --vg-ctrl-h: 32px;
+    --vg-s-m: 12px;
+    --vg-s-l: 16px;
+    --vg-s-xl: 24px;
+}
+
+html[data-density="comfortable"] {
+    --vg-ctrl-h: 40px;
+    --vg-s-m: 14px;
+    --vg-s-l: 20px;
+    --vg-s-xl: 28px;
+}
+
 /* ── Glass strength variants ──────────────────────────────────────────── */
 html[data-glass="subtle"] {
     --vg-glass-fill: rgba(255, 255, 255, 0.30);
@@ -477,9 +498,9 @@ vaadin-app-layout::part(drawer) {
 
 /* Slotted view — opaque rounded panel aligned with the drawer shell. */
 vaadin-app-layout > :not([slot]) {
-    margin: 20px 10px 10px 10px;
+    margin: 29px 10px 10px 10px;
     width: calc(100% - 20px) !important;
-    height: calc(100% - 30px) !important;
+    height: calc(100% - 39px) !important;
     box-sizing: border-box;
     background: var(--vg-surface);
     border-radius: var(--vg-radius-l);
@@ -552,12 +573,105 @@ vaadin-app-layout [slot="navbar"] h1::before {
     flex-shrink: 0;
 }
 
-/* The four color swatches the Glass tweaks add to the navbar — give
-   them a frosted-glass surround so they look like part of the toolbar. */
-vaadin-app-layout [slot="navbar"] vaadin-horizontal-layout > span > input[type="color"] {
-    border-radius: 6px;
+/* Top router links */
+.app-top-nav {
+    gap: var(--vg-s-xs);
+    flex-shrink: 0;
+}
+.app-top-nav-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: calc(var(--vg-ctrl-h) - 4px);
+    padding: 0 10px;
+    border: 0.5px solid transparent;
+    border-radius: var(--vg-radius-s);
+    color: var(--vg-fg-secondary);
+    font-size: var(--vg-fs-s);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.12s, border-color 0.12s, color 0.12s, box-shadow 0.12s;
+}
+.app-top-nav-link:hover {
+    background: color-mix(in oklab, var(--vg-fg) 7%, transparent);
+    border-color: var(--vg-border);
+    color: var(--vg-fg);
+}
+.app-top-nav-link[highlight] {
+    background: var(--vg-primary-tint);
+    border-color: var(--vg-primary-tint-strong);
+    color: var(--vg-primary);
+    box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Theme settings popover */
+.theme-switcher-popover-trigger {
+    height: var(--vg-ctrl-h);
+    border: var(--vg-glass-border);
+    border-radius: var(--vg-radius-s);
+    background: linear-gradient(180deg, var(--vg-glass-tint), transparent 70%),
+    var(--vg-glass-fill);
+    color: var(--vg-fg-secondary);
+    font-size: var(--vg-fs-s);
+    font-weight: 700;
+    -webkit-backdrop-filter: var(--vg-glass-blur);
+    backdrop-filter: var(--vg-glass-blur);
+}
+.theme-switcher-popover-trigger:hover {
+    color: var(--vg-fg);
+    border-color: var(--vg-border-strong);
+}
+vaadin-popover-overlay::part(overlay) {
+    border: var(--vg-glass-border);
+    border-radius: var(--vg-radius-l);
+    background: linear-gradient(180deg, var(--vg-glass-tint), transparent 70%),
+    var(--vg-glass-fill-strong);
+    -webkit-backdrop-filter: var(--vg-glass-blur);
+    backdrop-filter: var(--vg-glass-blur);
+    box-shadow: var(--vg-glass-edge), var(--vg-glass-shadow);
+}
+.theme-switcher--panel {
+    width: 304px;
+    max-width: calc(100vw - 32px);
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: var(--vg-s-m);
+    padding: var(--vg-s-m);
+}
+.theme-switcher--toolbar .theme-switcher-theme-selector {
+    width: 160px;
+}
+.theme-switcher--panel .theme-switcher-theme-selector {
+    width: 100%;
+}
+.theme-switcher--panel .theme-switcher-options {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: var(--vg-s-s);
+}
+.theme-switcher-option {
+    width: 100%;
+    gap: var(--vg-s-m);
+}
+.theme-switcher-option-label {
+    flex: 1;
+    color: var(--vg-fg-secondary);
+    font-size: var(--vg-fs-s);
+    font-weight: 600;
+}
+.theme-switcher-option-control {
+    width: 150px;
+}
+.theme-switcher-color-input {
+    width: 30px;
+    height: 30px;
+    padding: 0;
     border: 0.5px solid var(--vg-border-strong);
+    border-radius: var(--vg-radius-s);
+    background: transparent;
     box-shadow: var(--vg-shadow-s);
+    cursor: pointer;
 }
 
 /* ============================================================
@@ -1146,12 +1260,20 @@ vaadin-accordion-panel::part(summary) {
     font-weight: 600;
     font-size: var(--vg-fs-m);
     color: var(--vg-fg);
-    padding: 14px 16px;
+    min-height: var(--vg-ctrl-h);
+    padding: 14px 18px 14px 22px;
+}
+vaadin-accordion-heading::part(content) {
+    font-weight: 600;
+    font-size: var(--vg-fs-m);
+    color: var(--vg-fg);
+    min-height: var(--vg-ctrl-h);
+    padding: 14px 18px 14px 22px;
 }
 
 vaadin-accordion-panel::part(content) {
     border-top: 0.5px solid var(--vg-divider);
-    padding: 14px 16px;
+    padding: 14px 22px 16px;
     color: var(--vg-fg);
 }
 
@@ -1164,10 +1286,19 @@ vaadin-details {
 vaadin-details::part(summary) {
     font-weight: 600;
     color: var(--vg-fg);
+    min-height: var(--vg-ctrl-h);
+    padding: 14px 18px 14px 22px;
+}
+vaadin-details-summary {
+    font-weight: 600;
+    color: var(--vg-fg);
+    min-height: var(--vg-ctrl-h);
+    padding: 14px 18px 14px 22px;
 }
 
 vaadin-details::part(content) {
     border-top: 0.5px solid var(--vg-divider);
+    padding: 14px 22px 16px;
     color: var(--vg-fg);
 }
 

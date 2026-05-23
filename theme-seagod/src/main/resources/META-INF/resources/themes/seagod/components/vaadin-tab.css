@@ -9,7 +9,7 @@
 
 :host([selected]) {
     color: var(--lumo-primary-text-color);
-    background: rgba(59, 130, 246, 0.08);
+    background: color-mix(in srgb, var(--lumo-primary-color) 8%, transparent);
 }
 
 :host([selected])::before {
@@ -20,5 +20,5 @@
 
 :host(:hover:not([selected])) {
     color: var(--lumo-body-text-color);
-    background: rgba(144, 167, 214, 0.12);
+    background: color-mix(in srgb, var(--lumo-contrast) 12%, transparent);
 }

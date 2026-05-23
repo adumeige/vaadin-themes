@@ -26,15 +26,19 @@ public final class TerminalSynthTheme {
                                 ThemeOptionValue.of("outrun", "Outrun"),
                                 ThemeOptionValue.of("miami", "Miami"),
                                 ThemeOptionValue.of("tokyo", "Tokyo"),
-                                ThemeOptionValue.of("dusk", "Dusk"))
+                                ThemeOptionValue.of("dusk", "Dusk"),
+                                ThemeOptionValue.of("matrix", "Matrix"),
+                                ThemeOptionValue.of("amber-crt", "Amber CRT"),
+                                ThemeOptionValue.of("icebreaker", "Icebreaker"),
+                                ThemeOptionValue.of("toxic", "Toxic"))
                         .build(),
                 BasicThemeOption.builder("density", "Density")
                         .control(ThemeOptionControl.SELECT)
                         .target(ThemeOptionTarget.ROOT_DATA_ATTRIBUTE)
                         .values(
-                                ThemeOptionValue.of("compact", "Compact"),
-                                ThemeOptionValue.of("default", "Default", ""),
-                                ThemeOptionValue.of("comfortable", "Comfortable"))
+                                ThemeOptionValue.of("comfortable", "Comfortable"),
+                                ThemeOptionValue.of("regular", "Regular", ""),
+                                ThemeOptionValue.of("compact", "Compact"))
                         .build(),
                 BasicThemeOption.builder("scanlines", "CRT")
                         .control(ThemeOptionControl.TOGGLE)
