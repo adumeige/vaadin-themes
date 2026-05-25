@@ -533,7 +533,7 @@ vaadin-drawer-toggle {
     gap: 0.25rem;
     flex-shrink: 0;
 }
-.app-top-nav-link {
+.app-top-nav a {
     display: inline-flex;
     align-items: center;
     min-height: var(--seagod-nav-link-h);
@@ -547,12 +547,12 @@ vaadin-drawer-toggle {
     white-space: nowrap;
     transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
 }
-.app-top-nav-link:hover {
+.app-top-nav a:hover {
     background: color-mix(in srgb, var(--lumo-primary-color) 8%, transparent);
     border-color: color-mix(in srgb, var(--lumo-primary-color) 25%, transparent);
     color: var(--lumo-primary-text-color);
 }
-.app-top-nav-link[highlight] {
+.app-top-nav a[highlight] {
     background: linear-gradient(180deg, color-mix(in srgb, var(--lumo-primary-color) 16%, transparent), color-mix(in srgb, var(--lumo-primary-color) 10%, transparent));
     border-color: color-mix(in srgb, var(--lumo-primary-color) 35%, transparent);
     color: var(--lumo-primary-text-color);

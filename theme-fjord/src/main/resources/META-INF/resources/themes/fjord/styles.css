@@ -450,7 +450,7 @@ vaadin-drawer-toggle:hover {
   gap: var(--s-1);
   flex-shrink: 0;
 }
-.app-top-nav-link {
+.app-top-nav a {
   display: inline-flex;
   align-items: center;
   min-height: calc(var(--ctrl-h) - 4px);
@@ -464,12 +464,12 @@ vaadin-drawer-toggle:hover {
   white-space: nowrap;
   transition: background var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out);
 }
-.app-top-nav-link:hover {
+.app-top-nav a:hover {
   background: var(--bg-surface-2);
   border-color: var(--border-subtle);
   color: var(--fg-strong);
 }
-.app-top-nav-link[highlight] {
+.app-top-nav a[highlight] {
   background: var(--accent-soft);
   border-color: color-mix(in srgb, var(--accent) 35%, transparent);
   color: var(--accent-soft-fg);

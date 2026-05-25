@@ -69,9 +69,7 @@ public class MainLayout extends AppLayout {
     }
 
     private RouterLink topNavLink(String label, Class<? extends Component> target) {
-        var link = new RouterLink(label, target);
-        link.addClassName("app-top-nav-link");
-        return link;
+        return new RouterLink(label, target);
     }
 
     private List<ThemeDefinition> themeDefinitions() {

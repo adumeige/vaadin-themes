@@ -578,7 +578,7 @@ vaadin-app-layout [slot="navbar"] h1::before {
     gap: var(--vg-s-xs);
     flex-shrink: 0;
 }
-.app-top-nav-link {
+.app-top-nav a {
     display: inline-flex;
     align-items: center;
     min-height: calc(var(--vg-ctrl-h) - 4px);
@@ -592,12 +592,12 @@ vaadin-app-layout [slot="navbar"] h1::before {
     white-space: nowrap;
     transition: background 0.12s, border-color 0.12s, color 0.12s, box-shadow 0.12s;
 }
-.app-top-nav-link:hover {
+.app-top-nav a:hover {
     background: color-mix(in oklab, var(--vg-fg) 7%, transparent);
     border-color: var(--vg-border);
     color: var(--vg-fg);
 }
-.app-top-nav-link[highlight] {
+.app-top-nav a[highlight] {
     background: var(--vg-primary-tint);
     border-color: var(--vg-primary-tint-strong);
     color: var(--vg-primary);

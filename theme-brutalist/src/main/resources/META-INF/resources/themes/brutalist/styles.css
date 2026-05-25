@@ -279,7 +279,7 @@ vaadin-drawer-toggle:hover {
     flex-shrink: 0;
 }
 
-.app-top-nav-link {
+.app-top-nav a {
     display: inline-flex;
     align-items: center;
     min-height: 30px;
@@ -292,8 +292,8 @@ vaadin-drawer-toggle:hover {
     white-space: nowrap;
 }
 
-.app-top-nav-link:hover,
-.app-top-nav-link[highlight] {
+.app-top-nav a:hover,
+.app-top-nav a[highlight] {
     border-color: var(--bt-rule);
     background: var(--bt-ink);
     color: var(--bt-bg);
