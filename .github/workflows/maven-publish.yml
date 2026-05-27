@@ -33,7 +33,7 @@ jobs:
       - name: Build theme modules
         run: >-
           mvn -B -ntp verify
-          -pl :vaadin-themes,:theme-seagod,:theme-fjord,:theme-terminal-synth,:theme-novelist
+          -pl :vaadin-themes,:theme,:theme-seagod,:theme-fjord,:theme-terminal-synth,:theme-novelist,:theme-glass,:theme-brutalist,:theme-anything
           -DskipTests
 
       - name: Publish theme modules to GitHub Packages
@@ -42,5 +42,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: >-
           mvn -B -ntp deploy
-          -pl :vaadin-themes,:theme-seagod,:theme-fjord,:theme-terminal-synth,:theme-novelist
+          -pl :vaadin-themes,:theme,:theme-seagod,:theme-fjord,:theme-terminal-synth,:theme-novelist,:theme-glass,:theme-brutalist,:theme-anything
           -DskipTests
