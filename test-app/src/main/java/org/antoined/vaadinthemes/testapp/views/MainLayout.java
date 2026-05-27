@@ -10,6 +10,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.router.RouterLink;
+import org.antoined.vaadinthemes.anything.AnythingTheme;
 import org.antoined.vaadinthemes.brutalist.BrutalistTheme;
 import org.antoined.vaadinthemes.fjord.FjordTheme;
 import org.antoined.vaadinthemes.glass.GlassTheme;
@@ -80,7 +81,8 @@ public class MainLayout extends AppLayout {
                 TerminalSynthTheme.definition(),
                 NovelistTheme.definition(),
                 GlassTheme.definition(),
-                BrutalistTheme.definition());
+                BrutalistTheme.definition(),
+                AnythingTheme.definition());
     }
 
     private ThemeDefinition lumoDefinition() {
@@ -129,6 +131,12 @@ public class MainLayout extends AppLayout {
             case BrutalistTheme.ID -> {
                 switcher.setOptionValue("palette", "paper", false);
                 switcher.setOptionValue("mode", "light", false);
+                switcher.setOptionValue("density", "regular", false);
+            }
+            case AnythingTheme.ID -> {
+                switcher.setOptionValue("palette", "paper", false);
+                switcher.setOptionValue("mode", "light", false);
+                switcher.setOptionValue("accent", "oxblood", false);
                 switcher.setOptionValue("density", "regular", false);
             }
             default -> {

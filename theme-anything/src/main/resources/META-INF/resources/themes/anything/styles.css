@@ -1,0 +1,1023 @@
+/* ================================================================
+   Anything — Notion-adjacent Vaadin theme
+   Token contract: --any-*
+   5 palettes (Paper / Bone / Linen / Sage / Slate) × light + dark
+   Curated accent override via [data-accent]
+   Activate with @Theme("anything") or load dynamically.
+   ================================================================ */
+
+/* --- 1. Fonts --------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;450;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+/* --- 2. Shared system tokens (type / shape / density) ----------- */
+html {
+  --any-font-display: "Source Serif 4", "Source Serif Pro", "Iowan Old Style", Georgia, serif;
+  --any-font-body:    "Source Serif 4", "Source Serif Pro", "Iowan Old Style", Georgia, serif;
+  --any-font-ui:      "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --any-font-mono:    "JetBrains Mono", "SF Mono", Menlo, ui-monospace, monospace;
+
+  --any-radius-sm:   4px;
+  --any-radius-md:   8px;
+  --any-radius-lg:   12px;
+  --any-radius-pill: 999px;
+
+  /* Notion-comfortable defaults */
+  --any-row-sm: 32px;
+  --any-row-md: 36px;
+  --any-row-lg: 44px;
+}
+
+html[data-density="compact"]     { --any-row-sm: 28px; --any-row-md: 32px; --any-row-lg: 38px; }
+html[data-density="regular"]     { --any-row-sm: 32px; --any-row-md: 36px; --any-row-lg: 44px; }
+html[data-density="comfortable"] { --any-row-sm: 36px; --any-row-md: 40px; --any-row-lg: 48px; }
+
+/* ================================================================
+   3. Palettes  ·  5 palettes × light + dark
+   Direct port of colors_and_type.css from the Anything design system
+   ================================================================ */
+
+/* === PAPER (default) · light === */
+html,
+html[data-palette="paper"],
+html[data-palette="paper"][data-mode="light"] {
+  --any-bg:           #fbfaf7;
+  --any-surface:      #ffffff;
+  --any-surfaceAlt:   #f3f1ec;
+  --any-border:       #e8e4dc;
+  --any-borderStrong: #d5d0c4;
+  --any-ink:          #1f1d18;
+  --any-text:         #2e2b25;
+  --any-textSoft:     #6b6760;
+  --any-textMuted:    #98948a;
+  --any-primary:      #2e2b25;
+  --any-primaryHover: #15130f;
+  --any-onPrimary:    #fbfaf7;
+  --any-accent:       #a8423a;
+  --any-accentSoft:   #f3d9d4;
+  --any-success:      #3f7d4a;
+  --any-warning:      #b07d2a;
+  --any-danger:       #a8423a;
+  --any-info:         #3b6584;
+  --any-rule:         #ece9e2;
+  --any-shadow:       0 1px 0 rgba(255,255,255,.6) inset, 0 1px 2px rgba(40,30,20,.04), 0 8px 24px rgba(40,30,20,.06);
+  --any-shadowSm:     0 1px 2px rgba(40,30,20,.06);
+  color-scheme: light;
+}
+
+/* === PAPER · dark === */
+html[data-mode="dark"],
+html[data-palette="paper"][data-mode="dark"] {
+  --any-bg:           #1c1b18;
+  --any-surface:      #25231f;
+  --any-surfaceAlt:   #2f2c26;
+  --any-border:       #3a362f;
+  --any-borderStrong: #4d4840;
+  --any-ink:          #f5f3ed;
+  --any-text:         #ebe7df;
+  --any-textSoft:     #a39e92;
+  --any-textMuted:    #6f6b62;
+  --any-primary:      #ebe7df;
+  --any-primaryHover: #ffffff;
+  --any-onPrimary:    #1c1b18;
+  --any-accent:       #d77a6f;
+  --any-accentSoft:   #4a2622;
+  --any-success:      #8bbf7a;
+  --any-warning:      #e0b35c;
+  --any-danger:       #e08373;
+  --any-info:         #7eb5d4;
+  --any-rule:         #322f29;
+  --any-shadow:       0 1px 0 rgba(255,255,255,.03) inset, 0 2px 6px rgba(0,0,0,.4), 0 16px 40px rgba(0,0,0,.55);
+  --any-shadowSm:     0 1px 2px rgba(0,0,0,.4);
+  color-scheme: dark;
+}
+
+/* === BONE · light  (pure printer paper — cards defined by border) === */
+html[data-palette="bone"],
+html[data-palette="bone"][data-mode="light"] {
+  --any-bg:           #ffffff;
+  --any-surface:      #ffffff;
+  --any-surfaceAlt:   #f3f1ea;
+  --any-border:       #ebe8dd;
+  --any-borderStrong: #d3cdbf;
+  --any-ink:          #25221b;
+  --any-text:         #36322a;
+  --any-textSoft:     #7a766c;
+  --any-textMuted:    #a8a499;
+  --any-primary:      #36322a;
+  --any-primaryHover: #1a1812;
+  --any-onPrimary:    #ffffff;
+  --any-accent:       #a8423a;
+  --any-accentSoft:   #f3d9d4;
+  --any-success:      #3f7d4a;
+  --any-warning:      #b07d2a;
+  --any-danger:       #a8423a;
+  --any-info:         #3b6584;
+  --any-rule:         #f1ede2;
+  --any-shadow:       0 1px 0 rgba(255,255,255,.7) inset, 0 1px 2px rgba(40,30,20,.04), 0 8px 20px rgba(40,30,20,.05);
+  --any-shadowSm:     0 1px 2px rgba(40,30,20,.04);
+  color-scheme: light;
+}
+
+/* === BONE · dark === */
+html[data-palette="bone"][data-mode="dark"] {
+  --any-bg:           #1a1915;
+  --any-surface:      #22201b;
+  --any-surfaceAlt:   #2b2922;
+  --any-border:       #36332b;
+  --any-borderStrong: #4a4639;
+  --any-ink:          #f7f4eb;
+  --any-text:         #ede9dd;
+  --any-textSoft:     #a8a294;
+  --any-textMuted:    #6e6b5f;
+  --any-primary:      #ede9dd;
+  --any-primaryHover: #ffffff;
+  --any-onPrimary:    #1a1915;
+  --any-accent:       #d77a6f;
+  --any-accentSoft:   #4a2622;
+  --any-success:      #8bbf7a;
+  --any-warning:      #e0b35c;
+  --any-danger:       #e08373;
+  --any-info:         #7eb5d4;
+  --any-rule:         #2f2c24;
+  --any-shadow:       0 1px 0 rgba(255,255,255,.03) inset, 0 2px 6px rgba(0,0,0,.4), 0 16px 40px rgba(0,0,0,.55);
+  --any-shadowSm:     0 1px 2px rgba(0,0,0,.4);
+  color-scheme: dark;
+}
+
+/* === LINEN · light  (warm peach paper) === */
+html[data-palette="linen"],
+html[data-palette="linen"][data-mode="light"] {
+  --any-bg:           #faf2eb;
+  --any-surface:      #fff9f3;
+  --any-surfaceAlt:   #f1e4d8;
+  --any-border:       #ead6c4;
+  --any-borderStrong: #d7bfa6;
+  --any-ink:          #3a2620;
+  --any-text:         #4a342c;
+  --any-textSoft:     #87695e;
+  --any-textMuted:    #b29c8f;
+  --any-primary:      #4a342c;
+  --any-primaryHover: #281712;
+  --any-onPrimary:    #faf2eb;
+  --any-accent:       #9c3a2e;
+  --any-accentSoft:   #f1d2ca;
+  --any-success:      #3f7d4a;
+  --any-warning:      #b07d2a;
+  --any-danger:       #9c3a2e;
+  --any-info:         #3b6584;
+  --any-rule:         #efe2d5;
+  --any-shadow:       0 1px 0 rgba(255,255,255,.6) inset, 0 1px 2px rgba(60,30,15,.05), 0 8px 24px rgba(60,30,15,.08);
+  --any-shadowSm:     0 1px 2px rgba(60,30,15,.07);
+  color-scheme: light;
+}
+
+/* === LINEN · dark === */
+html[data-palette="linen"][data-mode="dark"] {
+  --any-bg:           #1c1612;
+  --any-surface:      #251d18;
+  --any-surfaceAlt:   #2e2520;
+  --any-border:       #3b2f28;
+  --any-borderStrong: #4e3f35;
+  --any-ink:          #f5ebe1;
+  --any-text:         #ebdfd3;
+  --any-textSoft:     #a89384;
+  --any-textMuted:    #75665a;
+  --any-primary:      #ebdfd3;
+  --any-primaryHover: #ffffff;
+  --any-onPrimary:    #1c1612;
+  --any-accent:       #e08e7e;
+  --any-accentSoft:   #4a2a22;
+  --any-success:      #8bbf7a;
+  --any-warning:      #e0b35c;
+  --any-danger:       #e08373;
+  --any-info:         #7eb5d4;
+  --any-rule:         #322820;
+  --any-shadow:       0 1px 0 rgba(255,255,255,.03) inset, 0 2px 6px rgba(0,0,0,.4), 0 16px 40px rgba(0,0,0,.55);
+  --any-shadowSm:     0 1px 2px rgba(0,0,0,.4);
+  color-scheme: dark;
+}
+
+/* === SAGE · light  (apothecary green-neutral) === */
+html[data-palette="sage"],
+html[data-palette="sage"][data-mode="light"] {
+  --any-bg:           #eef1e8;
+  --any-surface:      #f6f8f1;
+  --any-surfaceAlt:   #e1e6d8;
+  --any-border:       #d2d8c5;
+  --any-borderStrong: #b6bfa3;
+  --any-ink:          #1f2620;
+  --any-text:         #2e362c;
+  --any-textSoft:     #6b7166;
+  --any-textMuted:    #969c8f;
+  --any-primary:      #2e362c;
+  --any-primaryHover: #131812;
+  --any-onPrimary:    #eef1e8;
+  --any-accent:       #a8423a;
+  --any-accentSoft:   #ecd6d0;
+  --any-success:      #4a7d50;
+  --any-warning:      #b07d2a;
+  --any-danger:       #a8423a;
+  --any-info:         #3b6584;
+  --any-rule:         #e1e6d4;
+  --any-shadow:       0 1px 0 rgba(255,255,255,.6) inset, 0 1px 2px rgba(20,30,15,.04), 0 8px 24px rgba(20,30,15,.06);
+  --any-shadowSm:     0 1px 2px rgba(20,30,15,.06);
+  color-scheme: light;
+}
+
+/* === SAGE · dark === */
+html[data-palette="sage"][data-mode="dark"] {
+  --any-bg:           #161a15;
+  --any-surface:      #1d221b;
+  --any-surfaceAlt:   #252b23;
+  --any-border:       #2e352c;
+  --any-borderStrong: #424a3f;
+  --any-ink:          #eef2e8;
+  --any-text:         #e3e8dc;
+  --any-textSoft:     #9aa193;
+  --any-textMuted:    #686e63;
+  --any-primary:      #e3e8dc;
+  --any-primaryHover: #ffffff;
+  --any-onPrimary:    #161a15;
+  --any-accent:       #d77a6f;
+  --any-accentSoft:   #3f2522;
+  --any-success:      #8bbf7a;
+  --any-warning:      #e0b35c;
+  --any-danger:       #e08373;
+  --any-info:         #7eb5d4;
+  --any-rule:         #282d25;
+  --any-shadow:       0 1px 0 rgba(255,255,255,.03) inset, 0 2px 6px rgba(0,0,0,.4), 0 16px 40px rgba(0,0,0,.55);
+  --any-shadowSm:     0 1px 2px rgba(0,0,0,.4);
+  color-scheme: dark;
+}
+
+/* === SLATE · light  (cool neutral gray) === */
+html[data-palette="slate"],
+html[data-palette="slate"][data-mode="light"] {
+  --any-bg:           #f7f7f5;
+  --any-surface:      #ffffff;
+  --any-surfaceAlt:   #eeeeec;
+  --any-border:       #e3e3e0;
+  --any-borderStrong: #cfcfcb;
+  --any-ink:          #18181a;
+  --any-text:         #28282b;
+  --any-textSoft:     #66666a;
+  --any-textMuted:    #93939a;
+  --any-primary:      #28282b;
+  --any-primaryHover: #0f0f12;
+  --any-onPrimary:    #f7f7f5;
+  --any-accent:       #a8423a;
+  --any-accentSoft:   #f3d9d4;
+  --any-success:      #3f7d4a;
+  --any-warning:      #b07d2a;
+  --any-danger:       #a8423a;
+  --any-info:         #3b6584;
+  --any-rule:         #ececea;
+  --any-shadow:       0 1px 0 rgba(255,255,255,.5) inset, 0 1px 2px rgba(20,20,30,.04), 0 8px 24px rgba(20,20,30,.06);
+  --any-shadowSm:     0 1px 2px rgba(20,20,30,.06);
+  color-scheme: light;
+}
+
+/* === SLATE · dark === */
+html[data-palette="slate"][data-mode="dark"] {
+  --any-bg:           #18181a;
+  --any-surface:      #1f1f22;
+  --any-surfaceAlt:   #28282c;
+  --any-border:       #2f2f33;
+  --any-borderStrong: #424248;
+  --any-ink:          #f3f3f5;
+  --any-text:         #e7e7eb;
+  --any-textSoft:     #9c9ca3;
+  --any-textMuted:    #6a6a72;
+  --any-primary:      #e7e7eb;
+  --any-primaryHover: #ffffff;
+  --any-onPrimary:    #18181a;
+  --any-accent:       #d77a6f;
+  --any-accentSoft:   #3f2522;
+  --any-success:      #8bbf7a;
+  --any-warning:      #e0b35c;
+  --any-danger:       #e08373;
+  --any-info:         #7eb5d4;
+  --any-rule:         #2a2a2e;
+  --any-shadow:       0 1px 0 rgba(255,255,255,.03) inset, 0 2px 6px rgba(0,0,0,.4), 0 16px 40px rgba(0,0,0,.55);
+  --any-shadowSm:     0 1px 2px rgba(0,0,0,.4);
+  color-scheme: dark;
+}
+
+/* ================================================================
+   4. Accent overrides — curated [accent, accentSoft] pairs.
+   Default (no data-accent) keeps each palette's native oxblood.
+
+   Specificity note: palette rules above use html[data-palette][data-mode]
+   (0,2,1). Accent overrides must match or beat that, so we chain the
+   palette attribute on every rule (and additionally data-mode="dark"
+   for the dark variants).
+   ================================================================ */
+html[data-palette][data-accent="oxblood"]  { --any-accent: #a8423a; --any-accentSoft: #f3d9d4; }
+html[data-palette][data-accent="forest"]   { --any-accent: #3f6d44; --any-accentSoft: #d6e5d2; }
+html[data-palette][data-accent="ink"]      { --any-accent: #3b5a82; --any-accentSoft: #d4dde9; }
+html[data-palette][data-accent="brass"]    { --any-accent: #9b6a3b; --any-accentSoft: #ecdcc2; }
+html[data-palette][data-accent="plum"]     { --any-accent: #6a3a5a; --any-accentSoft: #e4d2dc; }
+html[data-palette][data-accent="graphite"] { --any-accent: #4d4a45; --any-accentSoft: #dedbd4; }
+
+html[data-palette][data-mode="dark"][data-accent="oxblood"]  { --any-accent: #d77a6f; --any-accentSoft: #4a2622; }
+html[data-palette][data-mode="dark"][data-accent="forest"]   { --any-accent: #8bbf7a; --any-accentSoft: #243528; }
+html[data-palette][data-mode="dark"][data-accent="ink"]      { --any-accent: #7eb5d4; --any-accentSoft: #1f2f42; }
+html[data-palette][data-mode="dark"][data-accent="brass"]    { --any-accent: #e0b35c; --any-accentSoft: #3a2c18; }
+html[data-palette][data-mode="dark"][data-accent="plum"]     { --any-accent: #b89aa8; --any-accentSoft: #3a2630; }
+html[data-palette][data-mode="dark"][data-accent="graphite"] { --any-accent: #b8b4ad; --any-accentSoft: #2e2c28; }
+
+/* ================================================================
+   5. Lumo alias layer  ·  --any-* → --lumo-*
+   Specificity-matched against the palette × mode selectors above.
+   ================================================================ */
+html,
+html[data-palette="paper"],
+html[data-palette="bone"],
+html[data-palette="linen"],
+html[data-palette="sage"],
+html[data-palette="slate"],
+html[data-mode="light"],
+html[data-mode="dark"],
+html[theme~="dark"],
+html[theme~="light"] {
+  /* Typography */
+  --lumo-font-family:           var(--any-font-ui);
+  --lumo-font-size-xxs:         10px;
+  --lumo-font-size-xs:          11px;
+  --lumo-font-size-s:           12.5px;
+  --lumo-font-size-m:           14px;
+  --lumo-font-size-l:           16px;
+  --lumo-font-size-xl:          20px;
+  --lumo-font-size-xxl:         28px;
+  --lumo-font-size-xxxl:        40px;
+  --lumo-line-height-xs:        1.2;
+  --lumo-line-height-s:         1.35;
+  --lumo-line-height-m:         1.55;
+
+  /* Sizing — keyed off the Notion-comfortable 36px row */
+  --lumo-size-xs: calc(var(--any-row-md) - 12px);
+  --lumo-size-s:  var(--any-row-sm);
+  --lumo-size-m:  var(--any-row-md);
+  --lumo-size-l:  var(--any-row-lg);
+  --lumo-size-xl: calc(var(--any-row-lg) + 8px);
+
+  /* Spacing */
+  --lumo-space-xs: 4px;
+  --lumo-space-s:  8px;
+  --lumo-space-m:  16px;
+  --lumo-space-l:  24px;
+  --lumo-space-xl: 36px;
+
+  /* Border radius */
+  --lumo-border-radius-s: var(--any-radius-sm);
+  --lumo-border-radius-m: var(--any-radius-md);
+  --lumo-border-radius-l: var(--any-radius-lg);
+
+  /* Base / tints */
+  --lumo-base-color: var(--any-surface);
+  --lumo-tint:       var(--any-surface);
+  --lumo-shade:      var(--any-ink);
+
+  /* Contrast scale — direct map from --any-* roles */
+  --lumo-contrast-5pct:  var(--any-surfaceAlt);
+  --lumo-contrast-10pct: var(--any-rule);
+  --lumo-contrast-20pct: var(--any-border);
+  --lumo-contrast-30pct: var(--any-borderStrong);
+  --lumo-contrast-40pct: var(--any-borderStrong);
+  --lumo-contrast-50pct: var(--any-textMuted);
+  --lumo-contrast-60pct: var(--any-textMuted);
+  --lumo-contrast-70pct: var(--any-textSoft);
+  --lumo-contrast-80pct: var(--any-textSoft);
+  --lumo-contrast-90pct: var(--any-text);
+  --lumo-contrast:       var(--any-ink);
+
+  /* Text */
+  --lumo-header-text-color:    var(--any-ink);
+  --lumo-body-text-color:      var(--any-text);
+  --lumo-secondary-text-color: var(--any-textSoft);
+  --lumo-tertiary-text-color:  var(--any-textMuted);
+  --lumo-disabled-text-color:  var(--any-textMuted);
+
+  /* Primary — the visible "brand" hue: routed to --any-accent so the
+     accent tweak threads through focus rings, links, selected rows,
+     checked checkboxes, progress, and any Vaadin part that reads from
+     --lumo-primary-*. Solid-fill primary buttons override back to
+     --any-primary (dark ink) explicitly in the component layer below. */
+  --lumo-primary-color:           var(--any-accent);
+  --lumo-primary-color-50pct:     color-mix(in oklab, var(--any-accent) 50%, transparent);
+  --lumo-primary-color-10pct:     color-mix(in oklab, var(--any-accent) 10%, transparent);
+  --lumo-primary-text-color:      var(--any-accent);
+  --lumo-primary-contrast-color:  #ffffff;
+
+  /* Semantic */
+  --lumo-error-color:             var(--any-danger);
+  --lumo-error-color-50pct:       color-mix(in oklab, var(--any-danger) 50%, transparent);
+  --lumo-error-color-10pct:       color-mix(in oklab, var(--any-danger) 10%, transparent);
+  --lumo-error-text-color:        var(--any-danger);
+  --lumo-error-contrast-color:    var(--any-onPrimary);
+
+  --lumo-success-color:           var(--any-success);
+  --lumo-success-color-50pct:     color-mix(in oklab, var(--any-success) 50%, transparent);
+  --lumo-success-color-10pct:     color-mix(in oklab, var(--any-success) 10%, transparent);
+  --lumo-success-text-color:      var(--any-success);
+  --lumo-success-contrast-color:  var(--any-onPrimary);
+
+  --lumo-warning-color:           var(--any-warning);
+  --lumo-warning-color-10pct:     color-mix(in oklab, var(--any-warning) 10%, transparent);
+  --lumo-warning-text-color:      var(--any-warning);
+  --lumo-warning-contrast-color:  var(--any-onPrimary);
+
+  /* Shadows — paper recipe */
+  --lumo-box-shadow-xs: var(--any-shadowSm);
+  --lumo-box-shadow-s:  var(--any-shadowSm);
+  --lumo-box-shadow-m:  var(--any-shadow);
+  --lumo-box-shadow-l:  var(--any-shadow);
+  --lumo-box-shadow-xl: var(--any-shadow);
+
+  --lumo-clickable-cursor: pointer;
+}
+
+/* ================================================================
+   6. Global typography & page chrome
+   ================================================================ */
+body {
+  background: var(--any-bg);
+  color: var(--any-text);
+  font-family: var(--any-font-ui);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--any-accentSoft); color: var(--any-ink); }
+
+/* Headings — Source Serif 4, upright (no italic — counterpoint to Novelist) */
+h1, h2, h3, h4, h5 {
+  font-family: var(--any-font-display);
+  color: var(--any-ink);
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: -0.012em;
+  margin: 0;
+  font-optical-sizing: auto;
+}
+h1 { font-size: 40px; letter-spacing: -0.022em; }
+h2 { font-size: 28px; font-weight: 600; }
+h3 { font-size: 20px; font-weight: 600; }
+h4 { font-size: 16px; font-weight: 600; }
+h5 {
+  /* Eyebrow style — UI font, uppercase, tracked */
+  font-family: var(--any-font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--any-textMuted);
+}
+
+/* ================================================================
+   7. Component overrides
+   ================================================================ */
+
+/* --- Input fields — left-filet at rest, full frame on focus ---- */
+vaadin-text-field::part(input-field),
+vaadin-password-field::part(input-field),
+vaadin-email-field::part(input-field),
+vaadin-number-field::part(input-field),
+vaadin-integer-field::part(input-field),
+vaadin-big-decimal-field::part(input-field),
+vaadin-text-area::part(input-field),
+vaadin-select::part(input-field),
+vaadin-combo-box::part(input-field),
+vaadin-multi-select-combo-box::part(input-field),
+vaadin-date-picker::part(input-field),
+vaadin-time-picker::part(input-field),
+vaadin-date-time-picker::part(input-field) {
+  background: var(--any-surface);
+  border: 1px solid transparent;
+  border-left: 1px solid var(--any-border);
+  border-radius: var(--any-radius-md);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  box-sizing: border-box;
+  height: var(--any-row-md);
+  min-height: var(--any-row-md);
+  padding: 0 12px;
+  box-shadow: none;
+  transition: border-color .12s, box-shadow .12s, border-radius .12s, background .12s;
+}
+
+vaadin-text-field:hover::part(input-field),
+vaadin-password-field:hover::part(input-field),
+vaadin-email-field:hover::part(input-field),
+vaadin-number-field:hover::part(input-field),
+vaadin-integer-field:hover::part(input-field),
+vaadin-big-decimal-field:hover::part(input-field),
+vaadin-text-area:hover::part(input-field),
+vaadin-select:hover::part(input-field),
+vaadin-combo-box:hover::part(input-field),
+vaadin-multi-select-combo-box:hover::part(input-field),
+vaadin-date-picker:hover::part(input-field),
+vaadin-time-picker:hover::part(input-field),
+vaadin-date-time-picker:hover::part(input-field) {
+  border-left-color: var(--any-borderStrong);
+}
+
+vaadin-text-field[focused]::part(input-field),
+vaadin-password-field[focused]::part(input-field),
+vaadin-email-field[focused]::part(input-field),
+vaadin-number-field[focused]::part(input-field),
+vaadin-integer-field[focused]::part(input-field),
+vaadin-big-decimal-field[focused]::part(input-field),
+vaadin-text-area[focused]::part(input-field),
+vaadin-select[focused]::part(input-field),
+vaadin-combo-box[focused]::part(input-field),
+vaadin-multi-select-combo-box[focused]::part(input-field),
+vaadin-date-picker[focused]::part(input-field),
+vaadin-time-picker[focused]::part(input-field),
+vaadin-date-time-picker[focused]::part(input-field) {
+  border: 1px solid var(--any-accent);
+  border-radius: var(--any-radius-md);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--any-accent) 18%, transparent);
+}
+
+vaadin-text-field[invalid]::part(input-field),
+vaadin-password-field[invalid]::part(input-field),
+vaadin-email-field[invalid]::part(input-field),
+vaadin-number-field[invalid]::part(input-field),
+vaadin-integer-field[invalid]::part(input-field),
+vaadin-text-area[invalid]::part(input-field),
+vaadin-select[invalid]::part(input-field),
+vaadin-combo-box[invalid]::part(input-field),
+vaadin-multi-select-combo-box[invalid]::part(input-field),
+vaadin-date-picker[invalid]::part(input-field),
+vaadin-time-picker[invalid]::part(input-field) {
+  border: 1px solid var(--any-danger);
+  border-radius: var(--any-radius-md);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--any-danger) 14%, transparent);
+}
+
+/* Labels — UI font, sentence case, soft secondary tone */
+vaadin-text-field::part(label),
+vaadin-password-field::part(label),
+vaadin-email-field::part(label),
+vaadin-number-field::part(label),
+vaadin-integer-field::part(label),
+vaadin-big-decimal-field::part(label),
+vaadin-text-area::part(label),
+vaadin-select::part(label),
+vaadin-combo-box::part(label),
+vaadin-multi-select-combo-box::part(label),
+vaadin-date-picker::part(label),
+vaadin-time-picker::part(label),
+vaadin-date-time-picker::part(label),
+vaadin-upload::part(label),
+vaadin-checkbox-group::part(label),
+vaadin-radio-group::part(label) {
+  font-family: var(--any-font-ui);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--any-textSoft);
+}
+
+/* --- Buttons --- */
+vaadin-button {
+  border-radius: var(--any-radius-md);
+  font-family: var(--any-font-ui);
+  font-weight: 500;
+  font-size: 13.5px;
+  letter-spacing: 0;
+  height: var(--any-row-md);
+  min-height: var(--any-row-md);
+  transition: background .12s, border-color .12s, color .12s, transform .04s;
+}
+vaadin-button:active {
+  transform: translateY(0.5px);
+}
+/* Secondary (default) — paper surface with hairline border */
+vaadin-button:not([theme~="primary"]):not([theme~="tertiary"]):not([theme~="tertiary-inline"]) {
+  background: var(--any-surface);
+  border: 1px solid var(--any-border);
+  color: var(--any-text);
+}
+vaadin-button:not([theme~="primary"]):not([theme~="tertiary"]):not([theme~="tertiary-inline"]):hover {
+  background: var(--any-surfaceAlt);
+  border-color: var(--any-borderStrong);
+}
+vaadin-button[theme~="primary"] {
+  background: var(--any-primary);
+  color: var(--any-onPrimary);
+  border: 1px solid var(--any-primary);
+  box-shadow: none;
+}
+vaadin-button[theme~="primary"]:hover {
+  background: var(--any-primaryHover);
+  border-color: var(--any-primaryHover);
+}
+vaadin-button[theme~="tertiary"],
+vaadin-button[theme~="tertiary-inline"] {
+  background: transparent;
+  color: var(--any-textSoft);
+}
+vaadin-button[theme~="tertiary"]:hover,
+vaadin-button[theme~="tertiary-inline"]:hover {
+  background: var(--any-surfaceAlt);
+  color: var(--any-text);
+}
+vaadin-button[theme~="error"][theme~="primary"] {
+  background: var(--any-danger);
+  border-color: var(--any-danger);
+  color: #fff;
+}
+vaadin-button[theme~="error"]:not([theme~="primary"]) {
+  color: var(--any-danger);
+  border-color: var(--any-border);
+}
+vaadin-button[theme~="error"]:not([theme~="primary"]):hover {
+  background: var(--any-accentSoft);
+  border-color: var(--any-danger);
+}
+
+/* --- Checkbox / Radio — Notion-minimal, accent-checked --- */
+vaadin-checkbox::part(checkbox) {
+  border-radius: var(--any-radius-sm);
+  border: 1px solid var(--any-borderStrong);
+  background: var(--any-surface);
+}
+vaadin-checkbox[checked]::part(checkbox),
+vaadin-checkbox[indeterminate]::part(checkbox) {
+  background: var(--any-accent);
+  border-color: var(--any-accent);
+}
+vaadin-checkbox::part(label),
+vaadin-radio-button::part(label) {
+  font-family: var(--any-font-ui);
+  font-size: 13.5px;
+  color: var(--any-text);
+}
+vaadin-radio-button::part(radio) {
+  border: 1px solid var(--any-borderStrong);
+  background: var(--any-surface);
+}
+vaadin-radio-button[checked]::part(radio) {
+  border-color: var(--any-accent);
+}
+vaadin-radio-button[checked]::part(radio)::after {
+  background: var(--any-accent);
+}
+
+/* --- Grid --- */
+vaadin-grid {
+  background: var(--any-surface);
+  border: 1px solid var(--any-border);
+  border-radius: var(--any-radius-lg);
+  font-family: var(--any-font-ui);
+  font-size: 13.5px;
+  color: var(--any-text);
+  --_lumo-grid-border-color: var(--any-rule);
+  --_lumo-grid-secondary-border-color: var(--any-rule);
+  --_lumo-grid-row-hover-background-color: var(--any-surfaceAlt);
+  --_lumo-grid-row-selected-background-color: color-mix(in oklab, var(--any-accent) 10%, var(--any-surface));
+}
+vaadin-grid::part(header-cell) {
+  background: var(--any-bg);
+  color: var(--any-textMuted);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--any-rule);
+}
+vaadin-grid::part(body-cell) {
+  padding: 0 14px;
+  border-bottom: 1px solid var(--any-rule);
+}
+
+/* --- App Layout & side drawer --- */
+vaadin-app-layout::part(navbar) {
+  background: var(--any-surface);
+  border-bottom: 1px solid var(--any-rule);
+}
+vaadin-app-layout::part(drawer) {
+  background: var(--any-bg);
+  border-right: 1px solid var(--any-rule);
+}
+vaadin-drawer-toggle {
+  color: var(--any-textSoft);
+}
+
+/* Top-bar router links */
+.app-top-nav {
+  gap: 2px;
+  flex-shrink: 0;
+}
+.app-top-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: calc(var(--any-row-sm) - 4px);
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: var(--any-radius-md);
+  color: var(--any-textSoft);
+  font-family: var(--any-font-ui);
+  font-size: 13.5px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .12s, border-color .12s, color .12s;
+}
+.app-top-nav a:hover {
+  background: var(--any-surfaceAlt);
+  color: var(--any-text);
+}
+.app-top-nav a[highlight] {
+  background: var(--any-surfaceAlt);
+  color: var(--any-ink);
+  font-weight: 500;
+  position: relative;
+}
+.app-top-nav a[highlight]::before {
+  content: "";
+  position: absolute;
+  left: 4px; top: 6px; bottom: 6px;
+  width: 2px;
+  background: var(--any-accent);
+  border-radius: 2px;
+}
+
+/* Theme switcher popover trigger */
+.theme-switcher-popover-trigger {
+  height: var(--any-row-md);
+  border: 1px solid var(--any-border);
+  border-radius: var(--any-radius-md);
+  background: var(--any-surface);
+  color: var(--any-textSoft);
+  font-family: var(--any-font-ui);
+  font-size: 13px;
+  font-weight: 500;
+}
+.theme-switcher-popover-trigger:hover {
+  color: var(--any-text);
+  border-color: var(--any-borderStrong);
+  background: var(--any-surfaceAlt);
+}
+vaadin-popover-overlay::part(overlay) {
+  border: 1px solid var(--any-border);
+  border-radius: var(--any-radius-lg);
+  background: var(--any-surface);
+  box-shadow: var(--any-shadow);
+}
+.theme-switcher--panel {
+  width: 304px;
+  max-width: calc(100vw - 32px);
+  flex-direction: column;
+  align-items: stretch !important;
+  gap: 12px;
+  padding: 12px;
+}
+.theme-switcher--toolbar .theme-switcher-theme-selector {
+  width: 160px;
+}
+.theme-switcher--panel .theme-switcher-theme-selector {
+  width: 100%;
+}
+.theme-switcher--panel .theme-switcher-options {
+  width: 100%;
+  flex-direction: column;
+  align-items: stretch !important;
+  gap: 8px;
+}
+.theme-switcher-option {
+  width: 100%;
+  gap: 12px;
+}
+.theme-switcher-option-label {
+  flex: 1;
+  color: var(--any-textSoft);
+  font-family: var(--any-font-ui);
+  font-size: 13px;
+  font-weight: 500;
+}
+.theme-switcher-option-control {
+  width: 150px;
+}
+
+/* --- Side nav — 2px accent left bar on active row --- */
+vaadin-side-nav {
+  font-family: var(--any-font-ui);
+  padding: 8px;
+}
+vaadin-side-nav-item {
+  font-family: var(--any-font-ui);
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--any-textSoft);
+  border-radius: 6px;
+  margin-bottom: 1px;
+  transition: background .12s, color .12s;
+}
+vaadin-side-nav-item::part(item) {
+  padding: 0 14px;
+  border-radius: 6px;
+  position: relative;
+}
+vaadin-side-nav-item:hover::part(item) {
+  background: var(--any-surfaceAlt);
+  color: var(--any-text);
+}
+vaadin-side-nav-item[active]::part(item) {
+  background: var(--any-surfaceAlt);
+  color: var(--any-ink);
+  font-weight: 500;
+}
+vaadin-side-nav-item[active]::part(item)::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 6px; bottom: 6px;
+  width: 2px;
+  background: var(--any-accent);
+  border-radius: 2px;
+}
+
+/* --- Tabs --- */
+vaadin-tab {
+  font-family: var(--any-font-ui);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--any-textSoft);
+  transition: color .12s;
+}
+vaadin-tab[selected] {
+  color: var(--any-ink);
+}
+vaadin-tab[selected]::before,
+vaadin-tab::part(selected-indicator) {
+  background: var(--any-accent);
+}
+vaadin-tabs {
+  box-shadow: inset 0 -1px 0 var(--any-rule);
+}
+
+/* --- Dialog / Confirm dialog --- */
+vaadin-dialog-overlay::part(overlay),
+vaadin-confirm-dialog-overlay::part(overlay) {
+  background: var(--any-surface);
+  border: 1px solid var(--any-border);
+  border-radius: var(--any-radius-lg);
+  box-shadow: var(--any-shadow);
+}
+vaadin-dialog-overlay::part(header),
+vaadin-confirm-dialog-overlay::part(header) {
+  font-family: var(--any-font-display);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--any-ink);
+}
+vaadin-confirm-dialog-overlay::part(footer) {
+  border-top: 1px solid var(--any-rule);
+}
+vaadin-dialog-overlay::part(backdrop),
+vaadin-confirm-dialog-overlay::part(backdrop) {
+  background: color-mix(in oklab, var(--any-ink) 50%, transparent);
+}
+
+/* --- Notification --- */
+vaadin-notification-card {
+  background: var(--any-ink);
+  color: var(--any-bg);
+  border-radius: var(--any-radius-md);
+  box-shadow: var(--any-shadow);
+  font-family: var(--any-font-ui);
+  font-size: 13.5px;
+}
+
+/* --- Badge --- */
+[theme~="badge"] {
+  font-family: var(--any-font-ui);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0;
+  border-radius: var(--any-radius-pill);
+  border: 1px solid var(--any-border);
+  background: var(--any-surfaceAlt);
+  color: var(--any-textSoft);
+  padding: 1px 8px;
+}
+[theme~="badge"][theme~="primary"]  { background: var(--any-primary); color: var(--any-onPrimary); border-color: var(--any-primary); }
+[theme~="badge"][theme~="success"]  { background: color-mix(in oklab, var(--any-success) 14%, var(--any-bg)); color: var(--any-success); border-color: transparent; }
+[theme~="badge"][theme~="error"]    { background: color-mix(in oklab, var(--any-danger) 14%, var(--any-bg));  color: var(--any-danger);  border-color: transparent; }
+[theme~="badge"][theme~="warning"]  { background: color-mix(in oklab, var(--any-warning) 14%, var(--any-bg)); color: var(--any-warning); border-color: transparent; }
+[theme~="badge"][theme~="contrast"] { background: var(--any-surfaceAlt); color: var(--any-ink); border-color: var(--any-border); }
+
+/* --- Progress bar — flat accent fill, no shimmer --- */
+vaadin-progress-bar {
+  --vaadin-progress-color: var(--any-accent);
+}
+vaadin-progress-bar::part(bar) {
+  border-radius: var(--any-radius-pill);
+  background: var(--any-surfaceAlt);
+  height: 4px;
+}
+vaadin-progress-bar::part(value) {
+  border-radius: var(--any-radius-pill);
+}
+
+/* --- Accordion / Details --- */
+vaadin-accordion-panel,
+vaadin-details {
+  background: var(--any-surface);
+  border: 1px solid var(--any-border);
+  border-radius: var(--any-radius-md);
+}
+vaadin-accordion-panel + vaadin-accordion-panel {
+  margin-top: 4px;
+}
+vaadin-accordion-panel::part(summary),
+vaadin-accordion-heading::part(content),
+vaadin-details::part(summary),
+vaadin-details-summary {
+  font-family: var(--any-font-display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--any-ink);
+  min-height: var(--any-row-md);
+  padding: 10px 14px 10px 16px;
+}
+vaadin-accordion-panel::part(content),
+vaadin-details::part(content) {
+  border-top: 1px solid var(--any-rule);
+  color: var(--any-text);
+  padding: 14px 16px 16px;
+}
+
+/* --- Menu bar --- */
+vaadin-menu-bar-button {
+  border-radius: var(--any-radius-md);
+  font-family: var(--any-font-ui);
+  font-weight: 500;
+  font-size: 13.5px;
+  color: var(--any-text);
+}
+vaadin-menu-bar-button:hover {
+  background: var(--any-surfaceAlt);
+}
+
+/* --- Upload — dashed border, paper feel --- */
+vaadin-upload {
+  border: 1px dashed var(--any-borderStrong);
+  border-radius: var(--any-radius-md);
+  background: var(--any-surface);
+}
+
+/* --- Split layout --- */
+vaadin-split-layout::part(splitter) {
+  background: var(--any-rule);
+}
+
+/* --- Message list --- */
+vaadin-message-list {
+  background: var(--any-surface);
+  border: 1px solid var(--any-border);
+  border-radius: var(--any-radius-lg);
+}
+vaadin-message::part(name) {
+  font-family: var(--any-font-display);
+  font-weight: 600;
+  color: var(--any-ink);
+}
+vaadin-message::part(time) {
+  font-family: var(--any-font-ui);
+  font-size: 11px;
+  color: var(--any-textMuted);
+}
+
+/* --- Avatar — accent-tinted on paper --- */
+vaadin-avatar {
+  background: var(--any-accentSoft);
+  color: var(--any-accent);
+  font-family: var(--any-font-display);
+  font-weight: 500;
+}
+
+/* --- Tooltip --- */
+vaadin-tooltip-overlay::part(overlay) {
+  background: var(--any-ink);
+  color: var(--any-bg);
+  border: 0;
+  border-radius: 5px;
+  font-family: var(--any-font-ui);
+  font-size: 12px;
+  padding: 4px 8px;
+  box-shadow: var(--any-shadowSm);
+}
+
+/* --- Tabular numerics in tables / metric labels --- */
+vaadin-grid,
+vaadin-grid::part(body-cell),
+[data-numeric] {
+  font-variant-numeric: tabular-nums;
+}

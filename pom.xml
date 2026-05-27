@@ -26,6 +26,7 @@
         <module>theme-novelist</module>
         <module>theme-glass</module>
         <module>theme-brutalist</module>
+        <module>theme-anything</module>
         <module>test-app</module>
     </modules>
 

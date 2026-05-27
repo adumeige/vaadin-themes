@@ -37,6 +37,17 @@ to the Nord maintainers for publishing such a clear, reusable color system.
 ![Brutalist theme screenshot 1](resources/brutalist-00.png)
 ![Brutalist theme screenshot 2](resources/brutalist-01.png)
 
+### Anything
+
+![Anything theme screenshot 1](resources/anything-00.png)
+![Anything theme screenshot 2](resources/anything-01.png)
+
+A Notion-adjacent, serif-led theme. Source Serif 4 across display + body, Inter for UI chrome, single accent rationed
+to focus rings / active rails / selected rows. Five paper-stock palettes (Paper / Bone / Linen / Sage / Slate) × light
++ dark, six curated accent swatches (Oxblood / Forest / Ink blue / Brass / Plum / Graphite), and three densities.
+Inputs render as a single left filet at rest and snap to a full frame on focus — manuscript-margin until you engage.
+Imported from the Anything design system authored in Claude Design.
+
 ## The `theme` submodule
 
 The `theme` submodule provides the runtime theme model and ready-made Vaadin components for choosing a theme. It
@@ -155,7 +166,7 @@ public class AppShell implements AppShellConfigurator {
 }
 ```
 
-Available theme names: `seagod`, `fjord`, `terminal-synth`, `novelist`, `glass`, `brutalist`.
+Available theme names: `seagod`, `fjord`, `terminal-synth`, `novelist`, `glass`, `brutalist`, `anything`.
 
 ## Build
 
