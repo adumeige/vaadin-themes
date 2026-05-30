@@ -682,6 +682,7 @@ vaadin-grid {
   --_lumo-grid-secondary-border-color: var(--any-rule);
   --_lumo-grid-row-hover-background-color: var(--any-surfaceAlt);
   --_lumo-grid-row-selected-background-color: color-mix(in oklab, var(--any-accent) 10%, var(--any-surface));
+  --vaadin-grid-cell-background: var(--any-surface);
 }
 vaadin-grid::part(header-cell) {
   background: var(--any-bg);
@@ -695,6 +696,16 @@ vaadin-grid::part(header-cell) {
 vaadin-grid::part(body-cell) {
   padding: 0 14px;
   border-bottom: 1px solid var(--any-rule);
+}
+vaadin-grid::part(even-row) {
+  --vaadin-grid-cell-background: var(--any-surfaceAlt);
+}
+vaadin-grid::part(row):hover {
+  --vaadin-grid-cell-background: var(--any-surfaceAlt);
+}
+vaadin-grid::part(selected-row),
+vaadin-grid::part(selected-row-cell) {
+  --vaadin-grid-cell-background: color-mix(in oklab, var(--any-accent) 10%, var(--any-surface));
 }
 
 /* --- App Layout & side drawer --- */

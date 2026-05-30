@@ -5,6 +5,7 @@
     overflow: hidden;
     background: var(--seagod-surface-color);
     box-shadow: var(--lumo-box-shadow-s);
+    --vaadin-grid-cell-background: var(--seagod-surface-color);
 }
 
 [part~="header-cell"] {
@@ -22,6 +23,15 @@
     font-size: 0.845rem;
 }
 
-[part~="row"]:hover [part~="body-cell"] {
-    background: color-mix(in srgb, var(--lumo-primary-color) 8%, transparent);
+[part~="even-row"] {
+    --vaadin-grid-cell-background: color-mix(in srgb, var(--lumo-tint) 35%, var(--seagod-surface-color));
+}
+
+[part~="row"]:hover {
+    --vaadin-grid-cell-background: color-mix(in srgb, var(--lumo-primary-color) 8%, var(--seagod-surface-color));
+}
+
+[part~="selected-row"],
+[part~="selected-row-cell"] {
+    --vaadin-grid-cell-background: color-mix(in srgb, var(--lumo-primary-color) 14%, var(--seagod-surface-color));
 }

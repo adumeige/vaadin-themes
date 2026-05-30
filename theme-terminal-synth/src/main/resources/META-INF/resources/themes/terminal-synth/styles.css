@@ -626,6 +626,7 @@ vaadin-grid {
   --_lumo-grid-secondary-border-color: color-mix(in srgb, var(--st-bg-2) 70%, transparent);
   --_lumo-grid-row-hover-background-color: color-mix(in srgb, var(--st-accent) 6%, transparent);
   --_lumo-grid-row-selected-background-color: color-mix(in srgb, var(--st-primary) 12%, transparent);
+  --vaadin-grid-cell-background: var(--st-bg-1);
 }
 vaadin-grid::part(header-cell) {
   background: var(--st-bg-2);
@@ -641,6 +642,16 @@ vaadin-grid::part(body-cell) {
   height: var(--st-row-h);
   padding: 0 var(--st-s-3);
   border-bottom: var(--st-bw) solid color-mix(in srgb, var(--st-bg-2) 70%, transparent);
+}
+vaadin-grid::part(even-row) {
+  --vaadin-grid-cell-background: color-mix(in srgb, var(--st-bg-2) 65%, var(--st-bg-1));
+}
+vaadin-grid::part(row):hover {
+  --vaadin-grid-cell-background: color-mix(in srgb, var(--st-accent) 6%, var(--st-bg-1));
+}
+vaadin-grid::part(selected-row),
+vaadin-grid::part(selected-row-cell) {
+  --vaadin-grid-cell-background: color-mix(in srgb, var(--st-primary) 12%, var(--st-bg-1));
 }
 
 /* App Layout */

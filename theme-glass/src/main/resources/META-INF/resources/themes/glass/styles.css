@@ -957,6 +957,7 @@ vaadin-grid {
     --_lumo-grid-row-selected-background-color: var(--vg-primary-tint);
     --_lumo-grid-border-color: var(--vg-divider);
     --_lumo-grid-secondary-border-color: var(--vg-divider);
+    --vaadin-grid-cell-background: var(--vg-surface);
 }
 
 vaadin-grid::part(header-cell) {
@@ -978,6 +979,14 @@ vaadin-grid::part(body-cell) {
     padding: 12px 16px;
 }
 
+vaadin-grid::part(even-row) {
+    --vaadin-grid-cell-background: var(--vg-surface-2);
+}
+
+vaadin-grid::part(row):hover {
+    --vaadin-grid-cell-background: var(--vg-surface-2);
+}
+
 vaadin-grid::part(first-column-cell) {
     padding-left: 28px;
 }
@@ -986,8 +995,9 @@ vaadin-grid::part(last-column-cell) {
     padding-right: 28px;
 }
 
-vaadin-grid::part(selected-row) {
-    background: var(--vg-primary-tint);
+vaadin-grid::part(selected-row),
+vaadin-grid::part(selected-row-cell) {
+    --vaadin-grid-cell-background: var(--vg-primary-tint);
 }
 
 vaadin-grid-cell-content.num,

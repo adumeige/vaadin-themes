@@ -563,6 +563,7 @@ vaadin-grid {
     border: var(--bt-rule-w) solid var(--bt-rule);
     border-radius: 0;
     background: var(--bt-bg);
+    --vaadin-grid-cell-background: var(--bt-bg);
     color: var(--bt-ink);
     font-family: var(--bt-font);
 }
@@ -579,12 +580,20 @@ vaadin-grid::part(header-cell) {
 
 vaadin-grid::part(body-cell) {
     border-bottom: 1px solid var(--bt-rule);
-    background: var(--bt-bg);
     color: var(--bt-ink);
 }
 
-vaadin-grid::part(row):hover vaadin-grid-cell-content {
-    background: var(--bt-bg-2);
+vaadin-grid::part(even-row) {
+    --vaadin-grid-cell-background: var(--bt-bg-2);
+}
+
+vaadin-grid::part(row):hover {
+    --vaadin-grid-cell-background: color-mix(in oklab, var(--bt-hi) 45%, var(--bt-bg));
+}
+
+vaadin-grid::part(selected-row),
+vaadin-grid::part(selected-row-cell) {
+    --vaadin-grid-cell-background: color-mix(in oklab, var(--bt-accent) 14%, var(--bt-bg));
 }
 
 vaadin-grid-cell-content {

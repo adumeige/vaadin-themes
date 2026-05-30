@@ -490,6 +490,7 @@ vaadin-grid {
     overflow: hidden;
     background: var(--seagod-surface-color);
     box-shadow: var(--lumo-box-shadow-s);
+    --vaadin-grid-cell-background: var(--seagod-surface-color);
 }
 vaadin-grid::part(header-cell) {
     background: linear-gradient(180deg, color-mix(in srgb, var(--lumo-tint) 68%, var(--seagod-surface-color)) 0%, color-mix(in srgb, var(--lumo-tint) 48%, var(--seagod-surface-color)) 100%);
@@ -503,6 +504,16 @@ vaadin-grid::part(header-cell) {
 vaadin-grid::part(body-cell) {
     border-bottom: 1px solid color-mix(in srgb, var(--seagod-surface-border) 70%, transparent);
     font-size: 0.845rem;
+}
+vaadin-grid::part(even-row) {
+    --vaadin-grid-cell-background: color-mix(in srgb, var(--lumo-tint) 35%, var(--seagod-surface-color));
+}
+vaadin-grid::part(row):hover {
+    --vaadin-grid-cell-background: color-mix(in srgb, var(--lumo-primary-color) 8%, var(--seagod-surface-color));
+}
+vaadin-grid::part(selected-row),
+vaadin-grid::part(selected-row-cell) {
+    --vaadin-grid-cell-background: color-mix(in srgb, var(--lumo-primary-color) 14%, var(--seagod-surface-color));
 }
 
 /* --- App Layout --- */
