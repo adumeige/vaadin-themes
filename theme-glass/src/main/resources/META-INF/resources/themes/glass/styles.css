@@ -493,7 +493,10 @@ vaadin-app-layout::part(drawer) {
     -webkit-backdrop-filter: var(--vg-glass-blur);
     backdrop-filter: var(--vg-glass-blur);
     box-shadow: var(--vg-glass-edge);
-    padding: var(--vg-s-l) var(--vg-s-m);
+    /* Small top padding so the first nav item lines up with the slotted
+       view's first row (the content panel has no top padding); keep the
+       roomier side/bottom padding. */
+    padding: 2px var(--vg-s-m) var(--vg-s-l);
 }
 
 /* Slotted view — opaque rounded panel aligned with the drawer shell. */
@@ -515,11 +518,10 @@ vaadin-app-layout[drawer-opened]:not([overlay]) > :not([slot]) {
     width: calc(100% - 30px) !important;
 }
 
-/* Pin direct children to their natural height so explicit setHeight
-   values are honored and overflow scrolls on the panel. */
-vaadin-app-layout > :not([slot]) > * {
-    flex-shrink: 0;
-}
+/* No flex-shrink:0 pin on the slot's children: it stopped full-height flex
+   views (setSizeFull + expand()) from shrinking their expanded child, which
+   overflowed the panel. The panel keeps overflow-y:auto above as the scroll
+   fallback for genuinely tall natural-stack views. */
 
 vaadin-drawer-toggle {
     color: var(--vg-fg-secondary);

@@ -250,13 +250,13 @@ vaadin-app-layout [slot="navbar"] h1::before {
 }
 
 vaadin-app-layout > :not([slot]) {
-    min-height: 100%;
+    /* Fill the content area exactly so full-height flex views (setSizeFull +
+       expand()) distribute height and scroll internally. min-height:100% let
+       the column grow past the slot; pinning children with flex-shrink:0 stopped
+       an expanded child from shrinking, overflowing the main slot. */
+    height: 100%;
     background: var(--bt-bg);
     color: var(--bt-ink);
-}
-
-vaadin-app-layout > :not([slot]) > * {
-    flex-shrink: 0;
 }
 
 vaadin-drawer-toggle {
