@@ -1,0 +1,1124 @@
+/* ================================================================
+   Analog — extracted from the Analog Player / Analog Components
+   prototypes (claude.ai/design).  A 90s hi-fi, skeuomorphic
+   instrument panel: charcoal plastic body, deep recessed wells,
+   engraved labels, knurled knobs and a backlit amber readout.
+
+   Token contract: --an-*.  The body stays graphite; two tweaks
+   ride on the <html> element, mirroring the prototype:
+     • Glow   — the backlight accent.  data-glow="green|cyan|red"
+                (amber is the default, no attribute).
+     • Finish — data-finish="aqua" swaps to a 2000s-Apple light
+                mode (brushed aluminium + glossy gel).
+   ================================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Semi+Condensed:wght@400;500;600;700;800&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/dseg@0.46.0/css/dseg.css");
+
+/* ── Graphite body (default) ─────────────────────────────────── */
+html,
+html[data-finish="graphite"] {
+    --an-font-ui: "Barlow Semi Condensed", "Barlow", system-ui, sans-serif;
+    --an-font-num: "Barlow", "Barlow Semi Condensed", system-ui, sans-serif;
+    --an-font-seg: "DSEG7 Classic", "Barlow", monospace;
+
+    /* Plastic body materials */
+    --an-frame: #0c0d0e;
+    --an-bg: #16181a;
+    --an-bg-2: #1c1e21;
+    --an-body-1: #34383d;
+    --an-body-2: #25282c;
+    --an-body: #2c2f33;
+    --an-recess-1: #1c1e21;
+    --an-recess-2: #131517;
+    --an-panel-1: #0e1011;
+    --an-panel-2: #15181a;
+    --an-knob-1: #3c4045;
+    --an-knob-2: #1d2023;
+
+    /* Bevels & rules */
+    --an-bevel-hi: rgba(255, 255, 255, .075);
+    --an-bevel-lo: rgba(0, 0, 0, .66);
+    --an-line: rgba(255, 255, 255, .055);
+    --an-line-lo: rgba(0, 0, 0, .5);
+
+    /* Engraved text on plastic */
+    --an-text: #c6cbd0;
+    --an-textSoft: #878d93;
+    --an-textMuted: #565b61;
+    --an-engrave: #757b81;
+
+    /* Status */
+    --an-success: #56d98a;
+    --an-warning: #ffb43c;
+    --an-danger: #ff5b4a;
+    --an-info: #4fd0e6;
+
+    /* Shadow recipes */
+    --an-recess-shadow:
+        inset 0 2px 5px rgba(0, 0, 0, .72),
+        inset 0 -1px 0 var(--an-bevel-hi),
+        inset 0 10px 22px rgba(0, 0, 0, .42);
+    --an-raise-shadow:
+        0 1px 0 var(--an-bevel-hi) inset,
+        0 7px 16px rgba(0, 0, 0, .5),
+        0 2px 4px rgba(0, 0, 0, .45);
+    --an-panel-shadow:
+        inset 0 2px 8px rgba(0, 0, 0, .85),
+        inset 0 0 0 1px rgba(0, 0, 0, .6),
+        inset 0 1px 0 var(--an-bevel-hi);
+}
+
+/* ── Glow accent — amber default, only the backlight changes ──── */
+html,
+html[data-glow="amber"] {
+    --an-glow: #ffa537;
+    --an-glow-hot: #ffc46a;
+    --an-glow-dim: #9c6526;
+    --an-glow-rgb: 255, 165, 55;
+    --an-led: #ffb43c;
+}
+
+html[data-glow="green"] {
+    --an-glow: #5dff9b;
+    --an-glow-hot: #aeffc9;
+    --an-glow-dim: #2e8a52;
+    --an-glow-rgb: 93, 255, 155;
+    --an-led: #5dff9b;
+}
+
+html[data-glow="cyan"] {
+    --an-glow: #4fd6e8;
+    --an-glow-hot: #9cefff;
+    --an-glow-dim: #2a7e8c;
+    --an-glow-rgb: 79, 214, 232;
+    --an-led: #4fd6e8;
+}
+
+html[data-glow="red"] {
+    --an-glow: #ff5b4a;
+    --an-glow-hot: #ff9485;
+    --an-glow-dim: #9c352b;
+    --an-glow-rgb: 255, 91, 74;
+    --an-led: #ff5b4a;
+}
+
+/* ── Shape + Lumo bridge ─────────────────────────────────────── */
+html {
+    --an-radius-sm: 6px;
+    --an-radius-md: 10px;
+    --an-radius-lg: 16px;
+    --an-radius-xl: 24px;
+    --an-ctrl-h: 36px;
+    --an-s-xs: 4px;
+    --an-s-s: 8px;
+    --an-s-m: 12px;
+    --an-s-l: 16px;
+    --an-s-xl: 24px;
+
+    --lumo-primary-color: var(--an-glow);
+    --lumo-primary-text-color: var(--an-glow);
+    --lumo-primary-contrast-color: #131517;
+    --lumo-success-color: var(--an-success);
+    --lumo-success-text-color: var(--an-success);
+    --lumo-error-color: var(--an-danger);
+    --lumo-error-text-color: var(--an-danger);
+    --lumo-warning-color: var(--an-warning);
+    --lumo-warning-text-color: var(--an-warning);
+
+    --lumo-body-text-color: var(--an-text);
+    --lumo-header-text-color: var(--an-text);
+    --lumo-secondary-text-color: var(--an-textSoft);
+    --lumo-tertiary-text-color: var(--an-textMuted);
+    --lumo-disabled-text-color: var(--an-textMuted);
+
+    --lumo-base-color: var(--an-body);
+    --lumo-contrast: var(--an-text);
+    --lumo-contrast-5pct: color-mix(in oklab, var(--an-text) 6%, transparent);
+    --lumo-contrast-10pct: color-mix(in oklab, var(--an-text) 10%, transparent);
+    --lumo-contrast-20pct: color-mix(in oklab, var(--an-text) 18%, transparent);
+    --lumo-contrast-30pct: color-mix(in oklab, var(--an-text) 26%, transparent);
+    --lumo-contrast-60pct: color-mix(in oklab, var(--an-text) 55%, transparent);
+
+    --lumo-border-radius-s: var(--an-radius-sm);
+    --lumo-border-radius-m: var(--an-radius-md);
+    --lumo-border-radius-l: var(--an-radius-lg);
+    --lumo-font-family: var(--an-font-ui);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: var(--an-text);
+    background:
+        radial-gradient(140% 120% at 50% -20%, color-mix(in oklab, var(--an-body-1) 60%, transparent), transparent 60%),
+        var(--an-bg);
+    font-family: var(--an-font-ui);
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    background: color-mix(in oklab, var(--an-glow) 40%, transparent);
+    color: #fff;
+}
+
+a {
+    color: var(--an-glow);
+    text-decoration: none;
+}
+
+a:hover {
+    text-shadow: 0 0 8px color-mix(in oklab, var(--an-glow) 60%, transparent);
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+    color: var(--an-text);
+    font-family: var(--an-font-ui);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: .02em;
+}
+
+p {
+    color: var(--an-textSoft);
+}
+
+/* Engraved panel labels — a recurring motif on side-nav, headers. */
+.an-label,
+vaadin-side-nav::part(label) {
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--an-engrave);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .65), 0 1px 0 var(--an-bevel-hi);
+}
+
+/* ── App shell — the chassis ─────────────────────────────────── */
+vaadin-app-layout {
+    --vaadin-app-layout-navbar-background: var(--an-body);
+    --vaadin-app-layout-drawer-background: var(--an-bg);
+    background: transparent;
+}
+
+vaadin-app-layout::part(navbar) {
+    min-height: 48px;
+    border-bottom: 1px solid var(--an-frame);
+    background: linear-gradient(180deg, var(--an-body-1), var(--an-body-2));
+    color: var(--an-text);
+    box-shadow:
+        0 1px 0 var(--an-bevel-hi) inset,
+        0 2px 6px rgba(0, 0, 0, .5);
+}
+
+vaadin-app-layout::part(drawer) {
+    border-right: 1px solid var(--an-frame);
+    background: var(--an-bg);
+    color: var(--an-text);
+    padding: var(--an-s-m) 0;
+    box-shadow: inset -8px 0 18px rgba(0, 0, 0, .45);
+}
+
+vaadin-app-layout vaadin-horizontal-layout[slot="navbar"] {
+    min-height: 48px;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    gap: var(--an-s-m);
+}
+
+vaadin-app-layout [slot="navbar"] h1 {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 !important;
+    color: var(--an-text);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+vaadin-app-layout [slot="navbar"] h1::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--an-glow-hot), var(--an-glow-dim));
+    box-shadow:
+        0 0 6px color-mix(in oklab, var(--an-glow) 80%, transparent),
+        0 0 14px color-mix(in oklab, var(--an-glow) 55%, transparent),
+        inset 0 -1px 1px rgba(0, 0, 0, .4);
+}
+
+vaadin-app-layout > :not([slot]) {
+    height: 100%;
+    background:
+        radial-gradient(120% 100% at 50% -10%, color-mix(in oklab, var(--an-body-1) 40%, transparent), transparent 55%),
+        var(--an-bg);
+    color: var(--an-text);
+}
+
+vaadin-drawer-toggle {
+    width: 32px;
+    height: 32px;
+    color: var(--an-textSoft);
+    border-radius: var(--an-radius-sm);
+}
+
+vaadin-drawer-toggle:hover {
+    color: var(--an-text);
+    background: var(--an-bg-2);
+}
+
+/* Demo top links + theme popover */
+.app-top-nav {
+    gap: var(--an-s-xs);
+    flex-shrink: 0;
+}
+
+.app-top-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0 12px;
+    border-radius: var(--an-radius-sm);
+    color: var(--an-textSoft);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.app-top-nav a:hover,
+.app-top-nav a[highlight] {
+    color: var(--an-glow);
+    background: var(--an-bg-2);
+}
+
+.theme-switcher-popover-trigger {
+    height: var(--an-ctrl-h);
+    border: 1px solid var(--an-frame);
+    border-radius: var(--an-radius-md);
+    background: linear-gradient(180deg, var(--an-body-1), var(--an-body-2));
+    color: var(--an-text);
+    font: 700 12px / 1 var(--an-font-ui);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    box-shadow: var(--an-raise-shadow);
+}
+
+.theme-switcher-popover-trigger:hover {
+    color: var(--an-glow);
+}
+
+vaadin-popover-overlay::part(overlay),
+vaadin-dialog-overlay::part(overlay) {
+    border: 1px solid var(--an-frame);
+    border-radius: var(--an-radius-lg);
+    background: linear-gradient(180deg, var(--an-body-1), var(--an-body-2));
+    color: var(--an-text);
+    box-shadow:
+        0 1px 0 var(--an-bevel-hi) inset,
+        0 24px 60px rgba(0, 0, 0, .6);
+}
+
+.theme-switcher--panel {
+    width: 304px;
+    max-width: calc(100vw - 32px);
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: var(--an-s-m);
+    padding: var(--an-s-l);
+}
+
+.theme-switcher--panel .theme-switcher-theme-selector,
+.theme-switcher--panel .theme-switcher-options {
+    width: 100%;
+}
+
+.theme-switcher--panel .theme-switcher-options {
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: var(--an-s-s);
+}
+
+.theme-switcher-option {
+    width: 100%;
+    gap: var(--an-s-m);
+}
+
+.theme-switcher-option-label {
+    flex: 1;
+    color: var(--an-engrave);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.theme-switcher-option-control {
+    width: 150px;
+}
+
+.theme-switcher-color-input {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid var(--an-frame);
+    border-radius: var(--an-radius-sm);
+    background: transparent;
+    cursor: pointer;
+}
+
+/* ── Side nav — engraved channel list ────────────────────────── */
+vaadin-side-nav {
+    padding: 0;
+}
+
+vaadin-side-nav::part(label) {
+    padding: var(--an-s-m) 16px var(--an-s-s);
+}
+
+vaadin-side-nav-item {
+    margin: 1px var(--an-s-s);
+}
+
+vaadin-side-nav-item::part(link) {
+    min-height: 36px;
+    padding: 0 12px;
+    border-radius: var(--an-radius-sm);
+    border-left: 3px solid transparent;
+    color: var(--an-textSoft);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+vaadin-side-nav-item::part(link):hover {
+    background: var(--an-bg-2);
+    color: var(--an-text);
+}
+
+vaadin-side-nav-item[current]::part(link) {
+    border-left-color: var(--an-glow);
+    background: linear-gradient(90deg, color-mix(in oklab, var(--an-glow) 14%, transparent), transparent 70%);
+    color: var(--an-glow);
+    font-weight: 700;
+    text-shadow: 0 0 8px color-mix(in oklab, var(--an-glow) 45%, transparent);
+}
+
+vaadin-side-nav-item vaadin-icon {
+    color: var(--an-textMuted);
+}
+
+vaadin-side-nav-item[current] vaadin-icon {
+    color: var(--an-glow);
+}
+
+/* ── Buttons — raised keycaps ────────────────────────────────── */
+vaadin-button {
+    min-height: var(--an-ctrl-h);
+    border: 1px solid var(--an-frame);
+    border-radius: var(--an-radius-sm);
+    background: linear-gradient(180deg, var(--an-body-1), var(--an-body-2));
+    color: var(--an-text);
+    font: 600 12px / 1 var(--an-font-ui);
+    letter-spacing: .04em;
+    box-shadow: var(--an-raise-shadow);
+    cursor: pointer;
+}
+
+vaadin-button:hover {
+    background: linear-gradient(180deg, color-mix(in oklab, var(--an-body-1) 88%, #fff), var(--an-body-2));
+}
+
+vaadin-button:active {
+    box-shadow: var(--an-recess-shadow);
+    transform: translateY(1px);
+}
+
+vaadin-button[theme~="primary"] {
+    border-color: var(--an-glow-dim);
+    background: linear-gradient(180deg, var(--an-glow-hot), var(--an-glow));
+    color: #1a1206;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .35);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, .4) inset,
+        0 0 14px color-mix(in oklab, var(--an-glow) 45%, transparent),
+        0 6px 14px rgba(0, 0, 0, .5);
+}
+
+vaadin-button[theme~="primary"]:hover {
+    background: linear-gradient(180deg, color-mix(in oklab, var(--an-glow-hot) 85%, #fff), var(--an-glow));
+}
+
+/* Filled semantic variants — a distinct colour each, like Lumo.
+   primary follows the glow accent; success/error/contrast stay put. */
+vaadin-button[theme~="primary"][theme~="success"] {
+    border-color: color-mix(in oklab, var(--an-success) 55%, #000);
+    background: linear-gradient(180deg, color-mix(in oklab, var(--an-success) 78%, #fff), var(--an-success));
+    color: #052012;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .3);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, .35) inset,
+        0 0 14px color-mix(in oklab, var(--an-success) 40%, transparent),
+        0 6px 14px rgba(0, 0, 0, .5);
+}
+
+vaadin-button[theme~="primary"][theme~="error"] {
+    border-color: color-mix(in oklab, var(--an-danger) 55%, #000);
+    background: linear-gradient(180deg, color-mix(in oklab, var(--an-danger) 80%, #fff), var(--an-danger));
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .35);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, .3) inset,
+        0 0 14px color-mix(in oklab, var(--an-danger) 40%, transparent),
+        0 6px 14px rgba(0, 0, 0, .5);
+}
+
+vaadin-button[theme~="primary"][theme~="contrast"] {
+    border-color: #000;
+    background: linear-gradient(180deg, var(--an-text), color-mix(in oklab, var(--an-text) 62%, #000));
+    color: var(--an-bg);
+    text-shadow: none;
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, .12) inset,
+        0 6px 14px rgba(0, 0, 0, .5);
+}
+
+/* Outline / text variants — coloured ink on the graphite keycap. */
+vaadin-button[theme~="success"]:not([theme~="primary"]) {
+    color: var(--an-success);
+}
+
+vaadin-button[theme~="error"]:not([theme~="primary"]) {
+    color: var(--an-danger);
+}
+
+vaadin-button[theme~="contrast"]:not([theme~="primary"]) {
+    color: var(--an-text);
+}
+
+vaadin-button[theme~="tertiary"],
+vaadin-button[theme~="icon"] {
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+    color: var(--an-textSoft);
+}
+
+vaadin-button[theme~="tertiary"]:hover,
+vaadin-button[theme~="icon"]:hover {
+    background: var(--an-bg-2);
+    color: var(--an-text);
+}
+
+vaadin-button[theme~="tertiary"][theme~="success"] {
+    color: var(--an-success);
+}
+
+vaadin-button[theme~="tertiary"][theme~="error"] {
+    color: var(--an-danger);
+}
+
+/* ── Inputs — recessed wells ─────────────────────────────────── */
+vaadin-text-field,
+vaadin-text-area,
+vaadin-email-field,
+vaadin-password-field,
+vaadin-number-field,
+vaadin-combo-box,
+vaadin-select,
+vaadin-date-picker {
+    --vaadin-input-field-border-width: 0;
+    --vaadin-input-field-border-radius: var(--an-radius-md);
+    --vaadin-input-field-background: var(--an-panel-1);
+    /* Typed values glow like a lit readout — the theme's signature. */
+    --vaadin-input-field-value-color: var(--an-glow);
+    --vaadin-input-field-label-color: var(--an-engrave);
+    --vaadin-input-field-hover-highlight: transparent;
+    --vaadin-input-field-focus-highlight: transparent;
+    color: var(--an-glow);
+    font-family: var(--an-font-ui);
+}
+
+vaadin-text-field::part(label),
+vaadin-text-area::part(label),
+vaadin-email-field::part(label),
+vaadin-password-field::part(label),
+vaadin-number-field::part(label),
+vaadin-combo-box::part(label),
+vaadin-select::part(label),
+vaadin-date-picker::part(label) {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--an-engrave);
+}
+
+vaadin-text-field::part(input-field),
+vaadin-text-area::part(input-field),
+vaadin-email-field::part(input-field),
+vaadin-password-field::part(input-field),
+vaadin-number-field::part(input-field),
+vaadin-combo-box::part(input-field),
+vaadin-select::part(input-field),
+vaadin-date-picker::part(input-field) {
+    min-height: var(--an-ctrl-h);
+    border-radius: var(--an-radius-md);
+    background: var(--an-panel-1);
+    color: var(--an-glow);
+    box-shadow: var(--an-panel-shadow);
+}
+
+vaadin-text-field[focused]::part(input-field),
+vaadin-text-area[focused]::part(input-field),
+vaadin-email-field[focused]::part(input-field),
+vaadin-password-field[focused]::part(input-field),
+vaadin-number-field[focused]::part(input-field),
+vaadin-combo-box[focused]::part(input-field),
+vaadin-select[focused]::part(input-field),
+vaadin-date-picker[focused]::part(input-field) {
+    box-shadow:
+        var(--an-panel-shadow),
+        0 0 0 2px color-mix(in oklab, var(--an-glow) 55%, transparent);
+}
+
+vaadin-checkbox::part(checkbox),
+vaadin-radio-button::part(radio) {
+    border: 1px solid var(--an-frame);
+    background: var(--an-recess-2);
+    box-shadow: var(--an-panel-shadow);
+}
+
+vaadin-radio-button::part(radio) {
+    border-radius: 50%;
+}
+
+vaadin-checkbox[checked]::part(checkbox),
+vaadin-radio-button[checked]::part(radio) {
+    background: linear-gradient(180deg, var(--an-glow-hot), var(--an-glow));
+    color: #1a1206;
+    box-shadow:
+        0 0 10px color-mix(in oklab, var(--an-glow) 55%, transparent),
+        inset 0 1px 0 rgba(255, 255, 255, .4);
+}
+
+vaadin-checkbox::part(label),
+vaadin-radio-button::part(label) {
+    color: var(--an-text);
+}
+
+/* ── Cards & surfaces — recessed modules ─────────────────────── */
+.view-card,
+.card,
+.demo-card,
+.metric-card,
+.settings-card,
+.chat-card,
+.panel,
+.surface-card,
+vaadin-details,
+vaadin-accordion-panel {
+    border: 1px solid var(--an-frame);
+    border-radius: var(--an-radius-lg);
+    background: linear-gradient(180deg, var(--an-body-1), var(--an-body-2));
+    color: var(--an-text);
+    box-shadow: var(--an-raise-shadow);
+}
+
+vaadin-details::part(summary),
+vaadin-details-summary,
+vaadin-accordion-panel::part(summary),
+vaadin-accordion-heading {
+    min-height: var(--an-ctrl-h);
+    padding: var(--an-s-s) var(--an-s-l);
+    gap: var(--an-s-s);
+    color: var(--an-text);
+    font-weight: 700;
+    letter-spacing: .04em;
+}
+
+/* The disclosure chevron — keep it off the left edge and give it a
+   clear gap before the summary text. */
+vaadin-details-summary::part(toggle),
+vaadin-accordion-heading::part(toggle) {
+    margin-inline: var(--an-s-xs) var(--an-s-s);
+    color: var(--an-engrave);
+}
+
+vaadin-details::part(content),
+vaadin-accordion-panel::part(content) {
+    padding: var(--an-s-m) var(--an-s-l) var(--an-s-l);
+    color: var(--an-textSoft);
+}
+
+/* ── Grid — black-glass readout with a glowing selected row ───── */
+vaadin-grid {
+    border: 1px solid var(--an-frame);
+    border-radius: var(--an-radius-md);
+    background: var(--an-panel-1);
+    --vaadin-grid-cell-background: var(--an-panel-1);
+    color: var(--an-text);
+    font-family: var(--an-font-ui);
+    box-shadow: var(--an-panel-shadow);
+}
+
+vaadin-grid::part(header-cell) {
+    border-bottom: 1px solid var(--an-frame);
+    background: linear-gradient(180deg, var(--an-body-1), var(--an-body-2));
+    color: var(--an-engrave);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+vaadin-grid::part(body-cell) {
+    border-bottom: 1px solid var(--an-line);
+    color: var(--an-text);
+}
+
+vaadin-grid::part(even-row) {
+    --vaadin-grid-cell-background: color-mix(in oklab, var(--an-text) 3%, var(--an-panel-1));
+}
+
+vaadin-grid::part(row):hover {
+    --vaadin-grid-cell-background: color-mix(in oklab, var(--an-glow) 8%, var(--an-panel-1));
+}
+
+vaadin-grid::part(selected-row),
+vaadin-grid::part(selected-row-cell) {
+    --vaadin-grid-cell-background: color-mix(in oklab, var(--an-glow) 20%, var(--an-panel-1));
+    color: var(--an-glow-hot);
+}
+
+vaadin-grid-cell-content {
+    padding: var(--an-s-s) var(--an-s-m);
+}
+
+/* ── Tabs ────────────────────────────────────────────────────── */
+vaadin-tabs {
+    border-bottom: 1px solid var(--an-frame);
+    box-shadow: 0 1px 0 var(--an-bevel-hi);
+}
+
+vaadin-tab {
+    color: var(--an-textSoft);
+    font-family: var(--an-font-ui);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+vaadin-tab:hover {
+    color: var(--an-text);
+}
+
+vaadin-tab[selected] {
+    color: var(--an-glow);
+    text-shadow: 0 0 10px color-mix(in oklab, var(--an-glow) 45%, transparent);
+}
+
+vaadin-tabs::part(forward-button),
+vaadin-tabs::part(back-button) {
+    color: var(--an-textSoft);
+}
+
+/* ── Menus, overlays, items ──────────────────────────────────── */
+vaadin-menu-bar-button {
+    border-radius: var(--an-radius-sm);
+    color: var(--an-text);
+    font-family: var(--an-font-ui);
+}
+
+vaadin-combo-box-overlay::part(overlay),
+vaadin-select-overlay::part(overlay),
+vaadin-date-picker-overlay::part(overlay),
+vaadin-context-menu-overlay::part(overlay),
+vaadin-menu-bar-overlay::part(overlay),
+vaadin-tooltip-overlay::part(overlay) {
+    border: 1px solid var(--an-frame);
+    border-radius: var(--an-radius-md);
+    background: linear-gradient(180deg, var(--an-body-1), var(--an-body-2));
+    color: var(--an-text);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .6);
+}
+
+vaadin-tooltip-overlay::part(overlay) {
+    font-size: 12px;
+}
+
+vaadin-item {
+    color: var(--an-text);
+    font-family: var(--an-font-ui);
+}
+
+vaadin-item:hover,
+vaadin-item[focused] {
+    background: var(--an-bg-2);
+}
+
+vaadin-item[selected] {
+    color: var(--an-glow);
+}
+
+/* ── Messages, notifications, progress, avatars ──────────────── */
+vaadin-message,
+vaadin-notification-card {
+    border: 1px solid var(--an-frame);
+    border-radius: var(--an-radius-md);
+    background: linear-gradient(180deg, var(--an-body-1), var(--an-body-2));
+    color: var(--an-text);
+    box-shadow: var(--an-raise-shadow);
+    font-family: var(--an-font-ui);
+}
+
+vaadin-progress-bar {
+    height: 10px;
+    border-radius: var(--an-radius-pill, 999px);
+    background: var(--an-recess-2);
+    box-shadow: var(--an-panel-shadow);
+}
+
+vaadin-progress-bar::part(bar) {
+    background: transparent;
+}
+
+vaadin-progress-bar::part(value) {
+    border-radius: 999px;
+    background: linear-gradient(180deg, var(--an-glow-hot), var(--an-glow));
+    box-shadow:
+        0 0 10px color-mix(in oklab, var(--an-glow) 60%, transparent),
+        inset 0 1px 0 rgba(255, 255, 255, .35);
+}
+
+vaadin-avatar {
+    border: 1px solid var(--an-frame);
+    background: linear-gradient(180deg, var(--an-body-1), var(--an-body-2));
+    color: var(--an-glow);
+    font-family: var(--an-font-ui);
+    font-weight: 700;
+}
+
+vaadin-icon {
+    color: currentColor;
+}
+
+/* ── Badges — segmented LED chips ────────────────────────────── */
+[theme~="badge"] {
+    display: inline-flex;
+    align-items: center;
+    min-height: 20px;
+    padding: 2px 9px;
+    border: 1px solid color-mix(in oklab, var(--an-textSoft) 45%, transparent);
+    border-radius: var(--an-radius-pill, 999px);
+    background: var(--an-recess-2);
+    color: var(--an-textSoft);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    box-shadow: var(--an-panel-shadow);
+}
+
+[theme~="badge"][theme~="primary"] {
+    border-color: var(--an-glow-dim);
+    background: color-mix(in oklab, var(--an-glow) 18%, var(--an-recess-2));
+    color: var(--an-glow-hot);
+    text-shadow: 0 0 8px color-mix(in oklab, var(--an-glow) 45%, transparent);
+}
+
+[theme~="badge"][theme~="success"] {
+    border-color: color-mix(in oklab, var(--an-success) 50%, #000);
+    background: color-mix(in oklab, var(--an-success) 18%, var(--an-recess-2));
+    color: var(--an-success);
+}
+
+[theme~="badge"][theme~="error"] {
+    border-color: color-mix(in oklab, var(--an-danger) 50%, #000);
+    background: color-mix(in oklab, var(--an-danger) 18%, var(--an-recess-2));
+    color: var(--an-danger);
+}
+
+[theme~="badge"][theme~="warning"] {
+    border-color: color-mix(in oklab, var(--an-warning) 50%, #000);
+    background: color-mix(in oklab, var(--an-warning) 18%, var(--an-recess-2));
+    color: var(--an-warning);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   AQUA — 2000s-Apple light finish.  data-finish="aqua" on <html>.
+   Brushed aluminium + glossy gel + pinstripes.  The glow accent
+   still drives selections and gels, so it composes with the switch.
+   ════════════════════════════════════════════════════════════════ */
+html[data-finish="aqua"] {
+    --an-frame: #9a9ea6;
+    --an-bg: #cfd3d9;
+    --an-bg-2: #e4e7ec;
+    --an-body-1: #fbfcfd;
+    --an-body-2: #d4d8de;
+    --an-body: #e9ebee;
+    --an-recess-1: #ffffff;
+    --an-recess-2: #ffffff;
+    --an-panel-1: #eaf3fd;
+    --an-panel-2: #cfe0f4;
+    --an-knob-1: #ffffff;
+    --an-knob-2: #bcc1c8;
+    --an-bevel-hi: rgba(255, 255, 255, .95);
+    --an-bevel-lo: rgba(0, 0, 0, .16);
+    --an-line: rgba(20, 30, 50, .10);
+    --an-line-lo: rgba(20, 30, 50, .16);
+    --an-text: #1d1d1f;
+    --an-textSoft: #54585f;
+    --an-textMuted: #8a8e96;
+    --an-engrave: #6c7078;
+    --an-success: #2a8a4a;
+    --an-warning: #c07a18;
+    --an-danger: #cf2b22;
+    --an-info: #1f74c9;
+    --an-recess-shadow:
+        inset 0 1px 3px rgba(20, 30, 50, .16),
+        inset 0 -1px 0 rgba(255, 255, 255, .9);
+    --an-raise-shadow:
+        0 1px 0 rgba(255, 255, 255, .9) inset,
+        0 2px 4px rgba(20, 30, 50, .18),
+        0 1px 1px rgba(20, 30, 50, .12);
+    --an-panel-shadow:
+        inset 0 1px 4px rgba(20, 40, 70, .22),
+        inset 0 0 0 1px rgba(20, 30, 50, .12);
+}
+
+/* desktop pinstripe */
+html[data-finish="aqua"] body {
+    color: var(--an-text);
+    background:
+        repeating-linear-gradient(180deg, transparent 0 3px, rgba(40, 70, 120, .022) 3px 4px),
+        linear-gradient(180deg, #eef0f3, #d3d7dd);
+}
+
+html[data-finish="aqua"] ::selection {
+    background: color-mix(in oklab, var(--an-glow) 50%, #fff);
+    color: var(--an-text);
+}
+
+/* brushed-aluminium chassis everywhere a graphite gradient was used */
+html[data-finish="aqua"] vaadin-app-layout::part(navbar),
+html[data-finish="aqua"] .theme-switcher-popover-trigger,
+html[data-finish="aqua"] vaadin-button,
+html[data-finish="aqua"] .view-card,
+html[data-finish="aqua"] .card,
+html[data-finish="aqua"] .demo-card,
+html[data-finish="aqua"] .metric-card,
+html[data-finish="aqua"] .settings-card,
+html[data-finish="aqua"] .chat-card,
+html[data-finish="aqua"] .panel,
+html[data-finish="aqua"] .surface-card,
+html[data-finish="aqua"] vaadin-details,
+html[data-finish="aqua"] vaadin-accordion-panel,
+html[data-finish="aqua"] vaadin-message,
+html[data-finish="aqua"] vaadin-notification-card,
+html[data-finish="aqua"] vaadin-popover-overlay::part(overlay),
+html[data-finish="aqua"] vaadin-dialog-overlay::part(overlay),
+html[data-finish="aqua"] vaadin-combo-box-overlay::part(overlay),
+html[data-finish="aqua"] vaadin-select-overlay::part(overlay),
+html[data-finish="aqua"] vaadin-date-picker-overlay::part(overlay),
+html[data-finish="aqua"] vaadin-context-menu-overlay::part(overlay),
+html[data-finish="aqua"] vaadin-menu-bar-overlay::part(overlay) {
+    background:
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0) 0 2px, rgba(20, 30, 50, .012) 2px 3px),
+        linear-gradient(180deg, #f7f8fa, #d6dade);
+    border-color: #a9adb4;
+}
+
+/* engraved labels lose the dark emboss on light metal */
+html[data-finish="aqua"] .an-label,
+html[data-finish="aqua"] vaadin-side-nav::part(label),
+html[data-finish="aqua"] .theme-switcher-option-label {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .85);
+}
+
+/* glossy gel buttons with the signature top-shine */
+html[data-finish="aqua"] vaadin-button {
+    border: 1px solid rgba(20, 30, 50, .2);
+    border-radius: 9px;
+    background: linear-gradient(180deg, #ffffff, #e2e5ea);
+    color: var(--an-text);
+    text-shadow: none;
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, .9) inset,
+        0 1px 2px rgba(20, 30, 50, .18);
+}
+
+html[data-finish="aqua"] vaadin-button:hover {
+    background: linear-gradient(180deg, #ffffff, #e9ecf0);
+}
+
+html[data-finish="aqua"] vaadin-button[theme~="primary"] {
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+    border-color: rgba(0, 0, 0, .22);
+    background: linear-gradient(180deg, var(--an-glow-hot), var(--an-glow-dim));
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, .5) inset,
+        0 2px 5px rgba(20, 30, 50, .28);
+}
+
+/* filled semantic gels stay distinct under Aqua too */
+html[data-finish="aqua"] vaadin-button[theme~="primary"][theme~="success"] {
+    background: linear-gradient(180deg, #46c46e, #2a8a4a);
+    border-color: rgba(0, 0, 0, .22);
+    color: #fff;
+}
+
+html[data-finish="aqua"] vaadin-button[theme~="primary"][theme~="error"] {
+    background: linear-gradient(180deg, #e8554b, #cf2b22);
+    border-color: rgba(0, 0, 0, .22);
+    color: #fff;
+}
+
+html[data-finish="aqua"] vaadin-button[theme~="primary"][theme~="contrast"] {
+    background: linear-gradient(180deg, #6b7078, #3a3d42);
+    border-color: rgba(0, 0, 0, .3);
+    color: #fff;
+}
+
+html[data-finish="aqua"] vaadin-button[theme~="tertiary"],
+html[data-finish="aqua"] vaadin-button[theme~="icon"] {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+/* white inset fields */
+html[data-finish="aqua"] vaadin-text-field::part(input-field),
+html[data-finish="aqua"] vaadin-text-area::part(input-field),
+html[data-finish="aqua"] vaadin-email-field::part(input-field),
+html[data-finish="aqua"] vaadin-password-field::part(input-field),
+html[data-finish="aqua"] vaadin-number-field::part(input-field),
+html[data-finish="aqua"] vaadin-combo-box::part(input-field),
+html[data-finish="aqua"] vaadin-select::part(input-field),
+html[data-finish="aqua"] vaadin-date-picker::part(input-field) {
+    background: #ffffff;
+    color: var(--an-text);
+}
+
+/* Aqua reads dark ink on the white LCD, not the amber backlight. */
+html[data-finish="aqua"] vaadin-text-field,
+html[data-finish="aqua"] vaadin-text-area,
+html[data-finish="aqua"] vaadin-email-field,
+html[data-finish="aqua"] vaadin-password-field,
+html[data-finish="aqua"] vaadin-number-field,
+html[data-finish="aqua"] vaadin-combo-box,
+html[data-finish="aqua"] vaadin-select,
+html[data-finish="aqua"] vaadin-date-picker {
+    --vaadin-input-field-value-color: var(--an-text);
+    color: var(--an-text);
+}
+
+/* blue/candy gel selection in the side nav */
+html[data-finish="aqua"] vaadin-side-nav-item[current]::part(link) {
+    border-left-color: transparent;
+    border-radius: 6px;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .25);
+    background: linear-gradient(180deg, var(--an-glow-hot), var(--an-glow));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .4),
+        0 1px 2px rgba(20, 30, 50, .2);
+}
+
+html[data-finish="aqua"] vaadin-side-nav-item[current] vaadin-icon,
+html[data-finish="aqua"] vaadin-tab[selected] {
+    color: var(--an-glow);
+    text-shadow: none;
+}
+
+/* glowing readout row becomes a solid candy selection */
+html[data-finish="aqua"] vaadin-grid {
+    background: #ffffff;
+    --vaadin-grid-cell-background: #ffffff;
+}
+
+html[data-finish="aqua"] vaadin-grid::part(selected-row),
+html[data-finish="aqua"] vaadin-grid::part(selected-row-cell) {
+    --vaadin-grid-cell-background: color-mix(in oklab, var(--an-glow) 55%, #fff);
+    color: var(--an-text);
+}
+
+/* candy-stripe animated progress */
+html[data-finish="aqua"] vaadin-progress-bar::part(value) {
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, .5) 25%, transparent 25% 50%, rgba(255, 255, 255, .5) 50% 75%, transparent 75%),
+        linear-gradient(180deg, var(--an-glow-hot), var(--an-glow));
+    background-size: 20px 20px, 100% 100%;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5);
+    animation: an-candy 1s linear infinite;
+}
+
+@keyframes an-candy {
+    to {
+        background-position: 20px 0, 0 0;
+    }
+}
+
+/* gel badges */
+html[data-finish="aqua"] [theme~="badge"] {
+    background: #eef1f4;
+    color: var(--an-textSoft);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, .8),
+        inset 0 0 0 1px rgba(20, 30, 50, .1);
+}
+
+html[data-finish="aqua"] [theme~="badge"][theme~="primary"] {
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .25);
+    background: linear-gradient(180deg, var(--an-glow-hot), var(--an-glow));
+}
+
+html[data-finish="aqua"] [theme~="badge"][theme~="success"] {
+    color: #fff;
+    background: linear-gradient(180deg, #46c46e, #2a8a4a);
+}
+
+html[data-finish="aqua"] [theme~="badge"][theme~="warning"] {
+    color: #fff;
+    background: linear-gradient(180deg, #f0a43a, #c07a18);
+}
+
+html[data-finish="aqua"] [theme~="badge"][theme~="error"] {
+    color: #fff;
+    background: linear-gradient(180deg, #e8554b, #cf2b22);
+}
+
+/* ── Mobile ──────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+    vaadin-app-layout [slot="navbar"] h1 {
+        font-size: 0;
+    }
+
+    vaadin-app-layout [slot="navbar"] h1::before {
+        width: 12px;
+        height: 12px;
+    }
+
+    .app-top-nav {
+        display: none !important;
+    }
+
+    .theme-switcher-popover-trigger {
+        min-width: 40px;
+        padding-inline: 8px;
+    }
+}

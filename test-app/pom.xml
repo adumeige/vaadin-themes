@@ -61,6 +61,11 @@
             <artifactId>theme-anything</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.antoined</groupId>
+            <artifactId>theme-analog</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

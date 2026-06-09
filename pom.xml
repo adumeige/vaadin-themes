@@ -27,6 +27,7 @@
         <module>theme-glass</module>
         <module>theme-brutalist</module>
         <module>theme-anything</module>
+        <module>theme-analog</module>
         <module>test-app</module>
     </modules>
 

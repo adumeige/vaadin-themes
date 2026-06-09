@@ -10,6 +10,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.router.RouterLink;
+import org.antoined.vaadinthemes.analog.AnalogTheme;
 import org.antoined.vaadinthemes.anything.AnythingTheme;
 import org.antoined.vaadinthemes.brutalist.BrutalistTheme;
 import org.antoined.vaadinthemes.fjord.FjordTheme;
@@ -82,7 +83,8 @@ public class MainLayout extends AppLayout {
                 NovelistTheme.definition(),
                 GlassTheme.definition(),
                 BrutalistTheme.definition(),
-                AnythingTheme.definition());
+                AnythingTheme.definition(),
+                AnalogTheme.definition());
     }
 
     private ThemeDefinition lumoDefinition() {
@@ -138,6 +140,10 @@ public class MainLayout extends AppLayout {
                 switcher.setOptionValue("mode", "light", false);
                 switcher.setOptionValue("accent", "oxblood", false);
                 switcher.setOptionValue("density", "regular", false);
+            }
+            case AnalogTheme.ID -> {
+                switcher.setOptionValue("finish", "graphite", false);
+                switcher.setOptionValue("glow", "amber", false);
             }
             default -> {
             }
