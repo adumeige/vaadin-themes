@@ -48,6 +48,18 @@ to focus rings / active rails / selected rows. Five paper-stock palettes (Paper 
 Inputs render as a single left filet at rest and snap to a full frame on focus — manuscript-margin until you engage.
 Imported from the Anything design system authored in Claude Design.
 
+### Analog
+
+![Analog theme screenshot 1](resources/analog-00.png)
+![Analog theme screenshot 2](resources/analog-01.png)
+
+A 90s hi-fi, skeuomorphic instrument panel. Charcoal plastic body with deep recessed bevels, engraved
+Barlow Semi Condensed labels, and black-glass wells whose typed values glow like a lit readout. Two tweaks ride on the
+`<html>` element: **Glow** swaps the backlight accent (Amber / VFD Green / Ice Cyan / Alert Red — only the glow
+changes, the graphite body stays put), and **Finish** flips between Graphite and a 2000s-Apple **Aqua** light mode —
+brushed aluminium, glossy gel buttons, pinstripes, and candy-stripe progress (second screenshot). The two compose, so
+the accent tints Aqua's gels and selections. Imported from the Analog design system authored in Claude Design.
+
 ## The `theme` submodule
 
 The `theme` submodule provides the runtime theme model and ready-made Vaadin components for choosing a theme. It
@@ -166,7 +178,7 @@ public class AppShell implements AppShellConfigurator {
 }
 ```
 
-Available theme names: `seagod`, `fjord`, `terminal-synth`, `novelist`, `glass`, `brutalist`, `anything`.
+Available theme names: `seagod`, `fjord`, `terminal-synth`, `novelist`, `glass`, `brutalist`, `anything`, `analog`.
 
 ## Build
 
