@@ -38,6 +38,7 @@ public final class ThemeSwitcher extends Composite<HorizontalLayout> {
     private final AppLayout appLayout;
 
     private ThemeDefinition selectedTheme;
+    private String fallbackThemeId;
     private boolean persistenceEnabled;
     private String selectedThemeStorageKey = "vaadin-theme:selected";
     private boolean suppressOptionPersistence;
@@ -53,11 +54,19 @@ public final class ThemeSwitcher extends Composite<HorizontalLayout> {
         configureLayout();
         configureThemeSelector();
         addAttachListener(event -> {
-            if (persistenceEnabled) {
-                restoreSelectedThemeOrApplyCurrent(event.getUI());
-            } else if (selectedTheme != null) {
-                setSelectedTheme(selectedTheme, false);
-            }
+            // Deferred to the end of the round-trip: callers configure the storage key,
+            // persistence and the fallback theme right after adding the switcher, so
+            // reading those fields during the attach event itself would see stale values.
+            event.getUI().beforeClientResponse(this, context -> {
+                if (!isAttached()) {
+                    return;
+                }
+                if (persistenceEnabled) {
+                    restoreSelectedThemeOrApplyCurrent(event.getUI());
+                } else if (selectedTheme != null) {
+                    setSelectedTheme(selectedTheme, false);
+                }
+            });
         });
     }
 
@@ -71,6 +80,19 @@ public final class ThemeSwitcher extends Composite<HorizontalLayout> {
             return;
         }
         findTheme(themeId).ifPresent(theme -> setSelectedTheme(theme, false));
+    }
+
+    /**
+     * Theme applied on attach when nothing has been selected yet and persistence holds no
+     * selection. Unlike {@link #setSelectedTheme(String)} this never applies or persists a
+     * theme by itself, so it is safe to call on a switcher that is already attached.
+     */
+    public void setFallbackThemeId(String fallbackThemeId) {
+        this.fallbackThemeId = fallbackThemeId;
+    }
+
+    public String getFallbackThemeId() {
+        return fallbackThemeId;
     }
 
     public Optional<ThemeDefinition> getSelectedTheme() {
@@ -172,6 +194,13 @@ public final class ThemeSwitcher extends Composite<HorizontalLayout> {
         if (themeSelector.getValue() != theme) {
             themeSelector.setValue(theme);
         }
+        if (!isAttached()) {
+            // Applying a theme mutates the live document through executeJs. A switcher that
+            // is not attached (built in a constructor, or sitting in an unselected TabSheet
+            // tab) must not clobber the theme the user is currently looking at: only record
+            // the selection here, the attach listener applies it for real.
+            return;
+        }
         applier.applyTheme(theme, themes, appLayout, persistenceEnabled, selectedThemeStorageKey);
         rebuildOptions(theme);
         fireEvent(new ThemeChangeEvent(this, fromClient, theme));
@@ -184,7 +213,7 @@ public final class ThemeSwitcher extends Composite<HorizontalLayout> {
             OptionBinding binding = createOptionBinding(theme, option);
             optionBindings.put(option.key(), binding);
             optionsBar.add(renderOption(option, binding.component()));
-            if (persistenceEnabled && option.persistent()) {
+            if (persistenceEnabled && option.persistent() && isAttached()) {
                 restoreOptionValue(theme, option, binding);
             }
         }
@@ -277,12 +306,13 @@ public final class ThemeSwitcher extends Composite<HorizontalLayout> {
 
     private void applyOption(ThemeDefinition theme, ThemeOption option, String value) {
         applier.applyOption(option, value, appLayout);
-        if (persistenceEnabled && option.persistent() && !suppressOptionPersistence) {
+        UI ui = UI.getCurrent();
+        if (ui != null && persistenceEnabled && option.persistent() && !suppressOptionPersistence) {
             String storageKey = applier.storageKey(theme, option);
             if (value == null || value.isBlank()) {
-                UI.getCurrent().getPage().executeJs("localStorage.removeItem($0)", storageKey);
+                ui.getPage().executeJs("localStorage.removeItem($0)", storageKey);
             } else {
-                UI.getCurrent().getPage().executeJs("localStorage.setItem($0, $1)", storageKey, value);
+                ui.getPage().executeJs("localStorage.setItem($0, $1)", storageKey, value);
             }
         }
     }
@@ -294,6 +324,8 @@ public final class ThemeSwitcher extends Composite<HorizontalLayout> {
                         setSelectedTheme(storedThemeId);
                     } else if (selectedTheme != null) {
                         setSelectedTheme(selectedTheme, false);
+                    } else {
+                        setSelectedTheme(fallbackThemeId);
                     }
                 });
     }

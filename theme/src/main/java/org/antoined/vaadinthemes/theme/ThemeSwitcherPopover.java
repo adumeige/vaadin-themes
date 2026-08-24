@@ -63,6 +63,14 @@ public final class ThemeSwitcherPopover extends Composite<Span> {
         switcher.setSelectedTheme(themeId);
     }
 
+    public void setFallbackThemeId(String fallbackThemeId) {
+        switcher.setFallbackThemeId(fallbackThemeId);
+    }
+
+    public String getFallbackThemeId() {
+        return switcher.getFallbackThemeId();
+    }
+
     public Optional<ThemeDefinition> getSelectedTheme() {
         return switcher.getSelectedTheme();
     }
