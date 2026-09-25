@@ -180,6 +180,48 @@ public class AppShell implements AppShellConfigurator {
 
 Available theme names: `seagod`, `fjord`, `terminal-synth`, `novelist`, `glass`, `brutalist`, `anything`, `analog`.
 
+## Maven packages
+
+GitHub Actions builds pull requests and publishes snapshots to GitHub Packages on
+pushes to `main`. Tags matching `v*` and manual workflow runs also publish the
+version declared in the POM; tags do not change the Maven version.
+
+Add this repository to your application's `pom.xml`:
+
+```xml
+<repositories>
+    <repository>
+        <id>github-vaadin-themes</id>
+        <url>https://maven.pkg.github.com/adumeige/vaadin-themes</url>
+        <snapshots><enabled>true</enabled></snapshots>
+    </repository>
+</repositories>
+```
+
+Add a matching server to `~/.m2/settings.xml` (merge it into your existing
+`<servers>` section if present):
+
+```xml
+<settings>
+    <servers>
+        <server>
+            <id>github-vaadin-themes</id>
+            <username>${env.GITHUB_ACTOR}</username>
+            <password>${env.GITHUB_TOKEN}</password>
+        </server>
+    </servers>
+</settings>
+```
+
+Set `GITHUB_ACTOR` to your GitHub username and `GITHUB_TOKEN` to a personal access
+token (classic) with `read:packages` and access to this repository. GitHub Packages
+requires authentication for Maven downloads, including public packages; see the
+[GitHub Maven registry documentation](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry).
+
+CI publishes the parent POM, shared `theme` module, and every theme declared in
+the reactor, including `theme-analog`. Only `test-app` is excluded, so adding a new
+theme module to the parent POM automatically includes it in publishing.
+
 ## Build
 
 ```bash
