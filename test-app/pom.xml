@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.antoined</groupId>
+        <groupId>io.github.adumeige.vaadin-themes</groupId>
         <artifactId>vaadin-themes</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
@@ -22,47 +22,47 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.antoined</groupId>
+            <groupId>io.github.adumeige.vaadin-themes</groupId>
             <artifactId>theme</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.antoined</groupId>
+            <groupId>io.github.adumeige.vaadin-themes</groupId>
             <artifactId>theme-seagod</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.antoined</groupId>
+            <groupId>io.github.adumeige.vaadin-themes</groupId>
             <artifactId>theme-fjord</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.antoined</groupId>
+            <groupId>io.github.adumeige.vaadin-themes</groupId>
             <artifactId>theme-terminal-synth</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.antoined</groupId>
+            <groupId>io.github.adumeige.vaadin-themes</groupId>
             <artifactId>theme-novelist</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.antoined</groupId>
+            <groupId>io.github.adumeige.vaadin-themes</groupId>
             <artifactId>theme-glass</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.antoined</groupId>
+            <groupId>io.github.adumeige.vaadin-themes</groupId>
             <artifactId>theme-brutalist</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.antoined</groupId>
+            <groupId>io.github.adumeige.vaadin-themes</groupId>
             <artifactId>theme-anything</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.antoined</groupId>
+            <groupId>io.github.adumeige.vaadin-themes</groupId>
             <artifactId>theme-analog</artifactId>
             <version>${project.version}</version>
         </dependency>
