@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>theme-seagod</artifactId>
+    <name>Vaadin Themes - Seagod</name>
     <description>Vaadin theme inspired by the Poseidon UI kit — deep navy sidebar, ocean blue accents, clean modern
         design.
     </description>

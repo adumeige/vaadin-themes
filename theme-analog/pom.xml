@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>theme-analog</artifactId>
+    <name>Vaadin Themes - Analog</name>
     <description>Analog Vaadin theme — a 90s hi-fi / skeuomorphic instrument-panel look extracted from the Analog Player
         prototype.
     </description>
