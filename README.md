@@ -186,8 +186,11 @@ Released versions are published to Maven Central under
 `io.github.adumeige.vaadin-themes`. Consumers only need the dependency declaration;
 no additional Maven repository or download credentials are required.
 
-The examples above target the first planned release, `1.0.0`. It becomes available
-after its deployment is published in Sonatype Central Portal.
+The examples above target version `1.0.0`. Releases are also mirrored to
+[GitHub Packages](https://github.com/adumeige/vaadin-themes/packages) and attached to
+[GitHub Releases](https://github.com/adumeige/vaadin-themes/releases). GitHub Packages
+still requires download credentials and a repository declaration; Maven Central
+is the recommended source for consumers.
 
 ### Publishing a release
 
@@ -204,23 +207,47 @@ The public signing key must also be uploaded to a keyserver supported by Central
 such as `keyserver.ubuntu.com`.
 
 1. Merge the changes to release into `main` and check that CI passes.
-2. Open **Actions → Build and stage themes for Maven Central → Run workflow**.
-3. Select `main` and enter a new release version such as `1.0.0`.
-4. The workflow sets that version across the reactor in its temporary checkout,
-   builds and signs the artifacts, uploads one deployment, and waits for validation.
-5. Review the deployment in [Sonatype Central Portal](https://central.sonatype.com/publishing/deployments)
-   and click **Publish**.
-6. Once Central serves the artifacts, create a matching Git tag/release from the
-   source commit shown in the successful workflow summary.
+2. Open **Actions → Build and publish themes → Run workflow**.
+3. Select `main` and enter a new release version, for example `1.0.1`.
+4. The workflow creates a release commit with that version in the POMs, builds
+   and signs once, and automatically publishes to Maven Central. It waits for
+   publication, allowing up to an hour for Central to complete.
+5. It creates an annotated `v<version>` tag and a draft GitHub Release, then
+   mirrors the exact signed POMs, JARs, sources, and Javadocs to GitHub Packages.
+6. After verifying the mirror, it attaches those artifacts and the Central bundle
+   to the GitHub Release and makes the release public, with generated release notes.
+
+There is no final **Publish** click in Sonatype for workflow releases. The existing
+four secrets are sufficient: GitHub publishing uses the workflow's built-in
+`GITHUB_TOKEN` with `contents: write` and `packages: write` permissions.
 
 Release versions are immutable once published. Choose a new version for each
-release. Workflow version changes are not committed back to the repository;
-development remains on the POM's snapshot version.
+release; do not reuse `1.0.0` if it has already been published. The release tag points
+to the versioned release commit, whose parent is the selected source commit.
+That commit is not pushed onto `main`, so development keeps its snapshot version.
 
-Pushes and pull requests build the themes and verify source/Javadoc generation.
-Uploading a release requires a manual workflow run on `main`; tags do not trigger
-publishing. The Maven GPG plugin signs directly from the key and passphrase supplied
-through environment variables, without importing the private key into a runner keyring.
+### Recovering an interrupted release
+
+Central and GitHub cannot publish atomically. If Central succeeds and the GitHub
+job fails, the workflow keeps its bundle and release source for 90 days. Use
+**Re-run failed jobs** on that same Actions run to resume the GitHub job. It reuses
+the original artifacts, skips byte-identical files already uploaded, and refuses
+to replace conflicting files. The GitHub Release stays a draft until its package
+mirror and release assets succeed; its tag may already be visible.
+
+Do not start a new workflow run or rerun all jobs for a version already published
+to Central. If the Central job itself fails or times out, check its deployment in
+[Sonatype Central Portal](https://central.sonatype.com/publishing/deployments)
+before attempting recovery: publication may have continued after the runner stopped.
+The saved bundle allows manual recovery without rebuilding.
+
+Pushes and pull requests build the themes, verify source/Javadoc generation, and
+test package mirroring against a temporary Maven repository. Uploading a release
+requires a manual workflow run on `main`; tags do not trigger publishing.
+The Maven GPG plugin signs directly from the key and passphrase supplied through
+environment variables, without importing the private key into a runner keyring.
+A local `-Pcentral-release deploy` retains manual Sonatype staging by default;
+the workflow explicitly enables automatic publication.
 
 CI publishes the parent POM, shared `theme` module, and every theme declared in
 the reactor, including `theme-analog`. Only `test-app` is excluded, so adding a new
@@ -243,3 +270,4 @@ Run the preview app:
 ```bash
 mvn spring-boot:run -pl test-app
 ```
+
