@@ -1,21 +1,25 @@
-name: Build and publish themes
+name: Build and stage themes for Maven Central
 
 on:
   push:
     branches: [ main ]
-    tags: [ 'v*' ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version to stage in Sonatype (for example 1.0.0)'
+        required: true
+        default: '1.0.0'
+        type: string
 
 permissions:
   contents: read
-  packages: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,21 +30,70 @@ jobs:
           distribution: temurin
           java-version: '21'
           cache: maven
-          server-id: github
-          server-username: GITHUB_ACTOR
-          server-password: GITHUB_TOKEN
 
-      - name: Build theme modules
-        run: >-
-          mvn -B -ntp verify
-          -pl '!test-app'
-          -DskipTests
+      - name: Verify theme modules, sources, and Javadocs
+        run: mvn -B -ntp -Pcentral-release verify -pl '!test-app' -Dgpg.skip=true
 
-      - name: Publish theme modules to GitHub Packages
-        if: github.event_name != 'pull_request'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  stage:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    concurrency:
+      group: central-release
+      cancel-in-progress: false
+    env:
+      RELEASE_VERSION: ${{ inputs.version }}
+      CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
+      CENTRAL_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
+      MAVEN_GPG_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+      MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+    steps:
+      - name: Validate release input and required secrets
+        shell: bash
+        run: |
+          if [[ ! "$RELEASE_VERSION" =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]; then
+            echo "::error::Use a release version such as 1.0.0 (no SNAPSHOT suffix)."
+            exit 1
+          fi
+          for secret_name in CENTRAL_USERNAME CENTRAL_PASSWORD MAVEN_GPG_KEY MAVEN_GPG_PASSPHRASE; do
+            if [[ -z "${!secret_name}" ]]; then
+              echo "::error::Missing publishing credential: $secret_name"
+              exit 1
+            fi
+          done
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java and Central credentials
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          server-id: central
+          server-username: CENTRAL_USERNAME
+          server-password: CENTRAL_PASSWORD
+
+      - name: Set release version in the runner checkout
         run: >-
-          mvn -B -ntp deploy
-          -pl '!test-app'
-          -DskipTests
+          mvn -B -ntp org.codehaus.mojo:versions-maven-plugin:2.22.0:set
+          "-DnewVersion=$RELEASE_VERSION"
+          -DprocessAllModules=true
+          -DgenerateBackupPoms=false
+
+      - name: Build, sign, upload, and wait for Sonatype validation
+        run: mvn -B -ntp -Pcentral-release clean deploy -pl '!test-app'
+
+      - name: Record staged release
+        shell: bash
+        run: |
+          {
+            echo "### Staged release: $RELEASE_VERSION"
+            echo ""
+            echo "Source commit: $GITHUB_SHA"
+            echo ""
+            echo "The parent POM and theme modules passed Sonatype validation."
+            echo "Review the deployment and click Publish in https://central.sonatype.com/publishing/deployments."
+          } >> "$GITHUB_STEP_SUMMARY"
