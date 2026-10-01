@@ -1,4 +1,4 @@
-name: Build and stage themes for Maven Central
+name: Build and publish themes
 
 on:
   push:
@@ -8,13 +8,18 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Release version to stage in Sonatype (for example 1.0.0)'
+        description: 'New release version for Central and GitHub (for example 1.0.1)'
         required: true
-        default: '1.0.0'
+        default: '1.0.1'
         type: string
 
 permissions:
   contents: read
+
+# Hold the lock across both registries and the GitHub Release.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'workflow_dispatch' && 'release' || github.ref }}
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -31,17 +36,17 @@ jobs:
           java-version: '21'
           cache: maven
 
+      - name: Test signed-bundle mirroring and partial-upload recovery
+        run: python3 -m unittest discover -s .github/scripts -p 'test_*.py' -v
+
       - name: Verify theme modules, sources, and Javadocs
         run: mvn -B -ntp -Pcentral-release verify -pl '!test-app' -Dgpg.skip=true
 
-  stage:
+  central:
     if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
-    timeout-minutes: 45
-    concurrency:
-      group: central-release
-      cancel-in-progress: false
+    timeout-minutes: 75
     env:
       RELEASE_VERSION: ${{ inputs.version }}
       CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
@@ -53,7 +58,7 @@ jobs:
         shell: bash
         run: |
           if [[ ! "$RELEASE_VERSION" =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]; then
-            echo "::error::Use a release version such as 1.0.0 (no SNAPSHOT suffix)."
+            echo "::error::Use a release version such as 1.0.1 (no SNAPSHOT suffix)."
             exit 1
           fi
           for secret_name in CENTRAL_USERNAME CENTRAL_PASSWORD MAVEN_GPG_KEY MAVEN_GPG_PASSPHRASE; do
@@ -65,6 +70,16 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Refuse an existing release tag
+        shell: bash
+        run: |
+          if git show-ref --verify --quiet "refs/tags/v$RELEASE_VERSION"; then
+            echo "::error::Tag v$RELEASE_VERSION already exists. Choose a new version."
+            exit 1
+          fi
 
       - name: Set up Java and Central credentials
         uses: actions/setup-java@v4
@@ -76,24 +91,149 @@ jobs:
           server-username: CENTRAL_USERNAME
           server-password: CENTRAL_PASSWORD
 
-      - name: Set release version in the runner checkout
-        run: >-
-          mvn -B -ntp org.codehaus.mojo:versions-maven-plugin:2.22.0:set
-          "-DnewVersion=$RELEASE_VERSION"
-          -DprocessAllModules=true
-          -DgenerateBackupPoms=false
-
-      - name: Build, sign, upload, and wait for Sonatype validation
-        run: mvn -B -ntp -Pcentral-release clean deploy -pl '!test-app'
-
-      - name: Record staged release
+      - name: Set release version and preserve the exact release source
         shell: bash
         run: |
+          mvn -B -ntp org.codehaus.mojo:versions-maven-plugin:2.22.0:set \
+            "-DnewVersion=$RELEASE_VERSION" -DprocessAllModules=true -DgenerateBackupPoms=false
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- pom.xml ':(glob)**/pom.xml'
+          git commit -m "Release $RELEASE_VERSION"
+          mkdir -p .release
+          git bundle create .release/release-source.bundle HEAD
+          python3 - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+          manifest = {
+              "version": os.environ["RELEASE_VERSION"],
+              "groupId": "io.github.adumeige.vaadin-themes",
+              "sourceCommit": os.environ["GITHUB_SHA"],
+              "releaseCommit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
+          }
+          Path(".release/release-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
+          PY
+
+      - name: Build, sign, and publish to Maven Central
+        run: >-
+          mvn -B -ntp -Pcentral-release clean deploy -pl '!test-app'
+          -Dcentral.autoPublish=true -Dcentral.waitUntil=published
+
+      - name: Preserve the signed Central bundle, including on publication failure
+        if: always()
+        shell: bash
+        run: |
+          if [[ -f target/central-publishing/central-bundle.zip ]]; then
+            mkdir -p .release
+            cp target/central-publishing/central-bundle.zip .release/central-bundle.zip
+          fi
+
+      - name: Retain release artifacts for the GitHub job and retries
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ inputs.version }}
+          path: |
+            .release/central-bundle.zip
+            .release/release-manifest.json
+            .release/release-source.bundle
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 90
+
+      - name: Record Central publication
+        run: |
+          echo "Maven Central published $RELEASE_VERSION. The GitHub job will mirror this signed bundle." >> "$GITHUB_STEP_SUMMARY"
+
+  github:
+    needs: central
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      packages: write
+    env:
+      RELEASE_VERSION: ${{ inputs.version }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download the exact artifacts published to Central
+        uses: actions/download-artifact@v4
+        with:
+          name: release-${{ inputs.version }}
+          path: .release
+
+      - name: Restore release source and validate its manifest
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          manifest = json.loads(Path(".release/release-manifest.json").read_text())
+          assert manifest["version"] == os.environ["RELEASE_VERSION"]
+          assert manifest["sourceCommit"] == os.environ["GITHUB_SHA"]
+          assert manifest["groupId"] == "io.github.adumeige.vaadin-themes"
+          with open(os.environ["GITHUB_ENV"], "a") as environment:
+              environment.write("RELEASE_COMMIT=" + manifest["releaseCommit"] + "\n")
+          PY
+          git fetch .release/release-source.bundle HEAD
+          git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$(python3 -c 'import json; print(json.load(open(".release/release-manifest.json"))["releaseCommit"])')"
+
+      - name: Create matching annotated tag and draft GitHub Release
+        shell: bash
+        run: |
+          tag="v$RELEASE_VERSION"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin --tags
+          if git show-ref --verify --quiet "refs/tags/$tag"; then
+            test "$(git rev-parse "$tag^{commit}")" = "$RELEASE_COMMIT"
+          else
+            git tag -a "$tag" "$RELEASE_COMMIT" -m "Release $RELEASE_VERSION (source $GITHUB_SHA)"
+            git push origin "refs/tags/$tag"
+          fi
+          if gh release view "$tag" --json isDraft > .release/github-release.json 2>/dev/null; then
+            python3 -c 'import json; assert json.load(open(".release/github-release.json"))["isDraft"], "Release is already public"'
+          else
+            gh release create "$tag" --verify-tag --draft --generate-notes --title "$tag"
+          fi
+          gh release upload "$tag" .release/central-bundle.zip .release/release-manifest.json --clobber
+
+      - name: Set up Java and GitHub Packages credentials
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          server-id: github
+          server-username: GITHUB_ACTOR
+          server-password: GITHUB_TOKEN
+
+      - name: Mirror and verify signed artifacts in GitHub Packages
+        shell: bash
+        run: |
+          python3 .github/scripts/publish_github_packages.py \
+            --bundle .release/central-bundle.zip \
+            --group io.github.adumeige.vaadin-themes --version "$RELEASE_VERSION" \
+            --repository "https://maven.pkg.github.com/${GITHUB_REPOSITORY,,}" \
+            --assets .release/assets
+
+      - name: Attach artifacts and publish the GitHub Release
+        shell: bash
+        run: |
+          gh release upload "v$RELEASE_VERSION" .release/assets/* --clobber
+          gh release edit "v$RELEASE_VERSION" --draft=false
           {
-            echo "### Staged release: $RELEASE_VERSION"
+            echo "### Published $RELEASE_VERSION"
             echo ""
+            echo "Maven Central and GitHub Packages contain the same signed POMs, JARs, sources, and Javadocs."
+            echo "Release: https://github.com/$GITHUB_REPOSITORY/releases/tag/v$RELEASE_VERSION"
             echo "Source commit: $GITHUB_SHA"
-            echo ""
-            echo "The parent POM and theme modules passed Sonatype validation."
-            echo "Review the deployment and click Publish in https://central.sonatype.com/publishing/deployments."
+            echo "Release commit (versioned POMs): $RELEASE_COMMIT"
           } >> "$GITHUB_STEP_SUMMARY"
