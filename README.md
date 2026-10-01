@@ -71,14 +71,14 @@ Add the shared module, plus whichever theme modules your app wants to offer:
 ```xml
 
 <dependency>
-    <groupId>org.antoined</groupId>
+    <groupId>io.github.adumeige.vaadin-themes</groupId>
     <artifactId>theme</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency>
 <dependency>
-<groupId>org.antoined</groupId>
+<groupId>io.github.adumeige.vaadin-themes</groupId>
 <artifactId>theme-glass</artifactId>
-<version>1.0.0-SNAPSHOT</version>
+<version>1.0.0</version>
 </dependency>
 ```
 
@@ -163,9 +163,9 @@ Add the theme module as a dependency:
 ```xml
 
 <dependency>
-    <groupId>org.antoined</groupId>
+    <groupId>io.github.adumeige.vaadin-themes</groupId>
     <artifactId>theme-fjord</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -182,45 +182,55 @@ Available theme names: `seagod`, `fjord`, `terminal-synth`, `novelist`, `glass`,
 
 ## Maven packages
 
-GitHub Actions builds pull requests and publishes snapshots to GitHub Packages on
-pushes to `main`. Tags matching `v*` and manual workflow runs also publish the
-version declared in the POM; tags do not change the Maven version.
+Released versions are published to Maven Central under
+`io.github.adumeige.vaadin-themes`. Consumers only need the dependency declaration;
+no additional Maven repository or download credentials are required.
 
-Add this repository to your application's `pom.xml`:
+The examples above target the first planned release, `1.0.0`. It becomes available
+after its deployment is published in Sonatype Central Portal.
 
-```xml
-<repositories>
-    <repository>
-        <id>github-vaadin-themes</id>
-        <url>https://maven.pkg.github.com/adumeige/vaadin-themes</url>
-        <snapshots><enabled>true</enabled></snapshots>
-    </repository>
-</repositories>
-```
+### Publishing a release
 
-Add a matching server to `~/.m2/settings.xml` (merge it into your existing
-`<servers>` section if present):
+Configure these repository secrets in **Settings → Secrets and variables → Actions**:
 
-```xml
-<settings>
-    <servers>
-        <server>
-            <id>github-vaadin-themes</id>
-            <username>${env.GITHUB_ACTOR}</username>
-            <password>${env.GITHUB_TOKEN}</password>
-        </server>
-    </servers>
-</settings>
-```
+| Secret | Value |
+| --- | --- |
+| `CENTRAL_USERNAME` | Sonatype Central Portal token username |
+| `CENTRAL_PASSWORD` | Sonatype Central Portal token password |
+| `GPG_PRIVATE_KEY` | Full ASCII-armored exported private signing key |
+| `GPG_PASSPHRASE` | Signing key passphrase |
 
-Set `GITHUB_ACTOR` to your GitHub username and `GITHUB_TOKEN` to a personal access
-token (classic) with `read:packages` and access to this repository. GitHub Packages
-requires authentication for Maven downloads, including public packages; see the
-[GitHub Maven registry documentation](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry).
+The public signing key must also be uploaded to a keyserver supported by Central,
+such as `keyserver.ubuntu.com`.
+
+1. Merge the changes to release into `main` and check that CI passes.
+2. Open **Actions → Build and stage themes for Maven Central → Run workflow**.
+3. Select `main` and enter a new release version such as `1.0.0`.
+4. The workflow sets that version across the reactor in its temporary checkout,
+   builds and signs the artifacts, uploads one deployment, and waits for validation.
+5. Review the deployment in [Sonatype Central Portal](https://central.sonatype.com/publishing/deployments)
+   and click **Publish**.
+6. Once Central serves the artifacts, create a matching Git tag/release from the
+   source commit shown in the successful workflow summary.
+
+Release versions are immutable once published. Choose a new version for each
+release. Workflow version changes are not committed back to the repository;
+development remains on the POM's snapshot version.
+
+Pushes and pull requests build the themes and verify source/Javadoc generation.
+Uploading a release requires a manual workflow run on `main`; tags do not trigger
+publishing. The Maven GPG plugin signs directly from the key and passphrase supplied
+through environment variables, without importing the private key into a runner keyring.
 
 CI publishes the parent POM, shared `theme` module, and every theme declared in
 the reactor, including `theme-analog`. Only `test-app` is excluded, so adding a new
 theme module to the parent POM automatically includes it in publishing.
+
+To check the release profile locally without signing or uploading:
+
+```bash
+mvn -Pcentral-release verify -pl '!test-app' -Dgpg.skip=true
+```
 
 ## Build
 
