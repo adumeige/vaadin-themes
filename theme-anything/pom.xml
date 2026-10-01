@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>theme-anything</artifactId>
+    <name>Vaadin Themes - Anything</name>
     <description>Anything — Notion-adjacent Vaadin theme. Serif-led typography, oxblood accent, 5 paper palettes
         (Paper/Bone/Linen/Sage/Slate) × light + dark, curated accent swatches.
     </description>

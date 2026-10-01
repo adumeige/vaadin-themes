@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>theme-fjord</artifactId>
+    <name>Vaadin Themes - Fjord</name>
     <description>Vaadin theme inspired by the Nord color palette — dense, productive, data-first with light/dark modes
         and density toggling.
     </description>

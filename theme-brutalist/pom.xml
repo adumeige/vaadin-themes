@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>theme-brutalist</artifactId>
+    <name>Vaadin Themes - Brutalist</name>
     <description>Brutalist Vaadin theme extracted from the version tracker prototype.</description>
 
     <dependencies>

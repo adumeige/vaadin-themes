@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>theme-glass</artifactId>
+    <name>Vaadin Themes - Glass</name>
     <description>Vaadin theme inspired by glassmorphism — translucent frosted surfaces, soft shadows and a vivid accent
         over a subtle gradient backdrop.
     </description>

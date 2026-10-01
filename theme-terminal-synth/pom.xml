@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>theme-terminal-synth</artifactId>
+    <name>Vaadin Themes - Terminal Synth</name>
     <description>Retro synthwave Vaadin theme — CRT terminal aesthetic with neon glows, box-drawing borders, 4 palettes
         (Miami/Outrun/Tokyo/Dusk), and density toggling.
     </description>

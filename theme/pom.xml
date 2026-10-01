@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>theme</artifactId>
+    <name>Vaadin Themes - Shared API</name>
     <description>Shared Java API and Vaadin components for runtime theme switching.</description>
 
     <dependencies>

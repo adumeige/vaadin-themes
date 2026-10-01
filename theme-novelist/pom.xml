@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>theme-novelist</artifactId>
+    <name>Vaadin Themes - Novelist</name>
     <description>Literary Vaadin theme — serif typography, manuscript feel, 3 palettes (Scriptorium/Saga/Codex), light +
         dark modes.
     </description>
